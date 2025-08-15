@@ -1,0 +1,13 @@
+# Set default behavior to automatically normalize line endings.
+* text=auto
+
+# Declare binary files to avoid unwanted transformations
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.svg binary
+
+# Ensure shell scripts keep LF
+*.sh eol=lf
