@@ -1,4 +1,4 @@
-import { sendConfirmationEmail } from '../lib/airtable/resend';
+import { sendConfirmationEmail } from '../lib/resend/resend';
 import dotenv from 'dotenv';
 dotenv.config({ path: '.env.local' });
 import type { AirtableRecord } from '../lib/airtable/types';

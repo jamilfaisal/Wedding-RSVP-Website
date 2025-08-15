@@ -1,8 +1,8 @@
 import { Resend } from 'resend';
 import React from 'react';
-import { APIResponse, AirtableRecord } from './types';
+import { APIResponse, AirtableRecord } from '../airtable/types';
 import ConfirmationEmail, { ConfirmationEmailProps } from './emailTemplates/ConfirmationEmail';
-import { isValidEmailFormat } from './utils';
+import { isValidEmailFormat } from '../airtable/utils';
 
 let _resendInstance: Resend | null = null;
 function getResendClient(): Resend {

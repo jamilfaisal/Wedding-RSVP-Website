@@ -29,7 +29,7 @@ export {
   getRSVPStatistics as getRSVPStats,
 } from './rsvp';
 
-export { sendConfirmationEmail } from './resend';
+export { sendConfirmationEmail } from '../resend/resend';
 
 export {
   isValidEmailFormat as validateEmail,
