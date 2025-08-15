@@ -29,6 +29,8 @@ export {
   getRSVPStatistics as getRSVPStats,
 } from './rsvp';
 
+export { sendConfirmationEmail } from './resend';
+
 export {
   isValidEmailFormat as validateEmail,
   generateRSVPEditToken as generateEditToken,
