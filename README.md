@@ -13,7 +13,6 @@ This repository contains a guest-facing site (event details, travel guides, phot
 - [Getting started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Install](#install)
-  - [Environment variables](#environment-variables)
   - [Development](#development)
   - [Build & run](#build--run)
 - [Security & privacy notes](#security--privacy-notes)
@@ -76,18 +75,6 @@ Clone and install dependencies:
 
 ```bash
 npm install
-```
-
-### Environment variables
-
-Create a `.env.local` in the project root with the variables below (replace values):
-
-```env
-AIRTABLE_API_KEY=your_airtable_api_key
-AIRTABLE_BASE_ID=your_airtable_base_id
-GOOGLE_MAPS_API_KEY=your_google_maps_key
-RESEND_API_KEY=your_resend_api_key
-NEXT_PUBLIC_SITE_URL=https://example.com
 ```
 
 ### Development
