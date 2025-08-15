@@ -16,9 +16,7 @@ This repository contains a guest-facing site (event details, travel guides, phot
   - [Environment variables](#environment-variables)
   - [Development](#development)
   - [Build & run](#build--run)
-- [Deploy](#deploy)
 - [Security & privacy notes](#security--privacy-notes)
-- [Contributing](#contributing)
 - [License & acknowledgements](#license--acknowledgements)
 
 ## Quick overview
@@ -110,6 +108,27 @@ Open http://localhost:3000
 npm run build
 npm run start
 ```
+
+# Airtable Schema
+
+## Table: RSVPs
+
+| Field Name             | Field Type       | Example / Options                                                                                                                                                         |
+| ---------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Name                   | Single line text | "John Smith"                                                                                                                                                              |
+| Email                  | Email            | "guest@example.com"                                                                                                                                                       |
+| Phone                  | Phone number     | "+1 (555) 123-4567"                                                                                                                                                       |
+| Attendance             | Single select    | Yes, No                                                                                                                                                                   |
+| Number of Guests       | Number (integer) | 3                                                                                                                                                                         |
+| Guest Names            | Long text        | "Jane Smith, Alex Smith"                                                                                                                                                  |
+| Meal Selection         | Single select    | Standard, Vegetarian, Vegan, Gluten-Free, No meal                                                                                                                         |
+| Dietary Restrictions   | Multi-select     | Vegetarian, Vegan, Gluten-Free, Dairy-Free, Nut-Free, Shellfish-Free, Kosher, Halal, Other                                                                                |
+| Special Accommodations | Multi-select     | Wheelchair access, Large print menu, Sign language interpreter, Assistive listening device, Close seating to exits, Step-free access, Service animal accommodation, Other |
+| Song Request           | Long text        | "Perfect - Ed Sheeran"                                                                                                                                                    |
+| Notes                  | Long text        | "Will arrive late"                                                                                                                                                        |
+| RSVP Date              | Created time     | Auto-generated                                                                                                                                                            |
+| Edit Token (JWT)       | Single line text | (System-generated secure link token)                                                                                                                                      |
+| Confirmation Sent      | Checkbox         | ☑                                                                                                                                                                        |
 
 ## Security & privacy notes
 
