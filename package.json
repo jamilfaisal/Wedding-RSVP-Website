@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "send-test-email": "tsx src/test-scripts/send_test_email.ts",
+    "rsvp-test": "tsx src/test-scripts/create_delete_rsvp_test.ts",
     "build": "next build",
     "start": "next start",
     "lint": "next lint && eslint --ext .js,.jsx,.ts,.tsx src",
