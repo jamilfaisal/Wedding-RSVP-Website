@@ -1,20 +1,16 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
-
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-});
+import Header from '@/components/layout/header';
 
 export const metadata: Metadata = {
   title: 'Faris & Zina Wedding',
-  description: 'Join us for the wedding of Faris & Zina',
+  description: 'Join us in celebrating our wedding day ❤️',
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
+};
+
+const headerProps = {
+  brideName: 'Faris',
+  groomName: 'Zina',
 };
 
 export default function RootLayout({
@@ -23,8 +19,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-      <body className="min-h-screen flex flex-col">{children}</body>
+    <html lang="en">
+      <body className="min-h-screen bg-white">
+        <Header {...headerProps} />
+        <main className="flex-1">{children}</main>
+      </body>
     </html>
   );
 }
