@@ -3,16 +3,24 @@
 import { Disclosure } from '@headlessui/react';
 import { HeaderWeddingLogo } from './header-wedding-logo';
 import { useEffect, useState } from 'react';
-import { CoupleInfo } from '../types';
+import { HeaderProps } from '../types';
+import Link from 'next/link';
 
-const navigationLinks = [
+const sectionLinks = [
   { name: 'Home', href: '#home' },
   { name: 'Ceremony', href: '#ceremony' },
   { name: 'Details', href: '#details' },
   { name: 'Timeline', href: '#timeline' },
 ];
 
-export default function Header(headerProps: CoupleInfo) {
+const pageLinks = [
+  { name: 'RSVP', href: '/rsvp' },
+  { name: 'Tourist Info', href: '/touristy' },
+  { name: 'Contact', href: '/contact' },
+  { name: 'FAQ', href: '/faq' },
+];
+
+export default function Header(headerProps: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   useEffect(() => {
     const handleScroll = () => {
@@ -40,22 +48,47 @@ export default function Header(headerProps: CoupleInfo) {
     >
       <div className="max-w-6xl mx-auto px-6 py-4">
         <div className="flex justify-between items-center">
-          <HeaderWeddingLogo {...headerProps} />
+          <Link href="/">
+            <HeaderWeddingLogo {...headerProps.coupleInfo} />
+          </Link>
 
           {/* Navigation Links */}
-          <ul className="flex space-x-8">
-            {navigationLinks.map((link) => (
-              <li key={link.name}>
-                <button
-                  onClick={() => scrollToSection(link.href)}
-                  className="cursor-pointer text-amber-800 hover:text-amber-600 transition-colors duration-200 relative group"
-                >
-                  {link.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-amber-600 transition-all duration-200 group-hover:w-full" />
-                </button>
-              </li>
-            ))}
-          </ul>
+          <div className="flex space-x-8">
+            {/* Home section links */}
+            <ul className="flex space-x-6">
+              {sectionLinks.map((link) => (
+                <li key={link.name}>
+                  <Link href={`/${link.href}`}>
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        scrollToSection(link.href);
+                      }}
+                      className="cursor-pointer text-amber-800 hover:text-amber-600 transition-colors duration-200 relative group"
+                    >
+                      {link.name}
+                      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-amber-600 transition-all duration-200 group-hover:w-full" />
+                    </button>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
+            {/* Page links */}
+            <ul className="flex space-x-6">
+              {pageLinks.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="cursor-pointer text-amber-800 hover:text-amber-600 transition-colors duration-200 relative group"
+                  >
+                    {link.name}
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-amber-600 transition-all duration-200 group-hover:w-full" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </Disclosure>

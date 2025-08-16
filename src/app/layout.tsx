@@ -9,7 +9,7 @@ const coupleInfo = {
 };
 
 export const metadata: Metadata = {
-  title: `{${coupleInfo.brideName}} & ${coupleInfo.groomName} Wedding`,
+  title: `${coupleInfo.brideName} & ${coupleInfo.groomName} Wedding`,
   description: 'Join us in celebrating our wedding day ❤️',
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
 };
@@ -22,8 +22,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="min-h-screen bg-white">
-        <Header {...coupleInfo} />
-        <main className="flex-1">{children}</main>
+        <Header coupleInfo={coupleInfo} />
+        {children}
         <Footer {...coupleInfo} />
       </body>
     </html>

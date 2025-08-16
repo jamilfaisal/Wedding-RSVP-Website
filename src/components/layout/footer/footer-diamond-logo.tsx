@@ -14,3 +14,5 @@ export function FooterDiamondLogo() {
     </div>
   );
 }
+
+export default FooterDiamondLogo;
