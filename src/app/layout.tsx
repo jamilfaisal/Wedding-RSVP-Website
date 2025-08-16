@@ -1,16 +1,17 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import Header from '@/components/layout/header';
+import Header from '@/components/layout/header/header';
+import Footer from '@/components/layout/footer/footer';
 
-export const metadata: Metadata = {
-  title: 'Faris & Zina Wedding',
-  description: 'Join us in celebrating our wedding day ❤️',
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
-};
-
-const headerProps = {
+const coupleInfo = {
   brideName: 'Faris',
   groomName: 'Zina',
+};
+
+export const metadata: Metadata = {
+  title: `{${coupleInfo.brideName}} & ${coupleInfo.groomName} Wedding`,
+  description: 'Join us in celebrating our wedding day ❤️',
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
 };
 
 export default function RootLayout({
@@ -21,8 +22,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="min-h-screen bg-white">
-        <Header {...headerProps} />
+        <Header {...coupleInfo} />
         <main className="flex-1">{children}</main>
+        <Footer {...coupleInfo} />
       </body>
     </html>
   );

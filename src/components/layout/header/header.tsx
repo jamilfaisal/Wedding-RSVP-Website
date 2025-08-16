@@ -1,8 +1,9 @@
 'use client';
 
 import { Disclosure } from '@headlessui/react';
-import { WeddingLogo } from './wedding-logo';
+import { HeaderWeddingLogo } from './header-wedding-logo';
 import { useEffect, useState } from 'react';
+import { CoupleInfo } from '../types';
 
 const navigationLinks = [
   { name: 'Home', href: '#home' },
@@ -11,12 +12,7 @@ const navigationLinks = [
   { name: 'Timeline', href: '#timeline' },
 ];
 
-type HeaderProps = {
-  brideName: string;
-  groomName: string;
-};
-
-export default function Header(headerProps: HeaderProps) {
+export default function Header(headerProps: CoupleInfo) {
   const [isScrolled, setIsScrolled] = useState(false);
   useEffect(() => {
     const handleScroll = () => {
@@ -44,7 +40,7 @@ export default function Header(headerProps: HeaderProps) {
     >
       <div className="max-w-6xl mx-auto px-6 py-4">
         <div className="flex justify-between items-center">
-          <WeddingLogo {...headerProps} />
+          <HeaderWeddingLogo {...headerProps} />
 
           {/* Navigation Links */}
           <ul className="flex space-x-8">
@@ -52,7 +48,7 @@ export default function Header(headerProps: HeaderProps) {
               <li key={link.name}>
                 <button
                   onClick={() => scrollToSection(link.href)}
-                  className="text-amber-800 hover:text-amber-600 transition-colors duration-200 relative group"
+                  className="cursor-pointer text-amber-800 hover:text-amber-600 transition-colors duration-200 relative group"
                 >
                   {link.name}
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-amber-600 transition-all duration-200 group-hover:w-full" />
