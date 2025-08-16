@@ -15,7 +15,7 @@ const sectionLinks = [
 
 const pageLinks = [
   { name: 'RSVP', href: '/rsvp' },
-  { name: 'Tourist Info', href: '/touristy' },
+  { name: 'Touristy Things', href: '/touristy-things' },
   { name: 'Contact', href: '/contact' },
   { name: 'FAQ', href: '/faq' },
 ];
