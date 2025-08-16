@@ -19,9 +19,11 @@ const baseConfigs = [
   eslintConfigPrettier,
 ];
 
-export default [
+const config = [
   {
     ignores: ['.next', '.next/**', 'node_modules', 'dist', 'build'],
   },
   ...baseConfigs,
 ];
+
+export default config;
