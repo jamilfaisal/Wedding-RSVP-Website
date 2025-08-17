@@ -45,8 +45,6 @@ const WeddingCountdown = ({ weddingDate }: WeddingCountdownProps) => {
   );
 };
 
-export default WeddingCountdown;
-
 function calculateCountdown(
   weddingDate: Date,
   setCountDownTime: (value: CountDownTime | ((prev: CountDownTime) => CountDownTime)) => void,
@@ -90,3 +88,5 @@ function updateCountDownEverySecond(
     updateCountDown(weddingDate, setIsExpired, setCountDownTime);
   }, 1000);
 }
+
+export default WeddingCountdown;
