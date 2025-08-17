@@ -2,7 +2,7 @@
 
 import { Bars3Icon as Menu, XMarkIcon as X } from '@heroicons/react/24/outline';
 
-export interface MobileNavItem {
+interface MobileNavItem {
   name: string;
   href: string;
   typeOfHref: 'scroll' | 'page';
@@ -18,7 +18,7 @@ interface MobileNavProps {
   handleNavigation: (href: string, type: 'scroll' | 'page') => void;
 }
 
-export function MobileNav({
+function MobileNav({
   navItems,
   isHomePage,
   pathname,
@@ -79,3 +79,5 @@ export function MobileNav({
     </div>
   );
 }
+
+export default MobileNav;

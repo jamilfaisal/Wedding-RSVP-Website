@@ -1,6 +1,6 @@
 import { CoupleInfo } from '../types';
 
-export function HeaderWeddingLogo({ brideName, groomName }: CoupleInfo) {
+function HeaderWeddingLogo({ brideName, groomName }: CoupleInfo) {
   return (
     <div className="flex items-center space-x-2">
       <HeaderDiamondLogo />
@@ -19,7 +19,7 @@ function HeaderDiamondLogo() {
   const diamondBorderColor = 'border-white';
   return (
     <div
-      className={`${outerCircleSize} bg-gradient-to-br ${gradientFrom} ${gradientTo} 
+      className={`${outerCircleSize} bg-gradient-to-br ${gradientFrom} ${gradientTo}
       rounded-full flex items-center justify-center`}
     >
       <div
@@ -28,3 +28,5 @@ function HeaderDiamondLogo() {
     </div>
   );
 }
+
+export default HeaderWeddingLogo;

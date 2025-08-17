@@ -1,8 +1,4 @@
-export type CoupleInfo = {
+export interface CoupleInfo {
   brideName: string;
   groomName: string;
-};
-
-export type HeaderProps = {
-  coupleInfo: CoupleInfo;
-};
+}

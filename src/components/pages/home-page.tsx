@@ -1,4 +1,4 @@
-import WeddingCountdown from '../wedding-countdown/wedding-countdown';
+import WeddingCountdown from '../layout/home-page/wedding-countdown/wedding-countdown';
 
 const weddingInfo = {
   brideName: 'Faris',
@@ -87,10 +87,12 @@ function HeroSection() {
   );
 }
 
-export function HomePage() {
+function HomePage() {
   return (
     <div>
       <HeroSection />
     </div>
   );
 }
+
+export default HomePage;

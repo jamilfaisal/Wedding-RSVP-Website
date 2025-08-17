@@ -1,4 +1,4 @@
-export function RSVPPage() {
+function RSVPPage() {
   return (
     <main className="flex-grow flex flex-col">
       <div className="flex-grow flex items-center justify-center">
@@ -15,3 +15,5 @@ export function RSVPPage() {
     </main>
   );
 }
+
+export default RSVPPage;

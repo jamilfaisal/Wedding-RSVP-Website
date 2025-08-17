@@ -2,29 +2,19 @@
 
 import Link from 'next/link';
 
-export interface DesktopSectionLink {
-  name: string;
-  href: string;
-}
-
-export interface DesktopPageLink {
+interface DesktopLink {
   name: string;
   href: string;
 }
 
 interface DesktopNavProps {
-  sectionLinks: DesktopSectionLink[];
-  pageLinks: DesktopPageLink[];
+  sectionLinks: DesktopLink[];
+  pageLinks: DesktopLink[];
   isHomePage: boolean;
   scrollToSection: (hash: string) => void;
 }
 
-export function DesktopNav({
-  sectionLinks,
-  pageLinks,
-  isHomePage,
-  scrollToSection,
-}: DesktopNavProps) {
+function DesktopNav({ sectionLinks, pageLinks, isHomePage, scrollToSection }: DesktopNavProps) {
   return (
     <div className="hidden lg:flex space-x-8">
       <ul className="flex space-x-6">
@@ -65,3 +55,5 @@ export function DesktopNav({
     </div>
   );
 }
+
+export default DesktopNav;
