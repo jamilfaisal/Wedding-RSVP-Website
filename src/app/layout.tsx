@@ -21,9 +21,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="min-h-screen bg-white">
+      <body className="min-h-screen bg-white flex flex-col">
         <Header coupleInfo={coupleInfo} />
-        {children}
+        <div className="flex-grow">{children}</div>
         <Footer {...coupleInfo} />
       </body>
     </html>

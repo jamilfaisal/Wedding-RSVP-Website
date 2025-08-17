@@ -6,8 +6,8 @@ import { useEffect, useState } from 'react';
 import { HeaderProps } from '../types';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { DesktopNav } from './DesktopNav';
-import { MobileNav } from './MobileNav';
+import { DesktopNav } from './desktop-nav';
+import { MobileNav } from './mobile-nav';
 
 const sectionLinks = [
   { name: 'Home', href: '#home' },
