@@ -1,5 +1,7 @@
-import { RSVPPage } from '@/components/pages/rsvp-page';
+import RSVPPage from '@/components/pages/rsvp-page';
 
-export default function RSVP() {
+function RSVP() {
   return <RSVPPage />;
 }
+
+export default RSVP;

@@ -1,5 +1,7 @@
-import { TouristInfoPage } from '@/components/pages/tourist-info-page';
+import TouristInfoPage from '@/components/pages/tourist-info-page';
 
-export default function TouristInfo() {
+function TouristInfo() {
   return <TouristInfoPage />;
 }
+
+export default TouristInfo;

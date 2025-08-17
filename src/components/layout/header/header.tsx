@@ -1,13 +1,13 @@
 'use client';
 
 import { Disclosure } from '@headlessui/react';
-import { HeaderWeddingLogo } from './header-wedding-logo';
 import { useEffect, useState } from 'react';
-import { HeaderProps } from '../types';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { DesktopNav } from './desktop-nav';
-import { MobileNav } from './mobile-nav';
+import { CoupleInfo } from '../types';
+import HeaderWeddingLogo from './header-wedding-logo';
+import DesktopNav from './desktop-nav';
+import MobileNav from './mobile-nav';
 
 const sectionLinks = [
   { name: 'Home', href: '#home' },
@@ -28,7 +28,7 @@ const combinedLinksForMobileNav = [
   ...pageLinks.map((link) => ({ ...link, typeOfHref: 'page' as const, label: link.name })),
 ];
 
-export default function Header(headerProps: HeaderProps) {
+function Header({ coupleInfo }: { coupleInfo: CoupleInfo }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
@@ -81,7 +81,7 @@ export default function Header(headerProps: HeaderProps) {
       <div className="max-w-6xl mx-auto px-6 py-4">
         <div className="flex justify-between items-center relative">
           <Link href="/#home">
-            <HeaderWeddingLogo {...headerProps.coupleInfo} />
+            <HeaderWeddingLogo {...coupleInfo} />
           </Link>
 
           <DesktopNav
@@ -110,3 +110,5 @@ function navigateToNewPage(href: string) {
 function navigateToHomePageThenScrollToSection(href: string) {
   window.location.href = `/${href}`;
 }
+
+export default Header;
