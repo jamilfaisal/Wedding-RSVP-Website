@@ -1,9 +1,12 @@
+'use client';
+import VenueMap from '../layout/home-page/venue-map/venue-map';
 import WeddingCountdown from '../layout/home-page/wedding-countdown/wedding-countdown';
 
 const weddingInfo = {
   brideName: 'Faris',
   groomName: 'Zina',
   weddingDate: new Date('2025-12-20T15:00:00'),
+  venueName: 'Rome Cavalieri, A Waldorf Astoria Hotel',
 };
 
 function HeroSection() {
@@ -87,10 +90,34 @@ function HeroSection() {
   );
 }
 
+function CeremonyDetails() {
+  return (
+    <section id="ceremony-details" className="py-16 bg-white">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="flex flex-col lg:flex-row gap-8 items-start">
+          <div className="flex-1">
+            <h2 className="text-3xl font-semibold mb-4">Ceremony Details</h2>
+            <p className="text-lg mb-2">
+              <strong>Date:</strong> {weddingInfo.weddingDate.toDateString()}
+            </p>
+            <p className="text-lg mb-2">
+              <strong>Location:</strong> {weddingInfo.venueName}
+            </p>
+          </div>
+          <div className="w-full lg:w-[600px] h-[1000px] flex-shrink-0">
+            <VenueMap venueName={weddingInfo.venueName} />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function HomePage() {
   return (
     <div>
       <HeroSection />
+      <CeremonyDetails />
     </div>
   );
 }
