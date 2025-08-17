@@ -62,7 +62,6 @@ function updateCountDown(
 ) {
   const now = new Date();
   const diff = weddingDate.getTime() - now.getTime();
-  console.log('Time difference:', diff);
   if (diff <= 0) {
     setIsExpired(true);
     setCountDownTime({ days: 0, hours: 0, minutes: 0, seconds: 0 });
