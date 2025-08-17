@@ -1,6 +1,9 @@
-const coupleInfo = {
+import WeddingCountdown from '../wedding-countdown/wedding-countdown';
+
+const weddingInfo = {
   brideName: 'Faris',
   groomName: 'Zina',
+  weddingDate: new Date('2025-12-20T15:00:00'),
 };
 
 function HeroSection() {
@@ -59,13 +62,15 @@ function HeroSection() {
         {/* English welcome */}
         <div className="mb-8">
           <h1 className="text-5xl md:text-6xl text-amber-800 mb-4">
-            {coupleInfo.brideName} & {coupleInfo.groomName}
+            {weddingInfo.brideName} & {weddingInfo.groomName}
           </h1>
           <p className="text-xl text-amber-700 mb-2">Welcome to our Wedding Celebration</p>
           <p className="text-amber-600">
             We invite you to join us as we begin our journey together
           </p>
         </div>
+
+        <WeddingCountdown weddingDate={weddingInfo.weddingDate} />
       </div>
 
       {/* Floating decorative elements */}
