@@ -1,4 +1,4 @@
-export function FooterDiamondLogo() {
+export function FooterLogo() {
   const diamondLogoSeparatorLeft = (
     <div className="w-16 h-0.5 bg-gradient-to-r from-transparent to-amber-400"></div>
   );
@@ -15,4 +15,4 @@ export function FooterDiamondLogo() {
   );
 }
 
-export default FooterDiamondLogo;
+export default FooterLogo;
