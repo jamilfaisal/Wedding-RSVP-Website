@@ -24,8 +24,8 @@ const pageLinks = [
 ];
 
 const combinedLinksForMobileNav = [
-  ...sectionLinks.map((link) => ({ ...link, type: 'scroll' as const, label: link.name })),
-  ...pageLinks.map((link) => ({ ...link, type: 'page' as const, label: link.name })),
+  ...sectionLinks.map((link) => ({ ...link, typeOfHref: 'scroll' as const, label: link.name })),
+  ...pageLinks.map((link) => ({ ...link, typeOfHref: 'page' as const, label: link.name })),
 ];
 
 export default function Header(headerProps: HeaderProps) {
