@@ -5,6 +5,9 @@ import { HeaderWeddingLogo } from './header-wedding-logo';
 import { useEffect, useState } from 'react';
 import { HeaderProps } from '../types';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { DesktopNav } from './DesktopNav';
+import { MobileNav } from './MobileNav';
 
 const sectionLinks = [
   { name: 'Home', href: '#home' },
@@ -20,8 +23,17 @@ const pageLinks = [
   { name: 'FAQ', href: '/faq' },
 ];
 
+const combinedLinksForMobileNav = [
+  ...sectionLinks.map((link) => ({ ...link, type: 'scroll' as const, label: link.name })),
+  ...pageLinks.map((link) => ({ ...link, type: 'page' as const, label: link.name })),
+];
+
 export default function Header(headerProps: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const isHomePage = pathname === '/';
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -40,57 +52,61 @@ export default function Header(headerProps: HeaderProps) {
     }
   };
 
+  const handleNavigation = (href: string, type: 'scroll' | 'page') => {
+    setIsMobileMenuOpen(false);
+
+    if (type === 'scroll') {
+      if (isHomePage) {
+        scrollToSection(href);
+      } else {
+        navigateToHomePageThenScrollToSection(href);
+      }
+    } else {
+      navigateToNewPage(href);
+    }
+  };
+
   return (
     <Disclosure
       as="header"
       className={`fixed top-0 w-full z-50 transition-all duration-300
-     ${isScrolled ? 'bg-white/95 backdrop-blur-sm shadow-sm border-b border-amber-100' : 'bg-transparent'}`}
+       ${
+         isHomePage
+           ? isScrolled
+             ? 'bg-white/95 backdrop-blur-sm shadow-sm border-b border-amber-100'
+             : 'bg-transparent'
+           : 'bg-white/95 backdrop-blur-sm shadow-sm border-b border-amber-100'
+       }`}
     >
       <div className="max-w-6xl mx-auto px-6 py-4">
-        <div className="flex justify-between items-center">
-          <Link href="/">
+        <div className="flex justify-between items-center relative">
+          <Link href="/#home">
             <HeaderWeddingLogo {...headerProps.coupleInfo} />
           </Link>
 
-          {/* Navigation Links */}
-          <div className="flex space-x-8">
-            {/* Home section links */}
-            <ul className="flex space-x-6">
-              {sectionLinks.map((link) => (
-                <li key={link.name}>
-                  <Link href={`/${link.href}`}>
-                    <button
-                      onClick={(e) => {
-                        e.preventDefault();
-                        scrollToSection(link.href);
-                      }}
-                      className="cursor-pointer text-amber-800 hover:text-amber-600 transition-colors duration-200 relative group"
-                    >
-                      {link.name}
-                      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-amber-600 transition-all duration-200 group-hover:w-full" />
-                    </button>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-
-            {/* Page links */}
-            <ul className="flex space-x-6">
-              {pageLinks.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="cursor-pointer text-amber-800 hover:text-amber-600 transition-colors duration-200 relative group"
-                  >
-                    {link.name}
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-amber-600 transition-all duration-200 group-hover:w-full" />
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <DesktopNav
+            sectionLinks={sectionLinks}
+            pageLinks={pageLinks}
+            isHomePage={isHomePage}
+            scrollToSection={scrollToSection}
+          />
+          <MobileNav
+            navItems={combinedLinksForMobileNav}
+            isHomePage={isHomePage}
+            pathname={pathname}
+            isMobileMenuOpen={isMobileMenuOpen}
+            toggleMobileMenu={() => setIsMobileMenuOpen((o) => !o)}
+            handleNavigation={handleNavigation}
+          />
         </div>
       </div>
     </Disclosure>
   );
+}
+function navigateToNewPage(href: string) {
+  window.location.href = href;
+}
+
+function navigateToHomePageThenScrollToSection(href: string) {
+  window.location.href = `/${href}`;
 }
