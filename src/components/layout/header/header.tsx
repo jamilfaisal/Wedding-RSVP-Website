@@ -4,10 +4,11 @@ import { Disclosure } from '@headlessui/react';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { CoupleInfo } from '../types';
+import { WeddingInfo } from '../types';
 import HeaderWeddingLogo from './header-wedding-logo';
 import DesktopNav from './desktop-nav';
 import MobileNav from './mobile-nav';
+import { checkIsHomePage } from '../utils';
 
 const sectionLinks = [
   { name: 'Home', href: '#home' },
@@ -18,9 +19,9 @@ const sectionLinks = [
 
 const pageLinks = [
   { name: 'RSVP', href: '/rsvp' },
+  { name: 'Accommodations', href: '/accomodations' },
   { name: 'Touristy Things', href: '/touristy-things' },
-  { name: 'Contact', href: '/contact' },
-  { name: 'FAQ', href: '/faq' },
+  { name: 'Contact & FAQ', href: '/contact' },
 ];
 
 const combinedLinksForMobileNav = [
@@ -28,11 +29,11 @@ const combinedLinksForMobileNav = [
   ...pageLinks.map((link) => ({ ...link, typeOfHref: 'page' as const, label: link.name })),
 ];
 
-function Header({ coupleInfo }: { coupleInfo: CoupleInfo }) {
+function Header({ coupleInfo }: { coupleInfo: WeddingInfo }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const pathname = usePathname();
-  const isHomePage = pathname === '/';
+  const currentPage = usePathname();
+  const isHomePage = checkIsHomePage(currentPage);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -69,16 +70,16 @@ function Header({ coupleInfo }: { coupleInfo: CoupleInfo }) {
   return (
     <Disclosure
       as="header"
-      className={`fixed top-0 w-full z-50 transition-all duration-300
+      className={`fixed top-0 w-full z-50 transition-all duration-700
        ${
          isHomePage
            ? isScrolled
-             ? 'bg-white/95 backdrop-blur-sm shadow-sm border-b border-amber-100'
+             ? 'bg-ivory-50/95 backdrop-blur-sm shadow-lg border-b border-sage-100'
              : 'bg-transparent'
-           : 'bg-white/95 backdrop-blur-sm shadow-sm border-b border-amber-100'
+           : 'bg-ivory-50/95 backdrop-blur-sm shadow-lg border-b border-sage-100'
        }`}
     >
-      <div className="max-w-6xl mx-auto px-6 py-4">
+      <div className="max-w-6xl mx-auto px-8 py-6">
         <div className="flex justify-between items-center relative">
           <Link href="/#home">
             <HeaderWeddingLogo {...coupleInfo} />
@@ -87,13 +88,14 @@ function Header({ coupleInfo }: { coupleInfo: CoupleInfo }) {
           <DesktopNav
             sectionLinks={sectionLinks}
             pageLinks={pageLinks}
+            currentPage={currentPage}
             isHomePage={isHomePage}
             scrollToSection={scrollToSection}
           />
           <MobileNav
             navItems={combinedLinksForMobileNav}
             isHomePage={isHomePage}
-            pathname={pathname}
+            currentPage={currentPage}
             isMobileMenuOpen={isMobileMenuOpen}
             toggleMobileMenu={() => setIsMobileMenuOpen((o) => !o)}
             handleNavigation={handleNavigation}

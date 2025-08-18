@@ -2,6 +2,13 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Custom utilities for watercolor floral effects */
+@layer utilities {
+  .bg-gradient-radial {
+    background: radial-gradient(circle, var(--tw-gradient-stops));
+  }
+}
+
 :root {
   --font-size: 14px;
   --background: #ffffff;
@@ -42,10 +49,100 @@
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
 
-  /* Custom wedding colors */
-  --cream-50: #fefcf8;
-  --cream-100: #fdf8f0;
-  --cream-200: #faf0e1;
+  /* Font families */
+  --font-script: 'Dancing Script', cursive;
+  --font-serif: 'Playfair Display', serif;
+  --font-harrington: 'Cinzel', serif;
+
+  /* Classic winter wedding colors */
+  --ivory-50: #fefefe;
+  --ivory-100: #fdfdfc;
+  --ivory-200: #faf9f7;
+  --ivory-300: #f6f4f1;
+  --ivory-400: #f1ede8;
+  --ivory-500: #ebe5dd;
+  --ivory-600: #d4c8b8;
+  --ivory-700: #b8a695;
+  --ivory-800: #9c8475;
+  --ivory-900: #826a5c;
+
+  --sage-50: #f7f9f7;
+  --sage-100: #eef2ee;
+  --sage-200: #d9e3d9;
+  --sage-300: #b8ccb8;
+  --sage-400: #93b093;
+  --sage-500: #729472;
+  --sage-600: #5a7a5a;
+  --sage-700: #486548;
+  --sage-800: #3a523a;
+  --sage-900: #2f432f;
+
+  --brown-50: #faf8f6;
+  --brown-100: #f4f0ed;
+  --brown-200: #e6ddd6;
+  --brown-300: #d2c4b8;
+  --brown-400: #b8a393;
+  --brown-500: #a08875;
+  --brown-600: #8b7563;
+  --brown-700: #736153;
+  --brown-800: #5f5048;
+  --brown-900: #4f433d;
+
+  --orange-50: #fef9f4;
+  --orange-100: #fef2e8;
+  --orange-200: #fce1c7;
+  --orange-300: #f9ca9b;
+  --orange-400: #f4aa6d;
+  --orange-500: #ee8f47;
+  --orange-600: #df7329;
+  --orange-700: #b95d1f;
+  --orange-800: #934b1e;
+  --orange-900: #77401d;
+
+  /* Romantic floral pastel colors */
+  --pastel-pink-50: #fef7f7;
+  --pastel-pink-100: #fdeaea;
+  --pastel-pink-200: #fac8c8;
+  --pastel-pink-300: #f6a1a1;
+  --pastel-pink-400: #f07878;
+  --pastel-pink-500: #e85d75;
+  --pastel-pink-600: #d63384;
+  --pastel-pink-700: #b02a5b;
+  --pastel-pink-800: #8c2348;
+  --pastel-pink-900: #6f1d38;
+
+  --pastel-purple-50: #f8f7ff;
+  --pastel-purple-100: #f0edff;
+  --pastel-purple-200: #ddd6fe;
+  --pastel-purple-300: #c4b5fd;
+  --pastel-purple-400: #a78bfa;
+  --pastel-purple-500: #8b5cf6;
+  --pastel-purple-600: #7c3aed;
+  --pastel-purple-700: #6d28d9;
+  --pastel-purple-800: #5b21b6;
+  --pastel-purple-900: #4c1d95;
+
+  --pastel-green-50: #f0f9f4;
+  --pastel-green-100: #dcf4e3;
+  --pastel-green-200: #bbe5c7;
+  --pastel-green-300: #91d0a0;
+  --pastel-green-400: #65b574;
+  --pastel-green-500: #439955;
+  --pastel-green-600: #347d39;
+  --pastel-green-700: #2d6930;
+  --pastel-green-800: #275529;
+  --pastel-green-900: #1f4522;
+
+  --pastel-blue-50: #f0f9ff;
+  --pastel-blue-100: #e0f2fe;
+  --pastel-blue-200: #bae6fd;
+  --pastel-blue-300: #7dd3fc;
+  --pastel-blue-400: #38bdf8;
+  --pastel-blue-500: #0ea5e9;
+  --pastel-blue-600: #0284c7;
+  --pastel-blue-700: #0369a1;
+  --pastel-blue-800: #075985;
+  --pastel-blue-900: #0c4a6e;
 }
 
 .dark {
@@ -125,10 +222,95 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
-  /* Custom wedding colors */
-  --color-cream-50: var(--cream-50);
-  --color-cream-100: var(--cream-100);
-  --color-cream-200: var(--cream-200);
+  /* Classic winter wedding colors */
+  --color-ivory-50: var(--ivory-50);
+  --color-ivory-100: var(--ivory-100);
+  --color-ivory-200: var(--ivory-200);
+  --color-ivory-300: var(--ivory-300);
+  --color-ivory-400: var(--ivory-400);
+  --color-ivory-500: var(--ivory-500);
+  --color-ivory-600: var(--ivory-600);
+  --color-ivory-700: var(--ivory-700);
+  --color-ivory-800: var(--ivory-800);
+  --color-ivory-900: var(--ivory-900);
+
+  --color-sage-50: var(--sage-50);
+  --color-sage-100: var(--sage-100);
+  --color-sage-200: var(--sage-200);
+  --color-sage-300: var(--sage-300);
+  --color-sage-400: var(--sage-400);
+  --color-sage-500: var(--sage-500);
+  --color-sage-600: var(--sage-600);
+  --color-sage-700: var(--sage-700);
+  --color-sage-800: var(--sage-800);
+  --color-sage-900: var(--sage-900);
+
+  --color-brown-50: var(--brown-50);
+  --color-brown-100: var(--brown-100);
+  --color-brown-200: var(--brown-200);
+  --color-brown-300: var(--brown-300);
+  --color-brown-400: var(--brown-400);
+  --color-brown-500: var(--brown-500);
+  --color-brown-600: var(--brown-600);
+  --color-brown-700: var(--brown-700);
+  --color-brown-800: var(--brown-800);
+  --color-brown-900: var(--brown-900);
+
+  --color-orange-50: var(--orange-50);
+  --color-orange-100: var(--orange-100);
+  --color-orange-200: var(--orange-200);
+  --color-orange-300: var(--orange-300);
+  --color-orange-400: var(--orange-400);
+  --color-orange-500: var(--orange-500);
+  --color-orange-600: var(--orange-600);
+  --color-orange-700: var(--orange-700);
+  --color-orange-800: var(--orange-800);
+  --color-orange-900: var(--orange-900);
+
+  /* Romantic floral pastel colors */
+  --color-pastel-pink-50: var(--pastel-pink-50);
+  --color-pastel-pink-100: var(--pastel-pink-100);
+  --color-pastel-pink-200: var(--pastel-pink-200);
+  --color-pastel-pink-300: var(--pastel-pink-300);
+  --color-pastel-pink-400: var(--pastel-pink-400);
+  --color-pastel-pink-500: var(--pastel-pink-500);
+  --color-pastel-pink-600: var(--pastel-pink-600);
+  --color-pastel-pink-700: var(--pastel-pink-700);
+  --color-pastel-pink-800: var(--pastel-pink-800);
+  --color-pastel-pink-900: var(--pastel-pink-900);
+
+  --color-pastel-purple-50: var(--pastel-purple-50);
+  --color-pastel-purple-100: var(--pastel-purple-100);
+  --color-pastel-purple-200: var(--pastel-purple-200);
+  --color-pastel-purple-300: var(--pastel-purple-300);
+  --color-pastel-purple-400: var(--pastel-purple-400);
+  --color-pastel-purple-500: var(--pastel-purple-500);
+  --color-pastel-purple-600: var(--pastel-purple-600);
+  --color-pastel-purple-700: var(--pastel-purple-700);
+  --color-pastel-purple-800: var(--pastel-purple-800);
+  --color-pastel-purple-900: var(--pastel-purple-900);
+
+  --color-pastel-green-50: var(--pastel-green-50);
+  --color-pastel-green-100: var(--pastel-green-100);
+  --color-pastel-green-200: var(--pastel-green-200);
+  --color-pastel-green-300: var(--pastel-green-300);
+  --color-pastel-green-400: var(--pastel-green-400);
+  --color-pastel-green-500: var(--pastel-green-500);
+  --color-pastel-green-600: var(--pastel-green-600);
+  --color-pastel-green-700: var(--pastel-green-700);
+  --color-pastel-green-800: var(--pastel-green-800);
+  --color-pastel-green-900: var(--pastel-green-900);
+
+  --color-pastel-blue-50: var(--pastel-blue-50);
+  --color-pastel-blue-100: var(--pastel-blue-100);
+  --color-pastel-blue-200: var(--pastel-blue-200);
+  --color-pastel-blue-300: var(--pastel-blue-300);
+  --color-pastel-blue-400: var(--pastel-blue-400);
+  --color-pastel-blue-500: var(--pastel-blue-500);
+  --color-pastel-blue-600: var(--pastel-blue-600);
+  --color-pastel-blue-700: var(--pastel-blue-700);
+  --color-pastel-blue-800: var(--pastel-blue-800);
+  --color-pastel-blue-900: var(--pastel-blue-900);
 }
 
 @layer base {

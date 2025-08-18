@@ -12,7 +12,7 @@ interface MobileNavItem {
 interface MobileNavProps {
   navItems: MobileNavItem[];
   isHomePage: boolean;
-  pathname: string;
+  currentPage: string;
   isMobileMenuOpen: boolean;
   toggleMobileMenu: () => void;
   handleNavigation: (href: string, type: 'scroll' | 'page') => void;
@@ -21,7 +21,7 @@ interface MobileNavProps {
 function MobileNav({
   navItems,
   isHomePage,
-  pathname,
+  currentPage,
   isMobileMenuOpen,
   toggleMobileMenu,
   handleNavigation,
@@ -30,7 +30,9 @@ function MobileNav({
     <div className="lg:hidden relative flex items-center">
       <button
         onClick={toggleMobileMenu}
-        className="p-2 text-amber-800 hover:text-amber-600 transition-colors"
+        className={`p-2 transition-colors
+          ${isHomePage ? 'text-sage-700' : 'text-brown-700 hover:text-sage-600'}`}
+        style={{ fontFamily: 'var(--font-serif)' }}
         aria-label={isMobileMenuOpen ? 'Close mobile menu' : 'Open mobile menu'}
         aria-expanded={isMobileMenuOpen}
         aria-haspopup="true"
@@ -39,7 +41,7 @@ function MobileNav({
       </button>
       {/* Dropdown panel */}
       <div
-        className={`absolute top-full right-0 mt-2 w-64 origin-top-right rounded-lg border border-amber-200 bg-white/95 backdrop-blur-sm shadow-lg ring-1 ring-black/5 transition-all duration-200 z-50 ${
+        className={`absolute top-full right-0 mt-2 w-64 origin-top-right rounded-lg border border-sage-200 bg-white/95 backdrop-blur-sm shadow-lg ring-1 ring-black/5 transition-all duration-200 z-50 ${
           isMobileMenuOpen ? 'scale-100 opacity-100' : 'pointer-events-none scale-95 opacity-0'
         }`}
         role="menu"
@@ -51,18 +53,18 @@ function MobileNav({
               <button
                 role="menuitem"
                 onClick={() => handleNavigation(item.href, item.typeOfHref)}
-                className={`w-full text-left px-6 py-3 text-amber-800 hover:text-amber-600 hover:bg-amber-50 transition-colors duration-150 ${
-                  (isHomePage && item.typeOfHref === 'scroll') || pathname === item.href
-                    ? 'text-amber-600 bg-amber-50'
+                className={`w-full text-left px-6 py-3 text-brown-700 hover:text-sage-600 hover:bg-sage-50 transition-colors duration-150 ${
+                  (isHomePage && item.typeOfHref === 'scroll') || currentPage === item.href
+                    ? 'text-sage-600 bg-sage-50'
                     : ''
                 }`}
               >
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-amber-400 rounded-full opacity-60" />
+                  <div className="w-2 h-2 bg-sage-400 rounded-full opacity-60" />
                   <span>{item.label}</span>
                 </div>
               </button>
-              {index < navItems.length - 1 && <div className="mx-6 h-px bg-amber-100" />}
+              {index < navItems.length - 1 && <div className="mx-6 h-px bg-sage-100" />}
             </li>
           ))}
         </ul>
