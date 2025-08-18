@@ -1,7 +1,7 @@
 import { WeddingInfo } from '../types';
 
 function Footer(weddingInfo: WeddingInfo) {
-  const copyRightInfo = `© ${new Date().getFullYear()} ${weddingInfo.groomName} & ${weddingInfo.brideName}. All rights reserved.`;
+  const copyRightInfo = `© ${new Date().getFullYear()} ${weddingInfo.groomFirstName} & ${weddingInfo.brideFirstName}. All rights reserved.`;
   return (
     <footer className="bg-gradient-to-r from-sage-50 to-ivory-100 py-16 border-t-2 border-sage-100">
       <div className="max-w-5xl mx-auto px-8 text-center">
@@ -11,7 +11,7 @@ function Footer(weddingInfo: WeddingInfo) {
             className="text-3xl text-brown-800 mb-3"
             style={{ fontFamily: 'var(--font-harrington)' }}
           >
-            {weddingInfo.groomName} & {weddingInfo.brideName}
+            {weddingInfo.groomFirstName} & {weddingInfo.brideFirstName}
           </h3>
           <p className="text-lg text-brown-600 mb-6 font-light">
             We can&apos;t wait to celebrate with you in December!

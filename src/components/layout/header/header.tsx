@@ -29,7 +29,7 @@ const combinedLinksForMobileNav = [
   ...pageLinks.map((link) => ({ ...link, typeOfHref: 'page' as const, label: link.name })),
 ];
 
-function Header({ coupleInfo }: { coupleInfo: WeddingInfo }) {
+function Header({ weddingInfo: weddingInfo }: { weddingInfo: WeddingInfo }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const currentPage = usePathname();
@@ -82,7 +82,7 @@ function Header({ coupleInfo }: { coupleInfo: WeddingInfo }) {
       <div className="max-w-6xl mx-auto px-8 py-6">
         <div className="flex justify-between items-center relative">
           <Link href="/#home">
-            <HeaderWeddingLogo {...coupleInfo} />
+            <HeaderWeddingLogo {...weddingInfo} />
           </Link>
 
           <DesktopNav

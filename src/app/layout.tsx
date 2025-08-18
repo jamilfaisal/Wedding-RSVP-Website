@@ -3,7 +3,7 @@ import { Dancing_Script, Playfair_Display, Montserrat, Cinzel } from 'next/font/
 import './globals.css';
 import Header from '@/components/layout/header/header';
 import Footer from '@/components/layout/footer/footer';
-import { coupleInfo } from '@/lib/config/wedding-config';
+import { weddingInfo } from '@/lib/config/wedding-config';
 
 const dancingScript = Dancing_Script({
   subsets: ['latin'],
@@ -35,7 +35,7 @@ const cinzel = Cinzel({
 });
 
 export const metadata: Metadata = {
-  title: `${coupleInfo.groomName} & ${coupleInfo.brideName} Wedding`,
+  title: `${weddingInfo.groomFirstName} & ${weddingInfo.brideFirstName} Wedding`,
   description: 'Join us in celebrating our wedding day ❤️',
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
 };
@@ -50,9 +50,9 @@ export default function RootLayout({
       <body
         className={`min-h-screen bg-white flex flex-col ${dancingScript.variable} ${playfairDisplay.variable} ${montserrat.variable} ${cinzel.variable}`}
       >
-        <Header coupleInfo={coupleInfo} />
+        <Header weddingInfo={weddingInfo} />
         <div className="flex-grow">{children}</div>
-        <Footer {...coupleInfo} />
+        <Footer {...weddingInfo} />
       </body>
     </html>
   );

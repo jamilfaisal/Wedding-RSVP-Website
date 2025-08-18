@@ -1,8 +1,8 @@
 import HomePage from '@/components/pages/home-page';
-import { coupleInfo } from '@/lib/config/wedding-config';
+import { weddingInfo } from '@/lib/config/wedding-config';
 
 function Home() {
-  return <HomePage weddingInfo={coupleInfo} />;
+  return <HomePage weddingInfo={weddingInfo} />;
 }
 
 export default Home;
