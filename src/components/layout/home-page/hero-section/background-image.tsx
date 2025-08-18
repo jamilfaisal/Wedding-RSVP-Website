@@ -6,7 +6,7 @@ function BackgroundImage() {
     <div className="absolute inset-0">
       <ImageWithFallback
         src={proposalPhoto}
-        alt="Faris proposing to Zina with romantic heart-shaped floral arrangement"
+        alt="Groom proposing to Bride with romantic heart-shaped floral arrangement"
         className="w-full h-full object-cover opacity-30"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-ivory-50/70 via-white/50 to-sage-50/70"></div>
