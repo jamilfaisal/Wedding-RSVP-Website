@@ -1,5 +1,5 @@
 import { WeddingInfo } from '../types';
-import { formatDateToLocaleString } from '../utils';
+import { formatDateToMonthDayYear } from '../utils';
 
 function HeaderWeddingLogo({ brideFirstName, groomFirstName, weddingStartDate }: WeddingInfo) {
   return (
@@ -11,7 +11,7 @@ function HeaderWeddingLogo({ brideFirstName, groomFirstName, weddingStartDate }:
         {groomFirstName} & {brideFirstName}
       </div>
       <div className="text-xs text-brown-600 font-light tracking-wide">
-        {formatDateToLocaleString(weddingStartDate)}
+        {formatDateToMonthDayYear(weddingStartDate)}
       </div>
     </div>
   );

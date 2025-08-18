@@ -6,7 +6,7 @@ import BotanicalDecoration from './botanical-decoration';
 import ArabicVerse from './arabic-verse';
 import WeddingCountdown from './wedding-countdown/wedding-countdown';
 import SaveTheDate from './save-the-date';
-import { extractTimeFromDate, formatDateToLocaleString } from '../../utils';
+import { extractTimeFromDate, formatDateToMonthDayYear } from '../../utils';
 
 function HeroSection({ weddingInfo }: { weddingInfo: WeddingInfo }) {
   const [isVisible, setIsVisible] = useState(false);
@@ -95,7 +95,7 @@ function renderWeddingDateCard(weddingInfo: WeddingInfo) {
             className="text-3xl md:text-4xl text-sage-700"
             style={{ fontFamily: 'var(--font-harrington)' }}
           >
-            {formatDateToLocaleString(weddingInfo.weddingStartDate)}
+            {formatDateToMonthDayYear(weddingInfo.weddingStartDate)}
           </p>
           <div className="w-4 h-px bg-sage-300"></div>
         </div>

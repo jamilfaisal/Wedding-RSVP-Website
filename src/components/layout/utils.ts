@@ -3,7 +3,7 @@ export function checkIsHomePage(pathname: string): boolean {
 }
 
 // Output example: December 20, 2025
-export function formatDateToLocaleString(date: Date): string {
+export function formatDateToMonthDayYear(date: Date): string {
   return date.toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
