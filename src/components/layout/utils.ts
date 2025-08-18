@@ -3,7 +3,7 @@ export function checkIsHomePage(pathname: string): boolean {
 }
 
 // Output example: December 20, 2025
-export function convertDateToString(date: Date): string {
+export function formatDateToLocaleString(date: Date): string {
   return date.toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
@@ -11,7 +11,8 @@ export function convertDateToString(date: Date): string {
   });
 }
 
-export function weddingTimeAsNumberWord(date: Date): string {
+// Output example: 6:00 PM
+export function extractTimeFromDate(date: Date): string {
   const options: Intl.DateTimeFormatOptions = { hour: 'numeric', minute: 'numeric', hour12: true };
   return date.toLocaleString('en-US', options);
 }

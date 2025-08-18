@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { WeddingInfo } from '../../types';
-import { ArrowDown } from 'lucide-react';
+import { ArrowDown, Flower, Flower2, Heart, Leaf } from 'lucide-react';
 import BackgroundImage from './background-image';
 import BotanicalDecoration from './botanical-decoration';
-import MainMessagePanel from './floral-content-border';
+import ArabicVerse from './arabic-verse';
 import WeddingCountdown from './wedding-countdown/wedding-countdown';
 import SaveTheDate from './save-the-date';
+import { extractTimeFromDate, formatDateToLocaleString } from '../../utils';
 
 function HeroSection({ weddingInfo }: { weddingInfo: WeddingInfo }) {
   const [isVisible, setIsVisible] = useState(false);
@@ -29,53 +30,141 @@ function HeroSection({ weddingInfo }: { weddingInfo: WeddingInfo }) {
 
 function renderHeroSectionContent(isVisible: boolean, weddingInfo: WeddingInfo) {
   return (
-    <div className="relative z-10 text-center px-8 max-w-4xl mx-auto pt-40">
+    <div className="relative z-10 text-center px-8 max-w-4xl mx-auto">
       <div
-        className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+        className={`pt-40 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
       >
-        <MainMessagePanel
-          brideFullName={weddingInfo.brideFullName}
-          groomFullName={weddingInfo.groomFullName}
-          weddingStartDate={weddingInfo.weddingStartDate}
-        />
-
-        {renderBilingualWelcomeMessages()}
-
-        <div className="mb-12">
+        <div className="relative border-2 border-sage-100/60 rounded-lg p-12 bg-white/80 backdrop-blur-sm shadow-xl ">
+          {renderTopBorderFloralDecor()}
+          {renderTopLeftCornerFloralDecor()}
+          {renderTopRightFloralDecor()}
+          {renderBottomLeftFloralDecor()}
+          {renderBottomRightFloralDecor()}
+          <ArabicVerse />
+          {renderGroomAndBrideNames(weddingInfo)}
+          {renderWeddingInvitationMessage()}
+          {renderWeddingDateCard(weddingInfo)}
           <WeddingCountdown weddingStartDate={weddingInfo.weddingStartDate} />
+          <div className="space-y-6">
+            <SaveTheDate {...weddingInfo} />
+            {renderScrollDownIndicator()}
+          </div>
         </div>
-
-        <div className="mb-16">
-          <SaveTheDate {...weddingInfo} />
-        </div>
-
-        {renderScrollDownIndicator()}
       </div>
     </div>
   );
 }
 
-function renderBilingualWelcomeMessages() {
+function renderWeddingInvitationMessage() {
   return (
-    <div className="mb-12 space-y-8 mt-16">
-      <div className="bg-gradient-to-r from-sage-50/90 to-ivory-100/90 backdrop-blur-sm rounded-lg px-8 py-6 shadow-sm border border-sage-100 text-center">
+    <p
+      className="text-xl md:text-2xl text-brown-600 font-light tracking-wide mb-8"
+      style={{ fontFamily: 'var(--font-serif)' }}
+    >
+      cordially invite you to celebrate their wedding
+    </p>
+  );
+}
+
+function renderGroomAndBrideNames(weddingInfo: WeddingInfo) {
+  return (
+    <h1
+      className="text-6xl md:text-7xl text-brown-800 mb-6 leading-tight tracking-wide"
+      style={{ fontFamily: 'var(--font-harrington)' }}
+    >
+      {weddingInfo.groomFullName}
+      <span className="block text-5xl md:text-6xl text-sage-600 my-2">&</span>
+      {weddingInfo.brideFullName}
+    </h1>
+  );
+}
+
+function renderWeddingDateCard(weddingInfo: WeddingInfo) {
+  return (
+    <div className="inline-block bg-gradient-to-r from-sage-50 to-orange-50 rounded-lg px-10 py-8 shadow-lg border-2 border-sage-100 mb-8">
+      <div className="text-center">
         <p
-          className="text-lg md:text-xl text-brown-700 leading-relaxed"
+          className="text-brown-600 mb-3 tracking-wide"
           style={{ fontFamily: 'var(--font-serif)' }}
         >
-          We invite you to join us as we begin this beautiful journey together, surrounded by the
-          love of our family and friends
+          Join us on
+        </p>
+        <div className="flex items-center justify-center space-x-4 mb-3">
+          <div className="w-4 h-px bg-sage-300"></div>
+          <p
+            className="text-3xl md:text-4xl text-sage-700"
+            style={{ fontFamily: 'var(--font-harrington)' }}
+          >
+            {formatDateToLocaleString(weddingInfo.weddingStartDate)}
+          </p>
+          <div className="w-4 h-px bg-sage-300"></div>
+        </div>
+        <p className="text-brown-500" style={{ fontFamily: 'var(--font-serif)' }}>
+          {extractTimeFromDate(weddingInfo.weddingStartDate)} • {weddingInfo.weddingCity},{' '}
+          {weddingInfo.weddingCountry}
         </p>
       </div>
+    </div>
+  );
+}
 
-      <div className="bg-gradient-to-l from-orange-50/90 to-ivory-100/90 backdrop-blur-sm rounded-lg px-8 py-6 shadow-sm border border-orange-100">
-        <p
-          className="text-lg md:text-xl text-brown-700 leading-relaxed"
-          style={{ fontFamily: 'var(--font-serif)' }}
-          dir="rtl"
-        >
-          ندعوكم للانضمام إلينا ونحن نبدأ هذه الرحلة الجميلة معاً، محاطين بحب عائلتنا وأصدقائنا
-        </p>
+function renderBottomRightFloralDecor() {
+  return (
+    <div className="absolute bottom-4 right-4">
+      <div className="flex items-center space-x-1">
+        <div className="w-2 h-2 bg-orange-200 rounded-full"></div>
+        <Leaf className="w-4 h-4 text-sage-400 opacity-60" />
+      </div>
+    </div>
+  );
+}
+
+function renderBottomLeftFloralDecor() {
+  return (
+    <div className="absolute bottom-4 left-4">
+      <div className="flex items-center space-x-1">
+        <Leaf className="w-4 h-4 text-orange-300 opacity-60" />
+        <div className="w-2 h-2 bg-sage-200 rounded-full"></div>
+      </div>
+    </div>
+  );
+}
+
+function renderTopRightFloralDecor() {
+  return (
+    <div className="absolute top-4 right-4">
+      <div className="flex items-center space-x-1">
+        <div className="w-2 h-2 bg-sage-200 rounded-full"></div>
+        <Flower2 className="w-4 h-4 text-orange-300 opacity-60" />
+      </div>
+    </div>
+  );
+}
+
+function renderTopLeftCornerFloralDecor() {
+  return (
+    <div className="absolute top-4 left-4">
+      <div className="flex items-center space-x-1">
+        <Flower className="w-4 h-4 text-sage-400 opacity-60" />
+        <div className="w-2 h-2 bg-orange-200 rounded-full"></div>
+      </div>
+    </div>
+  );
+}
+
+function renderTopBorderFloralDecor() {
+  return (
+    <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-white px-6 py-2 rounded-full border border-sage-200 shadow-md">
+      <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-1">
+          <Leaf className="w-4 h-4 text-sage-400" />
+          <Flower className="w-5 h-5 text-orange-300" />
+        </div>
+        <Heart className="w-6 h-6 text-brown-400" />
+        <div className="flex items-center space-x-1">
+          <Flower2 className="w-5 h-5 text-sage-400" />
+          <Leaf className="w-4 h-4 text-orange-300" />
+        </div>
       </div>
     </div>
   );
@@ -83,11 +172,8 @@ function renderBilingualWelcomeMessages() {
 
 function renderScrollDownIndicator() {
   return (
-    <div className="animate-bounce">
-      <div className="flex flex-col items-center space-y-2">
-        <div className="w-px h-8 bg-gradient-to-b from-transparent via-brown-300 to-transparent"></div>
-        <ArrowDown className="w-5 h-5 text-brown-400" />
-      </div>
+    <div className="flex justify-center">
+      <ArrowDown className="w-6 h-6 text-brown-400 animate-bounce" />
     </div>
   );
 }

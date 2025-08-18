@@ -58,26 +58,28 @@ const WeddingCountdown = ({ weddingStartDate }: { weddingStartDate: Date }) => {
     return <ExpiredWeddingCountdown />;
   }
   return (
-    <div className="bg-white/95 backdrop-blur-sm rounded-lg p-8 shadow-xl border-2 border-sage-100 relative">
-      {/* Corner floral decorations */}
-      <div className="absolute top-3 left-3">
-        <Flower className="w-5 h-5 text-sage-400 opacity-50" />
-      </div>
-      <div className="absolute top-3 right-3">
-        <Flower2 className="w-5 h-5 text-orange-300 opacity-50" />
-      </div>
-      <div className="absolute bottom-3 left-3">
-        <Leaf className="w-5 h-5 text-orange-300 opacity-50" />
-      </div>
-      <div className="absolute bottom-3 right-3">
-        <Leaf className="w-5 h-5 text-sage-400 opacity-50" />
-      </div>
+    <div className="mb-8">
+      <div className="bg-white/95 backdrop-blur-sm rounded-lg p-8 shadow-xl border-2 border-sage-100 relative">
+        {/* Corner floral decorations */}
+        <div className="absolute top-3 left-3">
+          <Flower className="w-5 h-5 text-sage-400 opacity-50" />
+        </div>
+        <div className="absolute top-3 right-3">
+          <Flower2 className="w-5 h-5 text-orange-300 opacity-50" />
+        </div>
+        <div className="absolute bottom-3 left-3">
+          <Leaf className="w-5 h-5 text-orange-300 opacity-50" />
+        </div>
+        <div className="absolute bottom-3 right-3">
+          <Leaf className="w-5 h-5 text-sage-400 opacity-50" />
+        </div>
 
-      {renderCountDownTitleText()}
+        {renderCountDownTitleText()}
 
-      {renderCountdown(countDownTimeCSSInfo)}
+        {renderCountdown(countDownTimeCSSInfo)}
 
-      {renderDecorativeBottomAccent()}
+        {renderDecorativeBottomAccent()}
+      </div>
     </div>
   );
 };

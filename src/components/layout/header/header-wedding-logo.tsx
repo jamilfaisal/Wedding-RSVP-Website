@@ -1,5 +1,5 @@
 import { WeddingInfo } from '../types';
-import { convertDateToString } from '../utils';
+import { formatDateToLocaleString } from '../utils';
 
 function HeaderWeddingLogo({ brideFirstName, groomFirstName, weddingStartDate }: WeddingInfo) {
   return (
@@ -11,7 +11,7 @@ function HeaderWeddingLogo({ brideFirstName, groomFirstName, weddingStartDate }:
         {groomFirstName} & {brideFirstName}
       </div>
       <div className="text-xs text-brown-600 font-light tracking-wide">
-        {convertDateToString(weddingStartDate)}
+        {formatDateToLocaleString(weddingStartDate)}
       </div>
     </div>
   );
