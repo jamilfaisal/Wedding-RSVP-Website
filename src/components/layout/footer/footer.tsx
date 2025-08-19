@@ -1,9 +1,10 @@
 import { WeddingInfo } from '../types';
+import { getMonthAsFullWord } from '../utils';
 
 function Footer(weddingInfo: WeddingInfo) {
   const copyRightInfo = `© ${new Date().getFullYear()} ${weddingInfo.groomFirstName} & ${weddingInfo.brideFirstName}. All rights reserved.`;
   return (
-    <footer className="bg-gradient-to-r from-sage-50 to-ivory-100 py-16 border-t-2 border-sage-100">
+    <footer className="bg-gradient-to-r from-sage-50 to-ivory-100 py-8 border-t-2 border-sage-100">
       <div className="max-w-5xl mx-auto px-8 text-center">
         <div className="mb-8">
           <FooterLogo />
@@ -14,7 +15,8 @@ function Footer(weddingInfo: WeddingInfo) {
             {weddingInfo.groomFirstName} & {weddingInfo.brideFirstName}
           </h3>
           <p className="text-lg text-brown-600 mb-6 font-light">
-            We can&apos;t wait to celebrate with you in December!
+            We can&apos;t wait to celebrate with you in{' '}
+            {getMonthAsFullWord(weddingInfo.weddingStartDate)}!
           </p>
           {BotanicalDecoration()}
         </div>

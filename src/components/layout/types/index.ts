@@ -9,4 +9,5 @@ export interface WeddingInfo {
   weddingCountry: string;
   venueName: string;
   email: string;
+  rsvpDeadline: Date;
 }

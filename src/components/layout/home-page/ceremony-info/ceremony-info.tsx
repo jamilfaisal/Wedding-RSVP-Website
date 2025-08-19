@@ -20,7 +20,7 @@ function CeremonyInfo({ weddingInfo }: { weddingInfo: WeddingInfo }) {
             {renderWeddingStartTimes(weddingInfo)}
             {renderLocalStartTime(weddingInfo)}
 
-            <WeatherWidget />
+            <WeatherWidget weddingInfo={weddingInfo} />
           </div>
         </div>
       </div>

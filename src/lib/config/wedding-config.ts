@@ -11,6 +11,7 @@ export const weddingInfo: WeddingInfo = {
   weddingCountry: 'Italy',
   email: 'info@farisandzina.com',
   venueName: 'Rome Cavalieri, A Waldorf Astoria Hotel',
+  rsvpDeadline: new Date('2025-09-30T23:59:59'),
 };
 
 export const {

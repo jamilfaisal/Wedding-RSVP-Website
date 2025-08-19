@@ -1,5 +1,8 @@
+import { WeddingInfo } from '../../types';
+import { getDayWithSuffix, getMonthAsFullWord } from '../../utils';
+
 // TODO: Implement Weather API integration
-function WeatherWidget() {
+function WeatherWidget({ weddingInfo }: { weddingInfo: WeddingInfo }) {
   return (
     <div className="bg-gradient-to-r from-sage-50 to-orange-50 rounded-lg p-6 shadow-md border-2 border-sage-100">
       <div className="flex items-start space-x-4">
@@ -15,7 +18,9 @@ function WeatherWidget() {
               Live weather widget coming soon
             </p>
             <p className="text-brown-500 text-sm text-center mt-2">
-              Rome weather forecast for December 20th
+              {weddingInfo.weddingCountry} weather forecast for{' '}
+              {getMonthAsFullWord(weddingInfo.weddingStartDate)}{' '}
+              {getDayWithSuffix(weddingInfo.weddingStartDate)}
             </p>
           </div>
         </div>
