@@ -1,4 +1,4 @@
-import { Clock, Users, Music, Utensils, Camera, Sparkles, LucideProps } from 'lucide-react';
+import { Clock, Users, Music, Utensils, Sparkles, LucideProps } from 'lucide-react';
 import { ForwardRefExoticComponent, RefAttributes } from 'react';
 
 interface timelineEvent {

@@ -1,4 +1,4 @@
-import ImageWithFallback from '../image-with-fallback';
+import ImageWithFallback from '../../ui/image-with-fallback';
 import proposalPhoto from '/public/images/proposal-photo.png';
 
 function BackgroundImage() {

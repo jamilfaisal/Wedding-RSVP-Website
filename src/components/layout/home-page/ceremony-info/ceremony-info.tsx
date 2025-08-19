@@ -1,7 +1,7 @@
 import { MapPin, Clock, Globe } from 'lucide-react';
 import ceremonyPhoto from '/public/images/ceremony-photo.png';
 import floralIllustration from '/public/images/floral-illustration.png';
-import ImageWithFallback from '../image-with-fallback';
+import ImageWithFallback from '../../ui/image-with-fallback';
 import { WeddingInfo } from '../../types';
 import { extractTimeFromDate, formatDateToMonthDayYear } from '../../utils';
 import WeatherWidget from './weather-widget';
@@ -13,7 +13,6 @@ function CeremonyInfo({ weddingInfo }: { weddingInfo: WeddingInfo }) {
         {renderSectionHeader()}
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Venue Image */}
           {renderVenueImage()}
 
           <div className="space-y-8 lg:pl-4">
