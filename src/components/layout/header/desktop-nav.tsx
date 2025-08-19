@@ -53,7 +53,7 @@ function renderPageLinks(link: DesktopLink, currentPage: string) {
 
 function renderBotanicalDot() {
   return (
-    <div className="absolute -top-1 -right-1 w-1 h-1 bg-orange-300 rounded-full opacity-0 group-hover:opacity-60 transition-opacity duration-300"></div>
+    <div className="absolute -top-1 -right-1 w-1 h-1 bg-orange-400 rounded-full opacity-0 group-hover:opacity-80 transition-opacity duration-300"></div>
   );
 }
 
