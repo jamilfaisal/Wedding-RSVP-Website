@@ -70,7 +70,7 @@ function Header({ weddingInfo: weddingInfo }: { weddingInfo: WeddingInfo }) {
   return (
     <Disclosure
       as="header"
-      className={`fixed top-0 w-full z-50 transition-all duration-700
+      className={`fixed top-0 w-full z-50 transition-colors duration-500
        ${
          isScrolled
            ? 'bg-ivory-50/95 backdrop-blur-sm shadow-lg border-b border-sage-100'
