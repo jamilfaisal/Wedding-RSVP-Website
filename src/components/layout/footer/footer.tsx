@@ -1,8 +1,8 @@
 import { WeddingInfo } from '../types';
 import { getMonthAsFullWord } from '../utils';
+import { DynamicYear } from '../../dynamic-year';
 
 function Footer(weddingInfo: WeddingInfo) {
-  const copyRightInfo = `© ${new Date().getFullYear()} ${weddingInfo.groomFirstName} & ${weddingInfo.brideFirstName}. All rights reserved.`;
   return (
     <footer className="bg-gradient-to-r from-sage-50 to-ivory-100 py-8 border-t-2 border-sage-100">
       <div className="max-w-5xl mx-auto px-8 text-center">
@@ -20,7 +20,10 @@ function Footer(weddingInfo: WeddingInfo) {
           </p>
           {BotanicalDecoration()}
         </div>
-        {Copyright(copyRightInfo)}
+        <Copyright
+          groomFirstName={weddingInfo.groomFirstName}
+          brideFirstName={weddingInfo.brideFirstName}
+        />
       </div>
     </footer>
   );
@@ -38,11 +41,19 @@ function BotanicalDecoration() {
   );
 }
 
-function Copyright(copyRightInfo: string) {
+function Copyright({
+  groomFirstName,
+  brideFirstName,
+}: {
+  groomFirstName: string;
+  brideFirstName: string;
+}) {
   return (
     <div>
       <div className="pt-6 border-t border-brown-200 mt-8">
-        <p className="text-sm text-brown-500 font-light">{copyRightInfo}</p>
+        <p className="text-sm text-brown-500 font-light">
+          © <DynamicYear /> {groomFirstName} & {brideFirstName}. All rights reserved.
+        </p>
       </div>
     </div>
   );
