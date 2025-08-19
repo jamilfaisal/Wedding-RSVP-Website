@@ -6,7 +6,7 @@ import ImageWithFallback from '../image-with-fallback';
 
 function WeddingDetails({ weddingInfo }: { weddingInfo: WeddingInfo }) {
   return (
-    <section id="details" className="py-20 bg-gradient-to-b from-sage-50/20 to-orange-50/10">
+    <section id="details" className="pt-30 bg-gradient-to-b from-sage-50/20 to-orange-50/10">
       <div className="max-w-7xl mx-auto px-8">
         {renderSectionHeader()}
 

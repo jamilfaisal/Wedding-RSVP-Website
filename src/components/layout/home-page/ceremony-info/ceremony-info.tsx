@@ -8,7 +8,7 @@ import WeatherWidget from './weather-widget';
 
 function CeremonyInfo({ weddingInfo }: { weddingInfo: WeddingInfo }) {
   return (
-    <section id="ceremony" className="py-20 bg-gradient-to-b from-white to-sage-50/20">
+    <section id="ceremony" className="pt-33 bg-gradient-to-b from-white to-sage-50/20">
       <div className="max-w-6xl mx-auto px-8">
         {renderSectionHeader()}
 
