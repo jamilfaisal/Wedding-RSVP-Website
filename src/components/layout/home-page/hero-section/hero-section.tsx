@@ -32,7 +32,7 @@ function renderHeroSectionContent(isVisible: boolean, weddingInfo: WeddingInfo) 
   return (
     <div className="relative z-10 text-center px-8 max-w-4xl mx-auto">
       <div
-        className={`pt-40 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+        className={`pt-35 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
       >
         <div className="relative border-2 border-sage-100/60 rounded-lg p-12 bg-white/80 backdrop-blur-sm shadow-xl ">
           {renderTopBorderFloralDecor()}

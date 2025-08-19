@@ -33,16 +33,17 @@ function DesktopNav({
 }
 
 function renderPageLinks(link: DesktopLink, currentPage: string) {
+  const isCurrentPage = link.href === currentPage;
   return (
     <li key={`page-${link.name}`}>
       <Link href={link.href}>
         <button
           className={`cursor-pointer text-base tracking-wide transition-all duration-300 relative group px-3 py-2
-                  ${link.href === currentPage ? 'text-sage-700' : 'text-brown-700 hover:text-sage-600'}`}
+                  ${isCurrentPage ? 'text-sage-700' : 'text-brown-700 hover:text-sage-600'}`}
           style={{ fontFamily: 'var(--font-serif)' }}
         >
           {link.name}
-          {renderUnderline(false)}
+          {renderUnderline(isCurrentPage)}
           {renderBotanicalDot()}
         </button>
       </Link>

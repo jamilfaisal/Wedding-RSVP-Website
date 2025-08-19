@@ -72,11 +72,9 @@ function Header({ weddingInfo: weddingInfo }: { weddingInfo: WeddingInfo }) {
       as="header"
       className={`fixed top-0 w-full z-50 transition-all duration-700
        ${
-         isHomePage
-           ? isScrolled
-             ? 'bg-ivory-50/95 backdrop-blur-sm shadow-lg border-b border-sage-100'
-             : 'bg-transparent'
-           : 'bg-ivory-50/95 backdrop-blur-sm shadow-lg border-b border-sage-100'
+         isScrolled
+           ? 'bg-ivory-50/95 backdrop-blur-sm shadow-lg border-b border-sage-100'
+           : 'bg-transparent'
        }`}
     >
       <div className="max-w-6xl mx-auto px-8 py-6">
