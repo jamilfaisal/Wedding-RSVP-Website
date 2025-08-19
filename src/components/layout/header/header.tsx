@@ -3,7 +3,7 @@
 import { Disclosure } from '@headlessui/react';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { WeddingInfo } from '../types';
 import HeaderWeddingLogo from './header-wedding-logo';
 import DesktopNav from './desktop-nav';
@@ -33,6 +33,7 @@ function Header({ weddingInfo: weddingInfo }: { weddingInfo: WeddingInfo }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const currentPage = usePathname();
+  const router = useRouter();
   const isHomePage = checkIsHomePage(currentPage);
 
   useEffect(() => {
@@ -46,11 +47,26 @@ function Header({ weddingInfo: weddingInfo }: { weddingInfo: WeddingInfo }) {
     };
   }, []);
 
+  useEffect(() => {
+    if (isHomePage) {
+      scrollToStoredSectionAfterDelay();
+    }
+  }, [isHomePage]);
+
   const scrollToSection = (sectionHref: string) => {
     const element = document.querySelector(sectionHref);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const storeSectionToScrollThenGoToHomePage = (href: string) => {
+    sessionStorage.setItem('scrollToSection', href);
+    router.push('/');
+  };
+
+  const navigateToNewPage = (href: string) => {
+    router.push(href);
   };
 
   const handleNavigation = (href: string, type: 'scroll' | 'page') => {
@@ -60,7 +76,7 @@ function Header({ weddingInfo: weddingInfo }: { weddingInfo: WeddingInfo }) {
       if (isHomePage) {
         scrollToSection(href);
       } else {
-        navigateToHomePageThenScrollToSection(href);
+        storeSectionToScrollThenGoToHomePage(href);
       }
     } else {
       navigateToNewPage(href);
@@ -89,6 +105,7 @@ function Header({ weddingInfo: weddingInfo }: { weddingInfo: WeddingInfo }) {
             currentPage={currentPage}
             isHomePage={isHomePage}
             scrollToSection={scrollToSection}
+            handleNavigation={handleNavigation}
           />
           <MobileNav
             navItems={combinedLinksForMobileNav}
@@ -103,12 +120,19 @@ function Header({ weddingInfo: weddingInfo }: { weddingInfo: WeddingInfo }) {
     </Disclosure>
   );
 }
-function navigateToNewPage(href: string) {
-  window.location.href = href;
-}
 
-function navigateToHomePageThenScrollToSection(href: string) {
-  window.location.href = `/${href}`;
+function scrollToStoredSectionAfterDelay() {
+  const sectionToScrollTo = sessionStorage.getItem('scrollToSection');
+  if (sectionToScrollTo) {
+    sessionStorage.removeItem('scrollToSection');
+
+    setTimeout(() => {
+      const element = document.querySelector(sectionToScrollTo);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 300);
+  }
 }
 
 export default Header;
