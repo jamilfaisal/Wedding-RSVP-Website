@@ -12,6 +12,7 @@ async function run() {
       Email: 'jamilfaisal43@gmail.com',
       Attendance: 'Yes',
       'Number of Guests': 1,
+      'Meal Selection': 'Meat',
       'Edit Token (JWT)': 'test-token-123',
     },
   };
