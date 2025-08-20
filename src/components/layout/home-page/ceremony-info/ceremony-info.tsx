@@ -17,9 +17,8 @@ function CeremonyInfo({ weddingInfo }: { weddingInfo: WeddingInfo }) {
 
           <div className="space-y-8 lg:pl-4">
             {renderVenueLocation(weddingInfo)}
-            {renderWeddingStartTimes(weddingInfo)}
-            {renderLocalStartTime(weddingInfo)}
-
+            {renderWeddingSchedule(weddingInfo)}
+            {renderLocalTime(weddingInfo)}
             <WeatherWidget weddingInfo={weddingInfo} />
           </div>
         </div>
@@ -28,7 +27,7 @@ function CeremonyInfo({ weddingInfo }: { weddingInfo: WeddingInfo }) {
   );
 }
 
-function renderLocalStartTime(weddingInfo: WeddingInfo) {
+function renderLocalTime(weddingInfo: WeddingInfo) {
   return (
     <div className="bg-white rounded-lg p-6 shadow-md border-2 border-brown-100">
       <div className="flex items-start space-x-4">
@@ -54,7 +53,7 @@ function renderLocalStartTime(weddingInfo: WeddingInfo) {
   );
 }
 
-function renderWeddingStartTimes(weddingInfo: WeddingInfo) {
+function renderWeddingSchedule(weddingInfo: WeddingInfo) {
   return (
     <div className="bg-white rounded-lg p-6 shadow-md border-2 border-orange-100">
       <div className="flex items-start space-x-4">
