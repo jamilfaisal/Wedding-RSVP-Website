@@ -13,8 +13,13 @@ export function formatDateToMonthDayYear(date: Date): string {
 
 // Output example: 6:00 PM
 export function extractTimeFromDate(date: Date): string {
-  const options: Intl.DateTimeFormatOptions = { hour: 'numeric', minute: 'numeric', hour12: true };
-  return date.toLocaleString('en-US', options);
+  let hours = date.getUTCHours();
+  const minutes = date.getUTCMinutes();
+  const ampm = hours >= 12 ? 'PM' : 'AM';
+  hours = hours % 12;
+  if (hours === 0) hours = 12;
+  const minutesStr = minutes.toString().padStart(2, '0');
+  return `${hours}:${minutesStr} ${ampm}`;
 }
 
 // Output example: December
