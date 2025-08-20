@@ -69,7 +69,7 @@ function renderWeddingInvitationMessage() {
 function renderGroomAndBrideNames(weddingInfo: WeddingInfo) {
   return (
     <h1
-      className="text-6xl md:text-7xl text-brown-800 mb-6 leading-tight tracking-wide"
+      className="text-6xl md:text-6xl text-brown-800 mb-6 leading-tight tracking-wide"
       style={{ fontFamily: 'var(--font-harrington)' }}
     >
       {weddingInfo.groomFullName}
