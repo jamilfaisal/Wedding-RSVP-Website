@@ -7,6 +7,8 @@ import {
   ListRSVPsQueryOptions,
   RSVPData,
   UpdateRSVPInput,
+  MealSelection,
+  DietaryRestriction,
 } from './types';
 
 export function isValidEmailFormat(email: string): boolean {
@@ -186,25 +188,32 @@ export function constructListQueryParams(options: ListRSVPsQueryOptions) {
 }
 
 export function isRSVPRequiredFieldsMissing(input: CreateRSVPInput): boolean {
-  return !input.name || !input.email || !input.attendance;
+  return !input.fullName || !input.email || input.attending === undefined;
 }
 
 export function buildRSVPUpdatePayload(input: UpdateRSVPInput) {
   const updateData: Partial<RSVPData> = {};
 
-  if (input.name !== undefined) updateData['Name'] = input.name;
+  if (input.fullName !== undefined) updateData['Name'] = input.fullName;
   if (input.email !== undefined) updateData['Email'] = input.email;
-  if (input.phone !== undefined) updateData['Phone'] = input.phone;
-  if (input.attendance !== undefined) updateData['Attendance'] = input.attendance;
-  if (input.numberOfGuests !== undefined) updateData['Number of Guests'] = input.numberOfGuests;
-  if (input.guestNames !== undefined) updateData['Guest Names'] = input.guestNames;
-  if (input.mealSelection !== undefined) updateData['Meal Selection'] = input.mealSelection;
+  if (input.attending !== undefined) updateData['Attendance'] = input.attending ? 'Yes' : 'No';
+  if (input.numberOfGuests !== undefined)
+    updateData['Number of Guests'] = parseInt(input.numberOfGuests);
+  if (input.secondGuestName !== undefined) updateData['Guest Names'] = input.secondGuestName;
+  if (input.mealPreference !== undefined) {
+    const mealMap: Record<string, string> = {
+      Meat: 'Meat',
+      Fish: 'Fish',
+      Vegetarian: 'Vegetarian',
+      Vegan: 'Vegan',
+    };
+    updateData['Meal Selection'] = mealMap[input.mealPreference] as MealSelection;
+  }
   if (input.dietaryRestrictions !== undefined)
-    updateData['Dietary Restrictions'] = input.dietaryRestrictions;
-  if (input.specialAccommodations !== undefined)
-    updateData['Special Accommodations'] = input.specialAccommodations;
-  if (input.songRequest !== undefined) updateData['Song Request'] = input.songRequest;
-  if (input.notes !== undefined) updateData['Notes'] = input.notes;
+    updateData['Dietary Restrictions'] = input.dietaryRestrictions
+      ? [input.dietaryRestrictions as DietaryRestriction]
+      : undefined;
+  if (input.songRequests !== undefined) updateData['Song Request'] = input.songRequests;
   return updateData;
 }
 

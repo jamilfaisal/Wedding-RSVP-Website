@@ -14,14 +14,14 @@ async function runTest() {
 
 async function createRSVPTest(email: string) {
   const input: CreateRSVPInput = {
-    name: 'Test User',
+    fullName: 'Test User',
     email: email,
-    attendance: 'Yes',
-    numberOfGuests: 1,
-    guestNames: 'Guest One',
-    mealSelection: 'Vegetarian',
-    dietaryRestrictions: ['Other'],
-    notes: 'Created by automated test script',
+    attending: true,
+    numberOfGuests: '2',
+    secondGuestName: 'Guest Two',
+    mealPreference: 'Vegetarian',
+    dietaryRestrictions: 'Nut allergy',
+    songRequests: 'Happy songs for testing',
   };
 
   try {

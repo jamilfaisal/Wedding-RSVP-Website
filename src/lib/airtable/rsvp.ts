@@ -8,6 +8,8 @@ import {
   ListRSVPsQueryOptions,
   APIResponse,
   RSVPStatistics,
+  DietaryRestriction,
+  MealSelection,
 } from './types';
 import { getAirtableClient } from './client';
 import {
@@ -107,7 +109,7 @@ export async function createRSVP(input: CreateRSVPInput): Promise<APIResponse<Ai
   if (isRSVPRequiredFieldsMissing(input)) {
     return {
       success: false,
-      error: 'Name, email, and attendance are required fields',
+      error: 'Full name, email, and attendance are required fields',
     };
   }
 
@@ -128,17 +130,16 @@ export async function createRSVP(input: CreateRSVPInput): Promise<APIResponse<Ai
   const editToken = generateRSVPEditToken(input.email);
 
   const rsvpData: RSVPData = {
-    Name: input.name,
+    Name: input.fullName,
     Email: input.email,
-    Phone: input.phone,
-    Attendance: input.attendance,
-    'Number of Guests': input.numberOfGuests,
-    'Guest Names': input.guestNames,
-    'Meal Selection': input.mealSelection,
-    'Dietary Restrictions': input.dietaryRestrictions,
-    'Special Accommodations': input.specialAccommodations,
-    'Song Request': input.songRequest,
-    Notes: input.notes,
+    Attendance: input.attending ? 'Yes' : 'No',
+    'Number of Guests': parseInt(input.numberOfGuests) || 1,
+    'Guest Names': input.secondGuestName || undefined,
+    'Meal Selection': input.mealPreference as MealSelection,
+    'Dietary Restrictions': input.dietaryRestrictions
+      ? [input.dietaryRestrictions as DietaryRestriction]
+      : undefined,
+    'Song Request': input.songRequests || undefined,
     'Edit Token (JWT)': editToken,
     'Confirmation Sent': false,
   };

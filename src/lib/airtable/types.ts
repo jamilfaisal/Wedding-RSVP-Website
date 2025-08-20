@@ -1,6 +1,6 @@
 export type AttendanceStatus = 'Yes' | 'No';
 
-export type MealSelection = 'Standard' | 'Vegetarian' | 'Vegan' | 'Gluten-Free' | 'No meal';
+export type MealSelection = 'Meat' | 'Fish' | 'Vegetarian' | 'Vegan';
 
 export type DietaryRestriction = 'Dairy-Free' | 'Nut-Free' | 'Other';
 
@@ -19,7 +19,7 @@ export interface RSVPData {
   Attendance: AttendanceStatus;
   'Number of Guests'?: number;
   'Guest Names'?: string;
-  'Meal Selection'?: MealSelection;
+  'Meal Selection': MealSelection;
   'Dietary Restrictions'?: DietaryRestriction[];
   'Special Accommodations'?: SpecialAccommodation[];
   'Song Request'?: string;
@@ -45,17 +45,14 @@ export interface AirtableCreateUpdateResponse {
 }
 
 export interface CreateRSVPInput {
-  name: string;
+  fullName: string;
   email: string;
-  phone?: string;
-  attendance: AttendanceStatus;
-  numberOfGuests?: number;
-  guestNames?: string;
-  mealSelection?: MealSelection;
-  dietaryRestrictions?: DietaryRestriction[];
-  specialAccommodations?: SpecialAccommodation[];
-  songRequest?: string;
-  notes?: string;
+  attending: boolean;
+  numberOfGuests: string;
+  secondGuestName: string;
+  mealPreference: MealSelection | '';
+  dietaryRestrictions: string;
+  songRequests: string;
 }
 
 export interface UpdateRSVPInput extends Partial<CreateRSVPInput> {
