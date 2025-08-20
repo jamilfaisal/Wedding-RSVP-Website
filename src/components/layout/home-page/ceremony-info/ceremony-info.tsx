@@ -3,7 +3,7 @@ import ceremonyPhoto from '/public/images/ceremony-photo.png';
 import floralIllustration from '/public/images/floral-illustration.png';
 import ImageWithFallback from '../../ui/image-with-fallback';
 import { WeddingInfo } from '../../types';
-import { formatDateToMonthDayYear } from '../../utils';
+import { formatWeddingStartTime, formatWeddingStartDate } from '../../utils';
 import WeatherWidget from './weather-widget';
 
 function CeremonyInfo({ weddingInfo }: { weddingInfo: WeddingInfo }) {
@@ -27,7 +27,7 @@ function CeremonyInfo({ weddingInfo }: { weddingInfo: WeddingInfo }) {
   );
 }
 
-function renderLocalTime(weddingInfo: WeddingInfo) {
+function renderLocalTime({ weddingCity }: WeddingInfo) {
   return (
     <div className="bg-white rounded-lg p-6 shadow-md border-2 border-brown-100">
       <div className="flex items-start space-x-4">
@@ -38,12 +38,10 @@ function renderLocalTime(weddingInfo: WeddingInfo) {
           <h4 className="text-xl font-serif text-brown-800 mb-3">Local Time</h4>
           <div className="space-y-2 text-brown-600">
             <div className="flex justify-between items-center">
-              <span className="font-serif">{weddingInfo.weddingCity} (Local Time):</span>
-              <span className="font-light">{weddingInfo.weddingStartTime}</span>
+              <span className="font-serif">{weddingCity} (Local Time):</span>
+              <span className="font-light">{formatWeddingStartTime()}</span>
             </div>
-            <p className="text-sm text-brown-500 italic mt-2">
-              {formatDateToMonthDayYear(weddingInfo.weddingStartDate)}
-            </p>
+            <p className="text-sm text-brown-500 italic mt-2">{formatWeddingStartDate()}</p>
           </div>
         </div>
       </div>
@@ -51,7 +49,7 @@ function renderLocalTime(weddingInfo: WeddingInfo) {
   );
 }
 
-function renderWeddingSchedule(weddingInfo: WeddingInfo) {
+function renderWeddingSchedule({}: WeddingInfo) {
   return (
     <div className="bg-white rounded-lg p-6 shadow-md border-2 border-orange-100">
       <div className="flex items-start space-x-4">
@@ -63,7 +61,7 @@ function renderWeddingSchedule(weddingInfo: WeddingInfo) {
           <div className="text-brown-600 leading-relaxed space-y-2">
             <div className="flex justify-between items-center py-1">
               <span className="font-serif">Reception:</span>
-              <span className="font-light">{weddingInfo.weddingStartTime}</span>
+              <span className="font-light">{formatWeddingStartTime()}</span>
             </div>
             <div className="flex justify-between items-center py-1">
               <span className="font-serif">Celebration:</span>
@@ -76,7 +74,7 @@ function renderWeddingSchedule(weddingInfo: WeddingInfo) {
   );
 }
 
-function renderVenueLocation(weddingInfo: WeddingInfo) {
+function renderVenueLocation({ weddingCity, weddingCountry }: WeddingInfo) {
   return (
     <div className="bg-white rounded-lg p-6 shadow-md border-2 border-sage-100">
       <div className="flex items-start space-x-4">
@@ -88,7 +86,7 @@ function renderVenueLocation(weddingInfo: WeddingInfo) {
           <div className="text-brown-600 leading-relaxed space-y-1">
             <p className="font-medium">Details Coming Soon</p>
             <p className="text-brown-500 italic">
-              {weddingInfo.weddingCity}, {weddingInfo.weddingCountry}
+              {weddingCity}, {weddingCountry}
             </p>
             <p className="text-brown-500 italic">Full address will be shared with invited guests</p>
           </div>

@@ -1,3 +1,5 @@
+import { weddingInfo } from '@/lib/config/wedding-config';
+
 export function checkIsHomePage(pathname: string): boolean {
   return pathname === '/';
 }
@@ -9,6 +11,42 @@ export function formatDateToMonthDayYear(date: Date): string {
     month: 'long',
     day: 'numeric',
   });
+}
+
+export function formatWeddingStartTime(): string {
+  return new Intl.DateTimeFormat('en-US', {
+    timeZone: weddingInfo.weddingTimezone,
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true,
+  }).format(weddingInfo.weddingStartDate);
+}
+
+export function formatWeddingEndTime(): string {
+  return new Intl.DateTimeFormat('en-US', {
+    timeZone: weddingInfo.weddingTimezone,
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true,
+  }).format(weddingInfo.weddingEndDate);
+}
+
+export function formatWeddingStartDate(): string {
+  return new Intl.DateTimeFormat('en-US', {
+    timeZone: weddingInfo.weddingTimezone,
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  }).format(weddingInfo.weddingStartDate);
+}
+
+export function formatWeddingEndDate(): string {
+  return new Intl.DateTimeFormat('en-US', {
+    timeZone: weddingInfo.weddingTimezone,
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  }).format(weddingInfo.weddingEndDate);
 }
 
 // Output example: December

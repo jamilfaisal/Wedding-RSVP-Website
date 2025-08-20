@@ -1,7 +1,7 @@
 import { WeddingInfo } from '../types';
-import { formatDateToMonthDayYear } from '../utils';
+import { formatWeddingStartDate } from '../utils';
 
-function HeaderWeddingLogo({ brideFirstName, groomFirstName, weddingStartDate }: WeddingInfo) {
+function HeaderWeddingLogo({ brideFirstName, groomFirstName }: WeddingInfo) {
   return (
     <div className="flex flex-col items-left group transition-all duration-300">
       <div
@@ -11,7 +11,7 @@ function HeaderWeddingLogo({ brideFirstName, groomFirstName, weddingStartDate }:
         {groomFirstName} & {brideFirstName}
       </div>
       <div className="text-xs text-brown-600 font-light tracking-wide">
-        {formatDateToMonthDayYear(weddingStartDate)}
+        {formatWeddingStartDate()}
       </div>
     </div>
   );

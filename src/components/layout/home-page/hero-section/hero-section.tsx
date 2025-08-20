@@ -6,7 +6,7 @@ import BotanicalDecoration from './botanical-decoration';
 import ArabicVerse from './arabic-verse';
 import WeddingCountdown from './wedding-countdown/wedding-countdown';
 import SaveTheDate from './save-the-date';
-import { formatDateToMonthDayYear } from '../../utils';
+import { formatWeddingStartDate, formatWeddingStartTime } from '../../utils';
 
 function HeroSection({ weddingInfo }: { weddingInfo: WeddingInfo }) {
   const [isVisible, setIsVisible] = useState(false);
@@ -44,7 +44,7 @@ function renderHeroSectionContent(isVisible: boolean, weddingInfo: WeddingInfo) 
           {renderGroomAndBrideNames(weddingInfo)}
           {renderWeddingInvitationMessage()}
           {renderWeddingDateCard(weddingInfo)}
-          <WeddingCountdown weddingStartDate={weddingInfo.weddingCountdownTarget} />
+          <WeddingCountdown weddingStartDate={weddingInfo.weddingStartDate} />
           <div className="space-y-6">
             <SaveTheDate {...weddingInfo} />
             {renderScrollDownIndicator()}
@@ -79,7 +79,7 @@ function renderGroomAndBrideNames(weddingInfo: WeddingInfo) {
   );
 }
 
-function renderWeddingDateCard(weddingInfo: WeddingInfo) {
+function renderWeddingDateCard({ weddingCity, weddingCountry }: WeddingInfo) {
   return (
     <div className="inline-block bg-gradient-to-r from-sage-50 to-orange-50 rounded-lg px-10 py-8 shadow-lg border-2 border-sage-100 mb-8">
       <div className="text-center">
@@ -95,12 +95,12 @@ function renderWeddingDateCard(weddingInfo: WeddingInfo) {
             className="text-3xl md:text-4xl text-sage-700"
             style={{ fontFamily: 'var(--font-harrington)' }}
           >
-            {formatDateToMonthDayYear(weddingInfo.weddingStartDate)}
+            {formatWeddingStartDate()}
           </p>
           <div className="w-4 h-px bg-sage-300"></div>
         </div>
         <p className="text-brown-500" style={{ fontFamily: 'var(--font-serif)' }}>
-          {weddingInfo.weddingStartTime} • {weddingInfo.weddingCity}, {weddingInfo.weddingCountry}
+          {formatWeddingStartTime()} • {weddingCity}, {weddingCountry}
         </p>
       </div>
     </div>

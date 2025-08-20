@@ -5,11 +5,9 @@ export const weddingInfo: WeddingInfo = {
   brideFirstName: 'Zina',
   groomFullName: 'Faris Al-Ahmadi',
   brideFullName: 'Zina Al-Shaikhli',
-  weddingStartDate: new Date(2025, 11, 20), // (month is 0-indexed)
-  weddingEndDate: new Date(2025, 11, 21),
-  weddingCountdownTarget: new Date('2025-12-20T17:00:00.000Z'), // 6:00 PM Rome time (CET = UTC+1)
-  weddingStartTime: '6:00 PM',
-  weddingEndTime: '1:00 AM',
+  weddingStartDate: new Date('2025-12-20T17:00:00.000Z'), // 6:00 PM Rome time (UTC+1)
+  weddingEndDate: new Date('2025-12-21T00:00:00.000Z'), // 1:00 AM Rome time (UTC+1)
+  weddingTimezone: 'Europe/Rome',
   weddingCity: 'Rome',
   weddingCountry: 'Italy',
   email: 'info@farisandzina.com',
