@@ -3,7 +3,7 @@ import ceremonyPhoto from '/public/images/ceremony-photo.png';
 import floralIllustration from '/public/images/floral-illustration.png';
 import ImageWithFallback from '../../ui/image-with-fallback';
 import { WeddingInfo } from '../../types';
-import { extractTimeFromDate, formatDateToMonthDayYear } from '../../utils';
+import { formatDateToMonthDayYear } from '../../utils';
 import WeatherWidget from './weather-widget';
 
 function CeremonyInfo({ weddingInfo }: { weddingInfo: WeddingInfo }) {
@@ -39,9 +39,7 @@ function renderLocalTime(weddingInfo: WeddingInfo) {
           <div className="space-y-2 text-brown-600">
             <div className="flex justify-between items-center">
               <span className="font-serif">{weddingInfo.weddingCity} (Local Time):</span>
-              <span className="font-light">
-                {extractTimeFromDate(weddingInfo.weddingStartDate)}
-              </span>
+              <span className="font-light">{weddingInfo.weddingStartTime}</span>
             </div>
             <p className="text-sm text-brown-500 italic mt-2">
               {formatDateToMonthDayYear(weddingInfo.weddingStartDate)}
@@ -65,9 +63,7 @@ function renderWeddingSchedule(weddingInfo: WeddingInfo) {
           <div className="text-brown-600 leading-relaxed space-y-2">
             <div className="flex justify-between items-center py-1">
               <span className="font-serif">Reception:</span>
-              <span className="font-light">
-                {extractTimeFromDate(weddingInfo.weddingStartDate)}
-              </span>
+              <span className="font-light">{weddingInfo.weddingStartTime}</span>
             </div>
             <div className="flex justify-between items-center py-1">
               <span className="font-serif">Celebration:</span>

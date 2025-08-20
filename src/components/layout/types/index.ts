@@ -5,6 +5,8 @@ export interface WeddingInfo {
   groomFullName: string;
   weddingStartDate: Date;
   weddingEndDate: Date;
+  weddingStartTime: string;
+  weddingEndTime: string;
   weddingCity: string;
   weddingCountry: string;
   venueName: string;

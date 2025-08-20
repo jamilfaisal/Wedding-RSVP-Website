@@ -6,7 +6,7 @@ import BotanicalDecoration from './botanical-decoration';
 import ArabicVerse from './arabic-verse';
 import WeddingCountdown from './wedding-countdown/wedding-countdown';
 import SaveTheDate from './save-the-date';
-import { extractTimeFromDate, formatDateToMonthDayYear } from '../../utils';
+import { formatDateToMonthDayYear } from '../../utils';
 
 function HeroSection({ weddingInfo }: { weddingInfo: WeddingInfo }) {
   const [isVisible, setIsVisible] = useState(false);
@@ -100,8 +100,7 @@ function renderWeddingDateCard(weddingInfo: WeddingInfo) {
           <div className="w-4 h-px bg-sage-300"></div>
         </div>
         <p className="text-brown-500" style={{ fontFamily: 'var(--font-serif)' }}>
-          {extractTimeFromDate(weddingInfo.weddingStartDate)} • {weddingInfo.weddingCity},{' '}
-          {weddingInfo.weddingCountry}
+          {weddingInfo.weddingStartTime} • {weddingInfo.weddingCity}, {weddingInfo.weddingCountry}
         </p>
       </div>
     </div>

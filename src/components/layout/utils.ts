@@ -11,17 +11,6 @@ export function formatDateToMonthDayYear(date: Date): string {
   });
 }
 
-// Output example: 6:00 PM
-export function extractTimeFromDate(date: Date): string {
-  let hours = date.getHours();
-  const minutes = date.getMinutes();
-  const ampm = hours >= 12 ? 'PM' : 'AM';
-  hours = hours % 12;
-  if (hours === 0) hours = 12;
-  const minutesStr = minutes.toString().padStart(2, '0');
-  return `${hours}:${minutesStr} ${ampm}`;
-}
-
 // Output example: December
 export function getMonthAsFullWord(date: Date): string {
   return date.toLocaleString('en-US', { month: 'long' });
