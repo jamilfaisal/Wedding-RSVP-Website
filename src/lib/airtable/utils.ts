@@ -8,7 +8,6 @@ import {
   RSVPData,
   UpdateRSVPInput,
   MealSelection,
-  DietaryRestriction,
 } from './types';
 
 export function isValidEmailFormat(email: string): boolean {
@@ -148,15 +147,12 @@ export function convertRSVPsToCSV(records: AirtableRecord[]): string {
       csvEscape(record.createdTime),
       csvEscape(record.fields['Name']),
       csvEscape(record.fields['Email']),
-      csvEscape(record.fields['Phone']),
       csvEscape(record.fields['Attendance']),
       csvEscape(record.fields['Number of Guests']),
-      csvEscape(record.fields['Guest Names']),
+      csvEscape(record.fields['Second Guest Name']),
       csvEscape(record.fields['Meal Selection']),
-      csvEscape(record.fields['Dietary Restrictions']?.join('; ')),
-      csvEscape(record.fields['Special Accommodations']?.join('; ')),
+      csvEscape(record.fields['Dietary Restrictions']),
       csvEscape(record.fields['Song Request']),
-      csvEscape(record.fields['Notes']),
       csvEscape(record.fields['Confirmation Sent'] ? 'Yes' : 'No'),
     ];
 
@@ -199,7 +195,7 @@ export function buildRSVPUpdatePayload(input: UpdateRSVPInput) {
   if (input.attending !== undefined) updateData['Attendance'] = input.attending ? 'Yes' : 'No';
   if (input.numberOfGuests !== undefined)
     updateData['Number of Guests'] = parseInt(input.numberOfGuests);
-  if (input.secondGuestName !== undefined) updateData['Guest Names'] = input.secondGuestName;
+  if (input.secondGuestName !== undefined) updateData['Second Guest Name'] = input.secondGuestName;
   if (input.mealPreference !== undefined) {
     const mealMap: Record<string, string> = {
       Meat: 'Meat',
@@ -210,9 +206,7 @@ export function buildRSVPUpdatePayload(input: UpdateRSVPInput) {
     updateData['Meal Selection'] = mealMap[input.mealPreference] as MealSelection;
   }
   if (input.dietaryRestrictions !== undefined)
-    updateData['Dietary Restrictions'] = input.dietaryRestrictions
-      ? [input.dietaryRestrictions as DietaryRestriction]
-      : undefined;
+    updateData['Dietary Restrictions'] = input.dietaryRestrictions;
   if (input.songRequests !== undefined) updateData['Song Request'] = input.songRequests;
   return updateData;
 }

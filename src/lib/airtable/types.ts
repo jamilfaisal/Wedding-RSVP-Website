@@ -2,28 +2,15 @@ export type AttendanceStatus = 'Yes' | 'No';
 
 export type MealSelection = 'Meat' | 'Fish' | 'Vegetarian' | 'Vegan';
 
-export type DietaryRestriction = 'Dairy-Free' | 'Nut-Free' | 'Other';
-
-export type SpecialAccommodation =
-  | 'Wheelchair access'
-  | 'Large print menu'
-  | 'Assistive listening device'
-  | 'Close seating to exits'
-  | 'Service animal accommodation'
-  | 'Other (specify)';
-
 export interface RSVPData {
   Name: string;
   Email: string;
-  Phone?: string;
   Attendance: AttendanceStatus;
   'Number of Guests'?: number;
-  'Guest Names'?: string;
+  'Second Guest Name'?: string;
   'Meal Selection': MealSelection;
-  'Dietary Restrictions'?: DietaryRestriction[];
-  'Special Accommodations'?: SpecialAccommodation[];
+  'Dietary Restrictions'?: string;
   'Song Request'?: string;
-  Notes?: string;
   'RSVP Date'?: string;
   'Edit Token (JWT)'?: string;
   'Confirmation Sent'?: boolean;

@@ -8,7 +8,6 @@ import {
   ListRSVPsQueryOptions,
   APIResponse,
   RSVPStatistics,
-  DietaryRestriction,
   MealSelection,
 } from './types';
 import { getAirtableClient } from './client';
@@ -134,15 +133,14 @@ export async function createRSVP(input: CreateRSVPInput): Promise<APIResponse<Ai
     Email: input.email,
     Attendance: input.attending ? 'Yes' : 'No',
     'Number of Guests': parseInt(input.numberOfGuests) || 1,
-    'Guest Names': input.secondGuestName || undefined,
+    'Second Guest Name': input.secondGuestName || undefined,
     'Meal Selection': input.mealPreference as MealSelection,
-    'Dietary Restrictions': input.dietaryRestrictions
-      ? [input.dietaryRestrictions as DietaryRestriction]
-      : undefined,
+    'Dietary Restrictions': input.dietaryRestrictions || undefined,
     'Song Request': input.songRequests || undefined,
     'Edit Token (JWT)': editToken,
     'Confirmation Sent': false,
   };
+  console.log(rsvpData);
 
   const client = getAirtableClient();
   const response = await client.post<AirtableCreateUpdateResponse>({
