@@ -44,7 +44,7 @@ function renderHeroSectionContent(isVisible: boolean, weddingInfo: WeddingInfo) 
           {renderGroomAndBrideNames(weddingInfo)}
           {renderWeddingInvitationMessage()}
           {renderWeddingDateCard(weddingInfo)}
-          <WeddingCountdown weddingStartDate={weddingInfo.weddingStartDate} />
+          <WeddingCountdown weddingStartDate={weddingInfo.weddingCountdownTarget} />
           <div className="space-y-6">
             <SaveTheDate {...weddingInfo} />
             {renderScrollDownIndicator()}
