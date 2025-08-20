@@ -5,7 +5,7 @@ export const weddingInfo: WeddingInfo = {
   brideFirstName: 'Zina',
   groomFullName: 'Faris Al-Ahmadi',
   brideFullName: 'Zina Jamil',
-  weddingStartDate: new Date('2025-12-20T18:00:00'),
+  weddingStartDate: new Date('2025-12-20T17:00:00'),
   weddingEndDate: new Date('2025-12-21T01:00:00'),
   weddingCity: 'Rome',
   weddingCountry: 'Italy',
