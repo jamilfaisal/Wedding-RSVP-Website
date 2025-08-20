@@ -1,4 +1,5 @@
 import { WeddingInfo } from '@/components/layout/types';
+import { formatDateForCalendar } from '@/components/layout/utils';
 
 export const generateCalendarEvent = (weddingInfo: WeddingInfo) => {
   const event = getWeddingInfo(
@@ -18,10 +19,7 @@ VERSION:2.0
 PRODID:${PRODID}
 BEGIN:VEVENT
 UID:${UID}
-DTSTAMP:${new Date()
-    .toISOString()
-    .replace(/[-:]/g, '')
-    .replace(/\.\d{3}/, '')}
+DTSTAMP:${formatDateForCalendar(new Date())}
 DTSTART:${event.startDateTime}
 DTEND:${event.endDateTime}
 SUMMARY:${event.title}
@@ -65,14 +63,8 @@ function getWeddingInfo(
 ) {
   return {
     title: `${groomFirstName} & ${brideFirstName}'s Wedding`,
-    startDateTime: weddingStartDate
-      .toISOString()
-      .replace(/[-:]/g, '')
-      .replace(/\.\d{3}/, ''),
-    endDateTime: weddingEndDate
-      .toISOString()
-      .replace(/[-:]/g, '')
-      .replace(/\.\d{3}/, ''),
+    startDateTime: formatDateForCalendar(weddingStartDate),
+    endDateTime: formatDateForCalendar(weddingEndDate),
     description: 'Join us as we celebrate our love and begin this beautiful journey together!',
     location: `${weddingCity}, ${weddingCountry}`,
   };
