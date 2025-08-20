@@ -3,14 +3,15 @@ import { UpdateRSVPInput } from '@/lib/airtable/types';
 import { NextRequest } from 'next/server';
 
 interface RouteParams {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 export async function GET(request: NextRequest, { params }: RouteParams) {
   try {
-    const result = await getRSVPById(params.id);
+    const { id } = await params;
+    const result = await getRSVPById(id);
 
     return Response.json({ success: true, data: result }, { status: 200 });
   } catch (error) {
@@ -27,8 +28,9 @@ export async function GET(request: NextRequest, { params }: RouteParams) {
 
 export async function PUT(request: NextRequest, { params }: RouteParams) {
   try {
+    const { id } = await params;
     const data = await request.json();
-    const updateData: UpdateRSVPInput = { ...data, id: params.id };
+    const updateData: UpdateRSVPInput = { ...data, id };
 
     const result = await updateRSVP(updateData);
 
@@ -47,7 +49,8 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
 
 export async function DELETE(request: NextRequest, { params }: RouteParams) {
   try {
-    const result = await deleteRSVP(params.id);
+    const { id } = await params;
+    const result = await deleteRSVP(id);
 
     return Response.json({ success: true, data: result }, { status: 200 });
   } catch (error) {

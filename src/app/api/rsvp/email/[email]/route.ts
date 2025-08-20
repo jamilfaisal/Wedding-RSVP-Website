@@ -2,14 +2,15 @@ import { getRSVPByEmail } from '@/lib/airtable';
 import { NextRequest } from 'next/server';
 
 interface RouteParams {
-  params: {
+  params: Promise<{
     email: string;
-  };
+  }>;
 }
 
 export async function GET(request: NextRequest, { params }: RouteParams) {
   try {
-    const email = decodeURIComponent(params.email);
+    const { email: emailParam } = await params;
+    const email = decodeURIComponent(emailParam);
     const result = await getRSVPByEmail(email);
 
     return Response.json({ success: true, data: result }, { status: 200 });

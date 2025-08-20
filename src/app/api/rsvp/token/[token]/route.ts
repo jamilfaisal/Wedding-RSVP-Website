@@ -2,14 +2,15 @@ import { getRSVPByToken } from '@/lib/airtable';
 import { NextRequest } from 'next/server';
 
 interface RouteParams {
-  params: {
+  params: Promise<{
     token: string;
-  };
+  }>;
 }
 
 export async function GET(request: NextRequest, { params }: RouteParams) {
   try {
-    const result = await getRSVPByToken(params.token);
+    const { token } = await params;
+    const result = await getRSVPByToken(token);
 
     return Response.json({ success: true, data: result }, { status: 200 });
   } catch (error) {
