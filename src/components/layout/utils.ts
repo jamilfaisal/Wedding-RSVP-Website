@@ -4,49 +4,44 @@ export function checkIsHomePage(pathname: string): boolean {
   return pathname === '/';
 }
 
-// Output example: December 20, 2025
-export function formatDateToMonthDayYear(date: Date): string {
-  return date.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
-}
-
 export function formatWeddingStartTime(): string {
-  return new Intl.DateTimeFormat('en-US', {
-    timeZone: weddingInfo.weddingTimezone,
-    hour: 'numeric',
-    minute: '2-digit',
-    hour12: true,
-  }).format(weddingInfo.weddingStartDate);
+  return formatTime(weddingInfo.weddingStartDate);
 }
 
 export function formatWeddingEndTime(): string {
+  return formatTime(weddingInfo.weddingEndDate);
+}
+
+// Output example: 4:00 PM
+function formatTime(time: Date): string {
   return new Intl.DateTimeFormat('en-US', {
     timeZone: weddingInfo.weddingTimezone,
     hour: 'numeric',
     minute: '2-digit',
     hour12: true,
-  }).format(weddingInfo.weddingEndDate);
+  }).format(time);
+}
+
+export function formatRSVPDeadline(): string {
+  return formatDate(weddingInfo.rsvpDeadline);
 }
 
 export function formatWeddingStartDate(): string {
-  return new Intl.DateTimeFormat('en-US', {
-    timeZone: weddingInfo.weddingTimezone,
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  }).format(weddingInfo.weddingStartDate);
+  return formatDate(weddingInfo.weddingStartDate);
 }
 
 export function formatWeddingEndDate(): string {
+  return formatDate(weddingInfo.weddingEndDate);
+}
+
+// Output example: December 20, 2025
+function formatDate(dateToFormat: Date): string {
   return new Intl.DateTimeFormat('en-US', {
     timeZone: weddingInfo.weddingTimezone,
     year: 'numeric',
     month: 'long',
     day: 'numeric',
-  }).format(weddingInfo.weddingEndDate);
+  }).format(dateToFormat);
 }
 
 // Output example: December
