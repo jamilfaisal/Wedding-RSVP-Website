@@ -1,4 +1,4 @@
-import RSVPPage from '@/components/pages/rsvp-page';
+import RSVPPage from '@/components/layout/rsvp-page';
 import { weddingInfo } from '@/lib/config/wedding-config';
 
 function RSVP() {

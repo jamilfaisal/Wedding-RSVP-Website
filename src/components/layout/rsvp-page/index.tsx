@@ -1,7 +1,7 @@
-import RSVPHeader from '../layout/rsvp-page/rsvp-header';
-import { WeddingInfo } from '../layout/types';
-import RSVPForm from '../layout/rsvp-page/rsvp-form';
-import RSVPFooter from '../layout/rsvp-page/rsvp-footer';
+import { WeddingInfo } from '../types';
+import RSVPFooter from './rsvp-footer';
+import RSVPForm from './rsvp-form';
+import RSVPHeader from './rsvp-header';
 
 function RSVPPage({ weddingInfo }: { weddingInfo: WeddingInfo }) {
   return (

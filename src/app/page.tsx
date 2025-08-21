@@ -1,4 +1,4 @@
-import HomePage from '@/components/pages/home-page';
+import HomePage from '@/components/layout/home-page';
 import { weddingInfo } from '@/lib/config/wedding-config';
 
 function Home() {
