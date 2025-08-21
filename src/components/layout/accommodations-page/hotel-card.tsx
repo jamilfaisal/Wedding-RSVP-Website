@@ -1,4 +1,4 @@
-import { Flower, Leaf, Flower2, MapPin, Star, ExternalLink, Car, Train, Bus } from 'lucide-react';
+import { Flower2, MapPin, Star, ExternalLink, Car, Train, Bus } from 'lucide-react';
 import ImageWithFallback from '../ui/image-with-fallback';
 import { Hotel, HotelLink, TransportationMode } from './hotels-data';
 

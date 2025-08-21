@@ -4,12 +4,13 @@ import SignatureStays from './signature-stays';
 import TimelessTownAndCountry from './timeless-town-and-country';
 import ChicCityNests from './chic-city-nests';
 import { Flower, Flower2, Leaf, Bed } from 'lucide-react';
+import { WeddingInfo } from '../types';
 
-function AccommodationsPage() {
+function AccommodationsPage({ weddingInfo }: { weddingInfo: WeddingInfo }) {
   return (
     <div className="min-h-screen bg-gradient-to-b from-ivory-50 via-sage-50/20 to-pastel-pink-50/10 pt-40 py-20">
       <div className="max-w-6xl mx-auto px-8">
-        {renderSectionHeader()}
+        {renderSectionHeader(weddingInfo)}
 
         <OurMainHotel />
         <SignatureStays />
@@ -62,7 +63,7 @@ function renderSectionFooter() {
   );
 }
 
-function renderSectionHeader() {
+function renderSectionHeader({ weddingCity }: WeddingInfo) {
   return (
     <div className="text-center mb-20 relative">
       <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-96">
@@ -107,9 +108,9 @@ function renderSectionHeader() {
           className="text-xl text-brown-700 leading-relaxed"
           style={{ fontFamily: 'var(--font-serif)' }}
         >
-          We&apos;re delighted you&apos;ll be celebrating with us in Rome. Below are our recommended
-          places to stay near our venue. We&apos;ve reserved a special rate at our main hotel, plus
-          curated options in three elegant tiers to suit different styles and budgets.
+          We&apos;re delighted you&apos;ll be celebrating with us in {weddingCity}. Below are our
+          recommended places to stay near our venue. We&apos;ve reserved a special rate at our main
+          hotel, plus curated options in three elegant tiers to suit different styles and budgets.
         </p>
       </div>
     </div>
