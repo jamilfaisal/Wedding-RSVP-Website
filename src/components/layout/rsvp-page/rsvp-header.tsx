@@ -1,10 +1,9 @@
 import { Leaf, Flower, Heart, Flower2 } from 'lucide-react';
-import { WeddingInfo } from '../types';
 import { formatRSVPDeadline } from '../utils';
 import floralIllustration from '/public/images/floral-illustration.png';
 import ImageWithFallback from '../../ui/image-with-fallback';
 
-function RSVPHeader({ weddingInfo }: { weddingInfo: WeddingInfo }) {
+function RSVPHeader() {
   return (
     <div className="text-center mb-7 relative">
       {renderTopBorder()}
@@ -26,7 +25,7 @@ function RSVPHeader({ weddingInfo }: { weddingInfo: WeddingInfo }) {
         className="text-xl text-brown-600 font-light mt-4"
         style={{ fontFamily: 'var(--font-serif)' }}
       >
-        Last day to RSVP is {formatRSVPDeadline(weddingInfo.rsvpDeadline)}
+        Last day to RSVP is {formatRSVPDeadline()}
       </p>
 
       {renderFloralPicture()}

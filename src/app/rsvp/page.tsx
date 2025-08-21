@@ -1,8 +1,7 @@
 import RSVPPage from '@/components/layout/rsvp-page';
-import { weddingInfo } from '@/lib/config/wedding-config';
 
 function RSVP() {
-  return <RSVPPage weddingInfo={weddingInfo} />;
+  return <RSVPPage />;
 }
 
 export default RSVP;
