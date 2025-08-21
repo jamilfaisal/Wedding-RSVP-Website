@@ -1,4 +1,4 @@
-import ImageWithFallback from '../ui/image-with-fallback';
+import ImageWithFallback from '../../ui/image-with-fallback';
 import floralIllustration from '/public/images/floral-illustration.png';
 
 function AccommodationsHeader({ title, icon }: { title: string; icon: React.ReactNode }) {

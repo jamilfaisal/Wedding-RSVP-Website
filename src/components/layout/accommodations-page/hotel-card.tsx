@@ -1,5 +1,5 @@
 import { Flower2, MapPin, Star, ExternalLink, Car, Train, Bus } from 'lucide-react';
-import ImageWithFallback from '../ui/image-with-fallback';
+import ImageWithFallback from '../../ui/image-with-fallback';
 import { Hotel, HotelLink, TransportationMode } from './hotels-data';
 
 function HotelCard({ hotel, isMain = false }: { hotel: Hotel; isMain?: boolean }) {

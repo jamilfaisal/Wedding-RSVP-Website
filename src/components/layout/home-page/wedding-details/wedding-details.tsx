@@ -2,7 +2,7 @@ import { Car, Shirt } from 'lucide-react';
 import { WeddingInfo } from '../../types';
 import weddingRingsIcon from '/public/images/wedding-rings-icon.png';
 import couplePhoto from '/public/images/couple-photo.png';
-import ImageWithFallback from '../../ui/image-with-fallback';
+import ImageWithFallback from '../../../ui/image-with-fallback';
 
 function WeddingDetails({ weddingInfo }: { weddingInfo: WeddingInfo }) {
   return (
