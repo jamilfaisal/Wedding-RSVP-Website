@@ -53,7 +53,7 @@ function MobileNav({
               <button
                 role="menuitem"
                 onClick={() => handleNavigation(item.href, item.typeOfHref)}
-                className={`w-full text-left px-6 py-3 text-brown-700 hover:text-sage-600 hover:bg-sage-50 transition-colors duration-150 ${
+                className={`cursor-pointer w-full text-left px-6 py-3 text-brown-700 hover:text-sage-600 hover:bg-sage-50 transition-colors duration-150 ${
                   (isHomePage && item.typeOfHref === 'scroll') || currentPage === item.href
                     ? 'text-sage-600 bg-sage-50'
                     : ''
