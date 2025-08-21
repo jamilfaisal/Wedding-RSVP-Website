@@ -1,6 +1,6 @@
 import { WeddingInfo } from '../types';
 import { getMonthAsFullWord } from '../utils';
-import { DynamicYear } from '../../dynamic-year';
+import { DynamicYear } from './dynamic-year';
 
 function Footer(weddingInfo: WeddingInfo) {
   return (

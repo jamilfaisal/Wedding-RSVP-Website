@@ -1,4 +1,4 @@
-import AccommodationsPage from '@/components/pages/accomodations';
+import AccommodationsPage from '@/components/layout/accommodations-page';
 
 function Accommodations() {
   return <AccommodationsPage />;
