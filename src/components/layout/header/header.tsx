@@ -107,7 +107,7 @@ function Header({ weddingInfo: weddingInfo }: { weddingInfo: WeddingInfo }) {
     >
       <div className="max-w-6xl mx-auto px-8 py-6">
         <div className="flex justify-between items-center relative">
-          <Link href="/#home">
+          <Link href="/">
             <HeaderWeddingLogo {...weddingInfo} />
           </Link>
 
