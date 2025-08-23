@@ -53,6 +53,18 @@ function Header({ weddingInfo: weddingInfo }: { weddingInfo: WeddingInfo }) {
     }
   }, [isHomePage]);
 
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
+
   const scrollToSection = (sectionHref: string) => {
     const element = document.querySelector(sectionHref);
     if (element) {
@@ -88,7 +100,7 @@ function Header({ weddingInfo: weddingInfo }: { weddingInfo: WeddingInfo }) {
       as="header"
       className={`fixed top-0 w-full z-50 transition-colors duration-500
        ${
-         isScrolled
+         isScrolled && !isMobileMenuOpen
            ? 'bg-ivory-50/95 backdrop-blur-sm shadow-lg border-b border-sage-100'
            : 'bg-transparent'
        }`}
