@@ -2,7 +2,7 @@ import { Flower, Leaf, Heart, Flower2 } from 'lucide-react';
 import FAQ from './FAQ/faq';
 import Contact from './contact';
 
-function ContactFAQPage() {
+function ContactFAQsPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-ivory-50 via-sage-50/20 to-orange-50/10 pt-40 py-20">
       <div className="max-w-5xl mx-auto px-8">
@@ -112,4 +112,4 @@ function renderHeader() {
   );
 }
 
-export default ContactFAQPage;
+export default ContactFAQsPage;

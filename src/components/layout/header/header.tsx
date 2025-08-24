@@ -18,9 +18,9 @@ const sectionLinks = [
 
 const pageLinks = [
   { name: 'RSVP', href: '/rsvp' },
-  { name: 'Accommodations', href: '/accomodations' },
+  { name: 'Accommodations', href: '/accommodations' },
   { name: 'Touristy Things', href: '/touristy-things' },
-  { name: 'Contact & FAQ', href: '/contact-faq' },
+  { name: 'Contact & FAQs', href: '/contact-faqs' },
 ];
 
 const combinedLinksForMobileNav = [
