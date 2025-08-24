@@ -134,7 +134,8 @@ export async function createRSVP(input: CreateRSVPInput): Promise<APIResponse<Ai
     Attendance: input.attending ? 'Yes' : 'No',
     'Number of Guests': parseInt(input.numberOfGuests) || 1,
     'Second Guest Name': input.secondGuestName || undefined,
-    'Meal Selection': input.mealPreference as MealSelection,
+    'Meal Selection':
+      input.attending && input.mealPreference ? (input.mealPreference as MealSelection) : undefined,
     'Dietary Restrictions': input.dietaryRestrictions || undefined,
     'Song Request': input.songRequests || undefined,
     'Edit Token (JWT)': editToken,

@@ -8,7 +8,7 @@ export interface RSVPData {
   Attendance: AttendanceStatus;
   'Number of Guests'?: number;
   'Second Guest Name'?: string;
-  'Meal Selection': MealSelection;
+  'Meal Selection'?: MealSelection;
   'Dietary Restrictions'?: string;
   'Song Request'?: string;
   'RSVP Date'?: string;
