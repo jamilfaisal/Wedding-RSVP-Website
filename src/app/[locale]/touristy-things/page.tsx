@@ -1,7 +1,5 @@
 import TouristInfoPage from '@/components/layout/tourist-info-page';
 
-function TouristInfo() {
+export default function TouristyThingsPageRoute() {
   return <TouristInfoPage />;
 }
-
-export default TouristInfo;

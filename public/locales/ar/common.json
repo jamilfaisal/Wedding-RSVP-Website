@@ -1,0 +1,115 @@
+{
+  "common": {
+    "and": "و",
+    "loading": "جارٍ التحميل...",
+    "error": "خطأ",
+    "submit": "إرسال",
+    "cancel": "إلغاء",
+    "save": "حفظ",
+    "close": "إغلاق"
+  },
+  "navigation": {
+    "home": "الرئيسية",
+    "ceremony": "الحفل",
+    "details": "التفاصيل",
+    "timeline": "الجدول الزمني",
+    "rsvp": "تأكيد الحضور",
+    "accommodations": "الإقامة",
+    "touristyThings": "الأماكن السياحية",
+    "contactFAQs": "التواصل والأسئلة"
+  },
+  "hero": {
+    "invitationMessage": "يدعوانكم بكل سرور للاحتفال بزفافهما",
+    "joinUsOn": "انضموا إلينا في",
+    "scrollDown": "مرر لأسفل للاستكشاف"
+  },
+  "ceremony": {
+    "title": "تفاصيل الحفل",
+    "subtitle": "انضموا إلينا في هذا الاحتفال المميز",
+    "venue": "المكان",
+    "time": "الوقت",
+    "dress": "اللباس المطلوب"
+  },
+  "details": {
+    "title": "تفاصيل الزفاف",
+    "subtitle": "كل ما تحتاجون لمعرفته عن يومنا المميز"
+  },
+  "timeline": {
+    "title": "الجدول الزمني للفعاليات",
+    "subtitle": "برنامج فعاليات يوم الزفاف"
+  },
+  "rsvp": {
+    "title": "تأكيد الحضور",
+    "subtitle": "يرجى إعلامنا إذا كنتم ستنضمون إلينا",
+    "fullName": "الاسم الكامل",
+    "email": "البريد الإلكتروني",
+    "phone": "رقم الهاتف",
+    "attendance": "هل ستحضرون؟",
+    "yes": "نعم، سأكون هناك!",
+    "no": "آسف، لا يمكنني الحضور",
+    "guests": "عدد الضيوف",
+    "dietaryRestrictions": "القيود الغذائية",
+    "allergies": "الحساسية الغذائية",
+    "specialRequests": "طلبات خاصة",
+    "message": "رسالة للعروسين",
+    "submitRSVP": "إرسال تأكيد الحضور",
+    "thankYou": "شكراً لتأكيد حضوركم!",
+    "confirmationMessage": "نحن متحمسون للاحتفال معكم!"
+  },
+  "accommodations": {
+    "title": "الإقامة",
+    "subtitle": "أماكن الإقامة خلال زيارتكم",
+    "mainHotel": "الفندق الرئيسي",
+    "alternativeOptions": "خيارات بديلة",
+    "bookingInfo": "معلومات الحجز",
+    "gettingToVenue": "الوصول إلى المكان"
+  },
+  "touristyThings": {
+    "title": "أماكن للزيارة",
+    "subtitle": "استكشفوا المنطقة خلال زيارتكم",
+    "attractions": "المعالم المحلية",
+    "restaurants": "المطاعم الموصى بها",
+    "activities": "الأنشطة"
+  },
+  "contact": {
+    "title": "التواصل والأسئلة الشائعة",
+    "subtitle": "تواصلوا معنا أو ابحثوا عن إجابات للأسئلة الشائعة",
+    "contactUs": "تواصل معنا",
+    "frequentlyAsked": "الأسئلة الشائعة"
+  },
+  "footer": {
+    "copyright": "جميع الحقوق محفوظة",
+    "madeWithLove": "صُنع بـ ♥",
+    "weddingWebsite": "موقع الزفاف"
+  },
+  "weather": {
+    "title": "الطقس",
+    "temperature": "درجة الحرارة",
+    "conditions": "الأحوال الجوية",
+    "forecast": "التوقعات"
+  },
+  "countdown": {
+    "days": "يوم",
+    "hours": "ساعة",
+    "minutes": "دقيقة",
+    "seconds": "ثانية",
+    "until": "حتى يومنا المميز"
+  },
+  "saveTheDate": {
+    "title": "احتفظ بالتاريخ",
+    "addToCalendar": "إضافة إلى التقويم",
+    "downloadCalendar": "تحميل حدث التقويم"
+  },
+  "errors": {
+    "required": "هذا الحقل مطلوب",
+    "invalidEmail": "يرجى إدخال عنوان بريد إلكتروني صالح",
+    "invalidPhone": "يرجى إدخال رقم هاتف صالح",
+    "submitError": "حدث خطأ في إرسال تأكيد الحضور. يرجى المحاولة مرة أخرى.",
+    "networkError": "خطأ في الشبكة. يرجى التحقق من الاتصال."
+  },
+  "success": {
+    "rsvpSubmitted": "تم إرسال تأكيد الحضور بنجاح!",
+    "emailSent": "تم إرسال البريد الإلكتروني بنجاح",
+    "dataSaved": "تم حفظ معلوماتكم"
+  }
+}

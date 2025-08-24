@@ -1,0 +1,115 @@
+{
+  "common": {
+    "and": "&",
+    "loading": "Loading...",
+    "error": "Error",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "save": "Save",
+    "close": "Close"
+  },
+  "navigation": {
+    "home": "Home",
+    "ceremony": "Ceremony",
+    "details": "Details",
+    "timeline": "Timeline",
+    "rsvp": "RSVP",
+    "accommodations": "Accommodations",
+    "touristyThings": "Touristy Things",
+    "contactFAQs": "Contact & FAQs"
+  },
+  "hero": {
+    "invitationMessage": "cordially invite you to celebrate their wedding",
+    "joinUsOn": "Join us on",
+    "scrollDown": "Scroll down to explore"
+  },
+  "ceremony": {
+    "title": "Ceremony Details",
+    "subtitle": "Join us for this special celebration",
+    "venue": "Venue",
+    "time": "Time",
+    "dress": "Dress Code"
+  },
+  "details": {
+    "title": "Wedding Details",
+    "subtitle": "Everything you need to know about our special day"
+  },
+  "timeline": {
+    "title": "Event Timeline",
+    "subtitle": "Schedule of events for our wedding day"
+  },
+  "rsvp": {
+    "title": "RSVP",
+    "subtitle": "Please let us know if you'll be joining us",
+    "fullName": "Full Name",
+    "email": "Email Address",
+    "phone": "Phone Number",
+    "attendance": "Will you be attending?",
+    "yes": "Yes, I'll be there!",
+    "no": "Sorry, I can't make it",
+    "guests": "Number of Guests",
+    "dietaryRestrictions": "Dietary Restrictions",
+    "allergies": "Food Allergies",
+    "specialRequests": "Special Requests",
+    "message": "Message for the Couple",
+    "submitRSVP": "Submit RSVP",
+    "thankYou": "Thank you for your RSVP!",
+    "confirmationMessage": "We're excited to celebrate with you!"
+  },
+  "accommodations": {
+    "title": "Accommodations",
+    "subtitle": "Where to stay during your visit",
+    "mainHotel": "Our Main Hotel",
+    "alternativeOptions": "Alternative Options",
+    "bookingInfo": "Booking Information",
+    "gettingToVenue": "Getting to the Venue"
+  },
+  "touristyThings": {
+    "title": "Things to Do",
+    "subtitle": "Explore the area during your visit",
+    "attractions": "Local Attractions",
+    "restaurants": "Recommended Restaurants",
+    "activities": "Activities"
+  },
+  "contact": {
+    "title": "Contact & FAQs",
+    "subtitle": "Get in touch or find answers to common questions",
+    "contactUs": "Contact Us",
+    "frequentlyAsked": "Frequently Asked Questions"
+  },
+  "footer": {
+    "copyright": "All rights reserved",
+    "madeWithLove": "Made with ♥",
+    "weddingWebsite": "Wedding Website"
+  },
+  "weather": {
+    "title": "Weather",
+    "temperature": "Temperature",
+    "conditions": "Conditions",
+    "forecast": "Forecast"
+  },
+  "countdown": {
+    "days": "Days",
+    "hours": "Hours",
+    "minutes": "Minutes",
+    "seconds": "Seconds",
+    "until": "until our special day"
+  },
+  "saveTheDate": {
+    "title": "Save the Date",
+    "addToCalendar": "Add to Calendar",
+    "downloadCalendar": "Download Calendar Event"
+  },
+  "errors": {
+    "required": "This field is required",
+    "invalidEmail": "Please enter a valid email address",
+    "invalidPhone": "Please enter a valid phone number",
+    "submitError": "There was an error submitting your RSVP. Please try again.",
+    "networkError": "Network error. Please check your connection."
+  },
+  "success": {
+    "rsvpSubmitted": "Your RSVP has been successfully submitted!",
+    "emailSent": "Email sent successfully",
+    "dataSaved": "Your information has been saved"
+  }
+}

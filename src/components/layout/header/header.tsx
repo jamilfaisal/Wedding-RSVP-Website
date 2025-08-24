@@ -7,6 +7,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import HeaderWeddingLogo from './header-wedding-logo';
 import DesktopNav from './desktop-nav';
 import MobileNav from './mobile-nav';
+import LanguageSwitcher from '../../ui/language-switcher';
 import { checkIsHomePage } from '../utils';
 
 const sectionLinks = [
@@ -73,11 +74,13 @@ function Header() {
 
   const storeSectionToScrollThenGoToHomePage = (href: string) => {
     sessionStorage.setItem('scrollToSection', href);
-    router.push('/');
+    const locale = currentPage.split('/')[1] || 'en';
+    router.push(`/${locale}`);
   };
 
   const navigateToNewPage = (href: string) => {
-    router.push(href);
+    const locale = currentPage.split('/')[1] || 'en';
+    router.push(`/${locale}${href}`);
   };
 
   const handleNavigation = (href: string, type: 'scroll' | 'page') => {
@@ -104,28 +107,40 @@ function Header() {
            : 'bg-transparent'
        }`}
     >
-      <div className="max-w-6xl mx-auto px-8 py-6">
-        <div className="flex justify-between items-center relative">
-          <Link href="/">
-            <HeaderWeddingLogo />
-          </Link>
+      <div className="max-w-4xl mx-auto px-8 py-6">
+        <div className="flex items-center relative justify-center">
+          <div className="flex-shrink-0 mr-8">
+            <Link href={`/${currentPage.split('/')[1] || 'en'}`}>
+              <HeaderWeddingLogo />
+            </Link>
+          </div>
 
-          <DesktopNav
-            sectionLinks={sectionLinks}
-            pageLinks={pageLinks}
-            currentPage={currentPage}
-            isHomePage={isHomePage}
-            scrollToSection={scrollToSection}
-            handleNavigation={handleNavigation}
-          />
-          <MobileNav
-            navItems={combinedLinksForMobileNav}
-            isHomePage={isHomePage}
-            currentPage={currentPage}
-            isMobileMenuOpen={isMobileMenuOpen}
-            toggleMobileMenu={() => setIsMobileMenuOpen((o) => !o)}
-            handleNavigation={handleNavigation}
-          />
+          <div className="hidden md:flex flex-1">
+            <DesktopNav
+              sectionLinks={sectionLinks}
+              pageLinks={pageLinks}
+              currentPage={currentPage}
+              isHomePage={isHomePage}
+              scrollToSection={scrollToSection}
+              handleNavigation={handleNavigation}
+            />
+          </div>
+
+          <div className="hidden md:flex flex-shrink-0 ml-8">
+            <LanguageSwitcher />
+          </div>
+
+          <div className="md:hidden flex items-center space-x-4 ml-auto">
+            <LanguageSwitcher />
+            <MobileNav
+              navItems={combinedLinksForMobileNav}
+              isHomePage={isHomePage}
+              currentPage={currentPage}
+              isMobileMenuOpen={isMobileMenuOpen}
+              toggleMobileMenu={() => setIsMobileMenuOpen((o) => !o)}
+              handleNavigation={handleNavigation}
+            />
+          </div>
         </div>
       </div>
     </Disclosure>

@@ -1,7 +1,5 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import Header from '@/components/layout/header/header';
-import Footer from '@/components/layout/footer/footer';
 import ClientFonts from '@/components/client-fonts';
 import { groomFirstName, brideFirstName } from '@/lib/config/wedding-config';
 
@@ -17,13 +15,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html>
       <body className="min-h-screen bg-white flex flex-col">
-        <ClientFonts>
-          <Header />
-          <div className="flex-grow">{children}</div>
-          <Footer />
-        </ClientFonts>
+        <ClientFonts>{children}</ClientFonts>
       </body>
     </html>
   );

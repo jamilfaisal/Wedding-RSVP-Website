@@ -6,7 +6,12 @@ import {
 } from '@/lib/config/wedding-config';
 
 export function checkIsHomePage(pathname: string): boolean {
-  return pathname === '/';
+  return (
+    pathname === '/' ||
+    pathname === '/en' ||
+    pathname === '/ar' ||
+    Boolean(pathname.match(/^\/[a-z]{2}$/))
+  );
 }
 
 export function formatWeddingStartTime(): string {

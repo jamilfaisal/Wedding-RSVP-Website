@@ -1,7 +1,5 @@
 import HomePage from '@/components/layout/home-page';
 
-function Home() {
+export default function LocaleHome() {
   return <HomePage />;
 }
-
-export default Home;
