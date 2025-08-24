@@ -1,10 +1,10 @@
 import { Flower, Leaf, Heart, Flower2 } from 'lucide-react';
-import Contact from './Contact/contact';
 import FAQ from './FAQ/faq';
+import Contact from './contact';
 
 function ContactFAQPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-ivory-50 via-sage-50/20 to-orange-50/10 py-20">
+    <div className="min-h-screen bg-gradient-to-b from-ivory-50 via-sage-50/20 to-orange-50/10 pt-40 py-20">
       <div className="max-w-5xl mx-auto px-8">
         {renderHeader()}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-20">

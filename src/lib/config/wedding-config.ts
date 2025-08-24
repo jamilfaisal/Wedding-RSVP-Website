@@ -10,7 +10,7 @@ export const weddingInfo: WeddingInfo = {
   weddingTimezone: 'Europe/Rome',
   weddingCity: 'Rome',
   weddingCountry: 'Italy',
-  email: 'info@farisandzina.com',
+  email: 'fariszina@gmail.com',
   venueName: 'Rome Cavalieri, A Waldorf Astoria Hotel',
   // September 30, 2025 at 23:59:59 Rome time (UTC+2 due to daylight savings time)
   rsvpDeadline: new Date('2025-09-30T21:59:59.000Z'),

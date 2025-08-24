@@ -22,12 +22,12 @@ export const faqs: FAQ[] = [
   {
     question: 'What time does the celebration end?',
     answer:
-      'it will never end! The ceremony beings at 6:00 pm, followed by refreshments and dinner. Live music and dancing will follow after that and carry on.',
+      'It will never end! The ceremony beings at 6:00 pm, followed by refreshments and dinner. Live music and dancing will follow after that and carry on.',
   },
   {
     question: 'Can I take photos during the ceremony?',
     answer:
-      'Offcourse you can! Take as many pictures as you want and you can upload them here: link coming soon',
+      'Of course you can! Take as many pictures as you want and you can upload them here: link coming soon',
   },
   {
     question: 'Is there parking available at the venue?',
