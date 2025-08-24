@@ -89,9 +89,8 @@
     "frequentlyAsked": "Frequently Asked Questions"
   },
   "footer": {
-    "copyright": "All rights reserved",
-    "madeWithLove": "Made with ♥",
-    "weddingWebsite": "Wedding Website"
+    "message": "We can't wait to celebrate with you in",
+    "copyright": "All rights reserved"
   },
   "weather": {
     "title": "Weather",
@@ -110,6 +109,15 @@
     "title": "Save the Date",
     "addToCalendar": "Add to Calendar",
     "downloadCalendar": "Download Calendar Event"
+  },
+  "weddingInfo": {
+    "groomFullName": "Faris Al-Ahmadi",
+    "brideFullName": "Zina Al-Shaikhli",
+    "groomFirstName": "Faris",
+    "brideFirstName": "Zina",
+    "venueName": "Rome Cavalieri, A Waldorf Astoria Hotel",
+    "weddingCity": "Rome",
+    "weddingCountry": "Italy"
   },
   "errors": {
     "required": "This field is required",

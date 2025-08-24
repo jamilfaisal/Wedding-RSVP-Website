@@ -13,7 +13,7 @@ const translations = {
 
 type Locale = 'en' | 'ar';
 
-export function getServerTranslation(locale: Locale = 'en') {
+function getServerTranslation(locale: Locale = 'en') {
   const t = (key: string): string => {
     const keys = key.split('.');
     let value: unknown = translations[locale]?.common || translations.en.common;

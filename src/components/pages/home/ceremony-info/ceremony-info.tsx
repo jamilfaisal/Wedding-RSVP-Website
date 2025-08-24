@@ -5,8 +5,10 @@ import ImageWithFallback from '../../../ui/image-with-fallback';
 import WeatherWidget from './weather-widget';
 import { weddingCity, weddingCountry } from '@/lib/config/wedding-config';
 import { formatWeddingStartTime, formatWeddingStartDate } from '@/components/layout/utils';
+import { useI18n } from '@/lib/i18n/i18n-provider';
 
 function CeremonyInfo() {
+  const { locale } = useI18n();
   return (
     <section id="ceremony" className="pt-33 bg-gradient-to-b from-white to-sage-50/20">
       <div className="max-w-6xl mx-auto px-8">
@@ -19,7 +21,7 @@ function CeremonyInfo() {
             {renderVenueLocation()}
             {renderWeddingSchedule()}
             {renderLocalTime()}
-            <WeatherWidget />
+            {WeatherWidget(locale)}
           </div>
         </div>
       </div>

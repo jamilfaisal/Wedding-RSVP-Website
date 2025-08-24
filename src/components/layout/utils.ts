@@ -55,8 +55,8 @@ function formatDate(dateToFormat: Date): string {
 }
 
 // Output example: December
-export function getMonthAsFullWord(date: Date): string {
-  return date.toLocaleString('en-US', { month: 'long' });
+export function getMonthAsFullWord(date: Date, locale: string): string {
+  return date.toLocaleString(locale, { month: 'long' });
 }
 
 // Output example: 20th
@@ -82,4 +82,9 @@ export function formatDateForCalendar(date: Date): string {
   const minutes = String(date.getMinutes()).padStart(2, '0');
   const seconds = String(date.getSeconds()).padStart(2, '0');
   return `${year}${month}${day}T${hours}${minutes}${seconds}`;
+}
+
+// Output example: 2025
+export function formatYear(year: number, locale: string): string {
+  return new Intl.NumberFormat(locale === 'ar' ? 'ar-EG' : 'en-US').format(year);
 }

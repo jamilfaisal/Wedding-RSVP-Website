@@ -1,8 +1,13 @@
-import { groomFirstName, brideFirstName, weddingStartDate } from '@/lib/config/wedding-config';
+'use client';
+import { weddingStartDate } from '@/lib/config/wedding-config';
+import { useTranslation } from 'react-i18next';
 import { getMonthAsFullWord } from '../utils';
 import { DynamicYear } from './dynamic-year';
+import { useI18n } from '@/lib/i18n/i18n-provider';
 
 function Footer() {
+  const { t } = useTranslation();
+  const { locale } = useI18n();
   return (
     <footer className="bg-gradient-to-r from-sage-50 to-ivory-100 py-8 border-t-2 border-sage-100">
       <div className="max-w-5xl mx-auto px-8 text-center">
@@ -12,14 +17,14 @@ function Footer() {
             className="text-3xl text-brown-800 mb-3"
             style={{ fontFamily: 'var(--font-harrington)' }}
           >
-            {groomFirstName} & {brideFirstName}
+            {t('weddingInfo.groomFirstName')} & {t('weddingInfo.brideFirstName')}
           </h3>
           <p className="text-lg text-brown-600 mb-6 font-light">
-            We can&apos;t wait to celebrate with you in {getMonthAsFullWord(weddingStartDate)}!
+            {t('footer.message')} {getMonthAsFullWord(weddingStartDate, locale)}!
           </p>
           {BotanicalDecoration()}
         </div>
-        <Copyright />
+        <Copyright t={t} />
       </div>
     </footer>
   );
@@ -37,12 +42,13 @@ function BotanicalDecoration() {
   );
 }
 
-function Copyright() {
+function Copyright({ t }: { t: (key: string) => string }) {
   return (
     <div>
       <div className="pt-6 border-t border-brown-200 mt-8">
         <p className="text-sm text-brown-500 font-light">
-          © <DynamicYear /> {groomFirstName} & {brideFirstName}. All rights reserved.
+          © <DynamicYear /> {t('weddingInfo.groomFirstName')} & {t('weddingInfo.brideFirstName')}.
+          {t('footer.copyright')}
         </p>
       </div>
     </div>
