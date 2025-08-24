@@ -38,7 +38,7 @@ function MobileNav({
     <div className="lg:hidden relative flex items-center">
       {renderMobileMenuButton(toggleMobileMenu, isHomePage, isMobileMenuOpen)}
       {renderDropdown(isMobileMenuOpen, navItems, handleNavigation, isHomePage, currentPage)}
-      {isMobileMenuOpen && isMounted && renderBackdrop(toggleMobileMenu)}
+      {isMounted && renderBackdrop(toggleMobileMenu, isMobileMenuOpen)}
     </div>
   );
 }
@@ -101,10 +101,12 @@ function renderDropdown(
   );
 }
 
-function renderBackdrop(toggleMobileMenu: () => void) {
+function renderBackdrop(toggleMobileMenu: () => void, isMobileMenuOpen: boolean) {
   return createPortal(
     <div
-      className="fixed inset-0 z-40 bg-black/30 backdrop-blur-sm transition-all duration-500"
+      className={`fixed inset-0 z-40 backdrop-blur-sm transition-all duration-500 ${
+        isMobileMenuOpen ? 'bg-black/30 opacity-100' : 'bg-black/0 opacity-0 pointer-events-none'
+      }`}
       onClick={toggleMobileMenu}
       aria-hidden="true"
     />,
