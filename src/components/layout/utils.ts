@@ -1,21 +1,26 @@
-import { weddingInfo } from '@/lib/config/wedding-config';
+import {
+  rsvpDeadline,
+  weddingEndDate,
+  weddingStartDate,
+  weddingTimezone,
+} from '@/lib/config/wedding-config';
 
 export function checkIsHomePage(pathname: string): boolean {
   return pathname === '/';
 }
 
 export function formatWeddingStartTime(): string {
-  return formatTime(weddingInfo.weddingStartDate);
+  return formatTime(weddingStartDate);
 }
 
 export function formatWeddingEndTime(): string {
-  return formatTime(weddingInfo.weddingEndDate);
+  return formatTime(weddingEndDate);
 }
 
 // Output example: 4:00 PM
 function formatTime(time: Date): string {
   return new Intl.DateTimeFormat('en-US', {
-    timeZone: weddingInfo.weddingTimezone,
+    timeZone: weddingTimezone,
     hour: 'numeric',
     minute: '2-digit',
     hour12: true,
@@ -23,21 +28,21 @@ function formatTime(time: Date): string {
 }
 
 export function formatRSVPDeadline(): string {
-  return formatDate(weddingInfo.rsvpDeadline);
+  return formatDate(rsvpDeadline);
 }
 
 export function formatWeddingStartDate(): string {
-  return formatDate(weddingInfo.weddingStartDate);
+  return formatDate(weddingStartDate);
 }
 
 export function formatWeddingEndDate(): string {
-  return formatDate(weddingInfo.weddingEndDate);
+  return formatDate(weddingEndDate);
 }
 
 // Output example: December 20, 2025
 function formatDate(dateToFormat: Date): string {
   return new Intl.DateTimeFormat('en-US', {
-    timeZone: weddingInfo.weddingTimezone,
+    timeZone: weddingTimezone,
     year: 'numeric',
     month: 'long',
     day: 'numeric',

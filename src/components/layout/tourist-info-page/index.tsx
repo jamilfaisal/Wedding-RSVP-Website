@@ -2,8 +2,9 @@ import { Leaf, Flower, MapPin, Flower2, Camera, Utensils, Plane } from 'lucide-r
 import TouristInfoCard from './tourist-info-card';
 import TouristInfoHeader from './tourist-info-header';
 import { attractions } from './tourist-info-data';
+import { weddingCity } from '@/lib/config/wedding-config';
 
-function TouristInfoPage({ weddingCity }: { weddingCity: string }) {
+function TouristInfoPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-ivory-50 via-sage-50/20 to-orange-50/10 pt-40 py-20">
       <div className="max-w-6xl mx-auto px-8">

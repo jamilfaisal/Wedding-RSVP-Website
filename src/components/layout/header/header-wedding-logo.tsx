@@ -1,7 +1,7 @@
-import { WeddingInfo } from '../types';
+import { groomFirstName, brideFirstName } from '@/lib/config/wedding-config';
 import { formatWeddingStartDate } from '../utils';
 
-function HeaderWeddingLogo({ brideFirstName, groomFirstName }: WeddingInfo) {
+function HeaderWeddingLogo() {
   return (
     <div className="flex flex-col items-left group transition-all duration-300">
       <div

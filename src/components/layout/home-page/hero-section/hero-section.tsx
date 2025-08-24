@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { WeddingInfo } from '../../types';
 import { ArrowDown, Flower, Flower2, Heart, Leaf } from 'lucide-react';
 import BackgroundImage from './background-image';
 import BotanicalDecoration from './botanical-decoration';
@@ -7,8 +6,14 @@ import ArabicVerse from './arabic-verse';
 import WeddingCountdown from './wedding-countdown/wedding-countdown';
 import SaveTheDate from './save-the-date';
 import { formatWeddingStartDate, formatWeddingStartTime } from '../../utils';
+import {
+  groomFullName,
+  brideFullName,
+  weddingCity,
+  weddingCountry,
+} from '@/lib/config/wedding-config';
 
-function HeroSection({ weddingInfo }: { weddingInfo: WeddingInfo }) {
+function HeroSection() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -22,13 +27,13 @@ function HeroSection({ weddingInfo }: { weddingInfo: WeddingInfo }) {
     >
       <BackgroundImage />
       <BotanicalDecoration />
-      {renderHeroSectionContent(isVisible, weddingInfo)}
+      {renderHeroSectionContent(isVisible)}
       {renderBottomGradient()}
     </section>
   );
 }
 
-function renderHeroSectionContent(isVisible: boolean, weddingInfo: WeddingInfo) {
+function renderHeroSectionContent(isVisible: boolean) {
   return (
     <div className="relative z-10 text-center px-8 max-w-4xl mx-auto">
       <div
@@ -41,12 +46,12 @@ function renderHeroSectionContent(isVisible: boolean, weddingInfo: WeddingInfo) 
           {renderBottomLeftFloralDecor()}
           {renderBottomRightFloralDecor()}
           <ArabicVerse />
-          {renderGroomAndBrideNames(weddingInfo)}
+          {renderGroomAndBrideNames()}
           {renderWeddingInvitationMessage()}
-          {renderWeddingDateCard(weddingInfo)}
-          <WeddingCountdown weddingStartDate={weddingInfo.weddingStartDate} />
+          {renderWeddingDateCard()}
+          <WeddingCountdown />
           <div className="space-y-6">
-            <SaveTheDate {...weddingInfo} />
+            <SaveTheDate />
             {renderScrollDownIndicator()}
           </div>
         </div>
@@ -66,20 +71,20 @@ function renderWeddingInvitationMessage() {
   );
 }
 
-function renderGroomAndBrideNames(weddingInfo: WeddingInfo) {
+function renderGroomAndBrideNames() {
   return (
     <h1
       className="text-6xl md:text-6xl text-brown-800 mb-6 leading-tight tracking-wide"
       style={{ fontFamily: 'var(--font-harrington)' }}
     >
-      {weddingInfo.groomFullName}
+      {groomFullName}
       <span className="block text-5xl md:text-6xl text-sage-600 my-2">&</span>
-      {weddingInfo.brideFullName}
+      {brideFullName}
     </h1>
   );
 }
 
-function renderWeddingDateCard({ weddingCity, weddingCountry }: WeddingInfo) {
+function renderWeddingDateCard() {
   return (
     <div className="inline-block bg-gradient-to-r from-sage-50 to-orange-50 rounded-lg px-10 py-8 shadow-lg border-2 border-sage-100 mb-8">
       <div className="text-center">

@@ -4,13 +4,13 @@ import SignatureStays from './signature-stays';
 import TimelessTownAndCountry from './timeless-town-and-country';
 import ChicCityNests from './chic-city-nests';
 import { Flower, Flower2, Leaf, Bed } from 'lucide-react';
-import { WeddingInfo } from '../types';
+import { weddingCity } from '@/lib/config/wedding-config';
 
-function AccommodationsPage({ weddingInfo }: { weddingInfo: WeddingInfo }) {
+function AccommodationsPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-ivory-50 via-sage-50/20 to-pastel-pink-50/10 pt-40 py-20">
       <div className="max-w-6xl mx-auto px-8">
-        {renderSectionHeader(weddingInfo)}
+        {renderSectionHeader()}
 
         <OurMainHotel />
         <SignatureStays />
@@ -63,7 +63,7 @@ function renderSectionFooter() {
   );
 }
 
-function renderSectionHeader({ weddingCity }: WeddingInfo) {
+function renderSectionHeader() {
   return (
     <div className="text-center mb-20 relative">
       <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-96">

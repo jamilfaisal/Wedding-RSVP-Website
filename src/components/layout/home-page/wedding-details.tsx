@@ -1,17 +1,17 @@
 import { Car, Shirt } from 'lucide-react';
-import { WeddingInfo } from '../types';
 import weddingRingsIcon from '/public/images/wedding-rings-icon.png';
 import couplePhoto from '/public/images/couple-photo.png';
 import ImageWithFallback from '../../ui/image-with-fallback';
+import { weddingCountry } from '@/lib/config/wedding-config';
 
-function WeddingDetails({ weddingInfo }: { weddingInfo: WeddingInfo }) {
+function WeddingDetails() {
   return (
     <section id="details" className="pt-30 bg-gradient-to-b from-sage-50/20 to-orange-50/10">
       <div className="max-w-7xl mx-auto px-8">
         {renderSectionHeader()}
 
         <div className="grid lg:grid-cols-2 gap-36 items-start">
-          {renderCards(weddingInfo)}
+          {renderCards()}
           {renderDecorativeImage()}
         </div>
       </div>
@@ -19,16 +19,16 @@ function WeddingDetails({ weddingInfo }: { weddingInfo: WeddingInfo }) {
   );
 }
 
-function renderCards(weddingInfo: WeddingInfo) {
+function renderCards() {
   return (
     <div className="space-y-8">
       {renderDressCodeCard()}
-      {renderTransportationCard(weddingInfo)}
+      {renderTransportationCard()}
     </div>
   );
 }
 
-function renderTransportationCard(weddingInfo: WeddingInfo) {
+function renderTransportationCard() {
   return (
     <div className="bg-white rounded-lg p-8 shadow-md border-2 border-orange-100">
       <div className="flex items-start space-x-6">
@@ -47,19 +47,19 @@ function renderTransportationCard(weddingInfo: WeddingInfo) {
             </div>
             <div className="border-l-2 border-orange-200 pl-4">
               <h4 className="font-serif font-medium text-brown-800 mb-2">
-                Getting to {weddingInfo.weddingCountry}
+                Getting to {weddingCountry}
               </h4>
               <p className="font-light leading-relaxed">
-                {weddingInfo.weddingCountry} is easily accessible via Fiumicino (FCO) and Ciampino
-                (CIA) airports. We recommend booking accommodations in central{' '}
-                {weddingInfo.weddingCountry} for easy access to the venue.
+                {weddingCountry} is easily accessible via Fiumicino (FCO) and Ciampino (CIA)
+                airports. We recommend booking accommodations in central {weddingCountry} for easy
+                access to the venue.
               </p>
             </div>
             <div className="border-l-2 border-brown-200 pl-4">
               <h4 className="font-serif font-medium text-brown-800 mb-2">Local Transportation</h4>
               <p className="font-light leading-relaxed">
-                {weddingInfo.weddingCountry} has excellent public transportation including metro,
-                buses, and taxis. Detailed directions will be provided with your invitation.
+                {weddingCountry} has excellent public transportation including metro, buses, and
+                taxis. Detailed directions will be provided with your invitation.
               </p>
             </div>
           </div>

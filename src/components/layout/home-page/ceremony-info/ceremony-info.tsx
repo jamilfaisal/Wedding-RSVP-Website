@@ -2,11 +2,11 @@ import { MapPin, Clock, Globe } from 'lucide-react';
 import ceremonyPhoto from '/public/images/ceremony-photo.png';
 import floralIllustration from '/public/images/floral-illustration.png';
 import ImageWithFallback from '../../../ui/image-with-fallback';
-import { WeddingInfo } from '../../types';
 import { formatWeddingStartTime, formatWeddingStartDate } from '../../utils';
 import WeatherWidget from './weather-widget';
+import { weddingCity, weddingCountry } from '@/lib/config/wedding-config';
 
-function CeremonyInfo({ weddingInfo }: { weddingInfo: WeddingInfo }) {
+function CeremonyInfo() {
   return (
     <section id="ceremony" className="pt-33 bg-gradient-to-b from-white to-sage-50/20">
       <div className="max-w-6xl mx-auto px-8">
@@ -16,10 +16,10 @@ function CeremonyInfo({ weddingInfo }: { weddingInfo: WeddingInfo }) {
           {renderVenueImage()}
 
           <div className="space-y-8 lg:pl-4">
-            {renderVenueLocation(weddingInfo)}
-            {renderWeddingSchedule(weddingInfo)}
-            {renderLocalTime(weddingInfo)}
-            <WeatherWidget weddingInfo={weddingInfo} />
+            {renderVenueLocation()}
+            {renderWeddingSchedule()}
+            {renderLocalTime()}
+            <WeatherWidget />
           </div>
         </div>
       </div>
@@ -27,7 +27,7 @@ function CeremonyInfo({ weddingInfo }: { weddingInfo: WeddingInfo }) {
   );
 }
 
-function renderLocalTime({ weddingCity }: WeddingInfo) {
+function renderLocalTime() {
   return (
     <div className="bg-white rounded-lg p-6 shadow-md border-2 border-brown-100">
       <div className="flex items-start space-x-4">
@@ -49,7 +49,7 @@ function renderLocalTime({ weddingCity }: WeddingInfo) {
   );
 }
 
-function renderWeddingSchedule({}: WeddingInfo) {
+function renderWeddingSchedule() {
   return (
     <div className="bg-white rounded-lg p-6 shadow-md border-2 border-orange-100">
       <div className="flex items-start space-x-4">
@@ -74,7 +74,7 @@ function renderWeddingSchedule({}: WeddingInfo) {
   );
 }
 
-function renderVenueLocation({ weddingCity, weddingCountry }: WeddingInfo) {
+function renderVenueLocation() {
   return (
     <div className="bg-white rounded-lg p-6 shadow-md border-2 border-sage-100">
       <div className="flex items-start space-x-4">

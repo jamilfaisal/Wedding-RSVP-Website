@@ -21,5 +21,11 @@ export const {
   groomFullName,
   brideFullName,
   weddingStartDate,
+  weddingEndDate,
+  weddingTimezone,
+  weddingCity,
+  weddingCountry,
+  email,
+  rsvpDeadline,
   venueName,
 } = weddingInfo;

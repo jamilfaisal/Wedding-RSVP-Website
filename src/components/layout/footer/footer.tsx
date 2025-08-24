@@ -1,8 +1,8 @@
-import { WeddingInfo } from '../types';
+import { groomFirstName, brideFirstName, weddingStartDate } from '@/lib/config/wedding-config';
 import { getMonthAsFullWord } from '../utils';
 import { DynamicYear } from './dynamic-year';
 
-function Footer(weddingInfo: WeddingInfo) {
+function Footer() {
   return (
     <footer className="bg-gradient-to-r from-sage-50 to-ivory-100 py-8 border-t-2 border-sage-100">
       <div className="max-w-5xl mx-auto px-8 text-center">
@@ -12,18 +12,14 @@ function Footer(weddingInfo: WeddingInfo) {
             className="text-3xl text-brown-800 mb-3"
             style={{ fontFamily: 'var(--font-harrington)' }}
           >
-            {weddingInfo.groomFirstName} & {weddingInfo.brideFirstName}
+            {groomFirstName} & {brideFirstName}
           </h3>
           <p className="text-lg text-brown-600 mb-6 font-light">
-            We can&apos;t wait to celebrate with you in{' '}
-            {getMonthAsFullWord(weddingInfo.weddingStartDate)}!
+            We can&apos;t wait to celebrate with you in {getMonthAsFullWord(weddingStartDate)}!
           </p>
           {BotanicalDecoration()}
         </div>
-        <Copyright
-          groomFirstName={weddingInfo.groomFirstName}
-          brideFirstName={weddingInfo.brideFirstName}
-        />
+        <Copyright />
       </div>
     </footer>
   );
@@ -41,13 +37,7 @@ function BotanicalDecoration() {
   );
 }
 
-function Copyright({
-  groomFirstName,
-  brideFirstName,
-}: {
-  groomFirstName: string;
-  brideFirstName: string;
-}) {
+function Copyright() {
   return (
     <div>
       <div className="pt-6 border-t border-brown-200 mt-8">

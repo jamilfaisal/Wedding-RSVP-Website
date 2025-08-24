@@ -4,7 +4,6 @@ import { Disclosure } from '@headlessui/react';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { WeddingInfo } from '../types';
 import HeaderWeddingLogo from './header-wedding-logo';
 import DesktopNav from './desktop-nav';
 import MobileNav from './mobile-nav';
@@ -21,7 +20,7 @@ const pageLinks = [
   { name: 'RSVP', href: '/rsvp' },
   { name: 'Accommodations', href: '/accomodations' },
   { name: 'Touristy Things', href: '/touristy-things' },
-  { name: 'Contact & FAQ', href: '/contact' },
+  { name: 'Contact & FAQ', href: '/contact-faq' },
 ];
 
 const combinedLinksForMobileNav = [
@@ -29,7 +28,7 @@ const combinedLinksForMobileNav = [
   ...pageLinks.map((link) => ({ ...link, typeOfHref: 'page' as const, label: link.name })),
 ];
 
-function Header({ weddingInfo: weddingInfo }: { weddingInfo: WeddingInfo }) {
+function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const currentPage = usePathname();
@@ -108,7 +107,7 @@ function Header({ weddingInfo: weddingInfo }: { weddingInfo: WeddingInfo }) {
       <div className="max-w-6xl mx-auto px-8 py-6">
         <div className="flex justify-between items-center relative">
           <Link href="/">
-            <HeaderWeddingLogo {...weddingInfo} />
+            <HeaderWeddingLogo />
           </Link>
 
           <DesktopNav

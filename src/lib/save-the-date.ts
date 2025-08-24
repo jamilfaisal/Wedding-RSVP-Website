@@ -1,18 +1,19 @@
-import { WeddingInfo } from '@/components/layout/types';
 import { formatDateForCalendar } from '@/components/layout/utils';
+import {
+  groomFirstName,
+  brideFirstName,
+  weddingStartDate,
+  weddingCity,
+  weddingCountry,
+  weddingEndDate,
+  email,
+} from './config/wedding-config';
 
-export const generateCalendarEvent = (weddingInfo: WeddingInfo) => {
-  const event = getWeddingInfo(
-    weddingInfo.groomFirstName,
-    weddingInfo.brideFirstName,
-    weddingInfo.weddingStartDate,
-    weddingInfo.weddingEndDate,
-    weddingInfo.weddingCity,
-    weddingInfo.weddingCountry
-  );
-  const emailAfterAtSign = weddingInfo.email.split('@')[1];
+export const generateCalendarEvent = () => {
+  const event = getWeddingInfo();
+  const emailAfterAtSign = email.split('@')[1];
   const UID = `${Date.now()}@${emailAfterAtSign}`;
-  const PRODID = `-//${weddingInfo.groomFirstName} & ${weddingInfo.brideFirstName}//Wedding//EN`;
+  const PRODID = `-//${groomFirstName} & ${brideFirstName}//Wedding//EN`;
 
   const icsContent = `BEGIN:VCALENDAR
 VERSION:2.0
@@ -32,35 +33,21 @@ END:VCALENDAR`;
   const url = URL.createObjectURL(blob);
   const link = document.createElement('a');
   link.href = url;
-  link.download = `${weddingInfo.groomFirstName}-${weddingInfo.brideFirstName}-wedding.ics`;
+  link.download = `${groomFirstName}-${brideFirstName}-wedding.ics`;
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
   URL.revokeObjectURL(url);
 };
 
-export const addToGoogleCalendar = (weddingInfo: WeddingInfo) => {
-  const event = getWeddingInfo(
-    weddingInfo.groomFirstName,
-    weddingInfo.brideFirstName,
-    weddingInfo.weddingStartDate,
-    weddingInfo.weddingEndDate,
-    weddingInfo.weddingCity,
-    weddingInfo.weddingCountry
-  );
+export const addToGoogleCalendar = () => {
+  const event = getWeddingInfo();
 
   const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.title)}&dates=${event.startDateTime}/${event.endDateTime}&details=${encodeURIComponent(event.description)}&location=${encodeURIComponent(event.location)}`;
   window.open(googleCalendarUrl, '_blank');
 };
 
-function getWeddingInfo(
-  groomFirstName: string,
-  brideFirstName: string,
-  weddingStartDate: Date,
-  weddingEndDate: Date,
-  weddingCity: string,
-  weddingCountry: string
-) {
+function getWeddingInfo() {
   return {
     title: `${groomFirstName} & ${brideFirstName}'s Wedding`,
     startDateTime: formatDateForCalendar(weddingStartDate),

@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import ExpiredWeddingCountdown from './expired-wedding-countdown';
 import { Flower, Flower2, Leaf } from 'lucide-react';
+import { weddingStartDate } from '@/lib/config/wedding-config';
 
 type CountDownTime = {
   days: number;
@@ -10,7 +11,7 @@ type CountDownTime = {
   seconds: number;
 };
 
-const WeddingCountdown = ({ weddingStartDate }: { weddingStartDate: Date }) => {
+const WeddingCountdown = () => {
   const [countDownTime, setCountDownTime] = useState<CountDownTime>({
     days: 0,
     hours: 0,
@@ -21,7 +22,7 @@ const WeddingCountdown = ({ weddingStartDate }: { weddingStartDate: Date }) => {
 
   useEffect(() => {
     calculateCountdown(weddingStartDate, setCountDownTime, setIsExpired);
-  }, [weddingStartDate]);
+  }, []);
 
   const countDownTimeCSSInfo = [
     {
