@@ -1,4 +1,4 @@
-import { WeddingInfo } from '@/components/layout/types';
+import { WeddingInfo } from '@/types';
 
 export const weddingInfo: WeddingInfo = {
   groomFirstName: 'Faris',
