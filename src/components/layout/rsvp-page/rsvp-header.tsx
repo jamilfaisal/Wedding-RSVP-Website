@@ -2,8 +2,10 @@ import { Leaf, Flower, Heart, Flower2 } from 'lucide-react';
 import { formatRSVPDeadline } from '../utils';
 import floralIllustration from '/public/images/floral-illustration.png';
 import ImageWithFallback from '../../ui/image-with-fallback';
+import { getServerTranslationWithLocale } from '@/lib/i18n/server-translations';
 
-function RSVPHeader() {
+async function RSVPHeader() {
+  const { t } = await getServerTranslationWithLocale();
   return (
     <div className="text-center mb-7 relative">
       {renderTopBorder()}
@@ -12,20 +14,20 @@ function RSVPHeader() {
         className="text-5xl md:text-6xl text-brown-800 mb-6 leading-tight"
         style={{ fontFamily: 'var(--font-harrington)' }}
       >
-        RSVP to Our Wedding
+        {t('rsvp.title')}
       </h1>
 
       <p
         className="text-xl text-brown-600 font-light mt-8"
         style={{ fontFamily: 'var(--font-serif)' }}
       >
-        Please let us know if you&apos;ll be joining us on our special day
+        {t('rsvp.subtitle')}
       </p>
       <p
         className="text-xl text-brown-600 font-light mt-4"
         style={{ fontFamily: 'var(--font-serif)' }}
       >
-        Last day to RSVP is {formatRSVPDeadline()}
+        {t('rsvp.deadlineMessage')} {formatRSVPDeadline()}
       </p>
 
       {renderFloralPicture()}

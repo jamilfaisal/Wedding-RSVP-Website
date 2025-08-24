@@ -4,21 +4,23 @@ import { useRSVPForm } from './use-rsvp-form';
 import { FormField, TextInput, SelectField } from './form-components';
 import { FloralDecoration } from './floral-decorations';
 import AttendanceField from './attendance-field';
-
-const mealOptions = [
-  { value: 'Meat', label: 'Meat' },
-  { value: 'Fish', label: 'Fish' },
-  { value: 'Vegetarian', label: 'Vegetarian' },
-  { value: 'Vegan', label: 'Vegan' },
-];
-
-const guestOptions = [
-  { value: '1', label: '1 Guest' },
-  { value: '2', label: '2 Guests' },
-];
+import { useTranslation } from 'react-i18next';
 
 function RSVPForm() {
+  const { t } = useTranslation();
   const { formData, errors, handleInputChange, handleBlur, handleSubmit } = useRSVPForm();
+
+  const mealOptions = [
+    { value: 'Meat', label: t('rsvp.meat') },
+    { value: 'Fish', label: t('rsvp.fish') },
+    { value: 'Vegetarian', label: t('rsvp.vegetarian') },
+    { value: 'Vegan', label: t('rsvp.vegan') },
+  ];
+
+  const guestOptions = [
+    { value: '1', label: t('1 Guest') },
+    { value: '2', label: t('2 Guests') },
+  ];
 
   return (
     <div className="bg-white/95 backdrop-blur-sm rounded-lg p-15 shadow-xl border border-sage-200 relative">
@@ -29,20 +31,20 @@ function RSVPForm() {
       <FloralDecoration position="bottom-right" />
 
       <form onSubmit={handleSubmit} className="space-y-6">
-        <FormField id="fullName" label="Guest Full Name" required error={errors.fullName}>
+        <FormField id="fullName" label={t('rsvp.fullName')} required error={errors.fullName}>
           <TextInput
             id="fullName"
             value={formData.fullName}
             onChange={(value) => handleInputChange('fullName', value)}
             onBlur={() => handleBlur('fullName')}
-            placeholder="Enter your full name"
+            placeholder={t('rsvp.fullNamePlaceholder')}
             required
             error={errors.fullName}
             autoComplete="name"
           />
         </FormField>
 
-        <FormField id="email" label="Email Address" required error={errors.email}>
+        <FormField id="email" label={t('rsvp.email')} required error={errors.email}>
           <TextInput
             id="email"
             type="email"
@@ -63,13 +65,13 @@ function RSVPForm() {
 
         {formData.attending && (
           <>
-            <FormField id="numberOfGuests" label="Number of Guests (including yourself)" required>
+            <FormField id="numberOfGuests" label={t('rsvp.guests')} required>
               <SelectField
                 id="numberOfGuests"
                 value={formData.numberOfGuests}
                 onChange={(value) => handleInputChange('numberOfGuests', value)}
                 options={guestOptions}
-                placeholder="Select number of guests"
+                placeholder={t('rsvp.guestsPlaceholder')}
                 zIndex="z-[200]"
               />
             </FormField>
@@ -77,7 +79,7 @@ function RSVPForm() {
             {formData.numberOfGuests === '2' && (
               <FormField
                 id="secondGuestName"
-                label="Name of second guest"
+                label={t('rsvp.secondGuestFullName')}
                 required
                 error={errors.secondGuestName}
               >
@@ -86,7 +88,7 @@ function RSVPForm() {
                   value={formData.secondGuestName}
                   onChange={(value) => handleInputChange('secondGuestName', value)}
                   onBlur={() => handleBlur('secondGuestName')}
-                  placeholder="Enter second guest's full name"
+                  placeholder={t('rsvp.secondGuestFullNamePlaceholder')}
                   required
                   error={errors.secondGuestName}
                   autoComplete="name"
@@ -96,7 +98,7 @@ function RSVPForm() {
 
             <FormField
               id="mealPreference"
-              label="Meal Preference"
+              label={t('rsvp.mealPreference')}
               required
               error={errors.mealPreference}
             >
@@ -111,7 +113,7 @@ function RSVPForm() {
               />
             </FormField>
 
-            <FormField id="dietaryRestrictions" label="Dietary restrictions?">
+            <FormField id="dietaryRestrictions" label={t('rsvp.dietaryRestrictions')}>
               <TextInput
                 id="dietaryRestrictions"
                 value={formData.dietaryRestrictions}
