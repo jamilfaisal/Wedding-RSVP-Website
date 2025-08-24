@@ -4,10 +4,7 @@ import AccommodationsHeader from './accommodations-header';
 function GettingToVenue() {
   return (
     <section className="mb-16">
-      <AccommodationsHeader
-        title="Getting to the Venue"
-        icon={<Car className="w-6 h-6 text-brown-600" />}
-      />
+      <AccommodationsHeader title="Getting to the Venue" />
       <div className="max-w-4xl mx-auto space-y-6">
         <div className="bg-white/95 rounded-lg p-6 shadow-lg border border-sage-100 relative">
           <div className="absolute top-3 right-3">

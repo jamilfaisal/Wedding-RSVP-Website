@@ -1,4 +1,3 @@
-import { Star } from 'lucide-react';
 import AccommodationsHeader from './accommodations-header';
 import HotelCard from './hotel-card';
 import { mainHotel } from './hotels-data';
@@ -6,10 +5,7 @@ import { mainHotel } from './hotels-data';
 function OurMainHotel() {
   return (
     <section className="mb-20">
-      <AccommodationsHeader
-        title="Our Main Hotel"
-        icon={<Star className="w-6 h-6 text-brown-600" />}
-      />
+      <AccommodationsHeader title="Our Main Hotel" />
       <div className="max-w-4xl mx-auto">
         <HotelCard hotel={mainHotel} isMain={true} />
         <div className="mt-4 bg-gradient-to-r from-pastel-blue-50 to-pastel-purple-50 rounded-lg p-4 border border-pastel-blue-200">

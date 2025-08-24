@@ -1,4 +1,3 @@
-import { Leaf } from 'lucide-react';
 import AccommodationsHeader from './accommodations-header';
 import HotelCard from './hotel-card';
 import { chicStays } from './hotels-data';
@@ -6,10 +5,7 @@ import { chicStays } from './hotels-data';
 function ChicCityNests() {
   return (
     <section className="mb-20">
-      <AccommodationsHeader
-        title="Chic City Nests"
-        icon={<Leaf className="w-6 h-6 text-brown-600" />}
-      />
+      <AccommodationsHeader title="Chic City Nests" />
       <div className="text-center mb-8">
         <p className="text-lg text-brown-600 italic" style={{ fontFamily: 'var(--font-serif)' }}>
           Well-located, comfortable, and design-forward.

@@ -1,4 +1,4 @@
-import { Leaf, Flower, MapPin, Flower2, Camera, Utensils, Plane } from 'lucide-react';
+import { Leaf, Flower, MapPin, Flower2 } from 'lucide-react';
 import TouristInfoCard from './tourist-info-card';
 import TouristInfoHeader from './tourist-info-header';
 import { attractions } from './tourist-info-data';
@@ -66,7 +66,7 @@ function renderFooter(weddingCity: string) {
 function renderDayTrips() {
   return (
     <section className="mb-20">
-      <TouristInfoHeader title="Day Trips" icon={<Plane className="w-6 h-6 text-brown-600" />} />
+      <TouristInfoHeader title="Day Trips" />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {attractions.dayTrips.map((attraction, index) => (
           <TouristInfoCard key={index} attraction={attraction} />
@@ -79,10 +79,7 @@ function renderDayTrips() {
 function renderFoodAndDrink() {
   return (
     <section className="mb-20">
-      <TouristInfoHeader
-        title="Food & Drink"
-        icon={<Utensils className="w-6 h-6 text-brown-600" />}
-      />
+      <TouristInfoHeader title="Food & Drink" />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {attractions.food.map((attraction, index) => (
           <TouristInfoCard key={index} attraction={attraction} />
@@ -95,10 +92,7 @@ function renderFoodAndDrink() {
 function renderRomanticSpots() {
   return (
     <section className="mb-20">
-      <TouristInfoHeader
-        title="Romantic Spots"
-        icon={<Flower className="w-6 h-6 text-brown-600" />}
-      />
+      <TouristInfoHeader title="Romantic Spots" />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {attractions.romantic.map((attraction, index) => (
           <TouristInfoCard key={index} attraction={attraction} />
@@ -111,10 +105,7 @@ function renderRomanticSpots() {
 function renderHistoricalSites() {
   return (
     <section className="mb-20">
-      <TouristInfoHeader
-        title="Historical Sites"
-        icon={<Camera className="w-6 h-6 text-brown-600" />}
-      />
+      <TouristInfoHeader title="Historical Sites" />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {attractions.historical.map((attraction, index) => (
           <TouristInfoCard key={index} attraction={attraction} />

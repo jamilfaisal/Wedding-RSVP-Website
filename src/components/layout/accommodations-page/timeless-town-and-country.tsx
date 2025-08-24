@@ -1,4 +1,3 @@
-import { Flower2 } from 'lucide-react';
 import AccommodationsHeader from './accommodations-header';
 import HotelCard from './hotel-card';
 import { timelessStays } from './hotels-data';
@@ -6,10 +5,7 @@ import { timelessStays } from './hotels-data';
 function TimelessTownAndCountry() {
   return (
     <section className="mb-20">
-      <AccommodationsHeader
-        title="Timeless Town & Country"
-        icon={<Flower2 className="w-6 h-6 text-brown-600" />}
-      />
+      <AccommodationsHeader title="Timeless Town & Country" />
       <div className="text-center mb-8">
         <p className="text-lg text-brown-600 italic" style={{ fontFamily: 'var(--font-serif)' }}>
           Chic addresses with character and great locations.
