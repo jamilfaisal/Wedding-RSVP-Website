@@ -7,7 +7,7 @@ import { Globe } from 'lucide-react';
 
 const languages = [
   { code: 'en', name: 'English', flag: '🇺🇸' },
-  { code: 'ar', name: 'العربية', flag: '🇸🇦' },
+  // { code: 'ar', name: 'العربية', flag: '🇸🇦' },
 ];
 
 export default function LanguageSwitcher({ isMobileMenuOpen }: { isMobileMenuOpen: boolean }) {
@@ -46,11 +46,7 @@ export default function LanguageSwitcher({ isMobileMenuOpen }: { isMobileMenuOpe
 
       {isOpen && (
         <>
-          <div
-            className={`absolute mt-4 w-48 rounded-lg bg-white shadow-lg border border-sage-200 z-20 ${
-              currentLocale === 'ar' ? 'left-0' : 'right-0'
-            }`}
-          >
+          <div className="absolute end-0 mt-4 w-48 rounded-lg bg-white shadow-lg border border-sage-200 z-20">
             {languages.map((language) => (
               <button
                 key={language.code}
