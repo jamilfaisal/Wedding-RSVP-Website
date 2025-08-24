@@ -14,17 +14,17 @@ export function checkIsHomePage(pathname: string): boolean {
   );
 }
 
-export function formatWeddingStartTime(): string {
-  return formatTime(weddingStartDate);
+export function formatWeddingStartTime(locale: string): string {
+  return formatTime(weddingStartDate, locale);
 }
 
-export function formatWeddingEndTime(): string {
-  return formatTime(weddingEndDate);
+export function formatWeddingEndTime(locale: string): string {
+  return formatTime(weddingEndDate, locale);
 }
 
 // Output example: 4:00 PM
-function formatTime(time: Date): string {
-  return new Intl.DateTimeFormat('en-US', {
+function formatTime(time: Date, locale: string): string {
+  return new Intl.DateTimeFormat(locale, {
     timeZone: weddingTimezone,
     hour: 'numeric',
     minute: '2-digit',
@@ -32,21 +32,21 @@ function formatTime(time: Date): string {
   }).format(time);
 }
 
-export function formatRSVPDeadline(): string {
-  return formatDate(rsvpDeadline);
+export function formatRSVPDeadline(locale: string): string {
+  return formatDate(rsvpDeadline, locale);
 }
 
-export function formatWeddingStartDate(): string {
-  return formatDate(weddingStartDate);
+export function formatWeddingStartDate(locale: string): string {
+  return formatDate(weddingStartDate, locale);
 }
 
-export function formatWeddingEndDate(): string {
-  return formatDate(weddingEndDate);
+export function formatWeddingEndDate(locale: string): string {
+  return formatDate(weddingEndDate, locale);
 }
 
 // Output example: December 20, 2025
-function formatDate(dateToFormat: Date): string {
-  return new Intl.DateTimeFormat('en-US', {
+function formatDate(dateToFormat: Date, locale: string): string {
+  return new Intl.DateTimeFormat(locale, {
     timeZone: weddingTimezone,
     year: 'numeric',
     month: 'long',
@@ -59,9 +59,14 @@ export function getMonthAsFullWord(date: Date, locale: string): string {
   return date.toLocaleString(locale, { month: 'long' });
 }
 
-// Output example: 20th
-export function getDayWithSuffix(date: Date): string {
+// Output example: 20th (English) or ٢٠ (Arabic)
+export function getDayWithSuffix(date: Date, locale: string): string {
   const day = date.getDate();
+
+  if (locale === 'ar') {
+    return new Intl.NumberFormat('ar-EG').format(day);
+  }
+
   const suffix =
     day % 10 === 1 && day !== 11
       ? 'st'

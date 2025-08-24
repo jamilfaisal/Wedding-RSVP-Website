@@ -38,5 +38,5 @@ export async function getServerTranslationWithLocale() {
   const localeMatch = pathname.match(/\/([a-z]{2})\//);
   const locale = (localeMatch?.[1] === 'ar' ? 'ar' : 'en') as Locale;
 
-  return getServerTranslation(locale);
+  return { ...getServerTranslation(locale), locale };
 }

@@ -19,7 +19,7 @@ function WeatherWidget(locale: string) {
             </p>
             <p className="text-brown-500 text-sm text-center mt-2">
               {weddingCountry} weather forecast for {getMonthAsFullWord(weddingStartDate, locale)}{' '}
-              {getDayWithSuffix(weddingStartDate)}
+              {getDayWithSuffix(weddingStartDate, locale)}
             </p>
           </div>
         </div>

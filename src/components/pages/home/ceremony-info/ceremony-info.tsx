@@ -19,8 +19,8 @@ function CeremonyInfo() {
 
           <div className="space-y-8 lg:ps-4">
             {renderVenueLocation()}
-            {renderWeddingSchedule()}
-            {renderLocalTime()}
+            {renderWeddingSchedule(locale)}
+            {renderLocalTime(locale)}
             {WeatherWidget(locale)}
           </div>
         </div>
@@ -29,7 +29,7 @@ function CeremonyInfo() {
   );
 }
 
-function renderLocalTime() {
+function renderLocalTime(locale: string) {
   return (
     <div className="bg-white rounded-lg p-6 shadow-md border-2 border-brown-100">
       <div className="flex items-start gap-4">
@@ -41,9 +41,9 @@ function renderLocalTime() {
           <div className="space-y-2 text-brown-600">
             <div className="flex justify-between items-center">
               <span className="font-serif">{weddingCity} (Local Time):</span>
-              <span className="font-light">{formatWeddingStartTime()}</span>
+              <span className="font-light">{formatWeddingStartTime(locale)}</span>
             </div>
-            <p className="text-sm text-brown-500 italic mt-2">{formatWeddingStartDate()}</p>
+            <p className="text-sm text-brown-500 italic mt-2">{formatWeddingStartDate(locale)}</p>
           </div>
         </div>
       </div>
@@ -51,7 +51,7 @@ function renderLocalTime() {
   );
 }
 
-function renderWeddingSchedule() {
+function renderWeddingSchedule(locale: string) {
   return (
     <div className="bg-white rounded-lg p-6 shadow-md border-2 border-orange-100">
       <div className="flex items-start gap-4">
@@ -63,7 +63,7 @@ function renderWeddingSchedule() {
           <div className="text-brown-600 leading-relaxed space-y-2">
             <div className="flex justify-between items-center py-1">
               <span className="font-serif">Reception:</span>
-              <span className="font-light">{formatWeddingStartTime()}</span>
+              <span className="font-light">{formatWeddingStartTime(locale)}</span>
             </div>
             <div className="flex justify-between items-center py-1">
               <span className="font-serif">Celebration:</span>

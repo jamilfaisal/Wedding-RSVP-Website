@@ -1,20 +1,16 @@
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { ArrowDown, Flower, Flower2, Heart, Leaf } from 'lucide-react';
 import BackgroundImage from './background-image';
 import BotanicalDecoration from './botanical-decoration';
 import ArabicVerse from './arabic-verse';
 import WeddingCountdown from './wedding-countdown/wedding-countdown';
 import SaveTheDate from './save-the-date';
-import {
-  groomFullName,
-  brideFullName,
-  weddingCity,
-  weddingCountry,
-} from '@/lib/config/wedding-config';
 import { formatWeddingStartDate, formatWeddingStartTime } from '@/components/layout/utils';
 
 function HeroSection() {
   const [isVisible, setIsVisible] = useState(false);
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     setIsVisible(true);
@@ -27,13 +23,13 @@ function HeroSection() {
     >
       <BackgroundImage />
       <BotanicalDecoration />
-      {renderHeroSectionContent(isVisible)}
+      {renderHeroSectionContent(isVisible, t, i18n.language)}
       {renderBottomGradient()}
     </section>
   );
 }
 
-function renderHeroSectionContent(isVisible: boolean) {
+function renderHeroSectionContent(isVisible: boolean, t: (key: string) => string, locale: string) {
   return (
     <div className="relative z-10 text-center px-8 max-w-4xl mx-auto">
       <div
@@ -46,9 +42,9 @@ function renderHeroSectionContent(isVisible: boolean) {
           {renderBottomLeftFloralDecor()}
           {renderBottomRightFloralDecor()}
           <ArabicVerse />
-          {renderGroomAndBrideNames()}
-          {renderWeddingInvitationMessage()}
-          {renderWeddingDateCard()}
+          {renderGroomAndBrideNames(t)}
+          {renderWeddingInvitationMessage(t)}
+          {renderWeddingDateCard(t, locale)}
           <WeddingCountdown />
           <div className="space-y-6">
             <SaveTheDate />
@@ -60,31 +56,31 @@ function renderHeroSectionContent(isVisible: boolean) {
   );
 }
 
-function renderWeddingInvitationMessage() {
+function renderWeddingInvitationMessage(t: (key: string) => string) {
   return (
     <p
       className="text-xl md:text-2xl text-brown-600 font-light tracking-wide mb-8"
       style={{ fontFamily: 'var(--font-serif)' }}
     >
-      cordially invite you to celebrate their wedding
+      {t('hero.invitationMessage')}
     </p>
   );
 }
 
-function renderGroomAndBrideNames() {
+function renderGroomAndBrideNames(t: (key: string) => string) {
   return (
     <h1
       className="text-6xl md:text-6xl text-brown-800 mb-6 leading-tight tracking-wide"
       style={{ fontFamily: 'var(--font-harrington)' }}
     >
-      {groomFullName}
+      {t('weddingInfo.groomFullName')}
       <span className="block text-5xl md:text-6xl text-sage-600 my-2">&</span>
-      {brideFullName}
+      {t('weddingInfo.brideFullName')}
     </h1>
   );
 }
 
-function renderWeddingDateCard() {
+function renderWeddingDateCard(t: (key: string) => string, locale: string) {
   return (
     <div className="inline-block bg-gradient-to-r from-sage-50 to-orange-50 rounded-lg px-10 py-8 shadow-lg border-2 border-sage-100 mb-8">
       <div className="text-center">
@@ -92,7 +88,7 @@ function renderWeddingDateCard() {
           className="text-brown-600 mb-3 tracking-wide"
           style={{ fontFamily: 'var(--font-serif)' }}
         >
-          Join us on
+          {t('hero.joinUsOn')}
         </p>
         <div className="flex items-center justify-center gap-4 mb-3">
           <div className="w-4 h-px bg-sage-300"></div>
@@ -100,12 +96,13 @@ function renderWeddingDateCard() {
             className="text-3xl md:text-4xl text-sage-700"
             style={{ fontFamily: 'var(--font-harrington)' }}
           >
-            {formatWeddingStartDate()}
+            {formatWeddingStartDate(locale)}
           </p>
           <div className="w-4 h-px bg-sage-300"></div>
         </div>
         <p className="text-brown-500" style={{ fontFamily: 'var(--font-serif)' }}>
-          {formatWeddingStartTime()} • {weddingCity}, {weddingCountry}
+          {formatWeddingStartTime(locale)} {'•'} {t('weddingInfo.weddingCity')},{' '}
+          {t('weddingInfo.weddingCountry')}
         </p>
       </div>
     </div>

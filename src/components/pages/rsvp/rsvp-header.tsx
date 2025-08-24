@@ -5,7 +5,7 @@ import { getServerTranslationWithLocale } from '@/lib/i18n/server-translations';
 import { formatRSVPDeadline } from '@/components/layout/utils';
 
 async function RSVPHeader() {
-  const { t } = await getServerTranslationWithLocale();
+  const { t, locale } = await getServerTranslationWithLocale();
   return (
     <div className="text-center mb-7 relative">
       {renderTopBorder()}
@@ -27,7 +27,7 @@ async function RSVPHeader() {
         className="text-xl text-brown-600 font-light mt-4"
         style={{ fontFamily: 'var(--font-serif)' }}
       >
-        {t('rsvp.deadlineMessage')} {formatRSVPDeadline()}
+        {t('rsvp.deadlineMessage')} {formatRSVPDeadline(locale)}
       </p>
 
       {renderFloralPicture()}

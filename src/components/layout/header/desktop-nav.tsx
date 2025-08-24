@@ -10,7 +10,6 @@ interface DesktopNavProps {
   pageLinks: DesktopLink[];
   currentPage: string;
   isHomePage: boolean;
-  scrollToSection: (hash: string) => void;
   handleNavigation: (href: string, type: 'scroll' | 'page') => void;
 }
 
@@ -19,15 +18,12 @@ function DesktopNav({
   pageLinks,
   currentPage,
   isHomePage,
-  scrollToSection,
   handleNavigation,
 }: DesktopNavProps) {
   return (
     <div className="hidden lg:flex">
       <ul className="flex gap-8">
-        {sectionLinks.map((link) =>
-          renderSectionLinks(link, isHomePage, scrollToSection, handleNavigation)
-        )}
+        {sectionLinks.map((link) => renderSectionLinks(link, isHomePage, handleNavigation))}
         {pageLinks.map((link) => renderPageLinks(link, currentPage, handleNavigation))}
       </ul>
     </div>
@@ -65,7 +61,6 @@ function renderBotanicalDot() {
 function renderSectionLinks(
   link: DesktopLink,
   isHomePage: boolean,
-  scrollToSection: (hash: string) => void,
   handleNavigation: (href: string, type: 'scroll' | 'page') => void
 ) {
   return (
@@ -84,7 +79,6 @@ function renderSectionLinks(
   );
 }
 
-export default DesktopNav;
 function renderUnderline(isHomePage: boolean) {
   return (
     <span
@@ -93,3 +87,5 @@ function renderUnderline(isHomePage: boolean) {
     />
   );
 }
+
+export default DesktopNav;

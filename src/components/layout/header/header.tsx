@@ -123,7 +123,6 @@ function Header() {
               pageLinks={pageLinks}
               currentPage={currentPage}
               isHomePage={isHomePage}
-              scrollToSection={scrollToSection}
               handleNavigation={handleNavigation}
             />
           </div>
