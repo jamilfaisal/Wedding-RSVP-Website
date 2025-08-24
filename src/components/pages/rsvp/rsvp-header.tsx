@@ -1,8 +1,8 @@
 import { Leaf, Flower, Heart, Flower2 } from 'lucide-react';
-import { formatRSVPDeadline } from '../utils';
 import floralIllustration from '/public/images/floral-illustration.png';
 import ImageWithFallback from '../../ui/image-with-fallback';
 import { getServerTranslationWithLocale } from '@/lib/i18n/server-translations';
+import { formatRSVPDeadline } from '@/components/layout/utils';
 
 async function RSVPHeader() {
   const { t } = await getServerTranslationWithLocale();

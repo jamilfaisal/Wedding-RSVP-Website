@@ -1,4 +1,4 @@
-import RsvpPage from '@/components/layout/rsvp-page';
+import RsvpPage from '@/components/pages/rsvp';
 
 export default function RsvpPageRoute() {
   return <RsvpPage />;

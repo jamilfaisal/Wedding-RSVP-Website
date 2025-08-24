@@ -2,9 +2,9 @@ import { MapPin, Clock, Globe } from 'lucide-react';
 import ceremonyPhoto from '/public/images/ceremony-photo.png';
 import floralIllustration from '/public/images/floral-illustration.png';
 import ImageWithFallback from '../../../ui/image-with-fallback';
-import { formatWeddingStartTime, formatWeddingStartDate } from '../../utils';
 import WeatherWidget from './weather-widget';
 import { weddingCity, weddingCountry } from '@/lib/config/wedding-config';
+import { formatWeddingStartTime, formatWeddingStartDate } from '@/components/layout/utils';
 
 function CeremonyInfo() {
   return (

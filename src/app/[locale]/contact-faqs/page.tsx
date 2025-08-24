@@ -1,4 +1,4 @@
-import ContactFAQsPage from '@/components/layout/contactfaqs-page';
+import ContactFAQsPage from '@/components/pages/contact-faqs';
 
 export default function ContactFAQsPageRoute() {
   return <ContactFAQsPage />;

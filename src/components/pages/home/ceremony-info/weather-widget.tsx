@@ -1,5 +1,5 @@
+import { getMonthAsFullWord, getDayWithSuffix } from '@/components/layout/utils';
 import { weddingCountry, weddingStartDate } from '@/lib/config/wedding-config';
-import { getDayWithSuffix, getMonthAsFullWord } from '../../utils';
 
 // TODO: Implement Weather API integration
 function WeatherWidget() {

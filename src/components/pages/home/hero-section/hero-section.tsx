@@ -5,13 +5,13 @@ import BotanicalDecoration from './botanical-decoration';
 import ArabicVerse from './arabic-verse';
 import WeddingCountdown from './wedding-countdown/wedding-countdown';
 import SaveTheDate from './save-the-date';
-import { formatWeddingStartDate, formatWeddingStartTime } from '../../utils';
 import {
   groomFullName,
   brideFullName,
   weddingCity,
   weddingCountry,
 } from '@/lib/config/wedding-config';
+import { formatWeddingStartDate, formatWeddingStartTime } from '@/components/layout/utils';
 
 function HeroSection() {
   const [isVisible, setIsVisible] = useState(false);
