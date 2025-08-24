@@ -48,8 +48,8 @@ function renderFloralPicture() {
 function renderTopBorder() {
   return (
     <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-80">
-      <div className="flex items-center justify-center space-x-4">
-        <div className="flex items-center space-x-2">
+      <div className="flex items-center justify-center gap-4">
+        <div className="flex items-center gap-2">
           <Leaf className="w-4 h-4 text-sage-400 transform -rotate-45" />
           <div className="w-2 h-2 bg-ivory-300 rounded-full"></div>
           <Flower className="w-5 h-5 text-orange-300" />
@@ -57,7 +57,7 @@ function renderTopBorder() {
         <div className="w-16 h-px bg-gradient-to-r from-sage-300 via-orange-200 to-sage-300"></div>
         <Heart className="w-6 h-6 text-brown-400" />
         <div className="w-16 h-px bg-gradient-to-l from-sage-300 via-orange-200 to-sage-300"></div>
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center gap-2">
           <Flower2 className="w-5 h-5 text-sage-400" />
           <div className="w-2 h-2 bg-orange-200 rounded-full"></div>
           <Leaf className="w-4 h-4 text-orange-300 transform rotate-45" />

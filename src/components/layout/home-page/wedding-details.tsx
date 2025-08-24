@@ -31,21 +31,21 @@ function renderCards() {
 function renderTransportationCard() {
   return (
     <div className="bg-white rounded-lg p-8 shadow-md border-2 border-orange-100">
-      <div className="flex items-start space-x-6">
+      <div className="flex items-start gap-6">
         <div className="w-16 h-16 bg-gradient-to-br from-orange-100 to-orange-200 rounded-lg flex items-center justify-center flex-shrink-0 border-2 border-orange-200">
           <Car className="w-8 h-8 text-orange-700" />
         </div>
         <div className="flex-1">
           <h3 className="text-2xl font-serif text-brown-800 mb-4">Getting There</h3>
           <div className="space-y-4 text-brown-600">
-            <div className="border-l-2 border-sage-200 pl-4">
+            <div className="border-s-2 border-sage-200 ps-4">
               <h4 className="font-serif font-medium text-brown-800 mb-2">Transportation Details</h4>
               <p className="font-light leading-relaxed italic text-brown-500">
                 Transportation information will be shared with invited guests closer to the wedding
                 date.
               </p>
             </div>
-            <div className="border-l-2 border-orange-200 pl-4">
+            <div className="border-s-2 border-orange-200 ps-4">
               <h4 className="font-serif font-medium text-brown-800 mb-2">
                 Getting to {weddingCountry}
               </h4>
@@ -55,7 +55,7 @@ function renderTransportationCard() {
                 access to the venue.
               </p>
             </div>
-            <div className="border-l-2 border-brown-200 pl-4">
+            <div className="border-s-2 border-brown-200 ps-4">
               <h4 className="font-serif font-medium text-brown-800 mb-2">Local Transportation</h4>
               <p className="font-light leading-relaxed">
                 {weddingCountry} has excellent public transportation including metro, buses, and
@@ -72,14 +72,14 @@ function renderTransportationCard() {
 function renderDressCodeCard() {
   return (
     <div className="bg-white rounded-lg p-8 shadow-md border-2 border-sage-100">
-      <div className="flex items-start space-x-6">
+      <div className="flex items-start gap-6">
         <div className="w-16 h-16 bg-gradient-to-br from-sage-100 to-sage-200 rounded-lg flex items-center justify-center flex-shrink-0 border-2 border-sage-200">
           <Shirt className="w-8 h-8 text-sage-700" />
         </div>
         <div className="flex-1">
           <h3 className="text-2xl font-serif text-brown-800 mb-4">Attire</h3>
           <div className="space-y-4">
-            <div className="flex items-start space-x-3">
+            <div className="flex items-start gap-3">
               <div className="w-3 h-3 bg-brown-400 rounded-full mt-1.5 flex-shrink-0"></div>
               <div>
                 <span className="text-brown-700 font-serif font-medium">Formal Evening Wear</span>
@@ -88,7 +88,7 @@ function renderDressCodeCard() {
                 </p>
               </div>
             </div>
-            <div className="flex items-start space-x-3">
+            <div className="flex items-start gap-3">
               <div className="w-3 h-3 bg-sage-400 rounded-full mt-1.5 flex-shrink-0"></div>
               <div>
                 <span className="text-brown-700 font-serif font-medium">Warm Winter Colors</span>
@@ -97,7 +97,7 @@ function renderDressCodeCard() {
                 </p>
               </div>
             </div>
-            <div className="flex items-start space-x-3">
+            <div className="flex items-start gap-3">
               <div className="w-3 h-3 bg-orange-400 rounded-full mt-1.5 flex-shrink-0"></div>
               <div>
                 <span className="text-brown-700 font-serif font-medium">Seasonal Elegance</span>

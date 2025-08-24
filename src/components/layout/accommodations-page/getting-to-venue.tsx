@@ -7,7 +7,7 @@ function GettingToVenue() {
       <AccommodationsHeader title="Getting to the Venue" />
       <div className="max-w-4xl mx-auto space-y-6">
         <div className="bg-white/95 rounded-lg p-6 shadow-lg border border-sage-100 relative">
-          <div className="absolute top-3 right-3">
+          <div className="absolute top-3 end-3">
             <Flower className="w-4 h-4 text-pastel-pink-400 opacity-40" />
           </div>
           <div className="space-y-4">
@@ -23,7 +23,7 @@ function GettingToVenue() {
 
 function renderHotelShuttleInfo() {
   return (
-    <div className="flex items-start space-x-3">
+    <div className="flex items-start gap-3">
       <Bus className="w-5 h-5 text-orange-600 mt-1" />
       <div>
         <h4
@@ -38,7 +38,7 @@ function renderHotelShuttleInfo() {
         </p>
         <a
           href="#"
-          className="inline-flex items-center space-x-1 text-sm text-sage-700 hover:text-brown-700 border border-sage-300 hover:border-orange-300 rounded-lg px-2 py-1 transition-all duration-200"
+          className="inline-flex items-center gap-1 text-sm text-sage-700 hover:text-brown-700 border border-sage-300 hover:border-orange-300 rounded-lg px-2 py-1 transition-all duration-200"
           style={{ fontFamily: 'var(--font-serif)' }}
         >
           <ExternalLink className="w-3 h-3" />
@@ -51,7 +51,7 @@ function renderHotelShuttleInfo() {
 
 function renderTrainInfo() {
   return (
-    <div className="flex items-start space-x-3">
+    <div className="flex items-start gap-3">
       <Train className="w-5 h-5 text-orange-600 mt-1" />
       <div>
         <h4
@@ -71,7 +71,7 @@ function renderTrainInfo() {
 
 function renderCarInfo() {
   return (
-    <div className="flex items-start space-x-3">
+    <div className="flex items-start gap-3">
       <Car className="w-5 h-5 text-orange-600 mt-1" />
       <div>
         <h4

@@ -94,7 +94,7 @@ function renderWeddingDateCard() {
         >
           Join us on
         </p>
-        <div className="flex items-center justify-center space-x-4 mb-3">
+        <div className="flex items-center justify-center gap-4 mb-3">
           <div className="w-4 h-px bg-sage-300"></div>
           <p
             className="text-3xl md:text-4xl text-sage-700"
@@ -114,8 +114,8 @@ function renderWeddingDateCard() {
 
 function renderBottomRightFloralDecor() {
   return (
-    <div className="absolute bottom-4 right-4">
-      <div className="flex items-center space-x-1">
+    <div className="absolute bottom-4 end-4">
+      <div className="flex items-center gap-1">
         <div className="w-2 h-2 bg-orange-200 rounded-full"></div>
         <Leaf className="w-4 h-4 text-sage-400 opacity-60" />
       </div>
@@ -125,8 +125,8 @@ function renderBottomRightFloralDecor() {
 
 function renderBottomLeftFloralDecor() {
   return (
-    <div className="absolute bottom-4 left-4">
-      <div className="flex items-center space-x-1">
+    <div className="absolute bottom-4 start-4">
+      <div className="flex items-center gap-1">
         <Leaf className="w-4 h-4 text-orange-300 opacity-60" />
         <div className="w-2 h-2 bg-sage-200 rounded-full"></div>
       </div>
@@ -136,8 +136,8 @@ function renderBottomLeftFloralDecor() {
 
 function renderTopRightFloralDecor() {
   return (
-    <div className="absolute top-4 right-4">
-      <div className="flex items-center space-x-1">
+    <div className="absolute top-4 end-4">
+      <div className="flex items-center gap-1">
         <div className="w-2 h-2 bg-sage-200 rounded-full"></div>
         <Flower2 className="w-4 h-4 text-orange-300 opacity-60" />
       </div>
@@ -147,8 +147,8 @@ function renderTopRightFloralDecor() {
 
 function renderTopLeftCornerFloralDecor() {
   return (
-    <div className="absolute top-4 left-4">
-      <div className="flex items-center space-x-1">
+    <div className="absolute top-4 start-4">
+      <div className="flex items-center gap-1">
         <Flower className="w-4 h-4 text-sage-400 opacity-60" />
         <div className="w-2 h-2 bg-orange-200 rounded-full"></div>
       </div>
@@ -159,13 +159,13 @@ function renderTopLeftCornerFloralDecor() {
 function renderTopBorderFloralDecor() {
   return (
     <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-white px-6 py-2 rounded-full border border-sage-200 shadow-md">
-      <div className="flex items-center space-x-4">
-        <div className="flex items-center space-x-1">
+      <div className="flex items-center gap-4">
+        <div className="flex items-center gap-1">
           <Leaf className="w-4 h-4 text-sage-400" />
           <Flower className="w-5 h-5 text-orange-300" />
         </div>
         <Heart className="w-6 h-6 text-brown-400" />
-        <div className="flex items-center space-x-1">
+        <div className="flex items-center gap-1">
           <Flower2 className="w-5 h-5 text-sage-400" />
           <Leaf className="w-4 h-4 text-orange-300" />
         </div>
@@ -184,7 +184,7 @@ function renderScrollDownIndicator() {
 
 function renderBottomGradient() {
   return (
-    <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white via-ivory-50/80 to-transparent"></div>
+    <div className="absolute bottom-0 start-0 end-0 h-24 bg-gradient-to-t from-white via-ivory-50/80 to-transparent"></div>
   );
 }
 

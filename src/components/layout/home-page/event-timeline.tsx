@@ -76,7 +76,7 @@ function renderBottomMessage() {
     <div className="text-center mt-16">
       <div className="bg-gradient-to-r from-sage-50/90 to-orange-50/90 backdrop-blur-sm rounded-lg p-8 shadow-md border-2 border-sage-100 max-w-2xl mx-auto">
         <div className="mb-4">
-          <div className="flex items-center justify-center space-x-4">
+          <div className="flex items-center justify-center gap-4">
             <div className="w-8 h-px bg-brown-300"></div>
             <div className="w-4 h-4 border-2 border-brown-300 rounded-full flex items-center justify-center">
               <div className="w-1 h-1 bg-orange-400 rounded-full"></div>
@@ -88,7 +88,7 @@ function renderBottomMessage() {
           &ldquo;We can&apos;t wait to celebrate this magical evening with all our cherished family
           and friends. Thank you for being such an important part of our journey together!&rdquo;
         </p>
-        <div className="flex items-center justify-center space-x-2">
+        <div className="flex items-center justify-center gap-2">
           <div className="w-1 h-1 bg-sage-300 rounded-full animate-pulse"></div>
           <div
             className="w-2 h-2 bg-orange-300 rounded-full animate-pulse"
@@ -126,11 +126,11 @@ function renderSpacer() {
 
 function renderContent(isEven: boolean, event: timelineEvent) {
   return (
-    <div className={`flex-1 ${isEven ? 'md:pr-24 pl-20' : 'md:pl-24 pl-20'} md:pl-0`}>
-      <div className={`${isEven ? 'md:text-right' : 'md:text-left'} text-left`}>
+    <div className={`flex-1 ${isEven ? 'md:pe-24 ps-20' : 'md:ps-24 ps-20'} md:ps-0`}>
+      <div className={`${isEven ? 'md:text-end' : 'md:text-start'} text-start`}>
         <div className="bg-white rounded-lg p-8 shadow-md border-2 border-sage-100 hover:shadow-lg transition-shadow duration-300">
           <div
-            className={`flex items-center space-x-3 mb-3 ${isEven ? 'md:justify-end' : 'md:justify-start'} justify-start`}
+            className={`flex items-center gap-3 mb-3 ${isEven ? 'md:justify-end' : 'md:justify-start'} justify-start`}
           >
             <div
               className={`w-3 h-3 bg-gradient-to-br ${event.bgColor} ${event.borderColor} border rounded-full`}

@@ -11,16 +11,16 @@ function Contact() {
   return (
     <div className="lg:col-span-1">
       <div className="bg-white/95 backdrop-blur-sm rounded-lg p-8 shadow-xl border border-sage-100 relative">
-        <div className="absolute top-4 left-4">
+        <div className="absolute top-4 start-4">
           <Flower className="w-5 h-5 text-sage-400 opacity-50" />
         </div>
-        <div className="absolute top-4 right-4">
+        <div className="absolute top-4 end-4">
           <Flower2 className="w-5 h-5 text-orange-300 opacity-50" />
         </div>
-        <div className="absolute bottom-4 left-4">
+        <div className="absolute bottom-4 start-4">
           <Leaf className="w-5 h-5 text-orange-300 opacity-50" />
         </div>
-        <div className="absolute bottom-4 right-4">
+        <div className="absolute bottom-4 end-4">
           <Leaf className="w-5 h-5 text-sage-400 opacity-50" />
         </div>
 
@@ -67,7 +67,7 @@ function renderWeddingVenue() {
         >
           Wedding Venue
         </h4>
-        <div className="flex items-center justify-center space-x-2 text-brown-600">
+        <div className="flex items-center justify-center gap-2 text-brown-600">
           <MapPin className="w-4 h-4 text-sage-600" />
           <span style={{ fontFamily: 'var(--font-serif)' }}>
             {weddingCity}, {weddingCountry}
@@ -87,7 +87,7 @@ function renderWeddingVenue() {
 function renderEmail() {
   return (
     <div className="space-y-3">
-      <div className="flex items-center justify-center space-x-3">
+      <div className="flex items-center justify-center gap-3">
         <Mail className="w-5 h-5 text-sage-600" />
         <a
           href={`mailto:${email}`}
@@ -112,7 +112,7 @@ function renderCoupleNames() {
 function renderHeader() {
   return (
     <div className="text-center mb-8">
-      <div className="flex items-center justify-center space-x-4 mb-6">
+      <div className="flex items-center justify-center gap-4 mb-6">
         <div className="w-12 h-px bg-sage-300"></div>
         <div className="w-8 h-8 bg-gradient-to-br from-sage-100 to-orange-100 rounded-full flex items-center justify-center border-2 border-sage-200">
           <Users className="w-4 h-4 text-brown-600" />

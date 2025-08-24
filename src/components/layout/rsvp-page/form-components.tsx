@@ -15,11 +15,11 @@ const inputBaseClasses =
   'w-full p-4 border-2 rounded-lg focus:ring-sage-200 bg-ivory-50/50 text-brown-800';
 const errorClasses = 'text-red-600 text-sm mt-1';
 const listboxButtonClasses =
-  'relative w-full cursor-default rounded-lg border-2 bg-ivory-50/50 py-4 pl-4 pr-10 text-left focus:outline-none focus:ring-2 focus:ring-sage-200';
+  'relative w-full cursor-default rounded-lg border-2 bg-ivory-50/50 py-4 ps-4 pe-10 text-start focus:outline-none focus:ring-2 focus:ring-sage-200';
 const listboxOptionsClasses =
   'absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none';
 const listboxOptionClasses =
-  'relative cursor-default select-none py-2 pl-4 pr-4 data-[focus]:bg-sage-100 data-[focus]:text-sage-900 text-brown-800';
+  'relative cursor-default select-none py-2 ps-4 pe-4 data-[focus]:bg-sage-100 data-[focus]:text-sage-900 text-brown-800';
 
 interface FormFieldProps {
   id: string;
@@ -137,7 +137,7 @@ export function SelectField({
           <span className="block truncate text-brown-800">
             {options.find((option) => option.value === value)?.label || placeholder}
           </span>
-          <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+          <span className="pointer-events-none absolute inset-y-0 end-0 flex items-center pe-2">
             <ChevronDownIcon className="h-5 w-5 text-sage-400" aria-hidden="true" />
           </span>
         </ListboxButton>

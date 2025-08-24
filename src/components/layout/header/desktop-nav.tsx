@@ -24,7 +24,7 @@ function DesktopNav({
 }: DesktopNavProps) {
   return (
     <div className="hidden lg:flex">
-      <ul className="flex space-x-8">
+      <ul className="flex gap-8">
         {sectionLinks.map((link) =>
           renderSectionLinks(link, isHomePage, scrollToSection, handleNavigation)
         )}
@@ -58,7 +58,7 @@ function renderPageLinks(
 
 function renderBotanicalDot() {
   return (
-    <div className="absolute -top-1 -right-1 w-1 h-1 bg-orange-400 rounded-full opacity-0 group-hover:opacity-80 transition-opacity duration-300"></div>
+    <div className="absolute -top-1 -end-1 w-1 h-1 bg-orange-400 rounded-full opacity-0 group-hover:opacity-80 transition-opacity duration-300"></div>
   );
 }
 
@@ -88,7 +88,7 @@ export default DesktopNav;
 function renderUnderline(isHomePage: boolean) {
   return (
     <span
-      className={`absolute -bottom-1 left-0 h-px bg-sage-400 transition-all duration-300
+      className={`absolute -bottom-1 start-0 h-px bg-sage-400 transition-all duration-300
                     ${isHomePage ? 'w-full' : 'w-0 group-hover:w-full'}`}
     />
   );

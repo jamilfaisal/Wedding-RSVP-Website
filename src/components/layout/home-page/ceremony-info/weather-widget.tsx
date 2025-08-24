@@ -5,7 +5,7 @@ import { getDayWithSuffix, getMonthAsFullWord } from '../../utils';
 function WeatherWidget() {
   return (
     <div className="bg-gradient-to-r from-sage-50 to-orange-50 rounded-lg p-6 shadow-md border-2 border-sage-100">
-      <div className="flex items-start space-x-4">
+      <div className="flex items-start gap-4">
         <div className="w-12 h-12 bg-gradient-to-br from-ivory-200 to-ivory-300 rounded-lg flex items-center justify-center flex-shrink-0 border border-ivory-300">
           <div className="w-6 h-6 text-brown-700 flex items-center justify-center">
             <span className="text-lg">☁️</span>

@@ -15,8 +15,8 @@ function AttendanceField({ attending, onChange }: AttendanceFieldProps) {
       >
         Will you be attending? *
       </Label>
-      <div className="flex items-center space-x-4">
-        <div className="flex items-center space-x-4">
+      <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4">
           <Switch
             id="attending"
             checked={attending}

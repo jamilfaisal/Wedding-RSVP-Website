@@ -6,10 +6,10 @@ interface FloralDecorationProps {
 
 export function FloralDecoration({ position }: FloralDecorationProps) {
   const positionClasses = {
-    'top-left': 'absolute top-6 left-6',
-    'top-right': 'absolute top-6 right-6',
-    'bottom-left': 'absolute bottom-6 left-6',
-    'bottom-right': 'absolute bottom-6 right-6',
+    'top-left': 'absolute top-6 start-6',
+    'top-right': 'absolute top-6 end-6',
+    'bottom-left': 'absolute bottom-6 start-6',
+    'bottom-right': 'absolute bottom-6 end-6',
   };
 
   const decorationContent = {
@@ -41,7 +41,7 @@ export function FloralDecoration({ position }: FloralDecorationProps) {
 
   return (
     <div className={positionClasses[position]}>
-      <div className="flex items-center space-x-1">{decorationContent[position]}</div>
+      <div className="flex items-center gap-1">{decorationContent[position]}</div>
     </div>
   );
 }

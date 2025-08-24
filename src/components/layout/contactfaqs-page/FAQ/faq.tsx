@@ -24,7 +24,7 @@ function renderFAQItems() {
 function renderHeader() {
   return (
     <div className="text-center mb-12">
-      <div className="flex items-center justify-center space-x-4 mb-6">
+      <div className="flex items-center justify-center gap-4 mb-6">
         <div className="w-16 h-px bg-gradient-to-r from-transparent via-sage-300 to-transparent"></div>
         <div className="w-10 h-10 bg-gradient-to-br from-sage-100 to-orange-100 rounded-full flex items-center justify-center border-2 border-sage-200">
           <Heart className="w-5 h-5 text-brown-600" />
@@ -34,7 +34,7 @@ function renderHeader() {
       <h2 className="text-4xl text-brown-800 mb-4" style={{ fontFamily: 'var(--font-harrington)' }}>
         Frequently Asked Questions
       </h2>
-      <div className="flex items-center justify-center space-x-2">
+      <div className="flex items-center justify-center gap-2">
         <Flower className="w-4 h-4 text-sage-400 opacity-60" />
         <div className="w-2 h-2 bg-orange-300 rounded-full"></div>
         <Flower2 className="w-4 h-4 text-orange-300 opacity-60" />

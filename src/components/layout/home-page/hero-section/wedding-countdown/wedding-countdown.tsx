@@ -62,16 +62,16 @@ const WeddingCountdown = () => {
     <div className="mb-8">
       <div className="bg-white/95 backdrop-blur-sm rounded-lg p-8 shadow-xl border-2 border-sage-100 relative">
         {/* Corner floral decorations */}
-        <div className="absolute top-3 left-3">
+        <div className="absolute top-3 start-3">
           <Flower className="w-5 h-5 text-sage-400 opacity-50" />
         </div>
-        <div className="absolute top-3 right-3">
+        <div className="absolute top-3 end-3">
           <Flower2 className="w-5 h-5 text-orange-300 opacity-50" />
         </div>
-        <div className="absolute bottom-3 left-3">
+        <div className="absolute bottom-3 start-3">
           <Leaf className="w-5 h-5 text-orange-300 opacity-50" />
         </div>
-        <div className="absolute bottom-3 right-3">
+        <div className="absolute bottom-3 end-3">
           <Leaf className="w-5 h-5 text-sage-400 opacity-50" />
         </div>
 
@@ -88,7 +88,7 @@ const WeddingCountdown = () => {
 function renderCountDownTitleText() {
   return (
     <div className="text-center mb-8 relative z-10">
-      <div className="flex items-center justify-center space-x-4 mb-4">
+      <div className="flex items-center justify-center gap-4 mb-4">
         <div className="w-8 h-px bg-sage-300"></div>
         <div className="w-4 h-4 bg-orange-300 rounded-full"></div>
         <div className="w-8 h-px bg-sage-300"></div>
@@ -137,7 +137,7 @@ function renderCountdown(
 
 function renderDecorativeBottomAccent() {
   return (
-    <div className="flex items-center justify-center space-x-3 mt-8 pt-6 border-t border-sage-100 relative z-10">
+    <div className="flex items-center justify-center gap-3 mt-8 pt-6 border-t border-sage-100 relative z-10">
       <div className="w-2 h-2 bg-sage-300 rounded-full"></div>
       <div className="w-3 h-3 bg-orange-300 rounded-full"></div>
       <div className="w-2 h-2 bg-brown-300 rounded-full"></div>

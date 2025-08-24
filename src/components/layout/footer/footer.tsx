@@ -27,7 +27,7 @@ function Footer() {
 
 function BotanicalDecoration() {
   return (
-    <div className="flex items-center justify-center space-x-2 mb-6">
+    <div className="flex items-center justify-center gap-2 mb-6">
       <div className="w-1 h-1 bg-sage-300 rounded-full"></div>
       <div className="w-2 h-2 bg-orange-300 rounded-full"></div>
       <div className="w-3 h-3 bg-brown-300 rounded-full"></div>
@@ -51,7 +51,7 @@ function Copyright() {
 
 function FooterLogo() {
   return (
-    <div className="flex items-center justify-center space-x-4 mb-6">
+    <div className="flex items-center justify-center gap-4 mb-6">
       <div className="w-16 h-px bg-gradient-to-r from-transparent via-brown-300 to-transparent"></div>
       <div className="w-12 h-12 bg-gradient-to-br from-sage-100 to-sage-200 rounded-full flex items-center justify-center border-2 border-sage-200">
         <div className="w-5 h-5 border-2 border-sage-600 rounded-sm transform rotate-45"></div>

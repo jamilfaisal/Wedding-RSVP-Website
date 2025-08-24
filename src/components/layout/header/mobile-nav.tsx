@@ -72,7 +72,7 @@ function renderDropdown(
 ) {
   return (
     <div
-      className={`absolute top-full right-0 mt-2 w-64 origin-top-right rounded-lg border border-sage-200 bg-white/95 backdrop-blur-sm shadow-lg ring-1 ring-black/5 transition-all duration-200 z-50 ${isMobileMenuOpen ? 'scale-100 opacity-100' : 'pointer-events-none scale-95 opacity-0'}`}
+      className={`absolute top-full end-0 mt-2 w-64 origin-top-end rounded-lg border border-sage-200 bg-white/95 backdrop-blur-sm shadow-lg ring-1 ring-black/5 transition-all duration-200 z-50 ${isMobileMenuOpen ? 'scale-100 opacity-100' : 'pointer-events-none scale-95 opacity-0'}`}
       role="menu"
       aria-hidden={!isMobileMenuOpen}
     >
@@ -82,13 +82,13 @@ function renderDropdown(
             <button
               role="menuitem"
               onClick={() => handleNavigation(item.href, item.typeOfHref)}
-              className={`cursor-pointer w-full text-left px-6 py-3 text-brown-700 hover:text-sage-600 hover:bg-sage-50 transition-colors duration-150 ${
+              className={`cursor-pointer w-full text-start px-6 py-3 text-brown-700 hover:text-sage-600 hover:bg-sage-50 transition-colors duration-150 ${
                 (isHomePage && item.typeOfHref === 'scroll') || currentPage === item.href
                   ? 'text-sage-600 bg-sage-50'
                   : ''
               }`}
             >
-              <div className="flex items-center space-x-3">
+              <div className="flex items-center gap-3">
                 <div className="w-2 h-2 bg-sage-400 rounded-full opacity-60" />
                 <span>{item.label}</span>
               </div>

@@ -11,7 +11,7 @@ function HotelCard({ hotel, isMain = false }: { hotel: Hotel; isMain?: boolean }
 
       <div className="p-8">
         {/* Corner floral accents */}
-        <div className="absolute bottom-3 left-3">
+        <div className="absolute bottom-3 start-3">
           <Flower2 className="w-4 h-4 text-pastel-purple-400 opacity-50" />
         </div>
 
@@ -43,7 +43,7 @@ function renderHotelLinks(hotel: Hotel) {
         <a
           key={index}
           href={link.url}
-          className="inline-flex items-center space-x-1 text-sm text-sage-700 hover:text-brown-700 border border-sage-300 hover:border-orange-300 rounded-lg px-2 py-1 transition-all duration-200"
+          className="inline-flex items-center gap-1 text-sm text-sage-700 hover:text-brown-700 border border-sage-300 hover:border-orange-300 rounded-lg px-2 py-1 transition-all duration-200"
           style={{ fontFamily: 'var(--font-serif)' }}
         >
           <ExternalLink className="w-3 h-3" />
@@ -71,7 +71,7 @@ function renderHotelNotes(hotel: Hotel) {
         className="text-sm text-brown-600 leading-relaxed"
         style={{ fontFamily: 'var(--font-serif)' }}
       >
-        <Star className="w-3 h-3 inline mr-1 text-orange-400" />
+        <Star className="w-3 h-3 inline me-1 text-orange-400" />
         {hotel.notes}
       </p>
     </div>
@@ -81,15 +81,15 @@ function renderHotelNotes(hotel: Hotel) {
 function renderHotelDistanceAndTransport(hotel: Hotel) {
   return (
     <div className="space-y-3 mb-4">
-      <div className="flex items-center space-x-2 text-sm">
+      <div className="flex items-center gap-2 text-sm">
         <MapPin className="w-4 h-4 text-sage-600" />
         <span className="text-brown-600" style={{ fontFamily: 'var(--font-serif)' }}>
           Distance: {hotel.distance}
         </span>
       </div>
 
-      <div className="flex items-start space-x-2 text-sm">
-        <div className="flex space-x-1 mt-1">
+      <div className="flex items-start gap-2 text-sm">
+        <div className="flex gap-1 mt-1">
           {hotel.transport.map((mode: TransportationMode, index: number) => (
             <TransportIcon key={index} type={mode.type} />
           ))}
@@ -124,7 +124,7 @@ function renderHotelNameLocationAndBlockRate(hotel: Hotel) {
 
 function renderMainHotel() {
   return (
-    <div className="absolute top-0 right-0 bg-orange-300 text-brown-800 px-3 py-1 rounded-bl-lg z-20">
+    <div className="absolute top-0 end-0 bg-orange-300 text-brown-800 px-3 py-1 rounded-es-lg z-20">
       <span className="text-sm font-medium" style={{ fontFamily: 'var(--font-harrington)' }}>
         Main Hotel
       </span>

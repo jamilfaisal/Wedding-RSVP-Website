@@ -7,10 +7,10 @@ import { Globe } from 'lucide-react';
 
 const languages = [
   { code: 'en', name: 'English', flag: '🇺🇸' },
-  // { code: 'ar', name: 'العربية', flag: '🇸🇦' },
+  { code: 'ar', name: 'العربية', flag: '🇸🇦' },
 ];
 
-export default function LanguageSwitcher() {
+export default function LanguageSwitcher({ isMobileMenuOpen }: { isMobileMenuOpen: boolean }) {
   const { i18n } = useTranslation();
   const router = useRouter();
   const pathname = usePathname();
@@ -32,8 +32,11 @@ export default function LanguageSwitcher() {
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center space-x-2 px-3 py-2 rounded-lg border border-sage-200 bg-white hover:bg-sage-50 transition-colors"
+        className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors ${
+          isMobileMenuOpen ? 'bg-transparent' : 'border border-sage-200 bg-white hover:bg-sage-50'
+        }`}
         aria-label="Change language"
+        disabled={isMobileMenuOpen}
       >
         <Globe className="w-4 h-4 text-sage-600" />
         <span className="text-sm font-medium text-sage-700">
@@ -43,16 +46,16 @@ export default function LanguageSwitcher() {
 
       {isOpen && (
         <>
-          {/* Backdrop */}
-          <div className="fixed inset-0 z-10" onClick={() => setIsOpen(false)} />
-
-          {/* Dropdown */}
-          <div className="absolute right-0 mt-2 w-48 rounded-lg bg-white shadow-lg border border-sage-200 z-20">
+          <div
+            className={`absolute mt-4 w-48 rounded-lg bg-white shadow-lg border border-sage-200 z-20 ${
+              currentLocale === 'ar' ? 'left-0' : 'right-0'
+            }`}
+          >
             {languages.map((language) => (
               <button
                 key={language.code}
                 onClick={() => switchLanguage(language.code)}
-                className={`w-full text-left px-4 py-3 text-sm hover:bg-sage-50 first:rounded-t-lg last:rounded-b-lg transition-colors flex items-center space-x-3 ${
+                className={`w-full text-start px-4 py-3 text-sm hover:bg-sage-50 first:rounded-t-lg last:rounded-b-lg transition-colors flex items-center gap-3 ${
                   language.code === currentLanguage?.code
                     ? 'bg-sage-100 text-sage-900 font-medium'
                     : 'text-sage-700'

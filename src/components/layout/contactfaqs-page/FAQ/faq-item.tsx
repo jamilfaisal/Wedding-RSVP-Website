@@ -13,7 +13,7 @@ function FAQItem({ faq }: { faq: FAQ }) {
 
 function renderTopLeftCornerFloral() {
   return (
-    <div className="absolute top-6 left-6">
+    <div className="absolute top-6 start-6">
       <div className="w-8 h-8 bg-gradient-to-br from-sage-100 to-orange-100 rounded-full flex items-center justify-center border-2 border-sage-200">
         <Flower className="w-4 h-4 text-sage-600" />
       </div>
@@ -23,7 +23,7 @@ function renderTopLeftCornerFloral() {
 
 function renderFAQQuestionAnswer(faq: FAQ) {
   return (
-    <div className="ml-12">
+    <div className="ms-12">
       <h3
         className="text-xl text-brown-800 mb-4 leading-tight"
         style={{ fontFamily: 'var(--font-harrington)' }}
@@ -39,7 +39,7 @@ function renderFAQQuestionAnswer(faq: FAQ) {
 
 function renderBottomRightCornerFloral() {
   return (
-    <div className="absolute bottom-3 right-3">
+    <div className="absolute bottom-3 end-3">
       <Leaf className="w-3 h-3 text-orange-300 opacity-40" />
     </div>
   );

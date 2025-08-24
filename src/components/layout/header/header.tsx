@@ -4,37 +4,39 @@ import { Disclosure } from '@headlessui/react';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
+import { useTranslation } from 'react-i18next';
 import HeaderWeddingLogo from './header-wedding-logo';
 import DesktopNav from './desktop-nav';
 import MobileNav from './mobile-nav';
 import LanguageSwitcher from '../../ui/language-switcher';
 import { checkIsHomePage } from '../utils';
 
-const sectionLinks = [
-  { name: 'Home', href: '#home' },
-  { name: 'Ceremony', href: '#ceremony' },
-  { name: 'Details', href: '#details' },
-  { name: 'Timeline', href: '#timeline' },
-];
-
-const pageLinks = [
-  { name: 'RSVP', href: '/rsvp' },
-  { name: 'Accommodations', href: '/accommodations' },
-  { name: 'Touristy Things', href: '/touristy-things' },
-  { name: 'Contact & FAQs', href: '/contact-faqs' },
-];
-
-const combinedLinksForMobileNav = [
-  ...sectionLinks.map((link) => ({ ...link, typeOfHref: 'scroll' as const, label: link.name })),
-  ...pageLinks.map((link) => ({ ...link, typeOfHref: 'page' as const, label: link.name })),
-];
-
 function Header() {
+  const { t } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const currentPage = usePathname();
   const router = useRouter();
   const isHomePage = checkIsHomePage(currentPage);
+
+  const sectionLinks = [
+    { name: t('navigation.home'), href: '#home' },
+    { name: t('navigation.ceremony'), href: '#ceremony' },
+    { name: t('navigation.details'), href: '#details' },
+    { name: t('navigation.timeline'), href: '#timeline' },
+  ];
+
+  const pageLinks = [
+    { name: t('navigation.rsvp'), href: '/rsvp' },
+    { name: t('navigation.accommodations'), href: '/accommodations' },
+    { name: t('navigation.touristyThings'), href: '/touristy-things' },
+    { name: t('navigation.contactFAQs'), href: '/contact-faqs' },
+  ];
+
+  const combinedLinksForMobileNav = [
+    ...sectionLinks.map((link) => ({ ...link, typeOfHref: 'scroll' as const, label: link.name })),
+    ...pageLinks.map((link) => ({ ...link, typeOfHref: 'page' as const, label: link.name })),
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -109,7 +111,7 @@ function Header() {
     >
       <div className="max-w-4xl mx-auto px-8 py-6">
         <div className="flex items-center relative justify-center">
-          <div className="flex-shrink-0 mr-8">
+          <div className="flex-shrink-0 me-8">
             <Link href={`/${currentPage.split('/')[1] || 'en'}`}>
               <HeaderWeddingLogo />
             </Link>
@@ -126,12 +128,12 @@ function Header() {
             />
           </div>
 
-          <div className="hidden md:flex flex-shrink-0 ml-8">
-            <LanguageSwitcher />
+          <div className="hidden md:flex flex-shrink-0 ms-8">
+            <LanguageSwitcher isMobileMenuOpen={isMobileMenuOpen} />
           </div>
 
-          <div className="md:hidden flex items-center space-x-4 ml-auto">
-            <LanguageSwitcher />
+          <div className="md:hidden flex items-center gap-4 ms-auto">
+            <LanguageSwitcher isMobileMenuOpen={isMobileMenuOpen} />
             <MobileNav
               navItems={combinedLinksForMobileNav}
               isHomePage={isHomePage}

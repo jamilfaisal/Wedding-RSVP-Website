@@ -15,7 +15,7 @@ function ArabicVerse() {
 
 function renderUnderlineDecoration() {
   return (
-    <div className="flex items-center justify-center mt-4 space-x-2">
+    <div className="flex items-center justify-center mt-4 gap-2">
       <div className="w-8 h-px bg-gradient-to-r from-transparent via-sage-400 to-transparent"></div>
       <div className="w-2 h-2 bg-orange-300 rounded-full opacity-60"></div>
       <div className="w-12 h-px bg-gradient-to-r from-sage-400 via-orange-300 to-sage-400 opacity-50"></div>
@@ -45,7 +45,7 @@ function renderArabicVerseDisplay() {
 
 function renderVerseDecoration() {
   return (
-    <div className="absolute -right-8 top-1/2 transform -translate-y-1/2 opacity-40">
+    <div className="absolute -end-8 top-1/2 transform -translate-y-1/2 opacity-40">
       <div className="flex flex-col items-center space-y-2">
         <Flower2 className="w-4 h-4 text-orange-300" />
         <div className="w-1 h-8 bg-gradient-to-b from-orange-200 via-sage-300 to-orange-200"></div>
@@ -57,7 +57,7 @@ function renderVerseDecoration() {
 
 function renderFloralAccent() {
   return (
-    <div className="absolute -left-8 top-1/2 transform -translate-y-1/2 opacity-40">
+    <div className="absolute -start-8 top-1/2 transform -translate-y-1/2 opacity-40">
       <div className="flex flex-col items-center space-y-2">
         <Flower className="w-4 h-4 text-sage-400" />
         <div className="w-1 h-8 bg-gradient-to-b from-sage-300 via-orange-200 to-sage-300"></div>

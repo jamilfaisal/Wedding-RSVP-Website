@@ -15,7 +15,7 @@ function CeremonyInfo() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {renderVenueImage()}
 
-          <div className="space-y-8 lg:pl-4">
+          <div className="space-y-8 lg:ps-4">
             {renderVenueLocation()}
             {renderWeddingSchedule()}
             {renderLocalTime()}
@@ -30,7 +30,7 @@ function CeremonyInfo() {
 function renderLocalTime() {
   return (
     <div className="bg-white rounded-lg p-6 shadow-md border-2 border-brown-100">
-      <div className="flex items-start space-x-4">
+      <div className="flex items-start gap-4">
         <div className="w-12 h-12 bg-gradient-to-br from-brown-100 to-brown-200 rounded-lg flex items-center justify-center flex-shrink-0 border border-brown-200">
           <Globe className="w-6 h-6 text-brown-700" />
         </div>
@@ -52,7 +52,7 @@ function renderLocalTime() {
 function renderWeddingSchedule() {
   return (
     <div className="bg-white rounded-lg p-6 shadow-md border-2 border-orange-100">
-      <div className="flex items-start space-x-4">
+      <div className="flex items-start gap-4">
         <div className="w-12 h-12 bg-gradient-to-br from-orange-100 to-orange-200 rounded-lg flex items-center justify-center flex-shrink-0 border border-orange-200">
           <Clock className="w-6 h-6 text-orange-700" />
         </div>
@@ -77,7 +77,7 @@ function renderWeddingSchedule() {
 function renderVenueLocation() {
   return (
     <div className="bg-white rounded-lg p-6 shadow-md border-2 border-sage-100">
-      <div className="flex items-start space-x-4">
+      <div className="flex items-start gap-4">
         <div className="w-12 h-12 bg-gradient-to-br from-sage-100 to-sage-200 rounded-lg flex items-center justify-center flex-shrink-0 border border-sage-200">
           <MapPin className="w-6 h-6 text-sage-700" />
         </div>
