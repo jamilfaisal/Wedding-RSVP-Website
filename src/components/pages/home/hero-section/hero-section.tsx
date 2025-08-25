@@ -47,7 +47,7 @@ function renderHeroSectionContent(isVisible: boolean, t: (key: string) => string
           {renderWeddingDateCard(t, locale)}
           <WeddingCountdown />
           <div className="space-y-6">
-            <SaveTheDate />
+            {SaveTheDate(t)}
             {renderScrollDownIndicator()}
           </div>
         </div>

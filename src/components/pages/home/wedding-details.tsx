@@ -2,16 +2,17 @@ import { Car, Shirt } from 'lucide-react';
 import weddingRingsIcon from '/public/images/wedding-rings-icon.png';
 import couplePhoto from '/public/images/couple-photo.png';
 import ImageWithFallback from '../../ui/image-with-fallback';
-import { weddingCountry } from '@/lib/config/wedding-config';
+import { useTranslation } from 'react-i18next';
 
 function WeddingDetails() {
+  const { t } = useTranslation();
   return (
     <section id="details" className="pt-30 bg-gradient-to-b from-sage-50/20 to-orange-50/10">
       <div className="max-w-7xl mx-auto px-8">
-        {renderSectionHeader()}
+        {renderSectionHeader(t)}
 
         <div className="grid lg:grid-cols-2 gap-36 items-start">
-          {renderCards()}
+          {renderCards(t)}
           {renderDecorativeImage()}
         </div>
       </div>
@@ -19,16 +20,16 @@ function WeddingDetails() {
   );
 }
 
-function renderCards() {
+function renderCards(t: (key: string) => string) {
   return (
     <div className="space-y-8">
-      {renderDressCodeCard()}
-      {renderTransportationCard()}
+      {renderDressCodeCard(t)}
+      {renderTransportationCard(t)}
     </div>
   );
 }
 
-function renderTransportationCard() {
+function renderTransportationCard(t: (key: string) => string) {
   return (
     <div className="bg-white rounded-lg p-8 shadow-md border-2 border-orange-100">
       <div className="flex items-start gap-6">
@@ -36,30 +37,34 @@ function renderTransportationCard() {
           <Car className="w-8 h-8 text-orange-700" />
         </div>
         <div className="flex-1">
-          <h3 className="text-2xl font-serif text-brown-800 mb-4">Getting There</h3>
+          <h3 className="text-2xl font-serif text-brown-800 mb-4">
+            {t('weddingDetails.gettingThere')}
+          </h3>
           <div className="space-y-4 text-brown-600">
             <div className="border-s-2 border-sage-200 ps-4">
-              <h4 className="font-serif font-medium text-brown-800 mb-2">Transportation Details</h4>
+              <h4 className="font-serif font-medium text-brown-800 mb-2">
+                {t('weddingDetails.transportationDetails')}
+              </h4>
               <p className="font-light leading-relaxed italic text-brown-500">
-                Transportation information will be shared with invited guests closer to the wedding
-                date.
+                {t('weddingDetails.transportationInfo')}
               </p>
             </div>
             <div className="border-s-2 border-orange-200 ps-4">
               <h4 className="font-serif font-medium text-brown-800 mb-2">
-                Getting to {weddingCountry}
+                {t('weddingDetails.gettingTo')}
+                {t('weddingInfo.weddingCountry')}
               </h4>
               <p className="font-light leading-relaxed">
-                {weddingCountry} is easily accessible via Fiumicino (FCO) and Ciampino (CIA)
-                airports. We recommend booking accommodations in central {weddingCountry} for easy
-                access to the venue.
+                {t('weddingInfo.weddingCountry')} {t('weddingDetails.gettingToDesc1')}
+                {t('weddingInfo.weddingCountry')} {t('weddingDetails.gettingToDesc2')}
               </p>
             </div>
             <div className="border-s-2 border-brown-200 ps-4">
-              <h4 className="font-serif font-medium text-brown-800 mb-2">Local Transportation</h4>
+              <h4 className="font-serif font-medium text-brown-800 mb-2">
+                {t('weddingDetails.localTransportation')}
+              </h4>
               <p className="font-light leading-relaxed">
-                {weddingCountry} has excellent public transportation including metro, buses, and
-                taxis. Detailed directions will be provided with your invitation.
+                {t('weddingInfo.weddingCountry')} {t('weddingDetails.localTransportationDesc')}
               </p>
             </div>
           </div>
@@ -69,7 +74,7 @@ function renderTransportationCard() {
   );
 }
 
-function renderDressCodeCard() {
+function renderDressCodeCard(t: (key: string) => string) {
   return (
     <div className="bg-white rounded-lg p-8 shadow-md border-2 border-sage-100">
       <div className="flex items-start gap-6">
@@ -77,32 +82,38 @@ function renderDressCodeCard() {
           <Shirt className="w-8 h-8 text-sage-700" />
         </div>
         <div className="flex-1">
-          <h3 className="text-2xl font-serif text-brown-800 mb-4">Attire</h3>
+          <h3 className="text-2xl font-serif text-brown-800 mb-4">{t('weddingDetails.attire')}</h3>
           <div className="space-y-4">
             <div className="flex items-start gap-3">
               <div className="w-3 h-3 bg-brown-400 rounded-full mt-1.5 flex-shrink-0"></div>
               <div>
-                <span className="text-brown-700 font-serif font-medium">Formal Evening Wear</span>
+                <span className="text-brown-700 font-serif font-medium">
+                  {t('weddingDetails.formalEveningWear')}
+                </span>
                 <p className="text-brown-600 font-light mt-1">
-                  Think elegant cocktail attire or formal evening dress
+                  {t('weddingDetails.formalEveningWearDescription')}
                 </p>
               </div>
             </div>
             <div className="flex items-start gap-3">
               <div className="w-3 h-3 bg-sage-400 rounded-full mt-1.5 flex-shrink-0"></div>
               <div>
-                <span className="text-brown-700 font-serif font-medium">Warm Winter Colors</span>
+                <span className="text-brown-700 font-serif font-medium">
+                  {t('weddingDetails.warmWinterColors')}
+                </span>
                 <p className="text-brown-600 font-light mt-1">
-                  Sage greens, warm browns, and muted oranges encouraged
+                  {t('weddingDetails.warmWinterColorsDescription')}
                 </p>
               </div>
             </div>
             <div className="flex items-start gap-3">
               <div className="w-3 h-3 bg-orange-400 rounded-full mt-1.5 flex-shrink-0"></div>
               <div>
-                <span className="text-brown-700 font-serif font-medium">Seasonal Elegance</span>
+                <span className="text-brown-700 font-serif font-medium">
+                  {t('weddingDetails.seasonalElegance')}
+                </span>
                 <p className="text-brown-600 font-light mt-1">
-                  Bring a wrap for the outdoor ceremony portions
+                  {t('weddingDetails.seasonalEleganceDescription')}
                 </p>
               </div>
             </div>
@@ -126,7 +137,7 @@ function renderDecorativeImage() {
   );
 }
 
-function renderSectionHeader() {
+function renderSectionHeader(t: (key: string) => string) {
   return (
     <div className="text-center mb-16">
       <div className="flex items-center justify-center mb-8">
@@ -137,9 +148,11 @@ function renderSectionHeader() {
         <div className="w-12 h-px bg-gradient-to-l from-transparent via-orange-300 to-transparent"></div>
       </div>
 
-      <h2 className="text-4xl md:text-5xl font-serif text-brown-800 mb-4">Wedding Details</h2>
+      <h2 className="text-4xl md:text-5xl font-serif text-brown-800 mb-4">
+        {t('weddingDetails.title')}
+      </h2>
       <p className="text-xl text-brown-600 max-w-2xl mx-auto leading-relaxed font-light">
-        Everything you need to know for our special day
+        {t('weddingDetails.subtitle')}
       </p>
     </div>
   );

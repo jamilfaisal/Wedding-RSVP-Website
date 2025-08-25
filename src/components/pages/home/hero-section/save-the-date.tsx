@@ -2,7 +2,7 @@ import { addToGoogleCalendar, generateCalendarEvent } from '@/lib/save-the-date'
 import { Button } from '@headlessui/react';
 import { Calendar, Download, Plus } from 'lucide-react';
 
-function SaveTheDate() {
+function SaveTheDate(t: (key: string) => string) {
   return (
     <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
       <Button
@@ -11,7 +11,7 @@ function SaveTheDate() {
         style={{ fontFamily: 'var(--font-serif)' }}
       >
         <Calendar className="w-5 h-5 me-3 flex-shrink-0" />
-        Save the Date
+        {t('saveTheDate.title')}
         <Download className="w-4 h-4 ms-3 flex-shrink-0" />
       </Button>
 
@@ -21,7 +21,7 @@ function SaveTheDate() {
         style={{ fontFamily: 'var(--font-serif)' }}
       >
         <Plus className="w-4 h-4 me-3 flex-shrink-0" />
-        <span className="whitespace-nowrap">Add to Calendar</span>
+        <span className="whitespace-nowrap">{t('saveTheDate.addToCalendar')}</span>
       </Button>
     </div>
   );

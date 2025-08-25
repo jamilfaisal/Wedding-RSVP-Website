@@ -25,18 +25,63 @@
   },
   "ceremony": {
     "title": "Ceremony Details",
-    "subtitle": "Join us for this special celebration",
+    "subtitle": "Join us for a celebration of love in La Città Eterna",
     "venue": "Venue",
     "time": "Time",
-    "dress": "Dress Code"
+    "dress": "Dress Code",
+    "location": "Location",
+    "detailsComingSoon": "Details Coming Soon",
+    "fullAddressNote": "Full address will be shared with invited guests",
+    "reception": "Reception",
+    "celebration": "Celebration",
+    "tba": "TBA",
+    "localTime": "Local Time",
+    "schedule": "Schedule"
   },
-  "details": {
+  "weddingDetails": {
     "title": "Wedding Details",
-    "subtitle": "Everything you need to know about our special day"
+    "subtitle": "Everything you need to know for our special day",
+    "attire": "Attire",
+    "formalEveningWear": "Formal Evening Wear",
+    "formalEveningWearDescription": "Think elegant cocktail attire or formal evening dress",
+    "warmWinterColors": "Warm Winter Colors",
+    "warmWinterColorsDescription": "Sage greens, warm browns, and muted oranges encouraged",
+    "seasonalElegance": "Seasonal Elegance",
+    "seasonalEleganceDescription": "Bring a wrap for the outdoor ceremony portions",
+    "gettingThere": "Getting There",
+    "transportationDetails": "Transportation Details",
+    "transportationInfo": "Transportation information will be shared with invited guests closer to the wedding date.",
+    "gettingTo": "Getting to",
+    "gettingToDesc1": "is easily accessible via Fiumicino (FCO) and Ciampino (CIA) airports. We recommend booking accommodations in central",
+    "gettingToDesc2": "for easy access to the venue.",
+    "localTransportation": "Local Transportation",
+    "localTransportationDesc": "has excellent public transportation including metro, buses, and taxis. Detailed directions will be provided with your invitation."
   },
   "timeline": {
-    "title": "Event Timeline",
-    "subtitle": "Schedule of events for our wedding day"
+    "title": "Order of Celebrations",
+    "description": "Here's how our special day will unfold",
+    "subtitle": "Schedule of events for our wedding day",
+    "tba": "TBA",
+    "events": {
+      "ceremony": {
+        "title": "Ceremony Begins",
+        "description": "Join us as we exchange vows in a beautiful Roman setting"
+      },
+      "cocktail": {
+        "title": "Cocktail Reception",
+        "description": "Details to be announced - celebration continues"
+      },
+      "dinner": {
+        "title": "Wedding Dinner",
+        "description": "Details to be announced - feast and celebration"
+      },
+      "dancing": {
+        "title": "Dancing & Celebration",
+        "description": "Details to be announced - dance the night away"
+      }
+    },
+    "sixPM": "6:00 PM",
+    "bottomMessage": "\"We can't wait to celebrate this magical evening with all our cherished family and friends. Thank you for being such an important part of our journey together!\""
   },
   "rsvp": {
     "title": "RSVP to Our Wedding",
@@ -111,14 +156,16 @@
     "title": "Weather",
     "temperature": "Temperature",
     "conditions": "Conditions",
-    "forecast": "Forecast"
+    "forecast": "weather forecast for",
+    "liveWidgetComingSoon": "Live weather widget coming soon"
   },
   "countdown": {
     "days": "Days",
     "hours": "Hours",
     "minutes": "Minutes",
     "seconds": "Seconds",
-    "until": "until our special day"
+    "until": "until our special day",
+    "title": "Until we say \"I do\""
   },
   "saveTheDate": {
     "title": "Save the Date",

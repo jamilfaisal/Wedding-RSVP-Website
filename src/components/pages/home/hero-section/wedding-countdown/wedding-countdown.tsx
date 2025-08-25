@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import ExpiredWeddingCountdown from './expired-wedding-countdown';
 import { Flower, Flower2, Leaf } from 'lucide-react';
 import { weddingStartDate } from '@/lib/config/wedding-config';
@@ -12,6 +13,7 @@ type CountDownTime = {
 };
 
 const WeddingCountdown = () => {
+  const { t } = useTranslation();
   const [countDownTime, setCountDownTime] = useState<CountDownTime>({
     days: 0,
     hours: 0,
@@ -26,28 +28,28 @@ const WeddingCountdown = () => {
 
   const countDownTimeCSSInfo = [
     {
-      label: 'Days',
+      label: t('countdown.days'),
       value: countDownTime.days,
       bgColor: 'from-sage-100 to-sage-200',
       textColor: 'text-sage-700',
       borderColor: 'border-sage-200',
     },
     {
-      label: 'Hours',
+      label: t('countdown.hours'),
       value: countDownTime.hours,
       bgColor: 'from-orange-100 to-orange-200',
       textColor: 'text-orange-700',
       borderColor: 'border-orange-200',
     },
     {
-      label: 'Minutes',
+      label: t('countdown.minutes'),
       value: countDownTime.minutes,
       bgColor: 'from-brown-100 to-brown-200',
       textColor: 'text-brown-700',
       borderColor: 'border-brown-200',
     },
     {
-      label: 'Seconds',
+      label: t('countdown.seconds'),
       value: countDownTime.seconds,
       bgColor: 'from-ivory-200 to-ivory-300',
       textColor: 'text-brown-700',
@@ -75,7 +77,7 @@ const WeddingCountdown = () => {
           <Leaf className="w-5 h-5 text-sage-400 opacity-50" />
         </div>
 
-        {renderCountDownTitleText()}
+        {renderCountDownTitleText(t)}
 
         {renderCountdown(countDownTimeCSSInfo)}
 
@@ -85,7 +87,7 @@ const WeddingCountdown = () => {
   );
 };
 
-function renderCountDownTitleText() {
+function renderCountDownTitleText(t: (key: string) => string) {
   return (
     <div className="text-center mb-8 relative z-10">
       <div className="flex items-center justify-center gap-4 mb-4">
@@ -94,7 +96,7 @@ function renderCountDownTitleText() {
         <div className="w-8 h-px bg-sage-300"></div>
       </div>
       <h3 className="text-3xl text-brown-800" style={{ fontFamily: 'var(--font-harrington)' }}>
-        Until we say &ldquo;I do&rdquo;
+        {t('countdown.title')}
       </h3>
     </div>
   );
