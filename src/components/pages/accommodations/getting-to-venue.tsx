@@ -1,19 +1,19 @@
 import { Car, Flower, Train, Bus, ExternalLink } from 'lucide-react';
 import AccommodationsHeader from './accommodations-header';
 
-function GettingToVenue() {
+function GettingToVenue(t: (key: string) => string) {
   return (
     <section className="mb-16">
-      <AccommodationsHeader title="Getting to the Venue" />
+      <AccommodationsHeader title={t('accommodations.gettingToVenue')} />
       <div className="max-w-4xl mx-auto space-y-6">
         <div className="bg-white/95 rounded-lg p-6 shadow-lg border border-sage-100 relative">
           <div className="absolute top-3 end-3">
             <Flower className="w-4 h-4 text-pastel-pink-400 opacity-40" />
           </div>
           <div className="space-y-4">
-            {renderCarInfo()}
-            {renderTrainInfo()}
-            {renderHotelShuttleInfo()}
+            {renderCarInfo(t)}
+            {renderTrainInfo(t)}
+            {renderHotelShuttleInfo(t)}
           </div>
         </div>
       </div>
@@ -21,7 +21,7 @@ function GettingToVenue() {
   );
 }
 
-function renderHotelShuttleInfo() {
+function renderHotelShuttleInfo(t: (key: string) => string) {
   return (
     <div className="flex items-start gap-3">
       <Bus className="w-5 h-5 text-orange-600 mt-1" />
@@ -30,11 +30,10 @@ function renderHotelShuttleInfo() {
           className="text-lg text-brown-800 mb-2"
           style={{ fontFamily: 'var(--font-harrington)' }}
         >
-          Hotel Shuttle (Rome Cavalieri)
+          {t('accommodations.hotelShuttle')}
         </h4>
         <p className="text-brown-600 mb-2" style={{ fontFamily: 'var(--font-serif)' }}>
-          Seasonal timetable with pick-up/drop-off near Via Veneto; confirm times directly with the
-          hotel.
+          {t('accommodations.hotelShuttleDescription')}
         </p>
         <a
           href="#"
@@ -42,14 +41,14 @@ function renderHotelShuttleInfo() {
           style={{ fontFamily: 'var(--font-serif)' }}
         >
           <ExternalLink className="w-3 h-3" />
-          <span>Hotel Rome Cavalieri</span>
+          <span>{t('accommodations.hotel')}</span>
         </a>
       </div>
     </div>
   );
 }
 
-function renderTrainInfo() {
+function renderTrainInfo(t: (key: string) => string) {
   return (
     <div className="flex items-start gap-3">
       <Train className="w-5 h-5 text-orange-600 mt-1" />
@@ -58,18 +57,17 @@ function renderTrainInfo() {
           className="text-lg text-brown-800 mb-2"
           style={{ fontFamily: 'var(--font-harrington)' }}
         >
-          Metro A to Cipro + short taxi/bus
+          {t('accommodations.metro')}
         </h4>
         <p className="text-brown-600" style={{ fontFamily: 'var(--font-serif)' }}>
-          From many central hotels near Spagna/Barberini/Flaminio you can ride Metro A toward
-          Battistini and connect near Cipro for a short hop.
+          {t('accommodations.metroDescription')}
         </p>
       </div>
     </div>
   );
 }
 
-function renderCarInfo() {
+function renderCarInfo(t: (key: string) => string) {
   return (
     <div className="flex items-start gap-3">
       <Car className="w-5 h-5 text-orange-600 mt-1" />
@@ -78,11 +76,10 @@ function renderCarInfo() {
           className="text-lg text-brown-800 mb-2"
           style={{ fontFamily: 'var(--font-harrington)' }}
         >
-          Taxi
+          {t('accommodations.taxi')}
         </h4>
         <p className="text-brown-600" style={{ fontFamily: 'var(--font-serif)' }}>
-          Fastest and simplest from anywhere in the center (typically ~10–20 minutes depending on
-          traffic).
+          {t('accommodations.taxiDescription')}
         </p>
       </div>
     </div>

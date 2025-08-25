@@ -89,7 +89,10 @@ export function formatDateForCalendar(date: Date): string {
   return `${year}${month}${day}T${hours}${minutes}${seconds}`;
 }
 
-// Output example: 2025
+// Output example: 2025 (English) or ٢٠٢٥ (Arabic)
 export function formatYear(year: number, locale: string): string {
-  return new Intl.NumberFormat(locale === 'ar' ? 'ar-EG' : 'en-US').format(year);
+  if (locale === 'ar') {
+    return new Intl.NumberFormat('ar-EG', { useGrouping: false }).format(year);
+  }
+  return year.toString();
 }

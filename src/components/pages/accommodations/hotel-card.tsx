@@ -2,7 +2,15 @@ import { Flower2, MapPin, Star, ExternalLink, Car, Train, Bus } from 'lucide-rea
 import ImageWithFallback from '../../ui/image-with-fallback';
 import { Hotel, HotelLink, TransportationMode } from './hotels-data';
 
-function HotelCard({ hotel, isMain = false }: { hotel: Hotel; isMain?: boolean }) {
+function HotelCard({
+  hotel,
+  isMain = false,
+  t,
+}: {
+  hotel: Hotel;
+  isMain?: boolean;
+  t: (key: string) => string;
+}) {
   return (
     <div
       className={`bg-gradient-to-br from-ivory-50 to-white rounded-lg overflow-hidden shadow-lg border border-sage-100 hover:shadow-xl transition-all duration-300 relative ${isMain ? 'border-2 border-orange-200' : ''}`}
@@ -15,11 +23,11 @@ function HotelCard({ hotel, isMain = false }: { hotel: Hotel; isMain?: boolean }
           <Flower2 className="w-4 h-4 text-pastel-purple-400 opacity-50" />
         </div>
 
-        {isMain && renderMainHotel()}
-        {renderHotelNameLocationAndBlockRate(hotel)}
-        {renderHotelDistanceAndTransport(hotel)}
+        {isMain && renderMainHotel(t)}
+        {renderHotelNameLocationAndBlockRate(hotel, t)}
+        {renderHotelDistanceAndTransport(hotel, t)}
         {renderHotelNotes(hotel)}
-        {hotel.booking && renderHotelBooking(hotel)}
+        {hotel.booking && renderHotelBooking(hotel, t)}
         {hotel.links && renderHotelLinks(hotel)}
       </div>
     </div>
@@ -54,11 +62,11 @@ function renderHotelLinks(hotel: Hotel) {
   );
 }
 
-function renderHotelBooking(hotel: Hotel) {
+function renderHotelBooking(hotel: Hotel, t: (key: string) => string) {
   return (
     <div className="bg-gradient-to-r from-orange-50 to-pastel-pink-50 rounded-lg p-3 mb-4 border border-orange-200">
       <p className="text-sm text-brown-700 font-medium" style={{ fontFamily: 'var(--font-serif)' }}>
-        Booking: {hotel.booking}
+        {t('hotels.common.booking')}: {hotel.booking}
       </p>
     </div>
   );
@@ -78,13 +86,13 @@ function renderHotelNotes(hotel: Hotel) {
   );
 }
 
-function renderHotelDistanceAndTransport(hotel: Hotel) {
+function renderHotelDistanceAndTransport(hotel: Hotel, t: (key: string) => string) {
   return (
     <div className="space-y-3 mb-4">
       <div className="flex items-center gap-2 text-sm">
         <MapPin className="w-4 h-4 text-sage-600" />
         <span className="text-brown-600" style={{ fontFamily: 'var(--font-serif)' }}>
-          Distance: {hotel.distance}
+          {t('hotels.common.distance')}: {hotel.distance}
         </span>
       </div>
 
@@ -95,14 +103,14 @@ function renderHotelDistanceAndTransport(hotel: Hotel) {
           ))}
         </div>
         <span className="text-brown-600" style={{ fontFamily: 'var(--font-serif)' }}>
-          Transport: {hotel.transportNotes}
+          {t('hotels.common.transport')}: {hotel.transportNotes}
         </span>
       </div>
     </div>
   );
 }
 
-function renderHotelNameLocationAndBlockRate(hotel: Hotel) {
+function renderHotelNameLocationAndBlockRate(hotel: Hotel, t: (key: string) => string) {
   return (
     <div className="mb-4">
       <h3 className="text-xl text-brown-800 mb-2" style={{ fontFamily: 'var(--font-harrington)' }}>
@@ -114,7 +122,7 @@ function renderHotelNameLocationAndBlockRate(hotel: Hotel) {
       {hotel.blockRate && (
         <div className="bg-gradient-to-r from-orange-50 to-sage-50 rounded-lg p-3 mb-3 border border-orange-200">
           <p className="text-brown-700 font-medium" style={{ fontFamily: 'var(--font-serif)' }}>
-            Block Rate: {hotel.blockRate}
+            {t('hotels.common.blockRate')}: {hotel.blockRate}
           </p>
         </div>
       )}
@@ -122,11 +130,11 @@ function renderHotelNameLocationAndBlockRate(hotel: Hotel) {
   );
 }
 
-function renderMainHotel() {
+function renderMainHotel(t: (key: string) => string) {
   return (
     <div className="absolute top-0 end-0 bg-orange-300 text-brown-800 px-3 py-1 rounded-es-lg z-20">
       <span className="text-sm font-medium" style={{ fontFamily: 'var(--font-harrington)' }}>
-        Main Hotel
+        {t('hotels.common.ourMainHotel')}
       </span>
     </div>
   );

@@ -47,7 +47,7 @@ function Copyright({ t }: { t: (key: string) => string }) {
     <div>
       <div className="pt-6 border-t border-brown-200 mt-8">
         <p className="text-sm text-brown-500 font-light">
-          © <DynamicYear /> {t('weddingInfo.groomFirstName')} & {t('weddingInfo.brideFirstName')}.
+          © <DynamicYear /> {t('weddingInfo.groomFirstName')} & {t('weddingInfo.brideFirstName')}.{' '}
           {t('footer.copyright')}
         </p>
       </div>

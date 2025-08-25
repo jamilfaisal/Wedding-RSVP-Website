@@ -1,30 +1,33 @@
+'use client';
+
 import GettingToVenue from './getting-to-venue';
 import OurMainHotel from './our-main-hotel';
 import SignatureStays from './signature-stays';
 import TimelessTownAndCountry from './timeless-town-and-country';
 import ChicCityNests from './chic-city-nests';
 import { Flower, Flower2, Leaf, Bed } from 'lucide-react';
-import { weddingCity } from '@/lib/config/wedding-config';
+import { useTranslation } from 'react-i18next';
 
 function AccommodationsPage() {
+  const { t } = useTranslation();
   return (
     <div className="min-h-screen bg-gradient-to-b from-ivory-50 via-sage-50/20 to-pastel-pink-50/10 pt-40 py-20">
       <div className="max-w-6xl mx-auto px-8">
-        {renderSectionHeader()}
+        {renderSectionHeader(t)}
 
-        <OurMainHotel />
-        <SignatureStays />
-        <TimelessTownAndCountry />
-        <ChicCityNests />
-        <GettingToVenue />
+        {OurMainHotel(t)}
+        {SignatureStays(t)}
+        {TimelessTownAndCountry(t)}
+        {ChicCityNests(t)}
+        {GettingToVenue(t)}
 
-        {renderSectionFooter()}
+        {renderSectionFooter(t)}
       </div>
     </div>
   );
 }
 
-function renderSectionFooter() {
+function renderSectionFooter(t: (key: string) => string) {
   return (
     <div className="text-center">
       <div className="max-w-4xl mx-auto bg-gradient-to-r from-pastel-pink-50/90 to-pastel-blue-50/90 backdrop-blur-sm rounded-lg p-8 shadow-lg border border-pastel-pink-100 relative">
@@ -45,12 +48,10 @@ function renderSectionFooter() {
           className="text-2xl text-brown-800 mb-4"
           style={{ fontFamily: 'var(--font-harrington)' }}
         >
-          Small Print
+          {t('accommodations.smallPrint')}
         </h3>
         <p className="text-brown-600 leading-relaxed" style={{ fontFamily: 'var(--font-serif)' }}>
-          Distances are approximate road distances from each hotel to the venue to help with
-          planning; traffic can significantly affect travel time. For precise navigation on the day,
-          we&apos;ll share exact pins and an arrival note closer to the wedding.
+          {t('accommodations.smallPrintDescription')}
         </p>
 
         <div className="flex items-center justify-center gap-4 mt-6">
@@ -63,7 +64,7 @@ function renderSectionFooter() {
   );
 }
 
-function renderSectionHeader() {
+function renderSectionHeader(t: (key: string) => string) {
   return (
     <div className="text-center mb-20 relative">
       <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-96">
@@ -88,7 +89,7 @@ function renderSectionHeader() {
         className="text-4xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-brown-800 mb-8 leading-tight px-4"
         style={{ fontFamily: 'var(--font-harrington)' }}
       >
-        Accommodations
+        {t('accommodations.title')}
       </h1>
 
       <div className="max-w-4xl mx-auto bg-white/95 backdrop-blur-sm rounded-lg p-8 shadow-lg border border-sage-100 relative">
@@ -108,9 +109,9 @@ function renderSectionHeader() {
           className="text-xl text-brown-700 leading-relaxed"
           style={{ fontFamily: 'var(--font-serif)' }}
         >
-          We&apos;re delighted you&apos;ll be celebrating with us in {weddingCity}. Below are our
-          recommended places to stay near our venue. We&apos;ve reserved a special rate at our main
-          hotel, plus curated options in three elegant tiers to suit different styles and budgets.
+          {t('accommodations.descriptionPart1')}
+          {t('weddingInfo.weddingCity')}
+          {t('accommodations.descriptionPart2')}
         </p>
       </div>
     </div>

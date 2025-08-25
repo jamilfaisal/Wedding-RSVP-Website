@@ -69,11 +69,26 @@
   },
   "accommodations": {
     "title": "Accommodations",
-    "subtitle": "Where to stay during your visit",
-    "mainHotel": "Our Main Hotel",
-    "alternativeOptions": "Alternative Options",
-    "bookingInfo": "Booking Information",
-    "gettingToVenue": "Getting to the Venue"
+    "descriptionPart1": "We're delighted you'll be celebrating with us in ",
+    "descriptionPart2": ". Below are our recommended places to stay near our venue. We've reserved a special rate at our main hotel, plus curated options in three elegant tiers to suit different styles and budgets.",
+    "ourMainHotel": "Our Main Hotel",
+    "ourMainHotelDescription": "Note: The venue sits on Monte Mario, about ~3 km from the Vatican and ~5–7 km from the historic center; the hotel also runs a shuttle to Via Veneto on a set timetable. Please check the schedule directly with the hotel.",
+    "signatureStays": "Signature Stays",
+    "signatureStaysDescription": "Refined icons with postcard views and beautiful service.",
+    "timelessTownAndCountry": "Timeless Town & Country",
+    "timelessTownAndCountryDescription": "Chic addresses with character and great locations.",
+    "chicCityNests": "Chic City Nests",
+    "chicCityNestsDescription": "Well-located, comfortable, and design-forward.",
+    "gettingToVenue": "Getting to the Venue",
+    "taxi": "Taxi",
+    "taxiDescription": "Fastest and simplest from anywhere in the center (typically ~10–20 minutes depending on traffic).",
+    "metro": "Metro A to Cipro + short taxi/bus",
+    "metroDescription": "From many central hotels near Spagna/Barberini/Flaminio you can ride Metro A toward Battistini and connect near Cipro for a short hop.",
+    "hotelShuttle": "Hotel Shuttle (Rome Cavalieri)",
+    "hotelShuttleDescription": "Seasonal timetable with pick-up/drop-off near Via Veneto; confirm times directly with the hotel.",
+    "hotel": "Hotel Rome Cavalieri",
+    "smallPrint": "Small Print",
+    "smallPrintDescription": "Distances are approximate road distances from each hotel to the venue to help with planning; traffic can significantly affect travel time. For precise navigation on the day, we'll share exact pins and an arrival note closer to the wedding."
   },
   "touristyThings": {
     "title": "Things to Do",
@@ -130,5 +145,101 @@
     "rsvpSubmitted": "Your RSVP has been successfully submitted!",
     "emailSent": "Email sent successfully",
     "dataSaved": "Your information has been saved"
+  },
+  "hotels": {
+    "mainHotel": {
+      "name": "Rome Cavalieri, A Waldorf Astoria Hotel (Wedding Venue & Primary Stay)",
+      "notes": "Resort-style oasis above the city, panoramic views, classic Roman grandeur.",
+      "transportNotes": "Hotel shuttle to Via Veneto (seasonal/timetabled), taxis readily available.",
+      "booking": "Please mention \"Faris & Zina Wedding Rate\"."
+    },
+    "signatureStays": {
+      "hotelDeRussie": {
+        "name": "Hotel de Russie — Rocco Forte",
+        "notes": "Secret garden, timeless Roman elegance.",
+        "transportNotes": "Taxi (~15–20 min). Metro A (Flaminio ↔ Cipro) + short taxi."
+      },
+      "hotelEden": {
+        "name": "Hotel Eden — Dorchester Collection",
+        "notes": "Rooftop views, old-world glamour.",
+        "transportNotes": "Taxi; Metro A (Spagna/Barberini ↔ Cipro) + short taxi."
+      },
+      "hasslerRoma": {
+        "name": "Hassler Roma",
+        "notes": "A Roman icon with panoramic terraces.",
+        "transportNotes": "Taxi; Metro A (Spagna ↔ Cipro)."
+      },
+      "bulgariHotel": {
+        "name": "Bulgari Hotel Roma",
+        "notes": "Contemporary Italian opulence with a statement spa.",
+        "transportNotes": "Taxi; Metro A (Spagna ↔ Cipro) + short taxi."
+      },
+      "hotelDelaVille": {
+        "name": "Hotel de la Ville — Rocco Forte",
+        "notes": "Rooftop bar and grand-tour interiors.",
+        "transportNotes": "Taxi; Metro A (Spagna ↔ Cipro)."
+      }
+    },
+    "timelessStays": {
+      "nhCollection": {
+        "name": "NH Collection Roma Giustiniano",
+        "notes": "Wide rooms, easy walk to Castel Sant'Angelo & Via Cola di Rienzo.",
+        "transportNotes": "Taxi (~10–15 min); Metro A (Lepanto ↔ Cipro)."
+      },
+      "hotelIsa": {
+        "name": "Hotel Isa",
+        "notes": "Boutique feel with a lovely rooftop terrace.",
+        "transportNotes": "Taxi; buses to Cavour/Prati; Metro A connections."
+      },
+      "villaAgrippina": {
+        "name": "Villa Agrippina, Gran Meliá",
+        "notes": "Urban resort vibe between Vatican and Trastevere.",
+        "transportNotes": "Taxi; buses via Gianicolo; Metro A (Ottaviano ↔ Cipro) + taxi."
+      },
+      "martisPalace": {
+        "name": "Martis Palace Hotel",
+        "notes": "Intimate design hotel steps from Rome's baroque heart.",
+        "transportNotes": "Taxi; bus to Via Crescenzio then taxi."
+      },
+      "palazzoNavona": {
+        "name": "Palazzo Navona Hotel",
+        "notes": "Elegant minimalism with a stellar rooftop.",
+        "transportNotes": "Taxi; bus links toward Prati then short taxi/walk."
+      }
+    },
+    "chicStays": {
+      "hoxtonRome": {
+        "name": "The Hoxton, Rome",
+        "notes": "Cool social spaces; leafy neighborhood vibes.",
+        "transportNotes": "Taxi; buses on Via Nomentana/Parioli."
+      },
+      "hotelSmeraldo": {
+        "name": "Hotel Smeraldo",
+        "notes": "Heart-of-Rome location, renovated rooms.",
+        "transportNotes": "Taxi; bus to Corso Vittorio Emanuele + short taxi/walk."
+      },
+      "romeHello": {
+        "name": "The RomeHello",
+        "notes": "Friendly, modern, surprisingly chic.",
+        "transportNotes": "Taxi; Metro A/B ↔ Cipro."
+      },
+      "generatorRome": {
+        "name": "Generator Rome",
+        "notes": "Design-led budget with rooftop bar.",
+        "transportNotes": "Taxi; Metro A/B ↔ Cipro."
+      },
+      "hotelSantAngelo": {
+        "name": "Hotel Sant'Angelo",
+        "notes": "Classic style near the river.",
+        "transportNotes": "Taxi; buses along Lungotevere & Via Cavour."
+      }
+    },
+    "common": {
+      "distance": "Distance",
+      "transport": "Transport",
+      "booking": "Booking",
+      "ourMainHotel": "Our Main Hotel",
+      "blockRate": "Block Rate"
+    }
   }
 }
