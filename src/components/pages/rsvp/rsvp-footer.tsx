@@ -1,6 +1,9 @@
+'use client';
 import { Flower, Flower2, Leaf } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 function RSVPFooter() {
+  const { t } = useTranslation();
   return (
     <div className="text-center mt-16">
       <div className="bg-gradient-to-r from-orange-50/90 to-sage-50/90 backdrop-blur-sm rounded-lg p-8 shadow-md border border-orange-100 relative">
@@ -27,7 +30,7 @@ function RSVPFooter() {
           className="text-2xl text-brown-700 leading-relaxed"
           style={{ fontFamily: 'var(--font-harrington)' }}
         >
-          We can&apos;t wait to celebrate with you ❄️✨
+          {t('rsvp.footerMessage')}
         </p>
         <div className="flex items-center justify-center gap-2 mt-4">
           <div className="w-2 h-2 bg-sage-300 rounded-full animate-pulse"></div>

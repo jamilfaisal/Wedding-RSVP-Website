@@ -18,8 +18,8 @@ function RSVPForm() {
   ];
 
   const guestOptions = [
-    { value: '1', label: t('1 Guest') },
-    { value: '2', label: t('2 Guests') },
+    { value: '1', label: t('rsvp.1 Guest') },
+    { value: '2', label: t('rsvp.2 Guests') },
   ];
 
   return (
@@ -108,7 +108,7 @@ function RSVPForm() {
                 onChange={(value) => handleInputChange('mealPreference', value)}
                 onBlur={(value) => handleBlur('mealPreference', value)}
                 options={mealOptions}
-                placeholder="Select your meal preference"
+                placeholder={t('rsvp.mealPreferencePlaceholder')}
                 error={errors.mealPreference}
               />
             </FormField>
@@ -118,19 +118,19 @@ function RSVPForm() {
                 id="dietaryRestrictions"
                 value={formData.dietaryRestrictions}
                 onChange={(value) => handleInputChange('dietaryRestrictions', value)}
-                placeholder="Please list any allergies or food intolerances"
+                placeholder={t('rsvp.dietaryRestrictionsPlaceholder')}
               />
             </FormField>
           </>
         )}
 
-        <FormField id="songRequests" label="Any song requests? 🎵">
+        <FormField id="songRequests" label={t('rsvp.songRequests')}>
           <Textarea
             id="songRequests"
             value={formData.songRequests}
             onChange={(e) => handleInputChange('songRequests', e.target.value)}
             className="w-full p-4 border-2 border-sage-200 rounded-lg focus:border-sage-400 focus:ring-sage-200 bg-ivory-50/50 text-brown-800 min-h-24"
-            placeholder="Share your favorite songs that would make you dance at our wedding! 💃🕺"
+            placeholder={t('rsvp.songRequestsPlaceholder')}
             rows={4}
           />
         </FormField>
@@ -141,7 +141,7 @@ function RSVPForm() {
             className="cursor-pointer w-full bg-gradient-to-r from-sage-600 to-sage-700 hover:from-sage-700 hover:to-sage-800 text-white py-4 px-8 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 border-0"
             style={{ fontFamily: 'var(--font-serif)' }}
           >
-            Submit RSVP
+            {t('rsvp.submitRSVP')}
           </Button>
         </div>
       </form>
