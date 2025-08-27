@@ -28,23 +28,21 @@ export async function sendConfirmationEmail(
 
   const to = record.fields?.Email;
   if (validateRecipientEmailExists(to)) {
-    return { success: false, error: 'No recipient email found on RSVP record' };
+    return { success: false, error: 'No valid recipient email found on RSVP record' };
   }
 
   const name = record.fields?.Name || '';
   const attendance = record.fields?.Attendance || '';
   const guests = record.fields?.['Number of Guests'] ?? null;
   const editToken = record.fields?.['Edit Token (JWT)'];
-
   const from = process.env.RESEND_SENDER_EMAIL || 'Resend Dev <onboarding@resend.dev>';
 
-  const editUrl = editToken
-    ? process.env.RSVP_EDIT_URL
+  const editUrl =
+    editToken && process.env.RSVP_EDIT_URL
       ? `${process.env.RSVP_EDIT_URL}?token=${encodeURIComponent(String(editToken))}`
-      : ''
-    : '';
+      : '';
 
-  const subject = `Thanks for your RSVP${name ? `, ${name}` : ''}!`;
+  const subject = `Your RSVP is confirmed – We can’t wait!`;
 
   try {
     const props: ConfirmationEmailProps = {
@@ -55,7 +53,6 @@ export async function sendConfirmationEmail(
     };
 
     const reactElement = React.createElement(ConfirmationEmail, props);
-
     const resend = getResendClient();
 
     const payload: Parameters<typeof resend.emails.send>[0] = {
@@ -68,7 +65,8 @@ export async function sendConfirmationEmail(
     const { data, error } = await resend.emails.send(payload);
 
     if (error) {
-      return { success: false, error: String(error) };
+      const errorMessage = typeof error === 'object' ? JSON.stringify(error) : String(error);
+      return { success: false, error: errorMessage };
     }
 
     const responseData = data as { id?: string } | undefined;

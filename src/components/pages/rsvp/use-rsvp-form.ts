@@ -234,7 +234,8 @@ function submitRSVP(formData: CreateRSVPInput, t: (key: string) => string) {
     .then(async (response) => {
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.error || `HTTP ${response.status}`);
+        const errorMessage = errorData.error || `HTTP ${response.status}: ${response.statusText}`;
+        throw new Error(errorMessage);
       }
       return response.json();
     })
@@ -243,7 +244,7 @@ function submitRSVP(formData: CreateRSVPInput, t: (key: string) => string) {
       alert(t('success.rsvpSubmitted'));
     })
     .catch((error) => {
-      console.error('Error submitting RSVP:', error);
+      console.error('RSVP submission failed:', error);
       alert(t('errors.submitError'));
     });
 }

@@ -1,3 +1,4 @@
+import { brideFirstName, groomFirstName } from '@/lib/config/wedding-config';
 import React from 'react';
 
 export type ConfirmationEmailProps = {
@@ -63,33 +64,31 @@ export default function ConfirmationEmail({
             <td>
               <div style={containerStyle}>
                 <div style={{ padding: '16px 24px', borderBottom: '1px solid #f1f5f9' }}>
-                  <h1 style={h1Style}>Thanks for your RSVP</h1>
+                  <h1 style={h1Style}>Your RSVP is Confirmed 🎉</h1>
                 </div>
                 <div style={contentStyle}>
-                  <p style={{ marginTop: 0 }}>Hi {name || 'there'},</p>
+                  <p style={{ marginTop: 0 }}>Hi {name || 'friend'},</p>
 
                   <p>
-                    Thanks for your RSVP. We received your response: <strong>{attendance}</strong>.
+                    We’re thrilled to have received your RSVP! Your response:
+                    <strong> {attendance}</strong>.
                   </p>
 
                   {guests ? (
                     <p>
-                      Number of guests: <strong>{guests}</strong>
+                      Guests attending: <strong>{guests}</strong>
                     </p>
                   ) : null}
 
-                  {editUrl ? (
-                    <div>
-                      <p>If you need to make changes, click the button below to edit your RSVP.</p>
-                      <a href={editUrl} style={buttonStyle}>
-                        Edit RSVP
-                      </a>
-                    </div>
-                  ) : null}
+                  <p style={{ marginTop: 20 }}>
+                    We can’t wait to celebrate this special day with you 🎂
+                  </p>
 
-                  <p style={{ marginTop: 20 }}>Looking forward to celebrating with you 🎂</p>
-
-                  <p style={{ marginBottom: 0 }}>— The Wedding Team</p>
+                  <p style={{ marginBottom: 0 }}>
+                    With love,
+                    <br />
+                    {`${groomFirstName} & ${brideFirstName}` || 'Your Wedding Hosts'}
+                  </p>
                 </div>
               </div>
             </td>

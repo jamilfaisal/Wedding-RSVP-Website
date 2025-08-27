@@ -141,7 +141,6 @@ export async function createRSVP(input: CreateRSVPInput): Promise<APIResponse<Ai
     'Edit Token (JWT)': editToken,
     'Confirmation Sent': false,
   };
-  console.log(rsvpData);
 
   const client = getAirtableClient();
   const response = await client.post<AirtableCreateUpdateResponse>({

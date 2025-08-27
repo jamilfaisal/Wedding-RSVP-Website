@@ -1,4 +1,4 @@
-import { createRSVP, getAllRSVPs } from '@/lib/airtable';
+import { createRSVP, getAllRSVPs, sendConfirmationEmail } from '@/lib/airtable';
 import { CreateRSVPInput } from '@/lib/airtable/types';
 import { NextRequest } from 'next/server';
 
@@ -25,29 +25,36 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const data: CreateRSVPInput = await request.json();
-    const result = await createRSVP(data);
+    const rsvpResult = await createRSVP(data);
+    if (!rsvpResult.success) {
+      const errorMessage =
+        typeof rsvpResult.error === 'string' ? rsvpResult.error : 'Failed to create RSVP';
 
-    if (result.success) {
-      return Response.json({ success: true, data: result.data }, { status: 201 });
-    } else {
+      return Response.json({ success: false, error: errorMessage }, { status: 400 });
+    }
+
+    const emailResult = await sendConfirmationEmail(rsvpResult.data!);
+    if (!emailResult.success) {
+      const errorMessage =
+        typeof emailResult.error === 'string'
+          ? emailResult.error
+          : JSON.stringify(emailResult.error);
+
       return Response.json(
         {
           success: false,
-          error: result.error || 'Failed to create RSVP',
+          error: `RSVP created but email sending failed: ${errorMessage}`,
+          rsvpCreated: true,
+          rsvpId: rsvpResult.data?.id,
         },
-        { status: 400 }
+        { status: 500 }
       );
     }
+
+    return Response.json({ success: true }, { status: 201 });
   } catch (error) {
-    console.error('Error creating RSVP:', error);
-    return Response.json(
-      {
-        success: false,
-        error: 'Failed to create RSVP',
-        details: error instanceof Error ? error.message : 'Unknown error',
-      },
-      { status: 500 }
-    );
+    console.error('Unexpected error in RSVP API:', error);
+    return Response.json({ success: false, error: 'Internal server error' }, { status: 500 });
   }
 }
 
