@@ -1,4 +1,9 @@
-import { createRSVP, getAllRSVPs, sendConfirmationEmail } from '@/lib/airtable';
+import {
+  createRSVP,
+  getAllRSVPs,
+  sendConfirmationEmail,
+  sendCoupleNotificationEmail,
+} from '@/lib/airtable';
 import { CreateRSVPInput } from '@/lib/airtable/types';
 import { NextRequest } from 'next/server';
 
@@ -49,6 +54,11 @@ export async function POST(request: NextRequest) {
         },
         { status: 500 }
       );
+    }
+
+    const coupleEmailResult = await sendCoupleNotificationEmail(rsvpResult.data!);
+    if (!coupleEmailResult.success) {
+      console.warn('Failed to send couple notification email:', coupleEmailResult.error);
     }
 
     return Response.json({ success: true }, { status: 201 });
