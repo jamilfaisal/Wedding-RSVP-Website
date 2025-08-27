@@ -38,27 +38,32 @@ export async function POST(request: NextRequest) {
       return Response.json({ success: false, error: errorMessage }, { status: 400 });
     }
 
-    const emailResult = await sendConfirmationEmail(rsvpResult.data!);
-    if (!emailResult.success) {
-      const errorMessage =
-        typeof emailResult.error === 'string'
-          ? emailResult.error
-          : JSON.stringify(emailResult.error);
+    const sendEmailsEnabled = process.env.SEND_EMAILS_FEATURE_TOGGLE === 'true';
+    if (sendEmailsEnabled) {
+      const emailResult = await sendConfirmationEmail(rsvpResult.data!);
+      if (!emailResult.success) {
+        const errorMessage =
+          typeof emailResult.error === 'string'
+            ? emailResult.error
+            : JSON.stringify(emailResult.error);
 
-      return Response.json(
-        {
-          success: false,
-          error: `RSVP created but email sending failed: ${errorMessage}`,
-          rsvpCreated: true,
-          rsvpId: rsvpResult.data?.id,
-        },
-        { status: 500 }
-      );
-    }
+        return Response.json(
+          {
+            success: false,
+            error: `RSVP created but email sending failed: ${errorMessage}`,
+            rsvpCreated: true,
+            rsvpId: rsvpResult.data?.id,
+          },
+          { status: 500 }
+        );
+      }
 
-    const coupleEmailResult = await sendCoupleNotificationEmail(rsvpResult.data!);
-    if (!coupleEmailResult.success) {
-      console.warn('Failed to send couple notification email:', coupleEmailResult.error);
+      const coupleEmailResult = await sendCoupleNotificationEmail(rsvpResult.data!);
+      if (!coupleEmailResult.success) {
+        console.warn('Failed to send couple notification email:', coupleEmailResult.error);
+      }
+    } else {
+      console.log('Email sending is disabled');
     }
 
     return Response.json({ success: true }, { status: 201 });
