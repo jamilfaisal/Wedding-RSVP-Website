@@ -67,7 +67,7 @@ function renderSectionFooter(t: (key: string) => string) {
 function renderSectionHeader(t: (key: string) => string) {
   return (
     <div className="text-center mb-20 relative">
-      <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-96">
+      <div className="absolute -top-14 left-1/2 transform -translate-x-1/2 w-96">
         <div className="flex items-center justify-center gap-6">
           <div className="flex items-center gap-2">
             <Leaf className="w-5 h-5 text-pastel-pink-400" />

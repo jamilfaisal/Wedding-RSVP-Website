@@ -51,7 +51,7 @@ function renderFloralPicture() {
 
 function renderTopBorder() {
   return (
-    <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-80">
+    <div className="absolute -top-14 left-1/2 transform -translate-x-1/2 w-80">
       <div className="flex items-center justify-center gap-4">
         <div className="flex items-center gap-2">
           <Leaf className="w-4 h-4 text-sage-400 transform -rotate-45" />

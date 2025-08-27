@@ -3,6 +3,47 @@ export interface FAQ {
   answer: string;
 }
 
+export const faqsStatic = [
+  {
+    key: 'attire',
+  },
+  {
+    key: 'transportation',
+  },
+  {
+    key: 'children',
+  },
+  {
+    key: 'endTime',
+  },
+  {
+    key: 'photos',
+  },
+  {
+    key: 'parking',
+  },
+  {
+    key: 'dietary',
+  },
+  {
+    key: 'weather',
+  },
+  {
+    key: 'gifts',
+  },
+  {
+    key: 'travel',
+  },
+];
+
+export function getFAQs(t: (key: string) => string): FAQ[] {
+  return faqsStatic.map((faq) => ({
+    question: t(`contactFAQs.faqs.${faq.key}.question`),
+    answer: t(`contactFAQs.faqs.${faq.key}.answer`),
+  }));
+}
+
+// Legacy export for backward compatibility
 export const faqs: FAQ[] = [
   {
     question: 'What should I wear to the wedding?',

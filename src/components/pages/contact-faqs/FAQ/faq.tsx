@@ -1,17 +1,20 @@
 import { Heart, Flower, Flower2 } from 'lucide-react';
-import { faqs } from './faq-data';
+import { getFAQs } from './faq-data';
 import FAQItem from './faq-item';
+import { useTranslation } from 'react-i18next';
 
 function FAQ() {
+  const { t } = useTranslation();
+  const faqs = getFAQs(t);
   return (
     <div className="lg:col-span-2">
-      {renderHeader()}
-      {renderFAQItems()}
+      {renderHeader(t)}
+      {renderFAQItems(t, faqs)}
     </div>
   );
 }
 
-function renderFAQItems() {
+function renderFAQItems(t: (key: string) => string, faqs: ReturnType<typeof getFAQs>) {
   return (
     <div className="space-y-6">
       {faqs.map((faq, index) => (
@@ -21,7 +24,7 @@ function renderFAQItems() {
   );
 }
 
-function renderHeader() {
+function renderHeader(t: (key: string) => string) {
   return (
     <div className="text-center mb-12">
       <div className="flex items-center justify-center gap-4 mb-6">
@@ -32,7 +35,7 @@ function renderHeader() {
         <div className="w-16 h-px bg-gradient-to-l from-transparent via-sage-300 to-transparent"></div>
       </div>
       <h2 className="text-4xl text-brown-800 mb-4" style={{ fontFamily: 'var(--font-harrington)' }}>
-        Frequently Asked Questions
+        {t('contactFAQs.faqTitle')}
       </h2>
       <div className="flex items-center justify-center gap-2">
         <Flower className="w-4 h-4 text-sage-400 opacity-60" />

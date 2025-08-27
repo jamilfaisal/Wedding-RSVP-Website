@@ -1,23 +1,26 @@
+'use client';
 import { Flower, Leaf, Heart, Flower2 } from 'lucide-react';
 import FAQ from './FAQ/faq';
 import Contact from './contact';
+import { useTranslation } from 'react-i18next';
 
 function ContactFAQsPage() {
+  const { t } = useTranslation();
   return (
     <div className="min-h-screen bg-gradient-to-b from-ivory-50 via-sage-50/20 to-orange-50/10 pt-40 py-20">
       <div className="max-w-5xl mx-auto px-8">
-        {renderHeader()}
+        {renderHeader(t)}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-20">
           <Contact />
           <FAQ />
         </div>
-        {renderFooter()}
+        {renderFooter(t)}
       </div>
     </div>
   );
 }
 
-function renderFooter() {
+function renderFooter(t: (key: string) => string) {
   return (
     <div className="text-center">
       <div className="bg-gradient-to-r from-sage-50/90 to-orange-50/90 backdrop-blur-sm rounded-lg p-10 shadow-xl border border-sage-100 relative">
@@ -50,11 +53,11 @@ function renderFooter() {
           className="text-3xl text-brown-700 leading-relaxed mb-4"
           style={{ fontFamily: 'var(--font-harrington)' }}
         >
-          Thank you for sharing our special day with us 💕
+          {t('contactFAQs.footerMessagePart1')}
         </p>
 
         <p className="text-lg text-brown-600 italic" style={{ fontFamily: 'var(--font-serif)' }}>
-          We can&apos;t wait to celebrate love, laughter, and happily ever after with all of you!
+          {t('contactFAQs.footerMessagePart2')}
         </p>
 
         <div className="flex items-center justify-center gap-3 mt-6">
@@ -81,10 +84,10 @@ function renderFooter() {
   );
 }
 
-function renderHeader() {
+function renderHeader(t: (key: string) => string) {
   return (
     <div className="text-center mb-20 relative">
-      <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-96">
+      <div className="absolute -top-14 left-1/2 transform -translate-x-1/2 w-96">
         <div className="flex items-center justify-center gap-6">
           <div className="flex items-center gap-2">
             <Leaf className="w-5 h-5 text-sage-400" />
@@ -106,7 +109,7 @@ function renderHeader() {
         className="text-6xl md:text-7xl text-brown-800 mb-8 leading-tight"
         style={{ fontFamily: 'var(--font-harrington)' }}
       >
-        Contact & FAQs
+        {t('contactFAQs.title')}
       </h1>
     </div>
   );
