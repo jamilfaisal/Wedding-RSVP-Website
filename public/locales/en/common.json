@@ -142,7 +142,15 @@
     "smallPrintDescription": "Distances are approximate road distances from each hotel to the venue to help with planning; traffic can significantly affect travel time. For precise navigation on the day, we'll share exact pins and an arrival note closer to the wedding."
   },
   "touristyThings": {
-    "title": "Things to Do",
+    "title": "Touristy Things in ",
+    "subtitlePart1": "Here are some wonderful places to explore while in ",
+    "subtitlePart2": ". From ancient wonders to romantic spots, delicious cuisine to peaceful escapes – make the most of your time in the Eternal City!",
+    "historicalSites": "Historical Sites",
+    "romanticSpots": "Romantic Spots",
+    "foodAndDrink": "Food & Drink",
+    "dayTrips": "Day Trips",
+    "footerMessagePart1": "Enjoy exploring the beauty of ",
+    "footerMessagePart2": "! 🏛️✨",
     "subtitle": "Explore the area during your visit",
     "attractions": "Local Attractions",
     "restaurants": "Recommended Restaurants",
@@ -296,6 +304,112 @@
       "booking": "Booking",
       "ourMainHotel": "Our Main Hotel",
       "blockRate": "Block Rate"
+    }
+  },
+  "attractions": {
+    "historical": {
+      "colosseum": {
+        "name": "Colosseum",
+        "description": "Ancient amphitheater and iconic symbol of Imperial Rome",
+        "time": "2-3 hours",
+        "tips": "Book skip-the-line tickets in advance"
+      },
+      "romanForum": {
+        "name": "Roman Forum",
+        "description": "Ancient Roman public square with ruins of important government buildings",
+        "time": "1-2 hours",
+        "tips": "Visit early morning for fewer crowds"
+      },
+      "pantheon": {
+        "name": "Pantheon",
+        "description": "Remarkably preserved Roman temple with stunning dome",
+        "time": "30-45 minutes",
+        "tips": "Free entry, but expect queues"
+      },
+      "vatican": {
+        "name": "Vatican City & St. Peter's Basilica",
+        "description": "The world's smallest country and magnificent basilica",
+        "time": "Half day",
+        "tips": "Dress modestly, consider guided tours"
+      }
+    },
+    "romantic": {
+      "treviFountain": {
+        "name": "Trevi Fountain",
+        "description": "Baroque fountain perfect for making wishes together",
+        "time": "30 minutes",
+        "tips": "Visit at sunset or early morning for magical lighting"
+      },
+      "spanishSteps": {
+        "name": "Spanish Steps",
+        "description": "Beautiful stairway perfect for romantic photos",
+        "time": "45 minutes",
+        "tips": "Climb to the top for great city views"
+      },
+      "villaBorghese": {
+        "name": "Villa Borghese Gardens",
+        "description": "Peaceful gardens perfect for romantic strolls",
+        "time": "2-3 hours",
+        "tips": "Rent bikes or have a picnic"
+      },
+      "castelSantAngelo": {
+        "name": "Castel Sant'Angelo",
+        "description": "Historic castle with panoramic views of Rome",
+        "time": "1-2 hours",
+        "tips": "Perfect for sunset views"
+      }
+    },
+    "food": {
+      "trastevere": {
+        "name": "Trastevere District",
+        "description": "Charming neighborhood with authentic trattorias",
+        "time": "Evening",
+        "tips": "Try carbonara and cacio e pepe"
+      },
+      "campoFiori": {
+        "name": "Campo de' Fiori Market",
+        "description": "Morning market with fresh produce and local specialties",
+        "time": "1-2 hours",
+        "tips": "Visit in the morning for the best selection"
+      },
+      "testaccio": {
+        "name": "Testaccio Food Tour",
+        "description": "Local food district with authentic Roman cuisine",
+        "time": "3-4 hours",
+        "tips": "Book a guided food tour for the best experience"
+      },
+      "giolitti": {
+        "name": "Gelato at Giolitti",
+        "description": "Historic gelateria serving Rome's finest gelato since 1900",
+        "time": "30 minutes",
+        "tips": "Try multiple flavors, it's tradition!"
+      }
+    },
+    "dayTrips": {
+      "tivoliVillaEste": {
+        "name": "Tivoli - Villa d'Este",
+        "description": "Renaissance villa with stunning gardens and fountains",
+        "time": "Half day",
+        "tips": "Take the regional train from Rome"
+      },
+      "ostiaAntica": {
+        "name": "Ostia Antica",
+        "description": "Ancient Roman port city with well-preserved ruins",
+        "time": "Half day",
+        "tips": "Less crowded alternative to Pompeii"
+      },
+      "castelGandolfo": {
+        "name": "Castel Gandolfo",
+        "description": "Papal summer residence with beautiful lake views",
+        "time": "Half day",
+        "tips": "Perfect for a peaceful escape from the city"
+      },
+      "frascati": {
+        "name": "Frascati Wine Region",
+        "description": "Charming hilltop town famous for white wines",
+        "time": "Full day",
+        "tips": "Combine wine tasting with scenic views"
+      }
     }
   }
 }

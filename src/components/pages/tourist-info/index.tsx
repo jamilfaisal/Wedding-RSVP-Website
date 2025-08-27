@@ -1,25 +1,28 @@
+'use client';
 import { Leaf, Flower, MapPin, Flower2 } from 'lucide-react';
 import TouristInfoCard from './tourist-info-card';
 import TouristInfoHeader from './tourist-info-header';
-import { attractions } from './tourist-info-data';
-import { weddingCity } from '@/lib/config/wedding-config';
+import { getAttractions } from './tourist-info-data';
+import { useTranslation } from 'react-i18next';
 
 function TouristInfoPage() {
+  const { t } = useTranslation();
+  const attractions = getAttractions(t);
   return (
     <div className="min-h-screen bg-gradient-to-b from-ivory-50 via-sage-50/20 to-orange-50/10 pt-40 py-20">
       <div className="max-w-6xl mx-auto px-8">
-        {renderHeader(weddingCity)}
-        {renderHistoricalSites()}
-        {renderRomanticSpots()}
-        {renderFoodAndDrink()}
-        {renderDayTrips()}
-        {renderFooter(weddingCity)}
+        {renderHeader(t)}
+        {renderHistoricalSites(t, attractions)}
+        {renderRomanticSpots(t, attractions)}
+        {renderFoodAndDrink(t, attractions)}
+        {renderDayTrips(t, attractions)}
+        {renderFooter(t)}
       </div>
     </div>
   );
 }
 
-function renderFooter(weddingCity: string) {
+function renderFooter(t: (key: string) => string) {
   return (
     <div className="text-center mt-16">
       <div className="bg-gradient-to-r from-sage-50/90 to-orange-50/90 backdrop-blur-sm rounded-lg p-8 shadow-lg border border-sage-100 relative">
@@ -45,7 +48,8 @@ function renderFooter(weddingCity: string) {
           className="text-2xl text-brown-700 leading-relaxed"
           style={{ fontFamily: 'var(--font-harrington)' }}
         >
-          Enjoy exploring the beauty of {weddingCity}! 🏛️✨
+          {t('touristyThings.footerMessagePart1')} {t('weddingInfo.weddingCity')}
+          {t('touristyThings.footerMessagePart2')}
         </p>
         <div className="flex items-center justify-center gap-2 mt-4">
           <div className="w-2 h-2 bg-sage-300 rounded-full animate-pulse"></div>
@@ -63,10 +67,13 @@ function renderFooter(weddingCity: string) {
   );
 }
 
-function renderDayTrips() {
+function renderDayTrips(
+  t: (key: string) => string,
+  attractions: ReturnType<typeof getAttractions>
+) {
   return (
     <section className="mb-20">
-      <TouristInfoHeader title="Day Trips" />
+      <TouristInfoHeader title={t('touristyThings.dayTrips')} />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {attractions.dayTrips.map((attraction, index) => (
           <TouristInfoCard key={index} attraction={attraction} />
@@ -76,10 +83,13 @@ function renderDayTrips() {
   );
 }
 
-function renderFoodAndDrink() {
+function renderFoodAndDrink(
+  t: (key: string) => string,
+  attractions: ReturnType<typeof getAttractions>
+) {
   return (
     <section className="mb-20">
-      <TouristInfoHeader title="Food & Drink" />
+      <TouristInfoHeader title={t('touristyThings.foodAndDrink')} />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {attractions.food.map((attraction, index) => (
           <TouristInfoCard key={index} attraction={attraction} />
@@ -89,10 +99,13 @@ function renderFoodAndDrink() {
   );
 }
 
-function renderRomanticSpots() {
+function renderRomanticSpots(
+  t: (key: string) => string,
+  attractions: ReturnType<typeof getAttractions>
+) {
   return (
     <section className="mb-20">
-      <TouristInfoHeader title="Romantic Spots" />
+      <TouristInfoHeader title={t('touristyThings.romanticSpots')} />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {attractions.romantic.map((attraction, index) => (
           <TouristInfoCard key={index} attraction={attraction} />
@@ -102,10 +115,13 @@ function renderRomanticSpots() {
   );
 }
 
-function renderHistoricalSites() {
+function renderHistoricalSites(
+  t: (key: string) => string,
+  attractions: ReturnType<typeof getAttractions>
+) {
   return (
     <section className="mb-20">
-      <TouristInfoHeader title="Historical Sites" />
+      <TouristInfoHeader title={t('touristyThings.historicalSites')} />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {attractions.historical.map((attraction, index) => (
           <TouristInfoCard key={index} attraction={attraction} />
@@ -115,7 +131,7 @@ function renderHistoricalSites() {
   );
 }
 
-function renderHeader(weddingCity: string) {
+function renderHeader(t: (key: string) => string) {
   return (
     <div className="text-center mb-20 relative">
       <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-96">
@@ -140,7 +156,8 @@ function renderHeader(weddingCity: string) {
         className="text-6xl md:text-7xl text-brown-800 mb-8 leading-tight"
         style={{ fontFamily: 'var(--font-harrington)' }}
       >
-        Touristy Things in {weddingCity}
+        {t('touristyThings.title')}
+        {t('weddingInfo.weddingCity')}
       </h1>
 
       <div className="max-w-3xl mx-auto bg-white/90 backdrop-blur-sm rounded-lg p-8 shadow-lg border border-sage-100 relative">
@@ -154,9 +171,8 @@ function renderHeader(weddingCity: string) {
           className="text-xl text-brown-700 leading-relaxed"
           style={{ fontFamily: 'var(--font-serif)' }}
         >
-          Here are some wonderful places to explore while in {weddingCity}. From ancient wonders to
-          romantic spots, delicious cuisine to peaceful escapes – make the most of your time in the
-          Eternal City!
+          {t('touristyThings.subtitlePart1')} {t('weddingInfo.weddingCity')}
+          {t('touristyThings.subtitlePart2')}
         </p>
       </div>
     </div>
