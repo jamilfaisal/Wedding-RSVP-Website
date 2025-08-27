@@ -30,13 +30,13 @@ function RSVPForm() {
       <FloralDecoration position="bottom-left" />
       <FloralDecoration position="bottom-right" />
 
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={(e) => handleSubmit(e, t)} className="space-y-6">
         <FormField id="fullName" label={t('rsvp.fullName')} required error={errors.fullName}>
           <TextInput
             id="fullName"
             value={formData.fullName}
-            onChange={(value) => handleInputChange('fullName', value)}
-            onBlur={() => handleBlur('fullName')}
+            onChange={(value) => handleInputChange('fullName', value, t)}
+            onBlur={() => handleBlur('fullName', t)}
             placeholder={t('rsvp.fullNamePlaceholder')}
             required
             error={errors.fullName}
@@ -49,8 +49,8 @@ function RSVPForm() {
             id="email"
             type="email"
             value={formData.email}
-            onChange={(value) => handleInputChange('email', value)}
-            onBlur={() => handleBlur('email')}
+            onChange={(value) => handleInputChange('email', value, t)}
+            onBlur={() => handleBlur('email', t)}
             placeholder="your.email@example.com"
             required
             error={errors.email}
@@ -60,7 +60,7 @@ function RSVPForm() {
 
         <AttendanceField
           attending={formData.attending}
-          onChange={(value) => handleInputChange('attending', value)}
+          onChange={(value) => handleInputChange('attending', value, t)}
         />
 
         {formData.attending && (
@@ -69,7 +69,7 @@ function RSVPForm() {
               <SelectField
                 id="numberOfGuests"
                 value={formData.numberOfGuests}
-                onChange={(value) => handleInputChange('numberOfGuests', value)}
+                onChange={(value) => handleInputChange('numberOfGuests', value, t)}
                 options={guestOptions}
                 placeholder={t('rsvp.guestsPlaceholder')}
                 zIndex="z-[200]"
@@ -86,8 +86,8 @@ function RSVPForm() {
                 <TextInput
                   id="secondGuestName"
                   value={formData.secondGuestName}
-                  onChange={(value) => handleInputChange('secondGuestName', value)}
-                  onBlur={() => handleBlur('secondGuestName')}
+                  onChange={(value) => handleInputChange('secondGuestName', value, t)}
+                  onBlur={() => handleBlur('secondGuestName', t)}
                   placeholder={t('rsvp.secondGuestFullNamePlaceholder')}
                   required
                   error={errors.secondGuestName}
@@ -105,8 +105,8 @@ function RSVPForm() {
               <SelectField
                 id="mealPreference"
                 value={formData.mealPreference}
-                onChange={(value) => handleInputChange('mealPreference', value)}
-                onBlur={(value) => handleBlur('mealPreference', value)}
+                onChange={(value) => handleInputChange('mealPreference', value, t)}
+                onBlur={(value) => handleBlur('mealPreference', t, value)}
                 options={mealOptions}
                 placeholder={t('rsvp.mealPreferencePlaceholder')}
                 error={errors.mealPreference}
@@ -117,7 +117,7 @@ function RSVPForm() {
               <TextInput
                 id="dietaryRestrictions"
                 value={formData.dietaryRestrictions}
-                onChange={(value) => handleInputChange('dietaryRestrictions', value)}
+                onChange={(value) => handleInputChange('dietaryRestrictions', value, t)}
                 placeholder={t('rsvp.dietaryRestrictionsPlaceholder')}
               />
             </FormField>
@@ -128,7 +128,7 @@ function RSVPForm() {
           <Textarea
             id="songRequests"
             value={formData.songRequests}
-            onChange={(e) => handleInputChange('songRequests', e.target.value)}
+            onChange={(e) => handleInputChange('songRequests', e.target.value, t)}
             className="w-full p-4 border-2 border-sage-200 rounded-lg focus:border-sage-400 focus:ring-sage-200 bg-ivory-50/50 text-brown-800 min-h-24"
             placeholder={t('rsvp.songRequestsPlaceholder')}
             rows={4}

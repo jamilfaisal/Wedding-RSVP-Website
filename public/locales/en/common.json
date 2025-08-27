@@ -189,13 +189,16 @@
   },
   "errors": {
     "required": "This field is required",
+    "missingEmail": "Email address is required",
     "invalidEmail": "Please enter a valid email address",
     "invalidPhone": "Please enter a valid phone number",
-    "submitError": "There was an error submitting your RSVP. Please try again.",
-    "networkError": "Network error. Please check your connection."
+    "submitError": "Error submitting RSVP. Please contact support for further assistance.",
+    "invalidSecondGuestName": "Second guest name is required",
+    "invalidMealPreference": "Please select a meal preference",
+    "invalidFullName": "Full name is required"
   },
   "success": {
-    "rsvpSubmitted": "Your RSVP has been successfully submitted!",
+    "rsvpSubmitted": "RSVP submitted successfully!",
     "emailSent": "Email sent successfully",
     "dataSaved": "Your information has been saved"
   },

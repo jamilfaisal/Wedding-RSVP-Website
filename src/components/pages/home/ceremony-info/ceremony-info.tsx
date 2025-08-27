@@ -3,7 +3,6 @@ import ceremonyPhoto from '/public/images/ceremony-photo.png';
 import floralIllustration from '/public/images/floral-illustration.png';
 import ImageWithFallback from '../../../ui/image-with-fallback';
 import WeatherWidget from './weather-widget';
-import { weddingCity, weddingCountry } from '@/lib/config/wedding-config';
 import { formatWeddingStartTime, formatWeddingStartDate } from '@/components/layout/utils';
 import { useI18n } from '@/lib/i18n/i18n-provider';
 import { useTranslation } from 'react-i18next';
