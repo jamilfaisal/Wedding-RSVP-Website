@@ -1,0 +1,107 @@
+import { getRSVPByToken, updateRSVP } from '@/lib/airtable';
+import { UpdateRSVPInput, CreateRSVPInput, MealSelection } from '@/lib/airtable/types';
+import { NextRequest } from 'next/server';
+
+export async function GET(request: NextRequest) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const token = searchParams.get('token');
+
+    if (!token) {
+      return Response.json({ success: false, error: 'Token is required' }, { status: 400 });
+    }
+
+    const result = await getRSVPByToken(token);
+
+    if (!result.success) {
+      return Response.json(
+        { success: false, error: result.error || 'Failed to fetch RSVP' },
+        { status: 404 }
+      );
+    }
+
+    if (!result.data) {
+      return Response.json({ success: false, error: 'RSVP not found' }, { status: 404 });
+    }
+
+    const rsvpData = {
+      id: result.data.id,
+      fullName: result.data.fields.Name || '',
+      email: result.data.fields.Email || '',
+      attending: result.data.fields.Attendance === 'Yes',
+      numberOfGuests: String(result.data.fields['Number of Guests'] || 1),
+      secondGuestName: result.data.fields['Second Guest Name'] || '',
+      mealPreference: result.data.fields['Meal Selection'] || '',
+      dietaryRestrictions: result.data.fields['Dietary Restrictions'] || '',
+      songRequests: result.data.fields['Song Request'] || '',
+      createdTime: result.data.createdTime,
+    };
+
+    return Response.json({ success: true, data: rsvpData }, { status: 200 });
+  } catch (error) {
+    console.error('Error fetching RSVP by token:', error);
+    return Response.json(
+      {
+        success: false,
+        error: 'Failed to fetch RSVP',
+        details: error instanceof Error ? error.message : 'Unknown error',
+      },
+      { status: 500 }
+    );
+  }
+}
+
+export async function PUT(request: NextRequest) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const token = searchParams.get('token');
+
+    if (!token) {
+      return Response.json({ success: false, error: 'Token is required' }, { status: 400 });
+    }
+
+    const existingRSVP = await getRSVPByToken(token);
+    if (!existingRSVP.success || !existingRSVP.data) {
+      return Response.json({ success: false, error: 'Invalid or expired token' }, { status: 404 });
+    }
+
+    const data: Omit<CreateRSVPInput, 'id'> = await request.json();
+
+    const updateInput: UpdateRSVPInput = {
+      id: existingRSVP.data.id,
+      fullName: data.fullName,
+      email: data.email,
+      attending: data.attending,
+      numberOfGuests: data.numberOfGuests,
+      secondGuestName: data.secondGuestName,
+      mealPreference: data.mealPreference as MealSelection,
+      dietaryRestrictions: data.dietaryRestrictions,
+      songRequests: data.songRequests,
+    };
+
+    const result = await updateRSVP(updateInput);
+
+    if (!result.success) {
+      const errorMessage =
+        typeof result.error === 'string' ? result.error : 'Failed to update RSVP';
+
+      return Response.json({ success: false, error: errorMessage }, { status: 400 });
+    }
+
+    return Response.json({ success: true, data: result.data }, { status: 200 });
+  } catch (error) {
+    console.error('Error updating RSVP by token:', error);
+    return Response.json({ success: false, error: 'Internal server error' }, { status: 500 });
+  }
+}
+
+export async function OPTIONS() {
+  return new Response(null, {
+    status: 204,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, PUT, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type',
+    },
+  });
+}

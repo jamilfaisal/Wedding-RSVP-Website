@@ -1,5 +1,12 @@
-import { CreateRSVPInput, MealSelection } from '@/lib/airtable/types';
+import { CreateRSVPInput } from '@/lib/airtable/types';
 import React, { useState } from 'react';
+import {
+  isAttendingChangedToNo,
+  clearFormAndErrors,
+  handleNumGuestsChange,
+  touchAllFields,
+  validateFieldWithData,
+} from './utils';
 
 export interface FormErrors {
   fullName: string;
@@ -45,32 +52,6 @@ export function useRSVPForm() {
   const [errors, setErrors] = useState<FormErrors>(initialErrors);
   const [fieldTouched, setFieldTouched] = useState<TouchedFields>(initialTouched);
 
-  const validateFieldWithData = (
-    formData: CreateRSVPInput,
-    field: string,
-    value: string | boolean,
-    t: (key: string) => string
-  ): string => {
-    let error = '';
-
-    switch (field) {
-      case 'fullName':
-        error = validateFullName(value, error, t);
-        break;
-      case 'email':
-        error = validateEmail(value, error, t);
-        break;
-      case 'mealPreference':
-        error = validateMealPreference(formData, value, error, t);
-        break;
-      case 'secondGuestName':
-        error = validateSecondGuestName(formData, value, error, t);
-        break;
-    }
-
-    return error;
-  };
-
   const validateField = (
     field: string,
     value: string | boolean,
@@ -93,28 +74,13 @@ export function useRSVPForm() {
     setFormData(newFormData);
 
     if (field === 'numberOfGuests') {
-      handleNumGuestsChange(
-        value,
-        errors,
-        setErrors,
-        setFormData,
-        fieldTouched,
-        validateFieldWithData,
-        newFormData,
-        t
-      );
+      handleNumGuestsChange(value, errors, setErrors, setFormData, fieldTouched, t, newFormData);
       return;
     }
-    updateErrorsForTouchedField(
-      fieldTouched,
-      field,
-      errors,
-      validateFieldWithData,
-      newFormData,
-      value,
-      setErrors,
-      t
-    );
+    if (fieldTouched[field as keyof TouchedFields] || errors[field as keyof FormErrors]) {
+      const error = validateFieldWithData(newFormData, field, value, t);
+      setErrors({ ...errors, [field]: error });
+    }
   };
 
   const handleBlur = (
@@ -123,7 +89,6 @@ export function useRSVPForm() {
     currentValue?: string | boolean
   ) => {
     setFieldTouched({ ...fieldTouched, [field]: true });
-    // Use the provided currentValue if available, otherwise fall back to formData
     const value =
       currentValue !== undefined ? currentValue : formData[field as keyof CreateRSVPInput];
     const error = validateFieldWithData(formData, field, value, t);
@@ -169,60 +134,6 @@ export function useRSVPForm() {
   };
 }
 
-function updateErrorsForTouchedField(
-  fieldTouched: TouchedFields,
-  field: string,
-  errors: FormErrors,
-  validateFieldWithData: (
-    formData: CreateRSVPInput,
-    field: string,
-    value: string | boolean,
-    t: (key: string) => string
-  ) => string,
-  newFormData: CreateRSVPInput,
-  value: string | boolean,
-  setErrors: React.Dispatch<React.SetStateAction<FormErrors>>,
-  t: (key: string) => string
-) {
-  if (fieldTouched[field as keyof TouchedFields] || errors[field as keyof FormErrors]) {
-    const error = validateFieldWithData(newFormData, field, value, t);
-    setErrors({ ...errors, [field]: error });
-  }
-}
-
-function clearFormAndErrors(
-  newFormData: {
-    fullName: string;
-    email: string;
-    attending: boolean;
-    numberOfGuests: string;
-    secondGuestName: string;
-    mealPreference: MealSelection | '';
-    dietaryRestrictions: string;
-    songRequests: string;
-  },
-  setErrors: React.Dispatch<React.SetStateAction<FormErrors>>,
-  errors: FormErrors
-) {
-  newFormData = {
-    ...newFormData,
-    numberOfGuests: '1',
-    secondGuestName: '',
-    mealPreference: '',
-    dietaryRestrictions: '',
-  };
-  setErrors({
-    ...errors,
-    mealPreference: '',
-    secondGuestName: '',
-  });
-  return newFormData;
-}
-
-function isAttendingChangedToNo(field: string, value: string | boolean) {
-  return field === 'attending' && value === false;
-}
-
 function submitRSVP(formData: CreateRSVPInput, t: (key: string) => string) {
   fetch('/api/rsvp', {
     method: 'POST',
@@ -247,103 +158,4 @@ function submitRSVP(formData: CreateRSVPInput, t: (key: string) => string) {
       console.error('RSVP submission failed:', error);
       alert(t('errors.submitError'));
     });
-}
-
-function handleNumGuestsChange(
-  value: string | boolean,
-  errors: FormErrors,
-  setErrors: React.Dispatch<React.SetStateAction<FormErrors>>,
-  setFormData: React.Dispatch<React.SetStateAction<CreateRSVPInput>>,
-  fieldTouched: TouchedFields,
-  validateFieldWithData: (
-    formData: CreateRSVPInput,
-    field: string,
-    value: string | boolean,
-    t: (key: string) => string
-  ) => string,
-  newFormData: CreateRSVPInput,
-  t: (key: string) => string
-) {
-  if (changingFromTwoGuestsToOne()) {
-    setFormData((prevData) => ({
-      ...prevData,
-      secondGuestName: '',
-    }));
-    setErrors({ ...errors, secondGuestName: '' });
-  }
-
-  if (newFormData.secondGuestName !== '' && isTwoGuestsSelectedAndTouched()) {
-    const secondGuestNameError = validateFieldWithData(
-      newFormData,
-      'secondGuestName',
-      newFormData.secondGuestName,
-      t
-    );
-    setErrors({ ...errors, secondGuestName: secondGuestNameError });
-  }
-
-  function changingFromTwoGuestsToOne() {
-    return value === '1';
-  }
-
-  function isTwoGuestsSelectedAndTouched() {
-    return value === '2' && fieldTouched.secondGuestName;
-  }
-}
-
-function touchAllFields(setFieldTouched: React.Dispatch<React.SetStateAction<TouchedFields>>) {
-  setFieldTouched({
-    fullName: true,
-    email: true,
-    mealPreference: true,
-    secondGuestName: true,
-  });
-}
-
-function validateSecondGuestName(
-  formData: CreateRSVPInput,
-  value: string | boolean,
-  error: string,
-  t: (key: string) => string
-) {
-  if (
-    formData.attending &&
-    formData.numberOfGuests === '2' &&
-    typeof value === 'string' &&
-    value.trim().length === 0
-  ) {
-    error = t('errors.invalidSecondGuestName');
-  }
-  return error;
-}
-
-function validateMealPreference(
-  formData: CreateRSVPInput,
-  value: string | boolean,
-  error: string,
-  t: (key: string) => string
-) {
-  if (formData.attending && typeof value === 'string' && value.trim().length === 0) {
-    error = t('errors.invalidMealPreference');
-  }
-  return error;
-}
-
-function validateEmail(value: string | boolean, error: string, t: (key: string) => string) {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (typeof value === 'string') {
-    if (value.trim().length === 0) {
-      error = t('errors.missingEmail');
-    } else if (!emailRegex.test(value)) {
-      error = t('errors.invalidEmail');
-    }
-  }
-  return error;
-}
-
-function validateFullName(value: string | boolean, error: string, t: (key: string) => string) {
-  if (typeof value === 'string' && value.trim().length === 0) {
-    error = t('errors.invalidFullName');
-  }
-  return error;
 }

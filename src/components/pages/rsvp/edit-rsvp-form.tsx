@@ -1,0 +1,224 @@
+'use client';
+import { Textarea, Button } from '@headlessui/react';
+import { useEditRSVPForm } from './use-edit-rsvp-form';
+import { FormField, TextInput, SelectField } from './form-components';
+import { FloralDecoration } from './floral-decorations';
+import AttendanceField from './attendance-field';
+import { useTranslation } from 'react-i18next';
+
+interface EditRSVPFormProps {
+  token: string | null;
+}
+
+function EditRSVPForm({ token }: EditRSVPFormProps) {
+  const { t } = useTranslation();
+  const {
+    formData,
+    errors,
+    handleInputChange,
+    handleBlur,
+    handleSubmit,
+    loading,
+    originalData,
+    submitting,
+  } = useEditRSVPForm(token);
+
+  const mealOptions = [
+    { value: 'Meat', label: t('rsvp.meat') },
+    { value: 'Fish', label: t('rsvp.fish') },
+    { value: 'Vegetarian', label: t('rsvp.vegetarian') },
+    { value: 'Vegan', label: t('rsvp.vegan') },
+  ];
+
+  const guestOptions = [
+    { value: '1', label: t('rsvp.1 Guest') },
+    { value: '2', label: t('rsvp.2 Guests') },
+  ];
+
+  if (loading) {
+    return (
+      <div className="bg-white/95 backdrop-blur-sm rounded-lg p-15 shadow-xl border border-sage-200 relative">
+        <FloralDecoration position="top-left" />
+        <FloralDecoration position="top-right" />
+        <FloralDecoration position="bottom-left" />
+        <FloralDecoration position="bottom-right" />
+
+        <div className="text-center py-12">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-sage-600 mx-auto"></div>
+          <p className="mt-4 text-brown-700">{t('common.loading')}</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!token || !originalData) {
+    return (
+      <div className="bg-white/95 backdrop-blur-sm rounded-lg p-15 shadow-xl border border-sage-200 relative">
+        <FloralDecoration position="top-left" />
+        <FloralDecoration position="top-right" />
+        <FloralDecoration position="bottom-left" />
+        <FloralDecoration position="bottom-right" />
+
+        <div className="text-center py-12">
+          <h2 className="text-2xl font-serif text-brown-800 mb-4">
+            {t('rsvp.invalidEditLinkTitle')}
+          </h2>
+          <p className="text-brown-700 mb-6">{t('rsvp.invalidEditLinkMessage')}</p>
+          <Button
+            onClick={() => (window.location.href = `/rsvp`)}
+            className="bg-gradient-to-r from-sage-600 to-sage-700 hover:from-sage-700 hover:to-sage-800 text-white py-3 px-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
+            style={{ fontFamily: 'var(--font-serif)' }}
+          >
+            {t('rsvp.goToRSVPPage')}
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="bg-white/95 backdrop-blur-sm rounded-lg p-15 shadow-xl border border-sage-200 relative">
+      {/* Corner Floral Decorations */}
+      <FloralDecoration position="top-left" />
+      <FloralDecoration position="top-right" />
+      <FloralDecoration position="bottom-left" />
+      <FloralDecoration position="bottom-right" />
+
+      <div className="mb-6 text-center">
+        <h2 className="text-2xl font-serif text-brown-800 mb-2">{t('rsvp.editTitle')}</h2>
+        <p className="text-brown-600">
+          {t('rsvp.lastSubmittedOn')}{' '}
+          {originalData.createdTime && new Date(originalData.createdTime).toLocaleDateString()}
+        </p>
+      </div>
+
+      <form onSubmit={(e) => handleSubmit(e, t)} className="space-y-6">
+        <FormField id="fullName" label={t('rsvp.fullName')} required error={errors.fullName}>
+          <TextInput
+            id="fullName"
+            value={formData.fullName}
+            onChange={(value) => handleInputChange('fullName', value, t)}
+            onBlur={() => handleBlur('fullName', t)}
+            placeholder={t('rsvp.fullNamePlaceholder')}
+            required
+            error={errors.fullName}
+            autoComplete="name"
+          />
+        </FormField>
+
+        <FormField id="email" label={t('rsvp.email')} required error={errors.email}>
+          <TextInput
+            id="email"
+            type="email"
+            value={formData.email}
+            onChange={(value) => handleInputChange('email', value, t)}
+            onBlur={() => handleBlur('email', t)}
+            placeholder="your.email@example.com"
+            required
+            error={errors.email}
+            autoComplete="email"
+          />
+        </FormField>
+
+        <AttendanceField
+          attending={formData.attending}
+          onChange={(value) => handleInputChange('attending', value, t)}
+        />
+
+        {formData.attending && (
+          <>
+            <FormField id="numberOfGuests" label={t('rsvp.guests')} required>
+              <SelectField
+                id="numberOfGuests"
+                value={formData.numberOfGuests}
+                onChange={(value) => handleInputChange('numberOfGuests', value, t)}
+                options={guestOptions}
+                placeholder={t('rsvp.guestsPlaceholder')}
+                zIndex="z-[200]"
+              />
+            </FormField>
+
+            {formData.numberOfGuests === '2' && (
+              <FormField
+                id="secondGuestName"
+                label={t('rsvp.secondGuestFullName')}
+                required
+                error={errors.secondGuestName}
+              >
+                <TextInput
+                  id="secondGuestName"
+                  value={formData.secondGuestName}
+                  onChange={(value) => handleInputChange('secondGuestName', value, t)}
+                  onBlur={() => handleBlur('secondGuestName', t)}
+                  placeholder={t('rsvp.secondGuestFullNamePlaceholder')}
+                  required
+                  error={errors.secondGuestName}
+                  autoComplete="name"
+                />
+              </FormField>
+            )}
+
+            <FormField
+              id="mealPreference"
+              label={t('rsvp.mealPreference')}
+              required
+              error={errors.mealPreference}
+            >
+              <SelectField
+                id="mealPreference"
+                value={formData.mealPreference}
+                onChange={(value) => handleInputChange('mealPreference', value, t)}
+                onBlur={(value) => handleBlur('mealPreference', t, value)}
+                options={mealOptions}
+                placeholder={t('rsvp.mealPreferencePlaceholder')}
+                error={errors.mealPreference}
+              />
+            </FormField>
+
+            <FormField id="dietaryRestrictions" label={t('rsvp.dietaryRestrictions')}>
+              <TextInput
+                id="dietaryRestrictions"
+                value={formData.dietaryRestrictions}
+                onChange={(value) => handleInputChange('dietaryRestrictions', value, t)}
+                placeholder={t('rsvp.dietaryRestrictionsPlaceholder')}
+              />
+            </FormField>
+          </>
+        )}
+
+        <FormField id="songRequests" label={t('rsvp.songRequests')}>
+          <Textarea
+            id="songRequests"
+            value={formData.songRequests}
+            onChange={(e) => handleInputChange('songRequests', e.target.value, t)}
+            className="w-full p-4 border-2 border-sage-200 rounded-lg focus:border-sage-400 focus:ring-sage-200 bg-ivory-50/50 text-brown-800 min-h-24"
+            placeholder={t('rsvp.songRequestsPlaceholder')}
+            rows={4}
+          />
+        </FormField>
+
+        <div className="flex gap-4">
+          <Button
+            type="button"
+            onClick={() => window.history.back()}
+            className="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 py-4 px-8 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border-0"
+            style={{ fontFamily: 'var(--font-serif)' }}
+          >
+            {t('common.cancel')}
+          </Button>
+
+          <Button
+            type="submit"
+            disabled={submitting}
+            className="flex-1 bg-gradient-to-r from-sage-600 to-sage-700 hover:from-sage-700 hover:to-sage-800 text-white py-4 px-8 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 border-0 disabled:opacity-50 disabled:cursor-not-allowed"
+            style={{ fontFamily: 'var(--font-serif)' }}
+          >
+            {submitting ? t('common.loading') : t('rsvp.updateRSVP')}
+          </Button>
+        </div>
+      </form>
+    </div>
+  );
+}
+
+export default EditRSVPForm;

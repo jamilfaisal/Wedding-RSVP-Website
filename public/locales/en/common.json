@@ -116,7 +116,14 @@
     "attendanceToggle": "Enable attendance",
     "songRequests": "Any song requests? 🎵",
     "songRequestsPlaceholder": "Share your favorite songs that would make you dance at our wedding! 💃🕺",
-    "footerMessage": "We can't wait to celebrate with you ❄️✨"
+    "footerMessage": "We can't wait to celebrate with you ❄️✨",
+    "updateSuccess": "RSVP updated successfully!",
+    "editTitle": "Edit Your RSVP",
+    "updateRSVP": "Update RSVP",
+    "invalidEditLinkTitle": "Invalid or Expired Link",
+    "invalidEditLinkMessage": "This RSVP edit link is not valid or has expired. Please contact us if you need to make changes to your RSVP.",
+    "goToRSVPPage": "Go to RSVP Page",
+    "lastSubmittedOn": "Update your RSVP details below. Last submitted on"
   },
   "accommodations": {
     "title": "Accommodations",

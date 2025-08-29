@@ -6,7 +6,11 @@ import ImageWithFallback from '../../ui/image-with-fallback';
 import { useTranslation } from 'react-i18next';
 import { formatRSVPDeadline } from '@/components/layout/utils';
 
-function RSVPHeader() {
+interface RSVPHeaderProps {
+  editMode?: boolean;
+}
+
+function RSVPHeader({ editMode = false }: RSVPHeaderProps) {
   const { t, i18n } = useTranslation();
   return (
     <div className="text-center mb-7 relative">
@@ -16,7 +20,7 @@ function RSVPHeader() {
         className="text-5xl md:text-6xl text-brown-800 mb-6 leading-tight"
         style={{ fontFamily: 'var(--font-harrington)' }}
       >
-        {t('rsvp.title')}
+        {editMode ? t('rsvp.editTitle') : t('rsvp.title')}
       </h1>
 
       <p

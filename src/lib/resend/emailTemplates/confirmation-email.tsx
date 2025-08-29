@@ -48,13 +48,14 @@ export default function ConfirmationEmail({
 
   const buttonStyle: React.CSSProperties = {
     display: 'inline-block',
+    padding: '12px 20px',
+    marginTop: 20,
     backgroundColor: '#2563eb',
     color: '#ffffff',
-    padding: '10px 16px',
     borderRadius: 6,
     textDecoration: 'none',
-    marginTop: 16,
-  } as React.CSSProperties;
+    fontWeight: 600,
+  };
 
   return (
     <div style={wrapperStyle}>
@@ -84,7 +85,18 @@ export default function ConfirmationEmail({
                     We can’t wait to celebrate this special day with you 🎂
                   </p>
 
-                  <p style={{ marginBottom: 0 }}>
+                  <p>If you need to make changes to your RSVP, you can do so here:</p>
+
+                  <a href={editUrl} style={buttonStyle}>
+                    Edit My RSVP
+                  </a>
+
+                  <p style={{ margin: '16px 0 0', fontSize: 14 }}>
+                    Or copy & paste this link into your browser: <br />
+                    <a href={editUrl}>{editUrl}</a>
+                  </p>
+
+                  <p style={{ marginTop: 20, marginBottom: 0 }}>
                     With love,
                     <br />
                     {`${groomFirstName} & ${brideFirstName}` || 'Your Wedding Hosts'}
