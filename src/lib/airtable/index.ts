@@ -23,7 +23,4 @@ export {
 
 export { sendConfirmationEmail, sendCoupleNotificationEmail } from '../resend/resend';
 
-export {
-  isValidEmailFormat as validateEmail,
-  generateRSVPEditToken as generateEditToken,
-} from './utils';
+export { isValidEmailFormat as validateEmail } from './utils';
