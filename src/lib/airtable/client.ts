@@ -1,5 +1,4 @@
 import { AirtableConfig, AirtableError, APIResponse, AirtableRecord } from './types';
-import { validateRequiredEnvVars } from './utils';
 
 export class AirtableClient {
   private config: AirtableConfig;
@@ -143,6 +142,14 @@ export function createAirtableClient(): AirtableClient {
   };
   validateRequiredEnvVars(config);
   return new AirtableClient(config);
+}
+
+function validateRequiredEnvVars(config: AirtableConfig) {
+  if (!config.apiKey || !config.baseId) {
+    throw new Error(
+      'Missing required environment variables: AIRTABLE_API_KEY and AIRTABLE_BASE_ID must be set'
+    );
+  }
 }
 
 let airtableClientInstance: AirtableClient | null = null;

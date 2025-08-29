@@ -7,84 +7,16 @@ import {
   AirtableCreateUpdateResponse,
   ListRSVPsQueryOptions,
   APIResponse,
-  RSVPStatistics,
   MealSelection,
 } from './types';
 import { getAirtableClient } from './client';
-import {
-  buildRSVPUpdatePayload,
-  calculateRSVPStats,
-  constructListQueryParams,
-  generateRSVPEditToken,
-  isRSVPRequiredFieldsMissing,
-  isValidEmailFormat,
-  validateEmailFormatIfProvided,
-} from './utils';
-
-export async function getAllRSVPs(
-  options: ListRSVPsQueryOptions = {}
-): Promise<APIResponse<AirtableRecord[]>> {
-  const client = getAirtableClient();
-  const params: Record<string, string> = constructListQueryParams(options);
-  const response = await client.get<AirtableListResponse>(params);
-
-  if (response.success && response.data) {
-    return {
-      success: true,
-      data: response.data.records,
-    };
-  }
-
-  return {
-    success: false,
-    error: response.error || 'Failed to fetch RSVPs',
-  };
-}
-
-export async function getSingleRSVPById(recordId: string): Promise<APIResponse<AirtableRecord>> {
-  const client = getAirtableClient();
-  return client.getRecordById(recordId);
-}
-
-export async function getSingleRSVPByEmail(
-  email: string
-): Promise<APIResponse<AirtableRecord | null>> {
-  if (!isValidEmailFormat(email)) {
-    return {
-      success: false,
-      error: 'Invalid email address format',
-    };
-  }
-
-  const response = await getAllRSVPs({
-    filterByFormula: `{Email} = "${email}"`,
-    maxRecords: 1,
-  });
-
-  if (!response.success) {
-    return {
-      success: false,
-      error: response.error || 'Failed to fetch RSVP by email',
-    };
-  }
-
-  const records = response.data || [];
-  return {
-    success: true,
-    data: records.length > 0 ? records[0] : null,
-  };
-}
+import { isValidEmailFormat } from './utils';
+import jwt from 'jsonwebtoken';
+import { randomBytes } from 'crypto';
 
 export async function getRSVPByEditToken(
   token: string
 ): Promise<APIResponse<AirtableRecord | null>> {
-  if (!token) {
-    return {
-      success: false,
-      error: 'Token is required',
-    };
-  }
-
   const response = await getAllRSVPs({
     filterByFormula: `{Edit Token (JWT)} = "${token}"`,
     maxRecords: 1,
@@ -160,11 +92,6 @@ export async function createRSVP(input: CreateRSVPInput): Promise<APIResponse<Ai
   };
 }
 
-async function isRSVPExisting(email: string): Promise<boolean> {
-  const existingRSVP = await getSingleRSVPByEmail(email);
-  return existingRSVP.success && existingRSVP.data !== null;
-}
-
 export async function updateExistingRSVP(
   input: UpdateRSVPInput
 ): Promise<APIResponse<AirtableRecord>> {
@@ -191,53 +118,121 @@ export async function updateExistingRSVP(
   return response;
 }
 
-export async function deleteExistingRSVP(recordId: string): Promise<APIResponse<boolean>> {
-  if (!recordId) {
-    return {
-      success: false,
-      error: 'Record ID is required',
-    };
-  }
-
+async function getAllRSVPs(
+  options: ListRSVPsQueryOptions = {}
+): Promise<APIResponse<AirtableRecord[]>> {
   const client = getAirtableClient();
-  const response = await client.delete(recordId);
+  const params: Record<string, string> = constructListQueryParams(options);
+  const response = await client.get<AirtableListResponse>(params);
 
-  if (response.success) {
+  if (response.success && response.data) {
     return {
       success: true,
-      data: true,
+      data: response.data.records,
     };
   }
 
   return {
     success: false,
-    error: response.error || 'Failed to delete RSVP',
+    error: response.error || 'Failed to fetch RSVPs',
   };
 }
 
-export async function markConfirmationEmailAsSent(
-  recordId: string
-): Promise<APIResponse<AirtableRecord>> {
-  return updateExistingRSVP({
-    id: recordId,
-  });
-}
-
-export async function getRSVPStatistics(): Promise<APIResponse<RSVPStatistics>> {
-  const response = await getAllRSVPs();
-
-  if (!response.success || !response.data) {
+async function getSingleRSVPByEmail(email: string): Promise<APIResponse<AirtableRecord | null>> {
+  if (!isValidEmailFormat(email)) {
     return {
       success: false,
-      error: response.error || 'Failed to fetch RSVPs for stats',
+      error: 'Invalid email address format',
     };
   }
 
-  const records = response.data;
-  const stats = calculateRSVPStats(records);
+  const response = await getAllRSVPs({
+    filterByFormula: `{Email} = "${email}"`,
+    maxRecords: 1,
+  });
 
+  if (!response.success) {
+    return {
+      success: false,
+      error: response.error || 'Failed to fetch RSVP by email',
+    };
+  }
+
+  const records = response.data || [];
   return {
     success: true,
-    data: stats,
+    data: records.length > 0 ? records[0] : null,
   };
+}
+
+async function isRSVPExisting(email: string): Promise<boolean> {
+  const existingRSVP = await getSingleRSVPByEmail(email);
+  return existingRSVP.success && existingRSVP.data !== null;
+}
+
+function generateRSVPEditToken(email: string): string {
+  const secret = process.env.JWT_SECRET || randomBytes(32).toString('hex');
+  const payload = {
+    email,
+    purpose: 'rsvp_edit',
+    timestamp: Date.now(),
+  };
+
+  return jwt.sign(payload, secret, {
+    expiresIn: '30d',
+    issuer: 'wedding-rsvp',
+  });
+}
+
+function constructListQueryParams(options: ListRSVPsQueryOptions) {
+  const params: Record<string, string> = {};
+
+  if (options.maxRecords) params.maxRecords = options.maxRecords.toString();
+  if (options.pageSize) params.pageSize = options.pageSize.toString();
+  if (options.offset) params.offset = options.offset;
+  if (options.view) params.view = options.view;
+  if (options.filterByFormula) params.filterByFormula = options.filterByFormula;
+  if (options.fields) params.fields = options.fields.join(',');
+
+  if (options.sort) {
+    options.sort.forEach((sort, index) => {
+      params[`sort[${index}][field]`] = sort.field;
+      if (sort.direction) {
+        params[`sort[${index}][direction]`] = sort.direction;
+      }
+    });
+  }
+  return params;
+}
+
+function isRSVPRequiredFieldsMissing(input: CreateRSVPInput): boolean {
+  return !input.fullName || !input.email || input.attending === undefined;
+}
+
+function buildRSVPUpdatePayload(input: UpdateRSVPInput) {
+  const updateData: Partial<RSVPData> = {};
+
+  if (input.fullName !== undefined) updateData['Name'] = input.fullName;
+  if (input.email !== undefined) updateData['Email'] = input.email;
+  if (input.attending !== undefined) updateData['Attendance'] = input.attending ? 'Yes' : 'No';
+  if (input.numberOfGuests !== undefined)
+    updateData['Number of Guests'] = parseInt(input.numberOfGuests);
+  if (input.secondGuestName !== undefined) updateData['Second Guest Name'] = input.secondGuestName;
+  if (input.mealPreference !== undefined) {
+    const mealMap: Record<string, string> = {
+      Meat: 'Meat',
+      Fish: 'Fish',
+      Vegetarian: 'Vegetarian',
+      Vegan: 'Vegan',
+    };
+    updateData['Meal Selection'] = mealMap[input.mealPreference] as MealSelection;
+  }
+  if (input.dietaryRestrictions !== undefined)
+    updateData['Dietary Restrictions'] = input.dietaryRestrictions;
+  if (input.songRequests !== undefined) updateData['Song Request'] = input.songRequests;
+  return updateData;
+}
+
+function validateEmailFormatIfProvided(input: UpdateRSVPInput) {
+  return input.email && !isValidEmailFormat(input.email);
 }

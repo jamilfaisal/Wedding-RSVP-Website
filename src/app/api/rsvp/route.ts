@@ -1,31 +1,6 @@
-import {
-  createRSVP,
-  getAllRSVPs,
-  sendConfirmationEmail,
-  sendCoupleNotificationEmail,
-} from '@/lib/airtable';
+import { createRSVP, sendConfirmationEmail, sendCoupleNotificationEmail } from '@/lib/airtable';
 import { CreateRSVPInput } from '@/lib/airtable/types';
 import { NextRequest } from 'next/server';
-
-export async function GET(request: NextRequest) {
-  try {
-    const { searchParams } = new URL(request.url);
-    const params = Object.fromEntries(searchParams.entries());
-
-    const result = await getAllRSVPs(params);
-
-    return Response.json({ success: true, data: result }, { status: 200 });
-  } catch (error) {
-    console.error('Error fetching RSVPs:', error);
-    return Response.json(
-      {
-        error: 'Failed to fetch RSVPs',
-        details: error instanceof Error ? error.message : 'Unknown error',
-      },
-      { status: 500 }
-    );
-  }
-}
 
 export async function POST(request: NextRequest) {
   try {
