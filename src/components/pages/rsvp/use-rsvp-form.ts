@@ -11,14 +11,16 @@ import {
 export interface FormErrors {
   fullName: string;
   email: string;
-  mealPreference: string;
+  guest1DietaryRestrictions: string;
+  guest2DietaryRestrictions: string;
   secondGuestName: string;
 }
 
 export interface TouchedFields {
   fullName: boolean;
   email: boolean;
-  mealPreference: boolean;
+  guest1DietaryRestrictions: boolean;
+  guest2DietaryRestrictions: boolean;
   secondGuestName: boolean;
 }
 
@@ -29,22 +31,24 @@ const initialFormData: CreateRSVPInput = {
   attendingWedding: false,
   numberOfGuests: '1',
   secondGuestName: '',
-  mealPreference: '',
-  dietaryRestrictions: '',
+  guest1DietaryRestrictions: '',
+  guest2DietaryRestrictions: '',
   songRequests: '',
 };
 
 const initialErrors: FormErrors = {
   fullName: '',
   email: '',
-  mealPreference: '',
+  guest1DietaryRestrictions: '',
+  guest2DietaryRestrictions: '',
   secondGuestName: '',
 };
 
 const initialTouched: TouchedFields = {
   fullName: false,
   email: false,
-  mealPreference: false,
+  guest1DietaryRestrictions: false,
+  guest2DietaryRestrictions: false,
   secondGuestName: false,
 };
 
@@ -99,10 +103,25 @@ export function useRSVPForm() {
   const isFormValid = (t: (key: string) => string): boolean => {
     const fullNameError = validateField('fullName', formData.fullName, t);
     const emailError = validateField('email', formData.email, t);
-    const mealPreferenceError = validateField('mealPreference', formData.mealPreference, t);
+    const guest1DietaryRestrictionsError = validateField(
+      'guest1DietaryRestrictions',
+      formData.guest1DietaryRestrictions,
+      t
+    );
+    const guest2DietaryRestrictionsError = validateField(
+      'guest2DietaryRestrictions',
+      formData.guest2DietaryRestrictions,
+      t
+    );
     const secondGuestNameError = validateField('secondGuestName', formData.secondGuestName, t);
 
-    return !fullNameError && !emailError && !mealPreferenceError && !secondGuestNameError;
+    return (
+      !fullNameError &&
+      !emailError &&
+      !guest1DietaryRestrictionsError &&
+      !guest2DietaryRestrictionsError &&
+      !secondGuestNameError
+    );
   };
 
   const handleSubmit = (e: React.FormEvent, t: (key: string) => string) => {
@@ -111,13 +130,26 @@ export function useRSVPForm() {
     const errors = {
       fullName: validateField('fullName', formData.fullName, t),
       email: validateField('email', formData.email, t),
-      mealPreference: validateField('mealPreference', formData.mealPreference, t),
+      guest1DietaryRestrictions: validateField(
+        'guest1DietaryRestrictions',
+        formData.guest1DietaryRestrictions,
+        t
+      ),
+      guest2DietaryRestrictions: validateField(
+        'guest2DietaryRestrictions',
+        formData.guest2DietaryRestrictions,
+        t
+      ),
       secondGuestName: validateField('secondGuestName', formData.secondGuestName, t),
     };
     setErrors(errors);
 
     const isValid =
-      !errors.fullName && !errors.email && !errors.mealPreference && !errors.secondGuestName;
+      !errors.fullName &&
+      !errors.email &&
+      !errors.guest1DietaryRestrictions &&
+      !errors.guest2DietaryRestrictions &&
+      !errors.secondGuestName;
 
     if (isValid) {
       submitRSVP(formData, t);

@@ -10,11 +10,12 @@ function RSVPForm() {
   const { t } = useTranslation();
   const { formData, errors, handleInputChange, handleBlur, handleSubmit } = useRSVPForm();
 
-  const mealOptions = [
-    { value: 'Meat', label: t('rsvp.meat') },
-    { value: 'Fish', label: t('rsvp.fish') },
-    { value: 'Vegetarian', label: t('rsvp.vegetarian') },
-    { value: 'Vegan', label: t('rsvp.vegan') },
+  const dietaryOptions = [
+    { value: 'None', label: t('rsvp.dietaryNone') },
+    { value: 'Vegan', label: t('rsvp.dietaryVegan') },
+    { value: 'Vegetarian', label: t('rsvp.dietaryVegetarian') },
+    { value: 'Lactose Intolerant', label: t('rsvp.dietaryLactoseIntolerant') },
+    { value: 'Gluten Allergy', label: t('rsvp.dietaryGlutenAllergy') },
   ];
 
   const guestOptions = [
@@ -99,30 +100,40 @@ function RSVPForm() {
             )}
 
             <FormField
-              id="mealPreference"
-              label={t('rsvp.mealPreference')}
+              id="guest1DietaryRestrictions"
+              label={t('rsvp.guest1DietaryRestrictions')}
               required
-              error={errors.mealPreference}
+              error={errors.guest1DietaryRestrictions}
             >
               <SelectField
-                id="mealPreference"
-                value={formData.mealPreference}
-                onChange={(value) => handleInputChange('mealPreference', value, t)}
-                onBlur={(value) => handleBlur('mealPreference', t, value)}
-                options={mealOptions}
-                placeholder={t('rsvp.mealPreferencePlaceholder')}
-                error={errors.mealPreference}
+                id="guest1DietaryRestrictions"
+                value={formData.guest1DietaryRestrictions}
+                onChange={(value) => handleInputChange('guest1DietaryRestrictions', value, t)}
+                onBlur={(value) => handleBlur('guest1DietaryRestrictions', t, value)}
+                options={dietaryOptions}
+                placeholder={t('rsvp.guest1DietaryRestrictionsPlaceholder')}
+                error={errors.guest1DietaryRestrictions}
               />
             </FormField>
 
-            <FormField id="dietaryRestrictions" label={t('rsvp.dietaryRestrictions')}>
-              <TextInput
-                id="dietaryRestrictions"
-                value={formData.dietaryRestrictions}
-                onChange={(value) => handleInputChange('dietaryRestrictions', value, t)}
-                placeholder={t('rsvp.dietaryRestrictionsPlaceholder')}
-              />
-            </FormField>
+            {formData.numberOfGuests === '2' && (
+              <FormField
+                id="guest2DietaryRestrictions"
+                label={t('rsvp.guest2DietaryRestrictions')}
+                required
+                error={errors.guest2DietaryRestrictions}
+              >
+                <SelectField
+                  id="guest2DietaryRestrictions"
+                  value={formData.guest2DietaryRestrictions}
+                  onChange={(value) => handleInputChange('guest2DietaryRestrictions', value, t)}
+                  onBlur={(value) => handleBlur('guest2DietaryRestrictions', t, value)}
+                  options={dietaryOptions}
+                  placeholder={t('rsvp.guest2DietaryRestrictionsPlaceholder')}
+                  error={errors.guest2DietaryRestrictions}
+                />
+              </FormField>
+            )}
           </>
         )}
 

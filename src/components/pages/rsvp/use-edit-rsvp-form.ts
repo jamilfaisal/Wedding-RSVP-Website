@@ -21,22 +21,24 @@ const initialFormData: CreateRSVPInput = {
   attendingWedding: false,
   numberOfGuests: '1',
   secondGuestName: '',
-  mealPreference: '',
-  dietaryRestrictions: '',
+  guest1DietaryRestrictions: '',
+  guest2DietaryRestrictions: '',
   songRequests: '',
 };
 
 const initialErrors: FormErrors = {
   fullName: '',
   email: '',
-  mealPreference: '',
+  guest1DietaryRestrictions: '',
+  guest2DietaryRestrictions: '',
   secondGuestName: '',
 };
 
 const initialTouched: TouchedFields = {
   fullName: false,
   email: false,
-  mealPreference: false,
+  guest1DietaryRestrictions: false,
+  guest2DietaryRestrictions: false,
   secondGuestName: false,
 };
 
@@ -69,8 +71,8 @@ export function useEditRSVPForm(token: string | null) {
             attendingWedding: data.attendingWedding,
             numberOfGuests: data.numberOfGuests,
             secondGuestName: data.secondGuestName,
-            mealPreference: data.mealPreference,
-            dietaryRestrictions: data.dietaryRestrictions,
+            guest1DietaryRestrictions: data.guest1DietaryRestrictions,
+            guest2DietaryRestrictions: data.guest2DietaryRestrictions,
             songRequests: data.songRequests,
           };
 
@@ -167,7 +169,18 @@ export function useEditRSVPForm(token: string | null) {
     return {
       fullName: validateFieldWithData(data, 'fullName', data.fullName, t),
       email: validateFieldWithData(data, 'email', data.email, t),
-      mealPreference: validateFieldWithData(data, 'mealPreference', data.mealPreference, t),
+      guest1DietaryRestrictions: validateFieldWithData(
+        data,
+        'guest1DietaryRestrictions',
+        data.guest1DietaryRestrictions,
+        t
+      ),
+      guest2DietaryRestrictions: validateFieldWithData(
+        data,
+        'guest2DietaryRestrictions',
+        data.guest2DietaryRestrictions,
+        t
+      ),
       secondGuestName: validateFieldWithData(data, 'secondGuestName', data.secondGuestName, t),
     };
   };

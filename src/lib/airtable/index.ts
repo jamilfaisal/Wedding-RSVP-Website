@@ -1,6 +1,6 @@
 export type {
   AttendanceStatus,
-  MealSelection,
+  DietaryOption,
   RSVPData,
   AirtableRecord,
   AirtableListResponse,

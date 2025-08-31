@@ -8,8 +8,8 @@ export type CoupleNotificationEmailProps = {
   weddingAttendance?: string;
   guests?: number | null;
   secondGuestName?: string;
-  mealPreference?: string;
-  dietaryRestrictions?: string;
+  guest1DietaryRestrictions?: string;
+  guest2DietaryRestrictions?: string;
   songRequests?: string;
   submittedAt?: string;
 };
@@ -21,8 +21,8 @@ export default function CoupleNotificationEmail({
   weddingAttendance,
   guests,
   secondGuestName,
-  mealPreference,
-  dietaryRestrictions,
+  guest1DietaryRestrictions,
+  guest2DietaryRestrictions,
   songRequests,
   submittedAt,
 }: CoupleNotificationEmailProps) {
@@ -136,17 +136,17 @@ export default function CoupleNotificationEmail({
                           </div>
                         )}
 
-                        {mealPreference && (
+                        {guest1DietaryRestrictions && (
                           <div style={{ marginBottom: 12 }}>
-                            <span style={labelStyle}>Meal Preference:</span>
-                            <span style={valueStyle}>{mealPreference}</span>
+                            <span style={labelStyle}>Guest 1 Dietary Restrictions:</span>
+                            <span style={valueStyle}>{guest1DietaryRestrictions}</span>
                           </div>
                         )}
 
-                        {dietaryRestrictions && (
+                        {guest2DietaryRestrictions && guests && guests > 1 && (
                           <div style={{ marginBottom: 12 }}>
-                            <span style={labelStyle}>Dietary Restrictions:</span>
-                            <span style={valueStyle}>{dietaryRestrictions}</span>
+                            <span style={labelStyle}>Guest 2 Dietary Restrictions:</span>
+                            <span style={valueStyle}>{guest2DietaryRestrictions}</span>
                           </div>
                         )}
 

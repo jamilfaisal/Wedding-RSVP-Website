@@ -13,7 +13,7 @@ async function run() {
       'Attending Refreshments Dec 19th': 'Yes',
       'Attending Wedding Dec 20th': 'Yes',
       'Number of Guests': 1,
-      'Meal Selection': 'Meat',
+      'Guest 1 Dietary Restrictions': 'None',
       'Edit Token (JWT)': 'test-token-123',
     },
   };

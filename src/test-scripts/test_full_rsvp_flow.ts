@@ -5,11 +5,12 @@ async function testRSVPWithEmails() {
   const rsvpData = {
     fullName: 'Test Guest Email',
     email: 'jamilfaisal43@gmail.com',
-    attending: true,
+    attendingRefreshments: true,
+    attendingWedding: true,
     numberOfGuests: '2',
     secondGuestName: 'Guest Plus One',
-    mealPreference: 'Meat',
-    dietaryRestrictions: 'None',
+    guest1DietaryRestrictions: 'None',
+    guest2DietaryRestrictions: 'Vegetarian',
     songRequests: 'Happy songs for testing the couple notification!',
   };
 

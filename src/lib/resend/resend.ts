@@ -116,8 +116,8 @@ export async function sendCoupleNotificationEmail(
   const weddingAttendance = record.fields?.['Attending Wedding Dec 20th'] || 'No';
   const guests = record.fields?.['Number of Guests'] ?? null;
   const secondGuestName = record.fields?.['Second Guest Name'] || '';
-  const mealPreference = record.fields?.['Meal Selection'] || '';
-  const dietaryRestrictions = record.fields?.['Dietary Restrictions'] || '';
+  const guest1DietaryRestrictions = record.fields?.['Guest 1 Dietary Restrictions'] || '';
+  const guest2DietaryRestrictions = record.fields?.['Guest 2 Dietary Restrictions'] || '';
   const songRequests = record.fields?.['Song Request'] || '';
   const submittedAt = record.createdTime;
   const from = process.env.RESEND_SENDER_EMAIL || 'Resend Dev <onboarding@resend.dev>';
@@ -132,8 +132,8 @@ export async function sendCoupleNotificationEmail(
       weddingAttendance: weddingAttendance || undefined,
       guests: typeof guests === 'number' ? guests : null,
       secondGuestName: secondGuestName || undefined,
-      mealPreference: mealPreference || undefined,
-      dietaryRestrictions: dietaryRestrictions || undefined,
+      guest1DietaryRestrictions: guest1DietaryRestrictions || undefined,
+      guest2DietaryRestrictions: guest2DietaryRestrictions || undefined,
       songRequests: songRequests || undefined,
       submittedAt: submittedAt || undefined,
     };

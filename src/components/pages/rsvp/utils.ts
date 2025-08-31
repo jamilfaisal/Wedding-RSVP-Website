@@ -13,7 +13,8 @@ export function clearFormAndErrors(
   if (!newFormData.attendingRefreshments && !newFormData.attendingWedding) {
     setErrors({
       ...errors,
-      mealPreference: '',
+      guest1DietaryRestrictions: '',
+      guest2DietaryRestrictions: '',
       secondGuestName: '',
     });
 
@@ -21,8 +22,8 @@ export function clearFormAndErrors(
       ...newFormData,
       numberOfGuests: '1',
       secondGuestName: '',
-      mealPreference: '',
-      dietaryRestrictions: '',
+      guest1DietaryRestrictions: '',
+      guest2DietaryRestrictions: '',
     };
   }
 
@@ -71,7 +72,8 @@ export function touchAllFields(
   setFieldTouched({
     fullName: true,
     email: true,
-    mealPreference: true,
+    guest1DietaryRestrictions: true,
+    guest2DietaryRestrictions: true,
     secondGuestName: true,
   });
 }
@@ -91,8 +93,11 @@ export function validateFieldWithData(
     case 'email':
       error = validateEmail(value, error, t);
       break;
-    case 'mealPreference':
-      error = validateMealPreference(formData, value, error, t);
+    case 'guest1DietaryRestrictions':
+      error = validateGuest1DietaryRestrictions(formData, value, error, t);
+      break;
+    case 'guest2DietaryRestrictions':
+      error = validateGuest2DietaryRestrictions(formData, value, error, t);
       break;
     case 'secondGuestName':
       error = validateSecondGuestName(formData, value, error, t);
@@ -119,7 +124,7 @@ function validateSecondGuestName(
   return error;
 }
 
-function validateMealPreference(
+function validateGuest1DietaryRestrictions(
   formData: CreateRSVPInput,
   value: string | boolean,
   error: string,
@@ -130,7 +135,24 @@ function validateMealPreference(
     typeof value === 'string' &&
     value.trim().length === 0
   ) {
-    error = t('errors.invalidMealPreference');
+    error = t('errors.invalidGuest1DietaryRestrictions');
+  }
+  return error;
+}
+
+function validateGuest2DietaryRestrictions(
+  formData: CreateRSVPInput,
+  value: string | boolean,
+  error: string,
+  t: (key: string) => string
+) {
+  if (
+    (formData.attendingRefreshments || formData.attendingWedding) &&
+    formData.numberOfGuests === '2' &&
+    typeof value === 'string' &&
+    value.trim().length === 0
+  ) {
+    error = t('errors.invalidGuest2DietaryRestrictions');
   }
   return error;
 }

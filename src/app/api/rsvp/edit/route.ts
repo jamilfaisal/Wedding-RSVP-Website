@@ -1,5 +1,5 @@
 import { getRSVPByToken, updateRSVP } from '@/lib/airtable';
-import { UpdateRSVPInput, CreateRSVPInput, MealSelection } from '@/lib/airtable/types';
+import { UpdateRSVPInput, CreateRSVPInput, DietaryOption } from '@/lib/airtable/types';
 import { NextRequest } from 'next/server';
 
 export async function GET(request: NextRequest) {
@@ -32,8 +32,8 @@ export async function GET(request: NextRequest) {
       attendingWedding: result.data.fields['Attending Wedding Dec 20th'] === 'Yes',
       numberOfGuests: String(result.data.fields['Number of Guests'] || 1),
       secondGuestName: result.data.fields['Second Guest Name'] || '',
-      mealPreference: result.data.fields['Meal Selection'] || '',
-      dietaryRestrictions: result.data.fields['Dietary Restrictions'] || '',
+      guest1DietaryRestrictions: result.data.fields['Guest 1 Dietary Restrictions'] || '',
+      guest2DietaryRestrictions: result.data.fields['Guest 2 Dietary Restrictions'] || '',
       songRequests: result.data.fields['Song Request'] || '',
       createdTime: result.data.createdTime,
     };
@@ -76,8 +76,8 @@ export async function PUT(request: NextRequest) {
       attendingWedding: data.attendingWedding,
       numberOfGuests: data.numberOfGuests,
       secondGuestName: data.secondGuestName,
-      mealPreference: data.mealPreference as MealSelection,
-      dietaryRestrictions: data.dietaryRestrictions,
+      guest1DietaryRestrictions: data.guest1DietaryRestrictions as DietaryOption,
+      guest2DietaryRestrictions: data.guest2DietaryRestrictions as DietaryOption,
       songRequests: data.songRequests,
     };
 

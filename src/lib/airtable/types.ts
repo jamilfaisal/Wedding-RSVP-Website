@@ -1,6 +1,11 @@
 export type AttendanceStatus = 'Yes' | 'No';
 
-export type MealSelection = 'Meat' | 'Fish' | 'Vegetarian' | 'Vegan';
+export type DietaryOption =
+  | 'None'
+  | 'Vegan'
+  | 'Vegetarian'
+  | 'Lactose Intolerant'
+  | 'Gluten Allergy';
 
 export interface RSVPData {
   Name: string;
@@ -9,8 +14,8 @@ export interface RSVPData {
   'Attending Wedding Dec 20th': AttendanceStatus;
   'Number of Guests'?: number;
   'Second Guest Name'?: string;
-  'Meal Selection'?: MealSelection;
-  'Dietary Restrictions'?: string;
+  'Guest 1 Dietary Restrictions'?: DietaryOption;
+  'Guest 2 Dietary Restrictions'?: DietaryOption;
   'Song Request'?: string;
   'RSVP Date'?: string;
   'Edit Token (JWT)'?: string;
@@ -39,8 +44,8 @@ export interface CreateRSVPInput {
   attendingWedding: boolean;
   numberOfGuests: string;
   secondGuestName: string;
-  mealPreference: MealSelection | '';
-  dietaryRestrictions: string;
+  guest1DietaryRestrictions: DietaryOption | '';
+  guest2DietaryRestrictions: DietaryOption | '';
   songRequests: string;
 }
 
