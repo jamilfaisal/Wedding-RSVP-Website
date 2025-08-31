@@ -80,8 +80,6 @@ const WeddingCountdown = () => {
         {renderCountDownTitleText(t)}
 
         {renderCountdown(countDownTimeCSSInfo)}
-
-        {renderDecorativeBottomAccent()}
       </div>
     </div>
   );
@@ -90,11 +88,6 @@ const WeddingCountdown = () => {
 function renderCountDownTitleText(t: (key: string) => string) {
   return (
     <div className="text-center mb-8 relative z-10">
-      <div className="flex items-center justify-center gap-4 mb-4">
-        <div className="w-8 h-px bg-sage-300"></div>
-        <div className="w-4 h-4 bg-orange-300 rounded-full"></div>
-        <div className="w-8 h-px bg-sage-300"></div>
-      </div>
       <h3 className="text-3xl text-brown-800" style={{ fontFamily: 'var(--font-harrington)' }}>
         {t('countdown.title')}
       </h3>
