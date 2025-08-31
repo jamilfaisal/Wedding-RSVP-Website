@@ -53,7 +53,7 @@ function QRCode({ url, title, description, className = '' }: QRCodeProps) {
                 <p className="text-sm text-brown-500 mb-2">{t('weddingDetails.scanWithPhone')}</p>
                 <button
                   onClick={handleClick}
-                  className="bg-gradient-to-r from-purple-500 to-purple-600 text-white px-4 py-2 rounded-lg font-medium hover:from-purple-600 hover:to-purple-700 transition-colors"
+                  className="cursor-pointer bg-gradient-to-r from-purple-500 to-purple-600 text-white px-4 py-2 rounded-lg font-medium hover:from-purple-600 hover:to-purple-700 transition-colors"
                 >
                   {t('weddingDetails.openPovApp')}
                 </button>
