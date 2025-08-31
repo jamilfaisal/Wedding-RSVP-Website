@@ -47,8 +47,7 @@ export const signatureStaysStatic = [
   {
     key: 'hotelDeRussie',
     location: 'Piazza del Popolo / Centro',
-    image:
-      'https://images.unsplash.com/photo-1721939555270-8a577f0607f7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxob3RlbCUyMGRlJTIwcnVzc2llJTIwcm9tZSUyMHJvY2NvJTIwZm9ydGV8ZW58MXx8fHwxNzU1NDY1MjM0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    image: '/images/hotels/hotel-de-russie.jpg',
     distance: '~6.0 km to venue',
     transport: [{ type: 'car' }, { type: 'metro' }] as TransportationMode[],
     blockRate: undefined,
@@ -58,8 +57,7 @@ export const signatureStaysStatic = [
   {
     key: 'hotelEden',
     location: 'Via Veneto / Spanish Steps',
-    image:
-      'https://images.unsplash.com/photo-1744518826762-32e916589c39?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxob3RlbCUyMGVkZW4lMjByb21lJTIwZG9yY2hlc3RlciUyMGNvbGxlY3Rpb258ZW58MXx8fHwxNzU1NDY1MjM3fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    image: '/images/hotels/hotel-eden.jpg',
     distance: '~6.5 km',
     transport: [{ type: 'car' }, { type: 'metro' }] as TransportationMode[],
     blockRate: undefined,
