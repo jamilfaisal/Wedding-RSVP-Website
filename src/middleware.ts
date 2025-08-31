@@ -1,9 +1,13 @@
 import { NextResponse, NextRequest } from 'next/server';
 import { match } from '@formatjs/intl-localematcher';
 import Negotiator from 'negotiator';
+import { jwtVerify } from 'jose';
 
 const locales = ['en', 'ar'];
 const defaultLocale = 'en';
+const JWT_SECRET = new TextEncoder().encode(
+  process.env.JWT_SECRET || 'wedding-secret-key-change-in-production'
+);
 
 function getLocale(request: NextRequest): string {
   const acceptedLanguage = request.headers.get('Accept-Language') ?? undefined;
@@ -13,10 +17,36 @@ function getLocale(request: NextRequest): string {
   return match(languages, locales, defaultLocale);
 }
 
-export function middleware(request: NextRequest) {
+async function isAuthenticated(request: NextRequest): Promise<boolean> {
+  const token = request.cookies.get('wedding-auth')?.value;
+  if (!token) {
+    return false;
+  }
+
+  try {
+    await jwtVerify(token, JWT_SECRET);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   if (skipMiddleware(pathname)) {
+    if (pathname === '/login' && (await isAuthenticated(request))) {
+      return redirectToHomepage(request);
+    }
+    // Handle locale-based login redirects
+    const loginPathRegex = /^\/(en|ar)\/login$/;
+    if (loginPathRegex.test(pathname) && (await isAuthenticated(request))) {
+      return redirectToHomepage(request);
+    }
     return NextResponse.next();
+  }
+
+  if (!pathname.startsWith('/api/auth') && !(await isAuthenticated(request))) {
+    return redirectToLoginPage(request);
   }
 
   const pathnameHasLocale = locales.some(
@@ -64,6 +94,19 @@ export function middleware(request: NextRequest) {
 export const config = {
   matcher: ['/((?!api|_next/static|_next/image|favicon.ico|\\.well-known).*)'],
 };
+
+function redirectToLoginPage(request: NextRequest) {
+  const locale = getLocale(request);
+  const loginUrl = new URL(`/${locale}/login`, request.url);
+  return NextResponse.redirect(loginUrl);
+}
+
+function redirectToHomepage(request: NextRequest) {
+  const locale = getLocale(request);
+  const homeUrl = new URL(`/${locale}`, request.url);
+  return NextResponse.redirect(homeUrl);
+}
+
 function redirectToPathNameWithLocale(request: NextRequest, pathname: string) {
   const locale = getLocale(request);
   const newUrl = new URL(`/${locale}${pathname}`, request.url);
@@ -75,6 +118,8 @@ function skipMiddleware(pathname: string) {
     pathname.startsWith('/_next/') ||
     pathname.startsWith('/api/') ||
     pathname.startsWith('/static/') ||
+    pathname === '/en/login' ||
+    pathname === '/ar/login' ||
     pathname.includes('.') ||
     pathname === '/favicon.ico'
   );

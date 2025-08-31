@@ -8,6 +8,16 @@
     "save": "Save",
     "close": "Close"
   },
+  "login": {
+    "welcome": "Welcome!",
+    "subtitle": "This wedding website is private. Please enter the password to continue.",
+    "passwordPlaceholder": "Enter password",
+    "invalidPassword": "Invalid password. Please try again.",
+    "somethingWrong": "Something went wrong. Please try again.",
+    "enterWebsite": "Enter Website",
+    "verifying": "Verifying...",
+    "helpText": "Need help? Contact the couple for the password."
+  },
   "playlist": {
     "title": "Wedding Playlist 🎵",
     "subtitle": "Help us create the perfect soundtrack for our special day!",
