@@ -8,6 +8,13 @@
     "save": "Save",
     "close": "Close"
   },
+  "playlist": {
+    "title": "Wedding Playlist 🎵",
+    "subtitle": "Help us create the perfect soundtrack for our special day!",
+    "description": "Add your favorite songs to our collaborative Spotify playlist and make our celebration even more memorable.",
+    "addSongsButton": "Add Songs to Playlist",
+    "footerNote": "🎶 Add songs to our playlist"
+  },
   "navigation": {
     "home": "Home",
     "ceremony": "Ceremony",
@@ -98,8 +105,8 @@
     "email": "Email Address",
     "attendance": "Will you be attending?",
     "attendanceTitle": "Will you be attending?",
-    "refreshmentsAttendance": "I will be attending Dec 19th Refreshments",
-    "weddingAttendance": "I will be attending the Wedding on Dec 20th",
+    "refreshmentsAttendance": "Dec 19th Refreshments",
+    "weddingAttendance": "Dec 20th Wedding",
     "refreshmentsToggle": "Toggle attendance for refreshments",
     "weddingToggle": "Toggle attendance for wedding",
     "yes": "Yes, I'll be there! ✨",

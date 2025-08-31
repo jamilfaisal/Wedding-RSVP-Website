@@ -24,6 +24,7 @@ function Header() {
     { name: t('navigation.ceremony'), href: '#ceremony' },
     { name: t('navigation.details'), href: '#details' },
     { name: t('navigation.timeline'), href: '#timeline' },
+    { name: t('playlist.title').replace(' 🎵', ''), href: '#playlist' },
   ];
 
   const pageLinks = [

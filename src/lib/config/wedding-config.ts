@@ -16,6 +16,8 @@ export const weddingInfo: WeddingInfo = {
   rsvpDeadline: new Date('2025-09-30T21:59:59.000Z'),
 };
 
+export const spotifyPlaylistUrl = 'https://open.spotify.com/playlist/your-playlist-id';
+
 export const {
   groomFirstName,
   brideFirstName,
