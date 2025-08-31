@@ -10,7 +10,6 @@ export type CoupleNotificationEmailProps = {
   secondGuestName?: string;
   guest1DietaryRestrictions?: string;
   guest2DietaryRestrictions?: string;
-  songRequests?: string;
   submittedAt?: string;
 };
 
@@ -23,7 +22,6 @@ export default function CoupleNotificationEmail({
   secondGuestName,
   guest1DietaryRestrictions,
   guest2DietaryRestrictions,
-  songRequests,
   submittedAt,
 }: CoupleNotificationEmailProps) {
   const wrapperStyle: React.CSSProperties = {
@@ -147,13 +145,6 @@ export default function CoupleNotificationEmail({
                           <div style={{ marginBottom: 12 }}>
                             <span style={labelStyle}>Guest 2 Dietary Restrictions:</span>
                             <span style={valueStyle}>{guest2DietaryRestrictions}</span>
-                          </div>
-                        )}
-
-                        {songRequests && (
-                          <div style={{ marginBottom: 12 }}>
-                            <span style={labelStyle}>Song Requests:</span>
-                            <span style={valueStyle}>{songRequests}</span>
                           </div>
                         )}
                       </>

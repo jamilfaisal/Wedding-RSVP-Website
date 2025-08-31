@@ -16,7 +16,6 @@ export interface RSVPData {
   'Second Guest Name'?: string;
   'Guest 1 Dietary Restrictions'?: DietaryOption;
   'Guest 2 Dietary Restrictions'?: DietaryOption;
-  'Song Request'?: string;
   'RSVP Date'?: string;
   'Edit Token (JWT)'?: string;
 }
@@ -45,7 +44,6 @@ export interface CreateRSVPInput {
   secondGuestName: string;
   guest1DietaryRestrictions: DietaryOption | '';
   guest2DietaryRestrictions: DietaryOption | '';
-  songRequests: string;
 }
 
 export interface UpdateRSVPInput extends Partial<CreateRSVPInput> {

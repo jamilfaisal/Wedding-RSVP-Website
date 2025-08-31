@@ -77,7 +77,6 @@ export async function createRSVP(input: CreateRSVPInput): Promise<APIResponse<Ai
       input.guest2DietaryRestrictions
         ? (input.guest2DietaryRestrictions as DietaryOption)
         : undefined,
-    'Song Request': input.songRequests || undefined,
     'Edit Token (JWT)': editToken,
   };
 
@@ -233,12 +232,15 @@ function buildRSVPUpdatePayload(input: UpdateRSVPInput) {
     updateData['Number of Guests'] = parseInt(input.numberOfGuests);
   if (input.secondGuestName !== undefined) updateData['Second Guest Name'] = input.secondGuestName;
   if (input.guest1DietaryRestrictions !== undefined) {
-    updateData['Guest 1 Dietary Restrictions'] = input.guest1DietaryRestrictions as DietaryOption;
+    updateData['Guest 1 Dietary Restrictions'] = input.guest1DietaryRestrictions
+      ? (input.guest1DietaryRestrictions as DietaryOption)
+      : undefined;
   }
   if (input.guest2DietaryRestrictions !== undefined) {
-    updateData['Guest 2 Dietary Restrictions'] = input.guest2DietaryRestrictions as DietaryOption;
+    updateData['Guest 2 Dietary Restrictions'] = input.guest2DietaryRestrictions
+      ? (input.guest2DietaryRestrictions as DietaryOption)
+      : undefined;
   }
-  if (input.songRequests !== undefined) updateData['Song Request'] = input.songRequests;
   return updateData;
 }
 

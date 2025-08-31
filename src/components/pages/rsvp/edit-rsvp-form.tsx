@@ -1,5 +1,5 @@
 'use client';
-import { Textarea, Button } from '@headlessui/react';
+import { Button } from '@headlessui/react';
 import { useEditRSVPForm } from './use-edit-rsvp-form';
 import { FormField, TextInput, SelectField } from './form-components';
 import { FloralDecoration } from './floral-decorations';
@@ -67,7 +67,7 @@ function EditRSVPForm({ token }: EditRSVPFormProps) {
           <p className="text-brown-700 mb-6">{t('rsvp.invalidEditLinkMessage')}</p>
           <Button
             onClick={() => (window.location.href = `/rsvp`)}
-            className="bg-gradient-to-r from-sage-600 to-sage-700 hover:from-sage-700 hover:to-sage-800 text-white py-3 px-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
+            className="cursor-pointer bg-gradient-to-r from-sage-600 to-sage-700 hover:from-sage-700 hover:to-sage-800 text-white py-3 px-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             style={{ fontFamily: 'var(--font-serif)' }}
           >
             {t('rsvp.goToRSVPPage')}
@@ -198,17 +198,6 @@ function EditRSVPForm({ token }: EditRSVPFormProps) {
             )}
           </>
         )}
-
-        <FormField id="songRequests" label={t('rsvp.songRequests')}>
-          <Textarea
-            id="songRequests"
-            value={formData.songRequests}
-            onChange={(e) => handleInputChange('songRequests', e.target.value, t)}
-            className="w-full p-4 border-2 border-sage-200 rounded-lg focus:border-sage-400 focus:ring-sage-200 bg-ivory-50/50 text-brown-800 min-h-24"
-            placeholder={t('rsvp.songRequestsPlaceholder')}
-            rows={4}
-          />
-        </FormField>
 
         <div className="flex gap-4">
           <Button

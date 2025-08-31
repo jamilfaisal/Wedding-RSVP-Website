@@ -33,7 +33,6 @@ const initialFormData: CreateRSVPInput = {
   secondGuestName: '',
   guest1DietaryRestrictions: '',
   guest2DietaryRestrictions: '',
-  songRequests: '',
 };
 
 const initialErrors: FormErrors = {

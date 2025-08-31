@@ -29,7 +29,7 @@ Guest-facing
 
 - Home: hero, date & location, welcome message, countdown, photo gallery
 - Event details: venue info + map, timezone-aware schedule, dress code, downloadable .ics
-- RSVP form: attendance, meal choices, accessibility needs, song requests, editable confirmation email
+- RSVP form: attendance, meal choices, accessibility needs, editable confirmation email
 - Travel & stay: hotels, maps, and transit tips
 - Dining & activities: curated restaurant and attraction guides
 
@@ -111,7 +111,6 @@ npm run start
 | Meal Selection         | Single select    | Standard, Vegetarian, Vegan, Gluten-Free, No meal                                                                                                                         |
 | Dietary Restrictions   | Multi-select     | Vegetarian, Vegan, Gluten-Free, Dairy-Free, Nut-Free, Shellfish-Free, Kosher, Halal, Other                                                                                |
 | Special Accommodations | Multi-select     | Wheelchair access, Large print menu, Sign language interpreter, Assistive listening device, Close seating to exits, Step-free access, Service animal accommodation, Other |
-| Song Request           | Long text        | "Perfect - Ed Sheeran"                                                                                                                                                    |
 | Notes                  | Long text        | "Will arrive late"                                                                                                                                                        |
 | RSVP Date              | Created time     | Auto-generated                                                                                                                                                            |
 | Edit Token (JWT)       | Single line text | (System-generated secure link token)                                                                                                                                      |

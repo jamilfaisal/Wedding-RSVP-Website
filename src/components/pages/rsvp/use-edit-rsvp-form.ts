@@ -23,7 +23,6 @@ const initialFormData: CreateRSVPInput = {
   secondGuestName: '',
   guest1DietaryRestrictions: '',
   guest2DietaryRestrictions: '',
-  songRequests: '',
 };
 
 const initialErrors: FormErrors = {
@@ -73,7 +72,6 @@ export function useEditRSVPForm(token: string | null) {
             secondGuestName: data.secondGuestName,
             guest1DietaryRestrictions: data.guest1DietaryRestrictions,
             guest2DietaryRestrictions: data.guest2DietaryRestrictions,
-            songRequests: data.songRequests,
           };
 
           setFormData(newFormData);

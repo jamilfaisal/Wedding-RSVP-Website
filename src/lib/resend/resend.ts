@@ -118,7 +118,6 @@ export async function sendCoupleNotificationEmail(
   const secondGuestName = record.fields?.['Second Guest Name'] || '';
   const guest1DietaryRestrictions = record.fields?.['Guest 1 Dietary Restrictions'] || '';
   const guest2DietaryRestrictions = record.fields?.['Guest 2 Dietary Restrictions'] || '';
-  const songRequests = record.fields?.['Song Request'] || '';
   const submittedAt = record.createdTime;
   const from = process.env.RESEND_SENDER_EMAIL || 'Resend Dev <onboarding@resend.dev>';
 
@@ -134,7 +133,6 @@ export async function sendCoupleNotificationEmail(
       secondGuestName: secondGuestName || undefined,
       guest1DietaryRestrictions: guest1DietaryRestrictions || undefined,
       guest2DietaryRestrictions: guest2DietaryRestrictions || undefined,
-      songRequests: songRequests || undefined,
       submittedAt: submittedAt || undefined,
     };
 

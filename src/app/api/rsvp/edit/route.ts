@@ -34,7 +34,6 @@ export async function GET(request: NextRequest) {
       secondGuestName: result.data.fields['Second Guest Name'] || '',
       guest1DietaryRestrictions: result.data.fields['Guest 1 Dietary Restrictions'] || '',
       guest2DietaryRestrictions: result.data.fields['Guest 2 Dietary Restrictions'] || '',
-      songRequests: result.data.fields['Song Request'] || '',
       createdTime: result.data.createdTime,
     };
 
@@ -78,7 +77,6 @@ export async function PUT(request: NextRequest) {
       secondGuestName: data.secondGuestName,
       guest1DietaryRestrictions: data.guest1DietaryRestrictions as DietaryOption,
       guest2DietaryRestrictions: data.guest2DietaryRestrictions as DietaryOption,
-      songRequests: data.songRequests,
     };
 
     const result = await updateRSVP(updateInput);

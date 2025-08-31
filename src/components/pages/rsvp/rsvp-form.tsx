@@ -1,5 +1,5 @@
 'use client';
-import { Textarea, Button } from '@headlessui/react';
+import { Button } from '@headlessui/react';
 import { useRSVPForm } from './use-rsvp-form';
 import { FormField, TextInput, SelectField } from './form-components';
 import { FloralDecoration } from './floral-decorations';
@@ -136,17 +136,6 @@ function RSVPForm() {
             )}
           </>
         )}
-
-        <FormField id="songRequests" label={t('rsvp.songRequests')}>
-          <Textarea
-            id="songRequests"
-            value={formData.songRequests}
-            onChange={(e) => handleInputChange('songRequests', e.target.value, t)}
-            className="w-full p-4 border-2 border-sage-200 rounded-lg focus:border-sage-400 focus:ring-sage-200 bg-ivory-50/50 text-brown-800 min-h-24"
-            placeholder={t('rsvp.songRequestsPlaceholder')}
-            rows={4}
-          />
-        </FormField>
 
         <div>
           <Button

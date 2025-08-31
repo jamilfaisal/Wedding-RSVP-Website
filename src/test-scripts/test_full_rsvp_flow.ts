@@ -11,7 +11,6 @@ async function testRSVPWithEmails() {
     secondGuestName: 'Guest Plus One',
     guest1DietaryRestrictions: 'None',
     guest2DietaryRestrictions: 'Vegetarian',
-    songRequests: 'Happy songs for testing the couple notification!',
   };
 
   try {
