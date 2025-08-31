@@ -79,7 +79,6 @@ export async function createRSVP(input: CreateRSVPInput): Promise<APIResponse<Ai
         : undefined,
     'Song Request': input.songRequests || undefined,
     'Edit Token (JWT)': editToken,
-    'Confirmation Sent': false,
   };
 
   const client = getAirtableClient();

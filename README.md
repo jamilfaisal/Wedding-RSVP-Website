@@ -115,7 +115,6 @@ npm run start
 | Notes                  | Long text        | "Will arrive late"                                                                                                                                                        |
 | RSVP Date              | Created time     | Auto-generated                                                                                                                                                            |
 | Edit Token (JWT)       | Single line text | (System-generated secure link token)                                                                                                                                      |
-| Confirmation Sent      | Checkbox         | ☑                                                                                                                                                                        |
 
 ## Security & privacy notes
 

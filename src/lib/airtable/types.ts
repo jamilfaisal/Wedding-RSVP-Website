@@ -19,7 +19,6 @@ export interface RSVPData {
   'Song Request'?: string;
   'RSVP Date'?: string;
   'Edit Token (JWT)'?: string;
-  'Confirmation Sent'?: boolean;
 }
 
 export interface AirtableRecord {
