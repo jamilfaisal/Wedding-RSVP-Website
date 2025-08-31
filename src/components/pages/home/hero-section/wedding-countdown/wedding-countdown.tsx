@@ -130,18 +130,6 @@ function renderCountdown(
   );
 }
 
-function renderDecorativeBottomAccent() {
-  return (
-    <div className="flex items-center justify-center gap-3 mt-8 pt-6 border-t border-sage-100 relative z-10">
-      <div className="w-2 h-2 bg-sage-300 rounded-full"></div>
-      <div className="w-3 h-3 bg-orange-300 rounded-full"></div>
-      <div className="w-2 h-2 bg-brown-300 rounded-full"></div>
-      <div className="w-3 h-3 bg-sage-300 rounded-full"></div>
-      <div className="w-2 h-2 bg-orange-300 rounded-full"></div>
-    </div>
-  );
-}
-
 function calculateCountdown(
   weddingStartDate: Date,
   setCountDownTime: (value: CountDownTime | ((prev: CountDownTime) => CountDownTime)) => void,
