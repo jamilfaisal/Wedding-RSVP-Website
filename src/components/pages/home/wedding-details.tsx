@@ -2,6 +2,7 @@ import { Car, Shirt } from 'lucide-react';
 import weddingRingsIcon from '/public/images/wedding-rings-icon.png';
 import couplePhoto from '/public/images/couple-photo.png';
 import ImageWithFallback from '../../ui/image-with-fallback';
+import QRCode from '../../ui/qr-code';
 import { useTranslation } from 'react-i18next';
 
 function WeddingDetails() {
@@ -25,6 +26,7 @@ function renderCards(t: (key: string) => string) {
     <div className="space-y-8">
       {renderDressCodeCard(t)}
       {renderTransportationCard(t)}
+      {renderPhotoSharingCard(t)}
     </div>
   );
 }
@@ -70,6 +72,18 @@ function renderTransportationCard(t: (key: string) => string) {
         </div>
       </div>
     </div>
+  );
+}
+
+function renderPhotoSharingCard(t: (key: string) => string) {
+  const povAppUrl = process.env.NEXT_PUBLIC_POV_APP_URL || 'https://your-pov-app-url.com';
+
+  return (
+    <QRCode
+      url={povAppUrl}
+      title={t('weddingDetails.sharePhotos')}
+      description={t('weddingDetails.sharePhotosDescription')}
+    />
   );
 }
 

@@ -55,7 +55,11 @@
     "gettingToDesc1": "is easily accessible via Fiumicino (FCO) and Ciampino (CIA) airports. We recommend booking accommodations in central",
     "gettingToDesc2": "for easy access to the venue.",
     "localTransportation": "Local Transportation",
-    "localTransportationDesc": "has excellent public transportation including metro, buses, and taxis. Detailed directions will be provided with your invitation."
+    "localTransportationDesc": "has excellent public transportation including metro, buses, and taxis. Detailed directions will be provided with your invitation.",
+    "sharePhotos": "Share Your Photos",
+    "sharePhotosDescription": "Capture and share your favorite moments from our special day! Scan the QR code or click the button to access our wedding photo sharing app.",
+    "scanWithPhone": "Scan with your phone or click to open",
+    "openPovApp": "Open POV App"
   },
   "timeline": {
     "title": "Order of Celebrations",
