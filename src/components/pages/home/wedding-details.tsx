@@ -139,7 +139,7 @@ function renderDressCodeCard(t: (key: string) => string) {
 
 function renderDecorativeImage() {
   return (
-    <div className="relative w-2/3 mx-auto lg:mx-0 lg:sticky lg:top-24">
+    <div className="relative w-2/3 mx-auto lg:mx-0 lg:sticky lg:top-36">
       <div className="rounded-lg overflow-hidden shadow-lg border-4 border-orange-100 relative">
         <div className="relative">
           <ImageWithFallback src={couplePhoto} alt="Groom and Bride" className="w-full" />
