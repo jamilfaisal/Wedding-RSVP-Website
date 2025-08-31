@@ -9,7 +9,7 @@ async function run() {
     createdTime: new Date().toISOString(),
     fields: {
       Name: 'Jamil Faisal',
-      Email: 'jamilfaisal43@gmail.com',
+      Email: 'rsvp@farisandzinawedding.com',
       'Attending Refreshments Dec 19th': 'Yes',
       'Attending Wedding Dec 20th': 'Yes',
       'Number of Guests': 1,

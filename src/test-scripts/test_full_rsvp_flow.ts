@@ -4,7 +4,7 @@ dotenv.config({ path: '.env.local' });
 async function testRSVPWithEmails() {
   const rsvpData = {
     fullName: 'Test Guest Email',
-    email: 'jamilfaisal43@gmail.com',
+    email: 'rsvp@farisandzinawedding.com',
     attendingRefreshments: true,
     attendingWedding: true,
     numberOfGuests: '2',
