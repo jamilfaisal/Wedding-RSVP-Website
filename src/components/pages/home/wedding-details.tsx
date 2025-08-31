@@ -8,16 +8,19 @@ import { useTranslation } from 'react-i18next';
 function WeddingDetails() {
   const { t } = useTranslation();
   return (
-    <section id="details" className="pt-30 bg-gradient-to-b from-sage-50/20 to-orange-50/10">
-      <div className="max-w-7xl mx-auto px-8">
-        {renderSectionHeader(t)}
+    <>
+      <div id="details" className="relative -top-20"></div>
+      <section id="details" className="pt-10 bg-gradient-to-b from-sage-50/20 to-orange-50/10">
+        <div className="max-w-7xl mx-auto px-6">
+          {renderSectionHeader(t)}
 
-        <div className="grid lg:grid-cols-2 gap-36 items-start">
-          {renderCards(t)}
-          {renderDecorativeImage()}
+          <div className="grid lg:grid-cols-2 gap-15 items-start">
+            {renderCards(t)}
+            {renderDecorativeImage()}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
 
@@ -152,8 +155,8 @@ function renderDecorativeImage() {
 
 function renderSectionHeader(t: (key: string) => string) {
   return (
-    <div className="text-center mb-16">
-      <div className="flex items-center justify-center mb-8">
+    <div className="text-center mb-14">
+      <div className="flex items-center justify-center">
         <div className="w-12 h-px bg-gradient-to-r from-transparent via-orange-300 to-transparent"></div>
         <div className="mx-8 p-2">
           <ImageWithFallback src={weddingRingsIcon} alt="Wedding Rings" className="w-18 h-18" />

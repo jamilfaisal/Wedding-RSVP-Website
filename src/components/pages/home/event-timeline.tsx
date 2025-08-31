@@ -55,22 +55,25 @@ const timelineEvents: timelineEvent[] = [
 function EventTimeline() {
   const { t } = useTranslation();
   return (
-    <section id="timeline" className="pt-35 pb-20 bg-gradient-to-b from-orange-50/10 to-white">
-      <div className="max-w-5xl mx-auto px-8">
-        {renderSectionHeader(t)}
-        {/* Timeline */}
-        <div className="relative">
-          {renderVerticalLine()}
+    <>
+      <div id="timeline" className="relative -top-20"></div>
+      <section id="timeline" className="pt-15 pb-20 bg-gradient-to-b from-orange-50/10 to-white">
+        <div className="max-w-5xl mx-auto px-8">
+          {renderSectionHeader(t)}
+          {/* Timeline */}
+          <div className="relative">
+            {renderVerticalLine()}
 
-          <div className="space-y-12">
-            {timelineEvents.map((event, index) => {
-              return renderTimelineEvent(event, index, t);
-            })}
+            <div className="space-y-12">
+              {timelineEvents.map((event, index) => {
+                return renderTimelineEvent(event, index, t);
+              })}
+            </div>
           </div>
+          {renderBottomMessage(t)}
         </div>
-        {renderBottomMessage(t)}
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
 

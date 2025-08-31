@@ -11,23 +11,26 @@ function CeremonyInfo() {
   const { locale } = useI18n();
   const { t } = useTranslation();
   return (
-    <section id="ceremony" className="pt-33 bg-gradient-to-b from-white to-sage-50/20">
-      <div className="max-w-6xl mx-auto px-8">
-        {renderSectionHeader(t)}
+    <>
+      <div id="ceremony" className="relative -top-20"></div>
+      <section id="ceremony" className="pt-10 bg-gradient-to-b from-white to-sage-50/20">
+        <div className="max-w-6xl mx-auto px-8">
+          {renderSectionHeader(t)}
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {renderVenueImage()}
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {renderVenueImage()}
 
-          <div className="space-y-8 lg:ps-4">
-            {renderVenueLocation(t)}
-            {renderAperitifHour(t)}
-            {renderWeddingSchedule(locale, t)}
-            {renderLocalTime(locale, t)}
-            {WeatherWidget(locale, t)}
+            <div className="space-y-8 lg:ps-4">
+              {renderVenueLocation(t)}
+              {renderAperitifHour(t)}
+              {renderWeddingSchedule(locale, t)}
+              {renderLocalTime(locale, t)}
+              {WeatherWidget(locale, t)}
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
 
@@ -138,7 +141,7 @@ function renderVenueImage() {
 
 function renderSectionHeader(t: (key: string) => string) {
   return (
-    <div className="text-center mb-16">
+    <div className="text-center mb-14">
       <div className="flex items-center justify-center mb-8">
         <ImageWithFallback
           src={floralIllustration}
