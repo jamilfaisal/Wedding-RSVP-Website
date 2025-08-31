@@ -33,10 +33,9 @@ function renderHeroSectionContent(isVisible: boolean, t: (key: string) => string
   return (
     <div className="relative z-10 text-center px-8 max-w-4xl mx-auto">
       <div
-        className={`pt-35 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+        className={`pt-27 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
       >
         <div className="relative border-2 border-sage-100/60 rounded-lg p-12 bg-white/80 backdrop-blur-sm shadow-xl ">
-          {renderTopBorderFloralDecor()}
           {renderTopLeftCornerFloralDecor()}
           {renderTopRightFloralDecor()}
           {renderBottomLeftFloralDecor()}
@@ -148,24 +147,6 @@ function renderTopLeftCornerFloralDecor() {
       <div className="flex items-center gap-1">
         <Flower className="w-4 h-4 text-sage-400 opacity-60" />
         <div className="w-2 h-2 bg-orange-200 rounded-full"></div>
-      </div>
-    </div>
-  );
-}
-
-function renderTopBorderFloralDecor() {
-  return (
-    <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-white px-6 py-2 rounded-full border border-sage-200 shadow-md">
-      <div className="flex items-center gap-4">
-        <div className="flex items-center gap-1">
-          <Leaf className="w-4 h-4 text-sage-400" />
-          <Flower className="w-5 h-5 text-orange-300" />
-        </div>
-        <Heart className="w-6 h-6 text-brown-400" />
-        <div className="flex items-center gap-1">
-          <Flower2 className="w-5 h-5 text-sage-400" />
-          <Leaf className="w-4 h-4 text-orange-300" />
-        </div>
       </div>
     </div>
   );
