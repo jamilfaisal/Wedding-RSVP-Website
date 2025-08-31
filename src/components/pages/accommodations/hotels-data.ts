@@ -69,8 +69,7 @@ export const signatureStaysStatic = [
   {
     key: 'hasslerRoma',
     location: 'Top of the Spanish Steps',
-    image:
-      'https://images.unsplash.com/photo-1561812267-ca3dd6050cbc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoYXNzbGVyJTIwcm9tYSUyMHNwYW5pc2glMjBzdGVwcyUyMGx1eHVyeSUyMGhvdGVsfGVufDF8fHx8MTc1NTQ2NTI0MHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    image: '/images/hotels/hassler-roma.jpg',
     distance: '~6.0 km',
     transport: [{ type: 'car' }, { type: 'metro' }] as TransportationMode[],
     links: [{ text: 'Rome2Rio', url: '#' }],
@@ -91,8 +90,7 @@ export const signatureStaysStatic = [
   {
     key: 'hotelDelaVille',
     location: 'Spanish Steps',
-    image:
-      'https://images.unsplash.com/photo-1645380562442-a64c2a7695de?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxob3RlbCUyMGRlJTIwbGElMjB2aWxsZSUyMHJvY2NvJTIwZm9ydGUlMjBzcGFuaXNoJTIwc3RlcHN8ZW58MXx8fHwxNzU1NDY1MjQ3fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    image: '/images/hotels/hotel-de-la-ville.jpg',
     distance: '~6.5 km',
     transport: [{ type: 'car' }, { type: 'metro' }] as TransportationMode[],
     links: [{ text: 'Vanity Fair', url: '#' }],
@@ -128,8 +126,7 @@ export const timelessStaysStatic = [
   {
     key: 'hotelIsa',
     location: 'Prati',
-    image:
-      'https://images.unsplash.com/photo-1729755033606-251c462a8bbf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxib3V0aXF1ZSUyMGhvdGVsJTIwcm9tZSUyMHRlcnJhY2UlMjByb29mdG9wfGVufDF8fHx8MTc1NTQ2NTI1NHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    image: '/images/hotels/hotel-isa.jpg',
     distance: '~3.5–4.0 km',
     transport: [{ type: 'car' }, { type: 'bus' }, { type: 'metro' }] as TransportationMode[],
     links: [
