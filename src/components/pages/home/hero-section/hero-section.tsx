@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ArrowDown, Flower, Flower2, Heart, Leaf } from 'lucide-react';
+import { ArrowDown, Flower, Flower2, Leaf } from 'lucide-react';
 import BackgroundImage from './background-image';
 import BotanicalDecoration from './botanical-decoration';
 import ArabicVerse from './arabic-verse';

@@ -48,6 +48,7 @@ function renderFloralPicture() {
         src={floralIllustration}
         alt="Floral Decoration"
         className="w-48 h-auto opacity-90"
+        priority
       />
     </div>
   );

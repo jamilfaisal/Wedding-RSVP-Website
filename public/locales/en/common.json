@@ -36,7 +36,9 @@
     "celebration": "Celebration",
     "tba": "TBA",
     "localTime": "Local Time",
-    "schedule": "Schedule"
+    "schedule": "Schedule",
+    "aperitifHour": "Aperitif Hour",
+    "joinUsDate": "Join us on December 19, 2025"
   },
   "weddingDetails": {
     "title": "Wedding Details",

@@ -20,6 +20,7 @@ function CeremonyInfo() {
 
           <div className="space-y-8 lg:ps-4">
             {renderVenueLocation(t)}
+            {renderAperitifHour(t)}
             {renderWeddingSchedule(locale, t)}
             {renderLocalTime(locale, t)}
             {WeatherWidget(locale, t)}
@@ -72,6 +73,25 @@ function renderWeddingSchedule(locale: string, t: (key: string) => string) {
               <span className="font-serif">{t('ceremony.celebration')}:</span>
               <span className="font-light italic text-brown-500">{t('ceremony.tba')}</span>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function renderAperitifHour(t: (key: string) => string) {
+  return (
+    <div className="bg-white rounded-lg p-6 shadow-md border-2 border-purple-100">
+      <div className="flex items-start gap-4">
+        <div className="w-12 h-12 bg-gradient-to-br from-purple-100 to-purple-200 rounded-lg flex items-center justify-center flex-shrink-0 border border-purple-200">
+          <Clock className="w-6 h-6 text-purple-700" />
+        </div>
+        <div className="flex-1">
+          <h4 className="text-xl font-serif text-brown-800 mb-3">{t('ceremony.aperitifHour')}</h4>
+          <div className="text-brown-600 leading-relaxed space-y-2">
+            <p className="font-medium">{t('ceremony.joinUsDate')}</p>
+            <p className="text-brown-500 italic">{t('ceremony.detailsComingSoon')}</p>
           </div>
         </div>
       </div>
