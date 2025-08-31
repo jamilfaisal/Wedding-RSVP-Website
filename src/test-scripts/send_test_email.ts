@@ -10,7 +10,8 @@ async function run() {
     fields: {
       Name: 'Jamil Faisal',
       Email: 'jamilfaisal43@gmail.com',
-      Attendance: 'Yes',
+      'Attending Refreshments Dec 19th': 'Yes',
+      'Attending Wedding Dec 20th': 'Yes',
       'Number of Guests': 1,
       'Meal Selection': 'Meat',
       'Edit Token (JWT)': 'test-token-123',

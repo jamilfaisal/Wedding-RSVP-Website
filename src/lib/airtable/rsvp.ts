@@ -63,11 +63,14 @@ export async function createRSVP(input: CreateRSVPInput): Promise<APIResponse<Ai
   const rsvpData: RSVPData = {
     Name: input.fullName,
     Email: input.email,
-    Attendance: input.attending ? 'Yes' : 'No',
+    'Attending Refreshments Dec 19th': input.attendingRefreshments ? 'Yes' : 'No',
+    'Attending Wedding Dec 20th': input.attendingWedding ? 'Yes' : 'No',
     'Number of Guests': parseInt(input.numberOfGuests) || 1,
     'Second Guest Name': input.secondGuestName || undefined,
     'Meal Selection':
-      input.attending && input.mealPreference ? (input.mealPreference as MealSelection) : undefined,
+      (input.attendingRefreshments || input.attendingWedding) && input.mealPreference
+        ? (input.mealPreference as MealSelection)
+        : undefined,
     'Dietary Restrictions': input.dietaryRestrictions || undefined,
     'Song Request': input.songRequests || undefined,
     'Edit Token (JWT)': editToken,
@@ -206,7 +209,11 @@ function constructListQueryParams(options: ListRSVPsQueryOptions) {
 }
 
 function isRSVPRequiredFieldsMissing(input: CreateRSVPInput): boolean {
-  return !input.fullName || !input.email || input.attending === undefined;
+  return (
+    !input.fullName ||
+    !input.email ||
+    (input.attendingRefreshments === undefined && input.attendingWedding === undefined)
+  );
 }
 
 function buildRSVPUpdatePayload(input: UpdateRSVPInput) {
@@ -214,7 +221,10 @@ function buildRSVPUpdatePayload(input: UpdateRSVPInput) {
 
   if (input.fullName !== undefined) updateData['Name'] = input.fullName;
   if (input.email !== undefined) updateData['Email'] = input.email;
-  if (input.attending !== undefined) updateData['Attendance'] = input.attending ? 'Yes' : 'No';
+  if (input.attendingRefreshments !== undefined)
+    updateData['Attending Refreshments Dec 19th'] = input.attendingRefreshments ? 'Yes' : 'No';
+  if (input.attendingWedding !== undefined)
+    updateData['Attending Wedding Dec 20th'] = input.attendingWedding ? 'Yes' : 'No';
   if (input.numberOfGuests !== undefined)
     updateData['Number of Guests'] = parseInt(input.numberOfGuests);
   if (input.secondGuestName !== undefined) updateData['Second Guest Name'] = input.secondGuestName;

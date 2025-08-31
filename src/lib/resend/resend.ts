@@ -36,7 +36,8 @@ export async function sendConfirmationEmail(
   }
 
   const name = record.fields?.Name || '';
-  const attendance = record.fields?.Attendance || '';
+  const refreshmentsAttendance = record.fields?.['Attending Refreshments Dec 19th'] || 'No';
+  const weddingAttendance = record.fields?.['Attending Wedding Dec 20th'] || 'No';
   const guests = record.fields?.['Number of Guests'] ?? null;
   const editToken = record.fields?.['Edit Token (JWT)'];
   const from = process.env.RESEND_SENDER_EMAIL || 'Resend Dev <onboarding@resend.dev>';
@@ -50,10 +51,11 @@ export async function sendConfirmationEmail(
 
   try {
     const props: ConfirmationEmailProps = {
-      name: name || undefined,
-      attendance: attendance || undefined,
-      guests: typeof guests === 'number' ? guests : null,
-      editUrl: editUrl || undefined,
+      name: name || 'Guest',
+      refreshmentsAttendance: refreshmentsAttendance || 'No',
+      weddingAttendance: weddingAttendance || 'No',
+      guests: guests || 1,
+      editUrl: editUrl || '',
     };
 
     const reactElement = React.createElement(ConfirmationEmail, props);
@@ -110,7 +112,8 @@ export async function sendCoupleNotificationEmail(
 
   const guestName = record.fields?.Name || '';
   const guestEmail = record.fields?.Email || '';
-  const attendance = record.fields?.Attendance || '';
+  const refreshmentsAttendance = record.fields?.['Attending Refreshments Dec 19th'] || 'No';
+  const weddingAttendance = record.fields?.['Attending Wedding Dec 20th'] || 'No';
   const guests = record.fields?.['Number of Guests'] ?? null;
   const secondGuestName = record.fields?.['Second Guest Name'] || '';
   const mealPreference = record.fields?.['Meal Selection'] || '';
@@ -119,13 +122,14 @@ export async function sendCoupleNotificationEmail(
   const submittedAt = record.createdTime;
   const from = process.env.RESEND_SENDER_EMAIL || 'Resend Dev <onboarding@resend.dev>';
 
-  const subject = `New RSVP from ${guestName} - ${attendance}`;
+  const subject = `New RSVP from ${guestName} - ${refreshmentsAttendance === 'Yes' ? 'Refreshments' : ''}${refreshmentsAttendance === 'Yes' && weddingAttendance === 'Yes' ? ' & ' : ''}${weddingAttendance === 'Yes' ? 'Wedding' : ''}${refreshmentsAttendance === 'No' && weddingAttendance === 'No' ? 'Not Attending' : ''}`;
 
   try {
     const props: CoupleNotificationEmailProps = {
       guestName: guestName || undefined,
       guestEmail: guestEmail || undefined,
-      attendance: attendance || undefined,
+      refreshmentsAttendance: refreshmentsAttendance || undefined,
+      weddingAttendance: weddingAttendance || undefined,
       guests: typeof guests === 'number' ? guests : null,
       secondGuestName: secondGuestName || undefined,
       mealPreference: mealPreference || undefined,

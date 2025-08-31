@@ -2,7 +2,7 @@ import { CreateRSVPInput } from '@/lib/airtable';
 import { FormErrors, TouchedFields } from './use-rsvp-form';
 
 export function isAttendingChangedToNo(field: string, value: string | boolean) {
-  return field === 'attending' && value === false;
+  return (field === 'attendingRefreshments' || field === 'attendingWedding') && value === false;
 }
 
 export function clearFormAndErrors(
@@ -10,19 +10,23 @@ export function clearFormAndErrors(
   setErrors: React.Dispatch<React.SetStateAction<FormErrors>>,
   errors: FormErrors
 ): CreateRSVPInput {
-  setErrors({
-    ...errors,
-    mealPreference: '',
-    secondGuestName: '',
-  });
+  if (!newFormData.attendingRefreshments && !newFormData.attendingWedding) {
+    setErrors({
+      ...errors,
+      mealPreference: '',
+      secondGuestName: '',
+    });
 
-  return {
-    ...newFormData,
-    numberOfGuests: '1',
-    secondGuestName: '',
-    mealPreference: '',
-    dietaryRestrictions: '',
-  };
+    return {
+      ...newFormData,
+      numberOfGuests: '1',
+      secondGuestName: '',
+      mealPreference: '',
+      dietaryRestrictions: '',
+    };
+  }
+
+  return newFormData;
 }
 
 export function handleNumGuestsChange(
@@ -105,7 +109,7 @@ function validateSecondGuestName(
   t: (key: string) => string
 ) {
   if (
-    formData.attending &&
+    (formData.attendingRefreshments || formData.attendingWedding) &&
     formData.numberOfGuests === '2' &&
     typeof value === 'string' &&
     value.trim().length === 0
@@ -121,7 +125,11 @@ function validateMealPreference(
   error: string,
   t: (key: string) => string
 ) {
-  if (formData.attending && typeof value === 'string' && value.trim().length === 0) {
+  if (
+    (formData.attendingRefreshments || formData.attendingWedding) &&
+    typeof value === 'string' &&
+    value.trim().length === 0
+  ) {
     error = t('errors.invalidMealPreference');
   }
   return error;

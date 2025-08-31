@@ -5,7 +5,8 @@ export type MealSelection = 'Meat' | 'Fish' | 'Vegetarian' | 'Vegan';
 export interface RSVPData {
   Name: string;
   Email: string;
-  Attendance: AttendanceStatus;
+  'Attending Refreshments Dec 19th': AttendanceStatus;
+  'Attending Wedding Dec 20th': AttendanceStatus;
   'Number of Guests'?: number;
   'Second Guest Name'?: string;
   'Meal Selection'?: MealSelection;
@@ -34,7 +35,8 @@ export interface AirtableCreateUpdateResponse {
 export interface CreateRSVPInput {
   fullName: string;
   email: string;
-  attending: boolean;
+  attendingRefreshments: boolean;
+  attendingWedding: boolean;
   numberOfGuests: string;
   secondGuestName: string;
   mealPreference: MealSelection | '';

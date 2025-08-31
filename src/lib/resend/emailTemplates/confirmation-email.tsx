@@ -3,14 +3,16 @@ import React from 'react';
 
 export type ConfirmationEmailProps = {
   name?: string;
-  attendance?: string;
+  refreshmentsAttendance?: string;
+  weddingAttendance?: string;
   guests?: number | null;
   editUrl?: string;
 };
 
 export default function ConfirmationEmail({
   name,
-  attendance,
+  refreshmentsAttendance,
+  weddingAttendance,
   guests,
   editUrl,
 }: ConfirmationEmailProps) {
@@ -70,20 +72,63 @@ export default function ConfirmationEmail({
                 <div style={contentStyle}>
                   <p style={{ marginTop: 0 }}>Hi {name || 'friend'},</p>
 
-                  <p>
-                    We’re thrilled to have received your RSVP! Your response:
-                    <strong> {attendance}</strong>.
-                  </p>
+                  <p>We&apos;re thrilled to have received your RSVP! Your response:</p>
 
-                  {guests ? (
+                  {(refreshmentsAttendance === 'Yes' || weddingAttendance === 'Yes') && guests ? (
                     <p>
                       Guests attending: <strong>{guests}</strong>
                     </p>
                   ) : null}
 
-                  <p style={{ marginTop: 20 }}>
-                    We can’t wait to celebrate this special day with you 🎂
-                  </p>
+                  {refreshmentsAttendance === 'Yes' && (
+                    <p
+                      style={{
+                        margin: '8px 0',
+                        padding: '8px',
+                        backgroundColor: '#e6f7ff',
+                        borderRadius: '4px',
+                      }}
+                    >
+                      ✅ <strong>Attending Dec 19th Refreshments</strong>
+                    </p>
+                  )}
+
+                  {weddingAttendance === 'Yes' && (
+                    <p
+                      style={{
+                        margin: '8px 0',
+                        padding: '8px',
+                        backgroundColor: '#e6f7ff',
+                        borderRadius: '4px',
+                      }}
+                    >
+                      ✅ <strong>Attending Wedding on Dec 20th</strong>
+                    </p>
+                  )}
+
+                  {refreshmentsAttendance === 'No' && weddingAttendance === 'No' && (
+                    <p
+                      style={{
+                        margin: '8px 0',
+                        padding: '8px',
+                        backgroundColor: '#fff2e8',
+                        borderRadius: '4px',
+                      }}
+                    >
+                      😔 <strong>Unable to attend either event</strong>
+                    </p>
+                  )}
+
+                  {refreshmentsAttendance === 'Yes' || weddingAttendance === 'Yes' ? (
+                    <p style={{ marginTop: 20 }}>
+                      We can&apos;t wait to celebrate this special day with you 🎂
+                    </p>
+                  ) : (
+                    <p style={{ marginTop: 20 }}>
+                      We&apos;re sorry you can&apos;t make it, but thank you for letting us know!
+                      We&apos;ll miss you 💕
+                    </p>
+                  )}
 
                   <p>If you need to make changes to your RSVP, you can do so here:</p>
 

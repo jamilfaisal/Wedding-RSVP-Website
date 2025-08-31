@@ -4,7 +4,8 @@ import React from 'react';
 export type CoupleNotificationEmailProps = {
   guestName?: string;
   guestEmail?: string;
-  attendance?: string;
+  refreshmentsAttendance?: string;
+  weddingAttendance?: string;
   guests?: number | null;
   secondGuestName?: string;
   mealPreference?: string;
@@ -16,7 +17,8 @@ export type CoupleNotificationEmailProps = {
 export default function CoupleNotificationEmail({
   guestName,
   guestEmail,
-  attendance,
+  refreshmentsAttendance,
+  weddingAttendance,
   guests,
   secondGuestName,
   mealPreference,
@@ -76,8 +78,9 @@ export default function CoupleNotificationEmail({
     marginBottom: 12,
   };
 
-  const attendanceColor =
-    attendance === 'Yes' ? '#059669' : attendance === 'No' ? '#dc2626' : '#6b7280';
+  const refreshmentsColor = refreshmentsAttendance === 'Yes' ? '#059669' : '#dc2626';
+  const weddingColor = weddingAttendance === 'Yes' ? '#059669' : '#dc2626';
+  const isAttendingAny = refreshmentsAttendance === 'Yes' || weddingAttendance === 'Yes';
 
   return (
     <div style={wrapperStyle}>
@@ -106,13 +109,20 @@ export default function CoupleNotificationEmail({
                     </div>
 
                     <div style={{ marginBottom: 12 }}>
-                      <span style={labelStyle}>Attendance:</span>
-                      <span style={{ ...valueStyle, color: attendanceColor, fontWeight: 600 }}>
-                        {attendance || 'Not specified'}
+                      <span style={labelStyle}>Dec 19th Refreshments:</span>
+                      <span style={{ ...valueStyle, color: refreshmentsColor, fontWeight: 600 }}>
+                        {refreshmentsAttendance === 'Yes' ? '✅ Attending' : '❌ Not Attending'}
                       </span>
                     </div>
 
-                    {attendance === 'Yes' && (
+                    <div style={{ marginBottom: 12 }}>
+                      <span style={labelStyle}>Dec 20th Wedding:</span>
+                      <span style={{ ...valueStyle, color: weddingColor, fontWeight: 600 }}>
+                        {weddingAttendance === 'Yes' ? '✅ Attending' : '❌ Not Attending'}
+                      </span>
+                    </div>
+
+                    {isAttendingAny && (
                       <>
                         <div style={{ marginBottom: 12 }}>
                           <span style={labelStyle}>Number of Guests:</span>

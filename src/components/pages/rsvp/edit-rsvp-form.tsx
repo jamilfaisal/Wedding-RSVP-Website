@@ -121,11 +121,13 @@ function EditRSVPForm({ token }: EditRSVPFormProps) {
         </FormField>
 
         <AttendanceField
-          attending={formData.attending}
-          onChange={(value) => handleInputChange('attending', value, t)}
+          attendingRefreshments={formData.attendingRefreshments}
+          attendingWedding={formData.attendingWedding}
+          onRefreshmentsChange={(value) => handleInputChange('attendingRefreshments', value, t)}
+          onWeddingChange={(value) => handleInputChange('attendingWedding', value, t)}
         />
 
-        {formData.attending && (
+        {(formData.attendingRefreshments || formData.attendingWedding) && (
           <>
             <FormField id="numberOfGuests" label={t('rsvp.guests')} required>
               <SelectField

@@ -17,7 +17,8 @@ export interface EditRSVPData extends CreateRSVPInput {
 const initialFormData: CreateRSVPInput = {
   fullName: '',
   email: '',
-  attending: true,
+  attendingRefreshments: false,
+  attendingWedding: false,
   numberOfGuests: '1',
   secondGuestName: '',
   mealPreference: '',
@@ -64,7 +65,8 @@ export function useEditRSVPForm(token: string | null) {
           const newFormData: CreateRSVPInput = {
             fullName: data.fullName,
             email: data.email,
-            attending: data.attending,
+            attendingRefreshments: data.attendingRefreshments,
+            attendingWedding: data.attendingWedding,
             numberOfGuests: data.numberOfGuests,
             secondGuestName: data.secondGuestName,
             mealPreference: data.mealPreference,

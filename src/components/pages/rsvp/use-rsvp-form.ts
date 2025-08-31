@@ -25,7 +25,8 @@ export interface TouchedFields {
 const initialFormData: CreateRSVPInput = {
   fullName: '',
   email: '',
-  attending: true,
+  attendingRefreshments: false,
+  attendingWedding: false,
   numberOfGuests: '1',
   secondGuestName: '',
   mealPreference: '',
