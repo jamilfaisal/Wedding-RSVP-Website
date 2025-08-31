@@ -51,11 +51,10 @@ function renderTransportationCard(t: (key: string) => string) {
             </div>
             <div className="border-s-2 border-orange-200 ps-4">
               <h4 className="font-serif font-medium text-brown-800 mb-2">
-                {t('weddingDetails.gettingTo')}
-                {t('weddingInfo.weddingCountry')}
+                {t('weddingDetails.gettingTo')} {t('weddingInfo.weddingCountry')}
               </h4>
               <p className="font-light leading-relaxed">
-                {t('weddingInfo.weddingCountry')} {t('weddingDetails.gettingToDesc1')}
+                {t('weddingInfo.weddingCountry')} {t('weddingDetails.gettingToDesc1')}{' '}
                 {t('weddingInfo.weddingCountry')} {t('weddingDetails.gettingToDesc2')}
               </p>
             </div>
