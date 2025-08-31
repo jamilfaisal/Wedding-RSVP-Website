@@ -44,12 +44,12 @@
     "title": "Wedding Details",
     "subtitle": "Everything you need to know for our special day",
     "attire": "Attire",
-    "formalEveningWear": "Formal Evening Wear",
-    "formalEveningWearDescription": "Think elegant cocktail attire or formal evening dress",
-    "warmWinterColors": "Warm Winter Colors",
-    "warmWinterColorsDescription": "Sage greens, warm browns, and muted oranges encouraged",
-    "seasonalElegance": "Seasonal Elegance",
-    "seasonalEleganceDescription": "Bring a wrap for the outdoor ceremony portions",
+    "blackTieElegance": "Black Tie Elegance",
+    "blackTieEleganceDescription": "An evening to embrace timeless sophistication",
+    "yourPaletteYourStyle": "Your Palette, Your Style",
+    "yourPaletteYourStyleDescription": "No color restrictions — wear what makes you feel the best",
+    "winterCharm": "Winter Charm",
+    "winterCharmDescription": "As parts of the ceremony will be outdoors, we invite you to dress warmly or bring a wrap to stay cozy beneath the stars",
     "gettingThere": "Getting There",
     "transportationDetails": "Transportation Details",
     "transportationInfo": "Transportation information will be shared with invited guests closer to the wedding date.",
@@ -189,7 +189,7 @@
     "faqs": {
       "attire": {
         "question": "What should I wear to the wedding?",
-        "answer": "We're having a formal winter celebration. Please dress in cocktail or formal attire. Ladies, we recommend elegant dresses or suits. Gentlemen, suits or formal wear. Since it's December in Rome, you may want to bring a light jacket or wrap for the evening."
+        "answer": "We're embracing Black Tie Elegance for our special evening — think timeless sophistication! The best part? There are no color restrictions, so wear whatever makes you feel amazing. Since parts of our celebration will be under the beautiful Roman winter stars, we recommend bringing a cozy wrap or jacket to stay warm during the outdoor portions."
       },
       "transportation": {
         "question": "Will there be transportation provided?",

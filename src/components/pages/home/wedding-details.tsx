@@ -101,10 +101,10 @@ function renderDressCodeCard(t: (key: string) => string) {
               <div className="w-3 h-3 bg-brown-400 rounded-full mt-1.5 flex-shrink-0"></div>
               <div>
                 <span className="text-brown-700 font-serif font-medium">
-                  {t('weddingDetails.formalEveningWear')}
+                  {t('weddingDetails.blackTieElegance')}
                 </span>
                 <p className="text-brown-600 font-light mt-1">
-                  {t('weddingDetails.formalEveningWearDescription')}
+                  {t('weddingDetails.blackTieEleganceDescription')}
                 </p>
               </div>
             </div>
@@ -112,10 +112,10 @@ function renderDressCodeCard(t: (key: string) => string) {
               <div className="w-3 h-3 bg-sage-400 rounded-full mt-1.5 flex-shrink-0"></div>
               <div>
                 <span className="text-brown-700 font-serif font-medium">
-                  {t('weddingDetails.warmWinterColors')}
+                  {t('weddingDetails.yourPaletteYourStyle')}
                 </span>
                 <p className="text-brown-600 font-light mt-1">
-                  {t('weddingDetails.warmWinterColorsDescription')}
+                  {t('weddingDetails.yourPaletteYourStyleDescription')}
                 </p>
               </div>
             </div>
@@ -123,10 +123,10 @@ function renderDressCodeCard(t: (key: string) => string) {
               <div className="w-3 h-3 bg-orange-400 rounded-full mt-1.5 flex-shrink-0"></div>
               <div>
                 <span className="text-brown-700 font-serif font-medium">
-                  {t('weddingDetails.seasonalElegance')}
+                  {t('weddingDetails.winterCharm')}
                 </span>
                 <p className="text-brown-600 font-light mt-1">
-                  {t('weddingDetails.seasonalEleganceDescription')}
+                  {t('weddingDetails.winterCharmDescription')}
                 </p>
               </div>
             </div>
