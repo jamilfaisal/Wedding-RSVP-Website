@@ -6,10 +6,12 @@
     "dev": "next dev",
     "send-test-email": "tsx src/test-scripts/send_test_email.ts",
     "rsvp-test": "tsx src/test-scripts/create_delete_rsvp_test.ts",
-    "build": "next build",
+    "build": "next build && next-sitemap",
+    "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "next lint && eslint --ext .js,.jsx,.ts,.tsx src",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,mjs,json,css,md,mdx,html}\""
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,mjs,json,css,md,mdx,html}\"",
+    "sitemap": "next-sitemap"
   },
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.6.1",
@@ -41,6 +43,7 @@
     "eslint-config-next": "15.4.6",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.4",
+    "next-sitemap": "^4.2.3",
     "postcss": "^8.5.6",
     "prettier": "^3.6.2",
     "tailwindcss": "^4.1.12",

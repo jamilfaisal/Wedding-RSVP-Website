@@ -1,0 +1,11 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /rsvp/edit
+
+# Host
+Host: https://www.farisandzinawedding.com
+
+# Sitemaps
+Sitemap: https://www.farisandzinawedding.com/sitemap.xml
