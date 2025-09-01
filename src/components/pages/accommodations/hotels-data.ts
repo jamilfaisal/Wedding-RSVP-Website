@@ -215,28 +215,6 @@ export const chicStaysStatic = [
     booking: undefined,
     links: [],
   },
-  {
-    key: 'generatorRome',
-    location: 'Esquilino / Termini',
-    image:
-      'https://images.unsplash.com/photo-1561812267-ca3dd6050cbc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxnZW5lcmF0b3IlMjBob3N0ZWwlMjByb21lJTIwbW9kZXJuJTIwYnVkZ2V0JTIwZGVzaWdufGVufDF8fHx8MTc1NTQ2NTI3Mnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-    distance: '~7.5 km',
-    transport: [{ type: 'car' }, { type: 'metro' }] as TransportationMode[],
-    blockRate: undefined,
-    booking: undefined,
-    links: [],
-  },
-  {
-    key: 'hotelSantAngelo',
-    location: "Prati / Castel Sant'Angelo",
-    image:
-      'https://images.unsplash.com/photo-1572611442784-7a041f631440?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxob3RlbCUyMHNhbnQlMjBhbmdlbG8lMjBjYXN0ZWwlMjByb21lJTIwcml2ZXJ8ZW58MXx8fHwxNzU1NDY1Mjc1fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-    distance: '~4.0–4.5 km',
-    transport: [{ type: 'car' }, { type: 'bus' }] as TransportationMode[],
-    blockRate: undefined,
-    booking: undefined,
-    links: [],
-  },
 ];
 
 export function getChicStays(t: (key: string) => string): Hotel[] {
