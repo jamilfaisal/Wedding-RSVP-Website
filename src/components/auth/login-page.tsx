@@ -4,6 +4,9 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useI18n } from '../../lib/i18n/i18n-provider';
 import { useSearchParams } from 'next/navigation';
+import { Lock } from 'lucide-react';
+import { ContentCard } from '../pages/shared/content-card';
+import { FloralPicture } from '../pages/shared/floral-picture';
 
 const getTextDirection = (locale: string) => (locale === 'ar' ? 'rtl' : 'ltr');
 
@@ -50,78 +53,125 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-rose-100 to-pink-50 flex items-center justify-center px-4">
-      <div className="max-w-md w-full bg-white rounded-lg shadow-xl p-8 relative">
-        <div className="absolute top-4 right-4">
-          <button
-            onClick={toggleLanguage}
-            className="flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-200 bg-white hover:bg-gray-50 transition-colors text-sm font-medium"
-            aria-label="Switch language"
-          >
-            <span className="text-lg">{locale === 'en' ? '🇸🇦' : '🇺🇸'}</span>
-            <span>{locale === 'en' ? 'العربية' : 'English'}</span>
-          </button>
-        </div>
-        <div className="text-center mb-8">
-          <div className="mx-auto h-12 w-12 text-rose-500 mb-4">
-            <svg fill="currentColor" viewBox="0 0 20 20">
-              <path
-                fillRule="evenodd"
-                d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </div>
-          <h2 dir={textDirection} className="text-3xl font-bold text-gray-900 mb-2">
-            {t('login.welcome')}
-          </h2>
-          <p dir={textDirection} className="text-gray-600">
-            {t('login.subtitle')}
-          </p>
-        </div>
+    <div className="min-h-screen bg-gradient-to-b from-ivory-50 via-sage-50/30 to-orange-50/20 flex items-center justify-center px-4 py-20">
+      <div className="max-w-md w-full relative">
+        {renderLanguageSwitcher(toggleLanguage, locale)}
 
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div>
-            <label htmlFor="password" className="sr-only">
-              Password
-            </label>
-            <input
-              id="password"
-              name="password"
-              type="password"
-              required
-              dir={textDirection}
-              className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-rose-500 focus:border-rose-500 focus:z-10 sm:text-sm"
-              placeholder={t('login.passwordPlaceholder')}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
-
-          {error && (
-            <div
-              dir={textDirection}
-              className="text-red-600 text-sm text-center bg-red-50 p-3 rounded-md"
-            >
-              {error}
-            </div>
-          )}
-
-          <div>
-            <button
-              type="submit"
-              disabled={loading}
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-rose-600 hover:bg-rose-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-500 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {loading ? t('login.verifying') : t('login.enterWebsite')}
-            </button>
-          </div>
-        </form>
-
-        <div dir={textDirection} className="mt-6 text-center text-xs text-gray-500">
-          {t('login.helpText')}
-        </div>
+        <ContentCard padding="p-8">
+          {renderHeader(textDirection, t)}
+          {renderForm(handleSubmit, textDirection, t, password, setPassword, error, loading)}
+          {renderHelp(textDirection, t)}
+        </ContentCard>
       </div>
+    </div>
+  );
+}
+function renderHelp(textDirection: string, t: (key: string) => string) {
+  return (
+    <div
+      dir={textDirection}
+      className="mt-8 text-center text-sm text-brown-500 font-light"
+      style={{ fontFamily: 'var(--font-serif)' }}
+    >
+      {t('login.helpText')}
+    </div>
+  );
+}
+
+function renderForm(
+  handleSubmit: (e: React.FormEvent) => Promise<void>,
+  textDirection: string,
+  t: (key: string) => string,
+  password: string,
+  setPassword: (value: string) => void,
+  error: string,
+  loading: boolean
+) {
+  return (
+    <form onSubmit={handleSubmit} className="space-y-6">
+      <div>
+        <label htmlFor="password" className="sr-only">
+          Password
+        </label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          required
+          dir={textDirection}
+          className="appearance-none rounded-lg relative block w-full px-4 py-3 border-2 border-sage-100 placeholder-brown-400 text-brown-900 bg-white focus:outline-none focus:ring-2 focus:ring-sage-300 focus:border-sage-300 transition-all duration-200"
+          placeholder={t('login.passwordPlaceholder')}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          style={{ fontFamily: 'var(--font-serif)' }}
+        />
+      </div>
+
+      {error && (
+        <div
+          dir={textDirection}
+          className="text-brown-700 bg-orange-50 border border-orange-200 p-4 rounded-lg text-center"
+          style={{ fontFamily: 'var(--font-serif)' }}
+        >
+          {error}
+        </div>
+      )}
+
+      <div>
+        <button
+          type="submit"
+          disabled={loading}
+          className="group relative w-full flex justify-center py-3 px-4 border-2 border-sage-200 text-lg font-medium rounded-lg text-white bg-gradient-to-r from-sage-600 to-sage-700 hover:from-sage-700 hover:to-sage-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sage-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 shadow-lg hover:shadow-xl"
+          style={{ fontFamily: 'var(--font-serif)' }}
+        >
+          {loading ? t('login.verifying') : t('login.enterWebsite')}
+        </button>
+      </div>
+    </form>
+  );
+}
+
+function renderHeader(textDirection: string, t: (key: string) => string) {
+  return (
+    <div className="text-center mb-8">
+      <div className="mx-auto h-16 w-16 bg-gradient-to-br from-sage-100 to-sage-200 rounded-lg flex items-center justify-center mb-6 border border-sage-200">
+        <Lock className="w-8 h-8 text-sage-700" />
+      </div>
+
+      <h1
+        dir={textDirection}
+        className="text-4xl text-brown-800 mb-4 leading-tight tracking-wide"
+        style={{ fontFamily: 'var(--font-harrington)' }}
+      >
+        {t('login.welcome')}
+      </h1>
+
+      <p
+        dir={textDirection}
+        className="text-xl text-brown-600 font-light mb-6"
+        style={{ fontFamily: 'var(--font-serif)' }}
+      >
+        {t('login.subtitle')}
+      </p>
+
+      <FloralPicture className="mb-6" width={128} height={96} opacity="opacity-90" />
+    </div>
+  );
+}
+
+function renderLanguageSwitcher(toggleLanguage: () => void, locale: string) {
+  return (
+    <div className="absolute -top-16 right-0 z-10">
+      <button
+        onClick={toggleLanguage}
+        className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/90 backdrop-blur-sm border-2 border-sage-100 hover:border-sage-200 transition-all duration-200 text-sm font-medium shadow-lg"
+        aria-label="Switch language"
+      >
+        <span className="text-lg">{locale === 'en' ? '🇸🇦' : '🇺🇸'}</span>
+        <span className="text-brown-700" style={{ fontFamily: 'var(--font-serif)' }}>
+          {locale === 'en' ? 'العربية' : 'English'}
+        </span>
+      </button>
     </div>
   );
 }
