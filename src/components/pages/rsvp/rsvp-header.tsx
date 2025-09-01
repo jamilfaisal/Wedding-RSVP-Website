@@ -1,7 +1,7 @@
 'use client';
 
 import { Leaf, Flower, Heart, Flower2 } from 'lucide-react';
-import floralIllustration from '/public/images/floral-illustration.png';
+import floralIllustration from '@public/images/floral-illustration.png';
 import ImageWithFallback from '../../ui/image-with-fallback';
 import { useTranslation } from 'react-i18next';
 import { formatRSVPDeadline } from '@/components/layout/utils';

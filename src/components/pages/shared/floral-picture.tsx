@@ -1,4 +1,4 @@
-import floralIllustration from '/public/images/floral-illustration.png';
+import floralIllustration from '@public/images/floral-illustration.png';
 import ImageWithFallback from '../../ui/image-with-fallback';
 
 interface FloralPictureProps {

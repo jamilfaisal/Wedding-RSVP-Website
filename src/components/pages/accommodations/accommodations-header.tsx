@@ -1,5 +1,5 @@
 import ImageWithFallback from '../../ui/image-with-fallback';
-import floralIllustration from '/public/images/floral-illustration.png';
+import floralIllustration from '@public/images/floral-illustration.png';
 
 function AccommodationsHeader({ title }: { title: string }) {
   return (

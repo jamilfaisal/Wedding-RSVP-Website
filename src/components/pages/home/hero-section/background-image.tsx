@@ -1,5 +1,5 @@
 import ImageWithFallback from '../../../ui/image-with-fallback';
-import proposalPhoto from '/public/images/proposal-photo.png';
+import proposalPhoto from '@public/images/proposal-photo.png';
 
 function BackgroundImage() {
   return (

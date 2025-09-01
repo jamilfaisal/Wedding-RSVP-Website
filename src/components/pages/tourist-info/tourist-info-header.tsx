@@ -1,5 +1,5 @@
 import ImageWithFallback from '@/components/ui/image-with-fallback';
-import floralIllustration from '/public/images/floral-illustration.png';
+import floralIllustration from '@public/images/floral-illustration.png';
 
 function TouristInfoHeader({ title }: { title: string }) {
   return (

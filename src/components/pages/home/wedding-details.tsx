@@ -1,6 +1,6 @@
 import { Car, Shirt } from 'lucide-react';
-import weddingRingsIcon from '/public/images/wedding-rings-icon.png';
-import couplePhoto from '/public/images/couple-photo.png';
+import weddingRingsIcon from '@public/images/wedding-rings-icon.png';
+import couplePhoto from '@public/images/couple-photo.png';
 import ImageWithFallback from '../../ui/image-with-fallback';
 import QRCode from '../../ui/qr-code';
 import { useTranslation } from 'react-i18next';

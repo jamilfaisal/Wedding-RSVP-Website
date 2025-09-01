@@ -1,6 +1,6 @@
 import { MapPin, Clock, Globe } from 'lucide-react';
-import ceremonyPhoto from '/public/images/ceremony-photo.png';
-import floralIllustration from '/public/images/floral-illustration.png';
+import ceremonyPhoto from '@public/images/ceremony-photo.png';
+import floralIllustration from '@public/images/floral-illustration.png';
 import ImageWithFallback from '../../../ui/image-with-fallback';
 import WeatherWidget from './weather-widget';
 import { formatWeddingStartTime, formatWeddingStartDate } from '@/components/layout/utils';
