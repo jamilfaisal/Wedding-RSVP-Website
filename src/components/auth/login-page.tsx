@@ -3,17 +3,20 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useI18n } from '../../lib/i18n/i18n-provider';
+import { useSearchParams } from 'next/navigation';
 
 const getTextDirection = (locale: string) => (locale === 'ar' ? 'rtl' : 'ltr');
 
 export default function LoginPage() {
   const { t } = useTranslation();
   const { locale, setLocale } = useI18n();
+  const searchParams = useSearchParams();
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
   const textDirection = getTextDirection(locale);
+  const returnTo = searchParams?.get('returnTo');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,7 +33,8 @@ export default function LoginPage() {
       });
 
       if (response.ok) {
-        window.location.href = '/';
+        const redirectUrl = returnTo || '/';
+        window.location.href = redirectUrl;
       } else {
         setError(t('login.invalidPassword'));
       }

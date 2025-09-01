@@ -45,6 +45,17 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
+  if (
+    pathname.includes('/rsvp/edit') &&
+    request.nextUrl.searchParams.has('token') &&
+    !(await isAuthenticated(request))
+  ) {
+    const locale = getLocale(request);
+    const authRequiredUrl = new URL(`/${locale}/auth-required`, request.url);
+    authRequiredUrl.searchParams.set('returnTo', request.nextUrl.pathname + request.nextUrl.search);
+    return NextResponse.redirect(authRequiredUrl, { status: 302 });
+  }
+
   if (!pathname.startsWith('/api/auth') && !(await isAuthenticated(request))) {
     return redirectToLoginPage(request);
   }
@@ -98,6 +109,7 @@ export const config = {
 function redirectToLoginPage(request: NextRequest) {
   const locale = getLocale(request);
   const loginUrl = new URL(`/${locale}/login`, request.url);
+  loginUrl.searchParams.set('returnTo', request.nextUrl.pathname + request.nextUrl.search);
   return NextResponse.redirect(loginUrl);
 }
 
@@ -120,6 +132,10 @@ function skipMiddleware(pathname: string) {
     pathname.startsWith('/static/') ||
     pathname === '/en/login' ||
     pathname === '/ar/login' ||
+    pathname === '/en/auth-required' ||
+    pathname === '/ar/auth-required' ||
+    pathname === '/en/invalid-token' ||
+    pathname === '/ar/invalid-token' ||
     pathname.includes('.') ||
     pathname === '/favicon.ico'
   );

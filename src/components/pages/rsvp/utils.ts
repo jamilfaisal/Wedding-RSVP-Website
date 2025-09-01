@@ -1,8 +1,15 @@
 import { CreateRSVPInput } from '@/lib/airtable';
 import { FormErrors, TouchedFields } from './use-rsvp-form';
 
-export function isAttendingChangedToNo(field: string, value: string | boolean) {
-  return (field === 'attendingRefreshments' || field === 'attendingWedding') && value === false;
+export function shouldClearDietaryRestrictions(
+  field: string,
+  value: string | boolean,
+  newFormData: CreateRSVPInput
+): boolean {
+  if ((field === 'attendingRefreshments' || field === 'attendingWedding') && value === false) {
+    return !newFormData.attendingRefreshments && !newFormData.attendingWedding;
+  }
+  return false;
 }
 
 export function clearFormAndErrors(
@@ -43,8 +50,13 @@ export function handleNumGuestsChange(
     setFormData((prevData) => ({
       ...prevData,
       secondGuestName: '',
+      guest2DietaryRestrictions: '',
     }));
-    setErrors({ ...errors, secondGuestName: '' });
+    setErrors({
+      ...errors,
+      secondGuestName: '',
+      guest2DietaryRestrictions: '',
+    });
   }
 
   if (newFormData.secondGuestName !== '' && isTwoGuestsSelectedAndTouched()) {

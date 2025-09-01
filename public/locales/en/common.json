@@ -6,7 +6,8 @@
     "submit": "Submit",
     "cancel": "Cancel",
     "save": "Save",
-    "close": "Close"
+    "close": "Close",
+    "backToHome": "Back to Home"
   },
   "login": {
     "welcome": "Welcome!",
@@ -17,6 +18,21 @@
     "enterWebsite": "Enter Website",
     "verifying": "Verifying...",
     "helpText": "Need help? Contact the couple for the password."
+  },
+  "auth": {
+    "loginRequired": "Login Required",
+    "loginRequiredDescription": "This page requires authentication. Please log in to continue.",
+    "rsvpEditNotice": "You're trying to access an RSVP edit link. Please log in with the wedding password to continue.",
+    "proceedToLogin": "Proceed to Login",
+    "secureAccess": "Secure access - your information is protected",
+    "invalidToken": "Invalid or Expired Link",
+    "invalidTokenDescription": "The RSVP edit link you're trying to access is invalid or has expired.",
+    "troubleshooting": "Troubleshooting Tips:",
+    "checkLink": "Make sure you've copied the full link from your email",
+    "linkExpired": "Links expire after 30 days for security",
+    "requestNew": "Contact the couple for a new link if needed",
+    "loginInstead": "Login with Password Instead",
+    "needHelp": "Need assistance? Contact the couple directly"
   },
   "playlist": {
     "title": "Wedding Playlist 🎵",

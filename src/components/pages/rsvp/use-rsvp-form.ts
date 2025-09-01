@@ -1,7 +1,7 @@
 import { CreateRSVPInput } from '@/lib/airtable/types';
 import React, { useState } from 'react';
 import {
-  isAttendingChangedToNo,
+  shouldClearDietaryRestrictions,
   clearFormAndErrors,
   handleNumGuestsChange,
   touchAllFields,
@@ -71,7 +71,7 @@ export function useRSVPForm() {
   ) => {
     let newFormData = { ...formData, [field]: value };
 
-    if (isAttendingChangedToNo(field, value)) {
+    if (shouldClearDietaryRestrictions(field, value, newFormData)) {
       newFormData = clearFormAndErrors(newFormData, setErrors, errors);
     }
 

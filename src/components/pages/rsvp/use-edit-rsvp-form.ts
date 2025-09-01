@@ -2,7 +2,7 @@ import { CreateRSVPInput } from '@/lib/airtable/types';
 import React, { useState, useEffect } from 'react';
 import { FormErrors, TouchedFields } from './use-rsvp-form';
 import {
-  isAttendingChangedToNo,
+  shouldClearDietaryRestrictions,
   clearFormAndErrors,
   handleNumGuestsChange,
   touchAllFields,
@@ -78,6 +78,9 @@ export function useEditRSVPForm(token: string | null) {
           setOriginalData(data);
         } else {
           console.error('Failed to load RSVP data:', result.error);
+          if (response.status === 404) {
+            window.location.href = `/en/invalid-token?token=${encodeURIComponent(token)}`;
+          }
         }
       } catch (error) {
         console.error('Error loading RSVP data:', error);
@@ -96,7 +99,7 @@ export function useEditRSVPForm(token: string | null) {
   ) => {
     let newFormData = { ...formData, [field]: value };
 
-    if (isAttendingChangedToNo(field, value)) {
+    if (shouldClearDietaryRestrictions(field, value, newFormData)) {
       newFormData = clearFormAndErrors(newFormData, setErrors, errors);
     }
 
