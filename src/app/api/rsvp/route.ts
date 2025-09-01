@@ -1,6 +1,7 @@
 import { createRSVP, sendConfirmationEmail, sendCoupleNotificationEmail } from '@/lib/airtable';
 import { CreateRSVPInput } from '@/lib/airtable/types';
 import { NextRequest } from 'next/server';
+import { buildError, guessCreateRSVPErrorCode } from '@/lib/api/errors';
 
 export async function POST(request: NextRequest) {
   try {
@@ -9,8 +10,9 @@ export async function POST(request: NextRequest) {
     if (!rsvpResult.success) {
       const errorMessage =
         typeof rsvpResult.error === 'string' ? rsvpResult.error : 'Failed to create RSVP';
-
-      return Response.json({ success: false, error: errorMessage }, { status: 400 });
+      return Response.json(buildError(guessCreateRSVPErrorCode(errorMessage), errorMessage), {
+        status: 400,
+      });
     }
 
     const sendEmailsEnabled = process.env.SEND_EMAILS_FEATURE_TOGGLE === 'true';
@@ -21,14 +23,11 @@ export async function POST(request: NextRequest) {
           typeof emailResult.error === 'string'
             ? emailResult.error
             : JSON.stringify(emailResult.error);
-
         return Response.json(
-          {
-            success: false,
-            error: `RSVP created but email sending failed: ${errorMessage}`,
-            rsvpCreated: true,
-            rsvpId: rsvpResult.data?.id,
-          },
+          buildError('EMAIL_SEND_FAILED', `RSVP created but confirmation email failed to send.`, {
+            details: errorMessage,
+            includeDetails: true,
+          }),
           { status: 500 }
         );
       }
@@ -38,9 +37,15 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    return Response.json({ success: true }, { status: 201 });
-  } catch {
-    return Response.json({ success: false, error: 'Internal server error' }, { status: 500 });
+    return Response.json({ success: true, code: 'RSVP_CREATED' }, { status: 201 });
+  } catch (error) {
+    return Response.json(
+      buildError('INTERNAL_SERVER_ERROR', 'An unexpected error occurred while creating RSVP.', {
+        details: error instanceof Error ? error.message : String(error),
+        includeDetails: true,
+      }),
+      { status: 500 }
+    );
   }
 }
 

@@ -1,6 +1,7 @@
 import { getRSVPByToken, updateRSVP } from '@/lib/airtable';
 import { UpdateRSVPInput, CreateRSVPInput, DietaryOption } from '@/lib/airtable/types';
 import { NextRequest } from 'next/server';
+import { buildError, guessUpdateRSVPErrorCode } from '@/lib/api/errors';
 
 export async function GET(request: NextRequest) {
   try {
@@ -8,20 +9,22 @@ export async function GET(request: NextRequest) {
     const token = searchParams.get('token');
 
     if (!token) {
-      return Response.json({ success: false, error: 'Token is required' }, { status: 400 });
+      return Response.json(buildError('MISSING_TOKEN', 'Token is required to fetch RSVP.'), {
+        status: 400,
+      });
     }
 
     const result = await getRSVPByToken(token);
 
     if (!result.success) {
       return Response.json(
-        { success: false, error: result.error || 'Failed to fetch RSVP' },
+        buildError('RSVP_NOT_FOUND', result.error || 'Failed to fetch RSVP using that token.'),
         { status: 404 }
       );
     }
 
     if (!result.data) {
-      return Response.json({ success: false, error: 'RSVP not found' }, { status: 404 });
+      return Response.json(buildError('RSVP_NOT_FOUND', 'RSVP not found.'), { status: 404 });
     }
 
     const rsvpData = {
@@ -37,14 +40,13 @@ export async function GET(request: NextRequest) {
       createdTime: result.data.createdTime,
     };
 
-    return Response.json({ success: true, data: rsvpData }, { status: 200 });
+    return Response.json({ success: true, code: 'RSVP_FETCHED', data: rsvpData }, { status: 200 });
   } catch (error) {
     return Response.json(
-      {
-        success: false,
-        error: 'Failed to fetch RSVP',
+      buildError('RSVP_FETCH_ERROR', 'Failed to fetch RSVP.', {
         details: error instanceof Error ? error.message : 'Unknown error',
-      },
+        includeDetails: true,
+      }),
       { status: 500 }
     );
   }
@@ -56,12 +58,20 @@ export async function PUT(request: NextRequest) {
     const token = searchParams.get('token');
 
     if (!token) {
-      return Response.json({ success: false, error: 'Token is required' }, { status: 400 });
+      return Response.json(buildError('MISSING_TOKEN', 'Token is required to update RSVP.'), {
+        status: 400,
+      });
     }
 
     const existingRSVP = await getRSVPByToken(token);
     if (!existingRSVP.success || !existingRSVP.data) {
-      return Response.json({ success: false, error: 'Invalid or expired token' }, { status: 404 });
+      return Response.json(
+        buildError(
+          'INVALID_OR_EXPIRED_TOKEN',
+          'The provided RSVP edit token is invalid or expired.'
+        ),
+        { status: 404 }
+      );
     }
 
     const data: Omit<CreateRSVPInput, 'id'> = await request.json();
@@ -83,13 +93,23 @@ export async function PUT(request: NextRequest) {
     if (!result.success) {
       const errorMessage =
         typeof result.error === 'string' ? result.error : 'Failed to update RSVP';
-
-      return Response.json({ success: false, error: errorMessage }, { status: 400 });
+      return Response.json(buildError(guessUpdateRSVPErrorCode(errorMessage), errorMessage), {
+        status: 400,
+      });
     }
 
-    return Response.json({ success: true, data: result.data }, { status: 200 });
-  } catch {
-    return Response.json({ success: false, error: 'Internal server error' }, { status: 500 });
+    return Response.json(
+      { success: true, code: 'RSVP_UPDATED', data: result.data },
+      { status: 200 }
+    );
+  } catch (error) {
+    return Response.json(
+      buildError('INTERNAL_SERVER_ERROR', 'An unexpected error occurred while updating RSVP.', {
+        details: error instanceof Error ? error.message : String(error),
+        includeDetails: true,
+      }),
+      { status: 500 }
+    );
   }
 }
 
