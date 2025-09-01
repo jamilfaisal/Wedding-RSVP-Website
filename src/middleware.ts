@@ -97,6 +97,14 @@ export async function middleware(request: NextRequest) {
     const authenticated = await isUserAuthenticated(request);
     const validRsvpToken = rsvpToken ? isValidRsvpToken(rsvpToken) : false;
 
+    console.log('RSVP Debug:', {
+      pathname,
+      hasToken: !!rsvpToken,
+      authenticated,
+      validRsvpToken,
+      token: rsvpToken ? `${rsvpToken.substring(0, 20)}...` : 'none',
+    });
+
     if (isNotAuthenticatedOrTokenInvalid(authenticated, validRsvpToken)) {
       const locale = getLocale(request);
       const authRequiredUrl = new URL(`/${locale}/auth-required`, request.url);
