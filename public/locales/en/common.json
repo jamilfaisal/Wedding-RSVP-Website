@@ -297,7 +297,8 @@
     "invalidSecondGuestName": "Second guest name is required",
     "invalidGuest1DietaryRestrictions": "Please select dietary restrictions for Guest 1",
     "invalidGuest2DietaryRestrictions": "Please select dietary restrictions for Guest 2",
-    "invalidFullName": "Full name is required"
+    "invalidFullName": "Full name is required",
+    "fullNameTooLong": "Full name must be 100 characters or less"
   },
   "success": {
     "rsvpSubmitted": "RSVP submitted successfully!",

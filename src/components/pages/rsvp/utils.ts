@@ -1,6 +1,8 @@
 import { CreateRSVPInput } from '@/lib/airtable';
 import { FormErrors, TouchedFields } from './use-rsvp-form';
 
+export const NAME_MAX_LENGTH = 100;
+
 export function shouldClearDietaryRestrictions(
   field: string,
   value: string | boolean,
@@ -132,6 +134,8 @@ function validateSecondGuestName(
     value.trim().length === 0
   ) {
     error = t('errors.invalidSecondGuestName');
+  } else if (typeof value === 'string' && value.length > NAME_MAX_LENGTH) {
+    error = t('errors.fullNameTooLong');
   }
   return error;
 }
@@ -182,8 +186,12 @@ function validateEmail(value: string | boolean, error: string, t: (key: string) 
 }
 
 function validateFullName(value: string | boolean, error: string, t: (key: string) => string) {
-  if (typeof value === 'string' && value.trim().length === 0) {
-    error = t('errors.invalidFullName');
+  if (typeof value === 'string') {
+    if (value.trim().length === 0) {
+      error = t('errors.invalidFullName');
+    } else if (value.length > NAME_MAX_LENGTH) {
+      error = t('errors.fullNameTooLong');
+    }
   }
   return error;
 }

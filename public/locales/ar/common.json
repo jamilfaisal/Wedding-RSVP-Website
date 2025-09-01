@@ -298,7 +298,8 @@
     "invalidSecondGuestName": "اسم الضيف الثاني مطلوب",
     "invalidGuest1DietaryRestrictions": "يرجى اختيار القيود الغذائية للضيف الأول",
     "invalidGuest2DietaryRestrictions": "يرجى اختيار القيود الغذائية للضيف الثاني",
-    "invalidFullName": "الاسم الكامل مطلوب"
+    "invalidFullName": "الاسم الكامل مطلوب",
+    "fullNameTooLong": "يجب ألا يزيد الاسم عن 100 حرف"
   },
   "success": {
     "rsvpSubmitted": "تم إرسال الرد بنجاح!",
