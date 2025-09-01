@@ -80,6 +80,9 @@ export interface APIResponse<T> {
   success: boolean;
   data?: T;
   error?: string;
+  statusCode?: number;
+  airtableErrorType?: string;
+  attempts?: number;
 }
 
 export interface RSVPStatistics {
