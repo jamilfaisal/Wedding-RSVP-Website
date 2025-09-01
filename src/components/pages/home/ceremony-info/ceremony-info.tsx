@@ -112,7 +112,7 @@ function renderVenueLocation(t: (key: string) => string) {
         <div className="flex-1">
           <h4 className="text-xl font-serif text-brown-800 mb-3">{t('ceremony.location')}</h4>
           <div className="text-brown-600 leading-relaxed space-y-1">
-            <p className="font-medium">{t('ceremony.detailsComingSoon')}</p>
+            <p className="font-medium">{t('hotels.mainHotel.name')}</p>
             <p className="text-brown-500 italic">
               {t('weddingInfo.weddingCity')}, {t('weddingInfo.weddingCountry')}
             </p>

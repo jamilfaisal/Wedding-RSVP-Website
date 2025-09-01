@@ -28,8 +28,11 @@ export const mainHotelStatic = {
   distance: '0 km (on-site)',
   transport: [{ type: 'car' }] as TransportationMode[],
   links: [
-    { text: 'travellermade.com', url: '#' },
-    { text: 'Hotel Rome Cavalieri', url: '#' },
+    {
+      text: 'travellermade.com',
+      url: 'https://travellermade.com/hotel-partners-europe/waldorf-astoria-rome-cavalieri/',
+    },
+    { text: 'Hotel Rome Cavalieri', url: 'https://romecavalieri.com/' },
   ],
 };
 
@@ -70,7 +73,7 @@ export const signatureStaysStatic = [
     image: '/images/hotels/hassler-roma.jpg',
     distance: '~6.0 km',
     transport: [{ type: 'car' }, { type: 'metro' }] as TransportationMode[],
-    links: [{ text: 'Rome2Rio', url: '#' }],
+    links: [],
     blockRate: undefined,
     booking: undefined,
   },
@@ -81,7 +84,7 @@ export const signatureStaysStatic = [
       'https://images.unsplash.com/photo-1677129666408-19aceac7d293?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHxidWxnYXJpJTIwaG90ZWwlMjByb21hJTIwbHV4dXJ5JTIwbW9kZXJufGVufDF8fHx8MTc1NTQ2NTI0NHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
     distance: '~6.0 km',
     transport: [{ type: 'car' }, { type: 'metro' }] as TransportationMode[],
-    links: [{ text: 'Vogue', url: '#' }],
+    links: [],
     blockRate: undefined,
     booking: undefined,
   },
@@ -91,7 +94,7 @@ export const signatureStaysStatic = [
     image: '/images/hotels/hotel-de-la-ville.jpg',
     distance: '~6.5 km',
     transport: [{ type: 'car' }, { type: 'metro' }] as TransportationMode[],
-    links: [{ text: 'Vanity Fair', url: '#' }],
+    links: [],
     blockRate: undefined,
     booking: undefined,
   },
@@ -110,14 +113,10 @@ export const timelessStaysStatic = [
   {
     key: 'nhCollection',
     location: 'Prati',
-    image:
-      'https://images.unsplash.com/photo-1532313944948-f7c5433f64e6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxuaCUyMGNvbGxlY3Rpb24lMjBob3RlbCUyMHJvbWUlMjBtb2Rlcm4lMjBidXNpbmVzc3xlbnwxfHx8fDE3NTU0NjUyNTB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    image: '/images/hotels/nh_collection_roma_giustiniano.webp',
     distance: '~3.8 km',
     transport: [{ type: 'car' }, { type: 'metro' }] as TransportationMode[],
-    links: [
-      { text: 'Rome2Rio', url: '#' },
-      { text: 'hotels', url: '#' },
-    ],
+    links: [],
     blockRate: undefined,
     booking: undefined,
   },
@@ -127,10 +126,7 @@ export const timelessStaysStatic = [
     image: '/images/hotels/hotel-isa.jpg',
     distance: '~3.5–4.0 km',
     transport: [{ type: 'car' }, { type: 'bus' }, { type: 'metro' }] as TransportationMode[],
-    links: [
-      { text: 'hotels', url: '#' },
-      { text: 'Rome2Rio', url: '#' },
-    ],
+    links: [],
     blockRate: undefined,
     booking: undefined,
   },
@@ -141,18 +137,14 @@ export const timelessStaysStatic = [
       'https://images.unsplash.com/photo-1740896552931-4b4adffd843a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx2aWxsYSUyMGFncmlwcGluYSUyMGdyYW4lMjBtZWxpYSUyMHJvbWUlMjByZXNvcnR8ZW58MXx8fHwxNzU1NDY1MjU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
     distance: '~5.0 km',
     transport: [{ type: 'car' }, { type: 'bus' }, { type: 'metro' }] as TransportationMode[],
-    links: [
-      { text: 'Rome2Rio', url: '#' },
-      { text: 'melia.com', url: '#' },
-    ],
+    links: [],
     blockRate: undefined,
     booking: undefined,
   },
   {
     key: 'martisPalace',
     location: 'Navona / Pantheon',
-    image:
-      'https://images.unsplash.com/photo-1634316164986-3d65b05f123f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtYXJ0aXMlMjBwYWxhY2UlMjBob3RlbCUyMHJvbWUlMjBkZXNpZ24lMjBib3V0aXF1ZXxlbnwxfHx8fDE3NTU0NjUyNzh8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    image: '/images/hotels/martis_palace.webp',
     distance: '~5.0 km',
     transport: [{ type: 'car' }, { type: 'bus' }] as TransportationMode[],
     blockRate: undefined,
@@ -185,8 +177,7 @@ export const chicStaysStatic = [
   {
     key: 'hoxtonRome',
     location: 'Salario–Parioli',
-    image:
-      'https://images.unsplash.com/photo-1572611442784-7a041f631440?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxob3h0b24lMjBob3RlbCUyMHJvbWUlMjBtb2Rlcm4lMjBkZXNpZ258ZW58MXx8fHwxNzU1NDY1MjY0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    image: '/images/hotels/hoxton_rome.webp',
     distance: '~4.5–5.0 km',
     transport: [{ type: 'car' }, { type: 'bus' }] as TransportationMode[],
     blockRate: undefined,
@@ -207,8 +198,7 @@ export const chicStaysStatic = [
   {
     key: 'romeHello',
     location: 'Repubblica / Termini',
-    image:
-      'https://images.unsplash.com/photo-1572611442784-7a041f631440?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxob3h0b24lMjBob3RlbCUyMHJvbWUlMjBtb2Rlcm4lMjBkZXNpZ258ZW58MXx8fHwxNzU1NDY1MjY0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    image: '/images/hotels/rome_hello.webp',
     distance: '~6.5–7.0 km',
     transport: [{ type: 'car' }, { type: 'metro' }] as TransportationMode[],
     blockRate: undefined,
