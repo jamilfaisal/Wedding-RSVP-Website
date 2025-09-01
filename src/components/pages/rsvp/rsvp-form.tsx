@@ -7,8 +7,9 @@ import AttendanceField from './attendance-field';
 import { useTranslation } from 'react-i18next';
 
 function RSVPForm() {
-  const { t } = useTranslation();
-  const { formData, errors, handleInputChange, handleBlur, handleSubmit } = useRSVPForm();
+  const { t, i18n } = useTranslation();
+  const { formData, errors, handleInputChange, handleBlur, handleSubmit, submitting } =
+    useRSVPForm();
 
   const dietaryOptions = [
     { value: 'None', label: t('rsvp.dietaryNone') },
@@ -31,7 +32,7 @@ function RSVPForm() {
       <FloralDecoration position="bottom-left" />
       <FloralDecoration position="bottom-right" />
 
-      <form onSubmit={(e) => handleSubmit(e, t)} className="space-y-6">
+      <form onSubmit={(e) => handleSubmit(e, t, i18n.language)} className="space-y-6">
         <FormField id="fullName" label={t('rsvp.fullName')} required error={errors.fullName}>
           <TextInput
             id="fullName"
@@ -141,10 +142,11 @@ function RSVPForm() {
         <div>
           <Button
             type="submit"
-            className="cursor-pointer w-full bg-gradient-to-r from-sage-600 to-sage-700 hover:from-sage-700 hover:to-sage-800 text-white py-4 px-8 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 border-0"
+            disabled={submitting}
+            className="cursor-pointer w-full bg-gradient-to-r from-sage-600 to-sage-700 hover:from-sage-700 hover:to-sage-800 text-white py-4 px-8 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 border-0 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
             style={{ fontFamily: 'var(--font-serif)' }}
           >
-            {t('rsvp.submitRSVP')}
+            {submitting ? t('common.loading') : t('rsvp.submitRSVP')}
           </Button>
         </div>
       </form>

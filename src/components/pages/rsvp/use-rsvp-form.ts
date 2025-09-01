@@ -55,6 +55,7 @@ export function useRSVPForm() {
   const [formData, setFormData] = useState<CreateRSVPInput>(initialFormData);
   const [errors, setErrors] = useState<FormErrors>(initialErrors);
   const [fieldTouched, setFieldTouched] = useState<TouchedFields>(initialTouched);
+  const [submitting, setSubmitting] = useState(false);
 
   const validateField = (
     field: string,
@@ -123,8 +124,10 @@ export function useRSVPForm() {
     );
   };
 
-  const handleSubmit = (e: React.FormEvent, t: (key: string) => string) => {
+  const handleSubmit = (e: React.FormEvent, t: (key: string) => string, language: string) => {
     e.preventDefault();
+    if (submitting) return;
+
     touchAllFields(setFieldTouched);
     const errors = {
       fullName: validateField('fullName', formData.fullName, t),
@@ -151,7 +154,7 @@ export function useRSVPForm() {
       !errors.secondGuestName;
 
     if (isValid) {
-      submitRSVP(formData, t);
+      submitRSVP(formData, t, setSubmitting, language);
     }
   };
 
@@ -163,10 +166,18 @@ export function useRSVPForm() {
     handleBlur,
     handleSubmit,
     isFormValid,
+    submitting,
   };
 }
 
-function submitRSVP(formData: CreateRSVPInput, t: (key: string) => string) {
+function submitRSVP(
+  formData: CreateRSVPInput,
+  t: (key: string) => string,
+  setSubmitting: (submitting: boolean) => void,
+  language: string
+) {
+  setSubmitting(true);
+
   fetch('/api/rsvp', {
     method: 'POST',
     headers: {
@@ -184,10 +195,19 @@ function submitRSVP(formData: CreateRSVPInput, t: (key: string) => string) {
     })
     .then((result) => {
       console.log('RSVP submitted successfully:', result);
-      alert(t('success.rsvpSubmitted'));
+
+      const params = new URLSearchParams({
+        attendingRefreshments: formData.attendingRefreshments.toString(),
+        attendingWedding: formData.attendingWedding.toString(),
+      });
+
+      window.location.href = `/${language}/thank-you?${params.toString()}`;
     })
     .catch((error) => {
       console.error('RSVP submission failed:', error);
       alert(t('errors.submitError'));
+    })
+    .finally(() => {
+      setSubmitting(false);
     });
 }

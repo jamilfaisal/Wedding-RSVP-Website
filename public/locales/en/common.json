@@ -307,7 +307,18 @@
   "success": {
     "rsvpSubmitted": "RSVP submitted successfully!",
     "emailSent": "Email sent successfully",
-    "dataSaved": "Your information has been saved"
+    "dataSaved": "Your information has been saved",
+    "thankYou": "Thank You!",
+    "rsvpConfirmed": "Your RSVP has been confirmed",
+    "thankYouMessage": "We're so excited to celebrate with you! You should receive a confirmation email shortly with all the details.",
+    "attendingBoth": "We can't wait to see you at both the refreshments on December 19th and the wedding ceremony on December 20th!",
+    "attendingRefreshments": "We're looking forward to having you join us for refreshments on December 19th!",
+    "attendingWedding": "We're thrilled you'll be joining us for the wedding ceremony on December 20th!",
+    "notAttending": "Thank you for letting us know. While we'll miss celebrating with you in person, we appreciate you taking the time to respond.",
+    "emailConfirmation": "You'll receive an email confirmation with an edit link if you need to make any changes.",
+    "backToHome": "Back to Home",
+    "viewAccommodations": "View Accommodations",
+    "footerMessage": "We can't wait to celebrate with you! 💕"
   },
   "hotels": {
     "mainHotel": {
