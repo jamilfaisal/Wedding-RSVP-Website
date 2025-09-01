@@ -20,11 +20,6 @@
     "helpText": "Need help? Contact the couple for the password."
   },
   "auth": {
-    "loginRequired": "Login Required",
-    "loginRequiredDescription": "This page requires authentication. Please log in to continue.",
-    "rsvpEditNotice": "You're trying to access an RSVP edit link. Please log in with the wedding password to continue.",
-    "proceedToLogin": "Proceed to Login",
-    "secureAccess": "Secure access - your information is protected",
     "invalidToken": "Invalid or Expired Link",
     "invalidTokenDescription": "The RSVP edit link you're trying to access is invalid or has expired.",
     "troubleshooting": "Troubleshooting Tips:",

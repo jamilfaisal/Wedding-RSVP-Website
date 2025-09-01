@@ -8,6 +8,102 @@ const defaultLocale = 'en';
 const JWT_SECRET_STRING = process.env.JWT_SECRET || 'wedding-secret-key-change-in-production';
 const JWT_SECRET_ENCODED = new TextEncoder().encode(JWT_SECRET_STRING);
 
+export async function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl;
+
+  if (skipMiddleware(pathname)) {
+    const isLoginPage = pathname === '/login' || /^\/(en|ar)\/login$/.test(pathname);
+    if (isLoginPage && (await isUserAuthenticated(request))) {
+      return redirectToHomepage(request);
+    }
+    return NextResponse.next();
+  }
+
+  if (pathname.includes('/rsvp/edit')) {
+    const rsvpToken = request.nextUrl.searchParams.get('token');
+
+    if (!rsvpToken) {
+      return redirectToRSVPPage(request);
+    }
+
+    if (await isTokenInvalid(rsvpToken)) {
+      return redirectToInvalidTokenPage(request);
+    }
+
+    return addSecurityHeaders(NextResponse.next());
+  }
+
+  if (await requiresAuthentication(pathname, request)) {
+    return redirectToLoginPage(request);
+  }
+
+  const pathnameHasLocale = locales.some(
+    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
+  );
+
+  if (!pathnameHasLocale) {
+    return redirectToPathNameWithLocale(request, pathname);
+  }
+
+  return addSecurityHeaders(NextResponse.next());
+}
+
+export const config = {
+  matcher: ['/((?!api|_next/static|_next/image|favicon.ico|\\.well-known).*)'],
+};
+
+function redirectToInvalidTokenPage(request: NextRequest) {
+  const locale = getLocale(request);
+  const invalidTokenUrl = new URL(`/${locale}/invalid-token`, request.url);
+  return NextResponse.redirect(invalidTokenUrl, { status: 302 });
+}
+
+async function isTokenInvalid(rsvpToken: string) {
+  return !(await isValidRsvpToken(rsvpToken));
+}
+
+function redirectToRSVPPage(request: NextRequest) {
+  const locale = getLocale(request);
+  const rsvpUrl = new URL(`/${locale}/rsvp`, request.url);
+  return NextResponse.redirect(rsvpUrl, { status: 302 });
+}
+
+function redirectToLoginPage(request: NextRequest) {
+  const locale = getLocale(request);
+  const loginUrl = new URL(`/${locale}/login`, request.url);
+  loginUrl.searchParams.set('returnTo', getReturnToUrl(request));
+  return NextResponse.redirect(loginUrl);
+}
+
+function redirectToHomepage(request: NextRequest) {
+  const locale = getLocale(request);
+  const homeUrl = new URL(`/${locale}`, request.url);
+  return NextResponse.redirect(homeUrl);
+}
+
+function redirectToPathNameWithLocale(request: NextRequest, pathname: string) {
+  const locale = getLocale(request);
+  const newUrl = new URL(`/${locale}${pathname}`, request.url);
+  return NextResponse.redirect(newUrl);
+}
+
+function skipMiddleware(pathname: string) {
+  const staticPaths = ['/_next/', '/api/', '/static/'];
+  const authPaths = ['/login', '/invalid-token'];
+  const localeAuthPaths = authPaths.flatMap((path) => [`/en${path}`, `/ar${path}`]);
+
+  return (
+    staticPaths.some((path) => pathname.startsWith(path)) ||
+    localeAuthPaths.includes(pathname) ||
+    pathname.includes('.') ||
+    pathname === '/favicon.ico'
+  );
+}
+
+async function requiresAuthentication(pathname: string, request: NextRequest) {
+  return !pathname.startsWith('/api/auth') && !(await isUserAuthenticated(request));
+}
+
 function getLocale(request: NextRequest): string {
   const acceptedLanguage = request.headers.get('Accept-Language') ?? undefined;
   const headers = { 'accept-language': acceptedLanguage };
@@ -80,94 +176,4 @@ function addSecurityHeaders(response: NextResponse): NextResponse {
   });
 
   return response;
-}
-
-export async function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
-
-  if (skipMiddleware(pathname)) {
-    const isLoginPage = pathname === '/login' || /^\/(en|ar)\/login$/.test(pathname);
-    if (isLoginPage && (await isUserAuthenticated(request))) {
-      return redirectToHomepage(request);
-    }
-    return NextResponse.next();
-  }
-
-  // Handle RSVP edit pages with tokens - allow access with valid RSVP token
-  if (isRsvpEditPageWithToken(pathname, request)) {
-    const rsvpToken = request.nextUrl.searchParams.get('token');
-    const authenticated = await isUserAuthenticated(request);
-    const validRsvpToken = rsvpToken ? await isValidRsvpToken(rsvpToken) : false;
-
-    // Allow access if user is authenticated OR has a valid RSVP edit token
-    if (isNotAuthenticatedOrTokenInvalid(authenticated, validRsvpToken)) {
-      const locale = getLocale(request);
-      const authRequiredUrl = new URL(`/${locale}/auth-required`, request.url);
-      authRequiredUrl.searchParams.set('returnTo', getReturnToUrl(request));
-      return NextResponse.redirect(authRequiredUrl, { status: 302 });
-    }
-    return addSecurityHeaders(NextResponse.next());
-  }
-
-  if (await requiresAuthentication(pathname, request)) {
-    return redirectToLoginPage(request);
-  }
-
-  const pathnameHasLocale = locales.some(
-    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
-  );
-
-  if (!pathnameHasLocale) {
-    return redirectToPathNameWithLocale(request, pathname);
-  }
-
-  return addSecurityHeaders(NextResponse.next());
-}
-
-export const config = {
-  matcher: ['/((?!api|_next/static|_next/image|favicon.ico|\\.well-known).*)'],
-};
-
-async function requiresAuthentication(pathname: string, request: NextRequest) {
-  return !pathname.startsWith('/api/auth') && !(await isUserAuthenticated(request));
-}
-
-function isNotAuthenticatedOrTokenInvalid(authenticated: boolean, validRsvpToken: boolean) {
-  return !(authenticated || validRsvpToken);
-}
-
-function isRsvpEditPageWithToken(pathname: string, request: NextRequest) {
-  return pathname.includes('/rsvp/edit') && request.nextUrl.searchParams.has('token');
-}
-
-function redirectToLoginPage(request: NextRequest) {
-  const locale = getLocale(request);
-  const loginUrl = new URL(`/${locale}/login`, request.url);
-  loginUrl.searchParams.set('returnTo', getReturnToUrl(request));
-  return NextResponse.redirect(loginUrl);
-}
-
-function redirectToHomepage(request: NextRequest) {
-  const locale = getLocale(request);
-  const homeUrl = new URL(`/${locale}`, request.url);
-  return NextResponse.redirect(homeUrl);
-}
-
-function redirectToPathNameWithLocale(request: NextRequest, pathname: string) {
-  const locale = getLocale(request);
-  const newUrl = new URL(`/${locale}${pathname}`, request.url);
-  return NextResponse.redirect(newUrl);
-}
-
-function skipMiddleware(pathname: string) {
-  const staticPaths = ['/_next/', '/api/', '/static/'];
-  const authPaths = ['/login', '/auth-required', '/invalid-token'];
-  const localeAuthPaths = authPaths.flatMap((path) => [`/en${path}`, `/ar${path}`]);
-
-  return (
-    staticPaths.some((path) => pathname.startsWith(path)) ||
-    localeAuthPaths.includes(pathname) ||
-    pathname.includes('.') ||
-    pathname === '/favicon.ico'
-  );
 }
