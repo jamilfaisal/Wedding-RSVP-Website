@@ -77,13 +77,10 @@ export function useEditRSVPForm(token: string | null) {
           setFormData(newFormData);
           setOriginalData(data);
         } else {
-          console.error('Failed to load RSVP data:', result.error);
           if (response.status === 404) {
             window.location.href = `/en/invalid-token?token=${encodeURIComponent(token)}`;
           }
         }
-      } catch (error) {
-        console.error('Error loading RSVP data:', error);
       } finally {
         setLoading(false);
       }
@@ -126,7 +123,6 @@ export function useEditRSVPForm(token: string | null) {
     e.preventDefault();
 
     if (!token) {
-      console.error('No token provided for RSVP update');
       return;
     }
 
@@ -158,8 +154,7 @@ export function useEditRSVPForm(token: string | null) {
       } else {
         alert(result.error || 'Failed to update RSVP');
       }
-    } catch (error) {
-      console.error('Error updating RSVP:', error);
+    } catch {
       alert('An error occurred while updating your RSVP');
     } finally {
       setSubmitting(false);

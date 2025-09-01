@@ -193,9 +193,7 @@ function submitRSVP(
       }
       return response.json();
     })
-    .then((result) => {
-      console.log('RSVP submitted successfully:', result);
-
+    .then(() => {
       const params = new URLSearchParams({
         attendingRefreshments: formData.attendingRefreshments.toString(),
         attendingWedding: formData.attendingWedding.toString(),
@@ -203,8 +201,7 @@ function submitRSVP(
 
       window.location.href = `/${language}/thank-you?${params.toString()}`;
     })
-    .catch((error) => {
-      console.error('RSVP submission failed:', error);
+    .catch(() => {
       alert(t('errors.submitError'));
     })
     .finally(() => {

@@ -7,10 +7,6 @@ type ErrorProps = {
 };
 
 export default function Error({ error, reset }: ErrorProps) {
-  React.useEffect(() => {
-    console.error('Error boundary caught an error:', error);
-  }, [error]);
-
   return (
     <div
       style={{

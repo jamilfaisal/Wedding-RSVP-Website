@@ -39,7 +39,6 @@ export async function GET(request: NextRequest) {
 
     return Response.json({ success: true, data: rsvpData }, { status: 200 });
   } catch (error) {
-    console.error('Error fetching RSVP by token:', error);
     return Response.json(
       {
         success: false,
@@ -89,8 +88,7 @@ export async function PUT(request: NextRequest) {
     }
 
     return Response.json({ success: true, data: result.data }, { status: 200 });
-  } catch (error) {
-    console.error('Error updating RSVP by token:', error);
+  } catch {
     return Response.json({ success: false, error: 'Internal server error' }, { status: 500 });
   }
 }

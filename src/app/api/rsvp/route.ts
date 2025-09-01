@@ -35,15 +35,11 @@ export async function POST(request: NextRequest) {
 
       const coupleEmailResult = await sendCoupleNotificationEmail(rsvpResult.data!);
       if (!coupleEmailResult.success) {
-        console.warn('Failed to send couple notification email:', coupleEmailResult.error);
       }
-    } else {
-      console.log('Email sending is disabled');
     }
 
     return Response.json({ success: true }, { status: 201 });
-  } catch (error) {
-    console.error('Unexpected error in RSVP API:', error);
+  } catch {
     return Response.json({ success: false, error: 'Internal server error' }, { status: 500 });
   }
 }
