@@ -16,7 +16,7 @@ function WeddingDetails() {
 
           <div className="grid lg:grid-cols-2 gap-15 items-start">
             {renderCards(t)}
-            {renderDecorativeImage()}
+            {renderGroomAndBrideImage()}
           </div>
         </div>
       </section>
@@ -140,7 +140,7 @@ function renderDressCodeCard(t: (key: string) => string) {
   );
 }
 
-function renderDecorativeImage() {
+function renderGroomAndBrideImage() {
   return (
     <div className="relative w-2/3 mx-auto lg:mx-0 lg:sticky lg:top-36">
       <div className="rounded-lg overflow-hidden shadow-lg border-4 border-orange-100 relative">

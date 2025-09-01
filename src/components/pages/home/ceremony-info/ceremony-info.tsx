@@ -17,7 +17,7 @@ function CeremonyInfo() {
         <div className="max-w-6xl mx-auto px-8">
           {renderSectionHeader(t)}
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
             {renderVenueImage()}
 
             <div className="space-y-8 lg:ps-4">
@@ -126,7 +126,7 @@ function renderVenueLocation(t: (key: string) => string) {
 
 function renderVenueImage() {
   return (
-    <div className="relative">
+    <div className="relative lg:sticky lg:top-36">
       <div className="rounded-lg overflow-hidden shadow-lg border-4 border-sage-100">
         <ImageWithFallback
           src={ceremonyPhoto}
