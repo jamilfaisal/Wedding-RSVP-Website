@@ -62,18 +62,23 @@ function renderWeddingVenue(t: (key: string) => string) {
         >
           {t('contactFAQs.venue')}
         </h4>
-        <div className="flex items-center justify-center gap-2 text-brown-600">
-          <MapPin className="w-4 h-4 text-sage-600" />
-          <span style={{ fontFamily: 'var(--font-serif)' }}>
-            {t('weddingInfo.weddingCity')}, {t('weddingInfo.weddingCountry')}
-          </span>
+        <div className="space-y-1">
+          <p className="font-medium text-brown-600" style={{ fontFamily: 'var(--font-serif)' }}>
+            {t('hotels.mainHotel.name')}
+          </p>
+          <div className="flex items-center justify-center gap-2 text-brown-600">
+            <MapPin className="w-4 h-4 text-sage-600" />
+            <span style={{ fontFamily: 'var(--font-serif)' }}>
+              {t('weddingInfo.weddingCity')}, {t('weddingInfo.weddingCountry')}
+            </span>
+          </div>
+          <p
+            className="text-sm text-brown-500 mt-2 italic"
+            style={{ fontFamily: 'var(--font-serif)' }}
+          >
+            {t('ceremony.fullAddressNote')}
+          </p>
         </div>
-        <p
-          className="text-sm text-brown-500 mt-2 italic"
-          style={{ fontFamily: 'var(--font-serif)' }}
-        >
-          {t('contactFAQs.specificVenueDetails')}
-        </p>
       </div>
     </div>
   );
