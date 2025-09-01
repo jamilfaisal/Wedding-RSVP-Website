@@ -4,8 +4,7 @@
   "private": true,
   "packageManager": "npm@11.3.0",
   "engines": {
-    "node": "22.14.0",
-    "npm": "11.3.0"
+    "node": "22.x"
   },
   "scripts": {
     "dev": "next dev",
@@ -16,9 +15,9 @@
     "start": "next start",
     "lint": "next lint && eslint --ext .js,.jsx,.ts,.tsx src",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,mjs,json,css,md,mdx,html}\"",
-  "sitemap": "next-sitemap",
-  "clean": "node -e \"const fs=require('fs');['node_modules','.next'].forEach(p=>fs.rmSync(p,{recursive:true,force:true}));console.log('Removed node_modules and .next');\"",
-  "reset:deps": "node -e \"const fs=require('fs');['node_modules','.next','package-lock.json'].forEach(p=>fs.rmSync(p,{recursive:true,force:true}));console.log('Removed node_modules, .next, and lockfile');\""
+    "sitemap": "next-sitemap",
+    "clean": "node -e \"const fs=require('fs');['node_modules','.next'].forEach(p=>fs.rmSync(p,{recursive:true,force:true}));console.log('Removed node_modules and .next');\"",
+    "reset:deps": "node -e \"const fs=require('fs');['node_modules','.next','package-lock.json'].forEach(p=>fs.rmSync(p,{recursive:true,force:true}));console.log('Removed node_modules, .next, and lockfile');\""
   },
   "dependencies": {
     "@formatjs/intl-localematcher": "0.6.1",
