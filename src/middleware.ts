@@ -42,17 +42,8 @@ async function isValidRsvpToken(tokenString: string): Promise<boolean> {
       email?: string;
     };
 
-    console.log('Token validation debug:', {
-      decoded: decoded,
-      purpose: decoded.purpose,
-      email: decoded.email,
-      isRsvpEdit: decoded.purpose === 'rsvp_edit',
-      hasEmail: !!decoded.email,
-    });
-
     return decoded.purpose === 'rsvp_edit' && !!decoded.email;
-  } catch (error) {
-    console.log('Token validation error:', error);
+  } catch {
     return false;
   }
 }
@@ -102,19 +93,13 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
+  // Handle RSVP edit pages with tokens - allow access with valid RSVP token
   if (isRsvpEditPageWithToken(pathname, request)) {
     const rsvpToken = request.nextUrl.searchParams.get('token');
     const authenticated = await isUserAuthenticated(request);
     const validRsvpToken = rsvpToken ? await isValidRsvpToken(rsvpToken) : false;
 
-    console.log('RSVP Debug:', {
-      pathname,
-      hasToken: !!rsvpToken,
-      authenticated,
-      validRsvpToken,
-      token: rsvpToken ? `${rsvpToken.substring(0, 20)}...` : 'none',
-    });
-
+    // Allow access if user is authenticated OR has a valid RSVP edit token
     if (isNotAuthenticatedOrTokenInvalid(authenticated, validRsvpToken)) {
       const locale = getLocale(request);
       const authRequiredUrl = new URL(`/${locale}/auth-required`, request.url);

@@ -203,7 +203,7 @@ function EditRSVPForm({ token }: EditRSVPFormProps) {
           <Button
             type="button"
             onClick={() => window.history.back()}
-            className="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 py-4 px-8 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border-0"
+            className="cursor-pointer flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 py-4 px-8 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border-0"
             style={{ fontFamily: 'var(--font-serif)' }}
           >
             {t('common.cancel')}
@@ -212,7 +212,7 @@ function EditRSVPForm({ token }: EditRSVPFormProps) {
           <Button
             type="submit"
             disabled={submitting}
-            className="flex-1 bg-gradient-to-r from-sage-600 to-sage-700 hover:from-sage-700 hover:to-sage-800 text-white py-4 px-8 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 border-0 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="cursor-pointer flex-1 bg-gradient-to-r from-sage-600 to-sage-700 hover:from-sage-700 hover:to-sage-800 text-white py-4 px-8 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 border-0 disabled:opacity-50 disabled:cursor-not-allowed"
             style={{ fontFamily: 'var(--font-serif)' }}
           >
             {submitting ? t('common.loading') : t('rsvp.updateRSVP')}
