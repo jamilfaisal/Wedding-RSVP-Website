@@ -41,8 +41,18 @@ function isValidRsvpToken(tokenString: string): boolean {
       purpose?: string;
       email?: string;
     };
+
+    console.log('Token validation debug:', {
+      decoded: decoded,
+      purpose: decoded.purpose,
+      email: decoded.email,
+      isRsvpEdit: decoded.purpose === 'rsvp_edit',
+      hasEmail: !!decoded.email,
+    });
+
     return decoded.purpose === 'rsvp_edit' && !!decoded.email;
-  } catch {
+  } catch (error) {
+    console.log('Token validation error:', error);
     return false;
   }
 }
