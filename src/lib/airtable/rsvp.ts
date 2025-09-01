@@ -12,7 +12,7 @@ import {
 import { getAirtableClient } from './client';
 import { isValidEmailFormat } from './utils';
 import jwt from 'jsonwebtoken';
-import { randomBytes } from 'crypto';
+import { requireEnv } from '@/lib/config/env';
 
 export async function getRSVPByEditToken(
   token: string
@@ -177,7 +177,7 @@ async function isRSVPExisting(email: string): Promise<boolean> {
 }
 
 function generateRSVPEditToken(email: string): string {
-  const secret = process.env.JWT_SECRET || randomBytes(32).toString('hex');
+  const secret = requireEnv('JWT_SECRET');
   const payload = {
     email,
     purpose: 'rsvp_edit',

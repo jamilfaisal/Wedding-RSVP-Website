@@ -2,10 +2,11 @@ import { NextResponse, NextRequest } from 'next/server';
 import { match } from '@formatjs/intl-localematcher';
 import Negotiator from 'negotiator';
 import { jwtVerify } from 'jose';
+import { requireEnv } from '@/lib/config/env';
 
 const locales = ['en', 'ar'];
 const defaultLocale = 'en';
-const JWT_SECRET_STRING = process.env.JWT_SECRET || 'wedding-secret-key-change-in-production';
+const JWT_SECRET_STRING = requireEnv('JWT_SECRET');
 const JWT_SECRET_ENCODED = new TextEncoder().encode(JWT_SECRET_STRING);
 
 export async function middleware(request: NextRequest) {

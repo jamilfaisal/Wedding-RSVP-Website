@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import jwt from 'jsonwebtoken';
 import { buildError } from '@/lib/api/errors';
+import { requireEnv } from '@/lib/config/env';
 
-const WEDDING_PASSWORD = process.env.WEDDING_PASSWORD || 'changeme123';
-const JWT_SECRET = process.env.JWT_SECRET || 'wedding-secret-key-change-in-production';
+const WEDDING_PASSWORD = requireEnv('WEDDING_PASSWORD');
+const JWT_SECRET = requireEnv('JWT_SECRET');
 
 export async function POST(request: NextRequest) {
   try {
