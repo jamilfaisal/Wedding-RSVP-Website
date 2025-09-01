@@ -1,218 +1,239 @@
-## Wedding RSVP Website
+# 💒 Wedding RSVP Website
 
-A multilingual (English + Arabic), mobile-first wedding website & RSVP system built with Next.js App Router, Tailwind CSS, Airtable, and Resend. It serves public event information and securely collects and lets guests later edit RSVPs via signed tokens.
+[![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat&logo=next.js)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat&logo=typescript)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3-38B2AC?style=flat&logo=tailwind-css)](https://tailwindcss.com/)
+[![Airtable](https://img.shields.io/badge/Airtable-API-orange?style=flat&logo=airtable)](https://airtable.com/)
 
-## 1. Features
+A **multilingual (English + Arabic), mobile-first wedding website** with secure RSVP system built with Next.js, Tailwind CSS, Airtable, and Resend.
 
-Guest-facing
+## ✨ Features
 
-- Home, details (dress code, transport, venue), accommodations, tourist info
-- RSVP form (attendance for multiple events, second guest, dietary restrictions)
-- Edit RSVP via secure tokenized link (expires in 30 days per JWT config)
-- Language switcher (EN / AR) with proper RTL layout for Arabic
-- QR code for photo sharing app (configurable URL)
+- 📱 **Mobile-first responsive design** with English/Arabic support (RTL)
+- 🔐 **Password-protected access** with JWT authentication
+- 📋 **Complete RSVP system** - attendance tracking, plus-ones, dietary restrictions
+- ✏️ **Editable RSVPs** via secure tokenized links (30-day expiration)
+- 📧 **Email notifications** for guests and couple
+- 🏨 **Event information** - accommodations, tourist info, venue details
+- 📱 **QR code integration** for photo sharing
 
-Emails
+## 🚀 Quick Start
 
-- Guest confirmation email (includes edit link)
-- Couple notification email with structured data
-
-Security / Auth
-
-- Password gate (one shared wedding password) → issues signed JWT stored in httpOnly cookie `wedding-auth`
-- Middleware-enforced locale + auth + RSVP edit token validation
-
-Resilience & Observability
-
-- Airtable client with retry + exponential backoff & structured logging hooks
-
-## 2. Architecture & Flow
-
-High level request lifecycle (RSVP create):
-
-1. Guest submits form → POST `/api/rsvp`
-2. Input validated (required fields, email format, uniqueness by email)
-3. Airtable record created with generated edit JWT stored in the `Edit Token (JWT)` column
-4. If `SEND_EMAILS_FEATURE_TOGGLE=true`, send confirmation & couple notification via Resend
-5. Response `{ success: true, code: 'RSVP_CREATED' }`
-
-Edit flow:
-
-1. Guest follows emailed link: `<RSVP_EDIT_URL>?token=<jwt>` (middleware checks token structure/purpose)
-2. Client fetches existing RSVP via GET `/api/rsvp/edit?token=...`
-3. Guest submits updates via PUT `/api/rsvp/edit?token=...`
-
-Auth flow:
-
-1. User enters wedding password (/login)
-2. `/api/auth` validates against `WEDDING_PASSWORD`, signs JWT (24h) → sets `wedding-auth` cookie
-3. Middleware attaches protection for routes except explicit bypasses.
-
-Locale detection:
-
-- Accept-Language header matched against `[en, ar]` using `@formatjs/intl-localematcher` + Negotiator, redirecting to prefixed path (e.g. `/en/...`).
-
-## 3. Tech Stack
-
-- Framework: Next.js 15 (App Router)
-- Language: TypeScript / React 19
-- Styling: Tailwind CSS
-- i18n: i18next + react-i18next (in-browser switch)
-- Data Store: Airtable (REST API v0)
-- Email: Resend
-- Auth / Tokens: JSON Web Tokens (jsonwebtoken / jose for verification in middleware)
-- Build / Tooling: ESLint (flat config), Prettier, TypeScript
-
-## 4. Directory Structure (Key)
-
-- `src/app/` – Next.js routes, layouts, API handlers
-- `src/lib/airtable/` – Airtable client, RSVP logic, types
-- `src/lib/resend/` – Email sender + React email templates
-- `src/lib/config/` – Environment & wedding metadata
-- `src/lib/i18n/` – i18n provider
-- `src/components/` – UI modules (auth, layout, pages, shared, ui)
-- `public/locales/` – Translation JSON files
-- `src/middleware.ts` – Auth + locale + security headers
-- `src/test-scripts/` – Manual test utilities (see note about missing script below)
-
-## 5. Environment Variables
-
-Required (runtime will throw if missing when accessed):
-
-- `JWT_SECRET` – HMAC secret for RSVP edit tokens + auth cookie verification
-- `WEDDING_PASSWORD` – Shared password to enter the site
-- `AIRTABLE_API_KEY` – Airtable personal access token
-- `AIRTABLE_BASE_ID` – Airtable base ID
-- `AIRTABLE_TABLE_NAME` – Defaults to `RSVPs` if omitted
-- `RESEND_API_KEY` (or `RESEND_KEY`) – Resend API key
-- `RESEND_SENDER_EMAIL` – From address (fallback: Resend sandbox)
-- `RSVP_EDIT_URL` – Absolute URL to client RSVP edit page (e.g. `https://yourdomain.com/en/rsvp/edit`)
-- `SEND_EMAILS_FEATURE_TOGGLE` – Set to `true` to enable sending
-- `NEXT_PUBLIC_SITE_URL` – Used for metadata base URL (SEO, sitemap)
-- `NEXT_PUBLIC_POV_APP_URL` – URL encoded into QR code for photo sharing
-
-## 6. Running the Project
-
-Install dependencies:
-
-```
+```bash
+# Clone and install
+git clone https://github.com/jamilfaisal/Wedding-RSVP-Website.git
+cd Wedding-RSVP-Website
 npm install
-```
 
-Development:
+# Set up environment (see .env.example)
+cp .env.example .env.local
+# Edit .env.local with your values
 
-```
+# Start development server
 npm run dev
 ```
 
-Visit: http://localhost:3000/en (or /ar)
+Visit [http://localhost:3000/en](http://localhost:3000/en) to see your wedding website!
 
-Type check & lint:
-
-```
-npm run typecheck
-npm run lint
-```
-
-Production build:
+## 📁 Project Structure
 
 ```
-npm run build
-npm run start
+src/
+├── app/                 # Next.js App Router
+│   ├── [locale]/       # Localized pages (en/ar)
+│   └── api/            # API routes
+├── components/         # React components
+├── lib/               # Utilities
+│   ├── airtable/      # Database operations
+│   ├── resend/        # Email service
+│   └── config/        # Settings
+└── middleware.ts      # Auth & locale handling
 ```
 
-Sitemap generation runs automatically post-build (`next-sitemap`).
+## 🛠️ Tech Stack
 
-## 7. API Endpoints
+| Category                 | Technology                                                                                     | Purpose                         |
+| ------------------------ | ---------------------------------------------------------------------------------------------- | ------------------------------- |
+| **Framework**            | ![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat&logo=next.js)              | React framework with App Router |
+| **Language**             | ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat&logo=typescript)       | Type-safe JavaScript            |
+| **Styling**              | ![Tailwind CSS](https://img.shields.io/badge/Tailwind-3-38B2AC?style=flat&logo=tailwind-css)   | Utility-first CSS framework     |
+| **Internationalization** | ![i18next](https://img.shields.io/badge/i18next-React-green?style=flat)                        | Client-side translations        |
+| **Database**             | ![Airtable](https://img.shields.io/badge/Airtable-API-orange?style=flat&logo=airtable)         | No-code database solution       |
+| **Email**                | ![Resend](https://img.shields.io/badge/Resend-API-purple?style=flat)                           | Transactional email service     |
+| **Authentication**       | ![JWT](https://img.shields.io/badge/JWT-Tokens-red?style=flat)                                 | JSON Web Tokens                 |
+| **Tooling**              | ![ESLint](https://img.shields.io/badge/ESLint-Flat_Config-4B32C3?style=flat&logo=eslint)       | Code linting                    |
+|                          | ![Prettier](https://img.shields.io/badge/Prettier-Code_Format-F7B93E?style=flat&logo=prettier) | Code formatting                 |
 
-`POST /api/auth` – Body: `{ password }` → Sets auth cookie or returns `INVALID_PASSWORD`.
-`GET /api/auth` – Check authentication status.
+## 🚀 Development Guide
 
-`POST /api/rsvp` – Create RSVP. Body shape (CreateRSVPInput):
+### Installation & Setup
 
+```bash
+# 1. Clone the repository
+git clone https://github.com/jamilfaisal/Wedding-RSVP-Website.git
+cd Wedding-RSVP-Website
+
+# 2. Install dependencies
+npm install
+
+# 3. Set up environment variables
+cp .env.example .env.local  # Edit with your values
+
+# 4. Start development server
+npm run dev
 ```
+
+### 🖥️ Available Scripts
+
+| Command                   | Description               |
+| ------------------------- | ------------------------- |
+| `npm run dev`             | Start development server  |
+| `npm run build`           | Build for production      |
+| `npm run start`           | Start production server   |
+| `npm run lint`            | Run ESLint                |
+| `npm run typecheck`       | TypeScript type checking  |
+| `npm run format`          | Format code with Prettier |
+| `npm run clean`           | Clean build artifacts     |
+| `npm run reset:deps`      | Reset node_modules        |
+| `npm run send-test-email` | Send test email           |
+| `npm run sitemap`         | Generate sitemap          |
+
+## 🔌 API Reference
+
+### Authentication Endpoints
+
+#### `POST /api/auth`
+
+**Authenticate with wedding password**
+
+```json
 {
-  fullName: string;
-  email: string;
-  attendingRefreshments: boolean;
-  attendingWedding: boolean;
-  numberOfGuests: string; // numeric string
-  secondGuestName: string;
-  guest1DietaryRestrictions: 'None'|'Vegan'|'Vegetarian'|'Lactose Intolerant'|'Gluten Allergy'|'';
-  guest2DietaryRestrictions: same as above;
+  "password": "your-wedding-password"
 }
 ```
 
-Responses codes: `RSVP_CREATED`, or errors like `RSVP_ALREADY_EXISTS`, `INVALID_EMAIL_FORMAT`.
+**Response:**
 
-`GET /api/rsvp/edit?token=...` – Fetch existing RSVP (validated token).
-`PUT /api/rsvp/edit?token=...` – Update RSVP (same shape minus `id` field, token maps to record).
+- ✅ Success: Sets `wedding-auth` cookie, returns `{ success: true }`
+- ❌ Error: `{ success: false, code: "INVALID_PASSWORD" }`
 
-Common error codes defined in `src/lib/api/errors.ts`
+#### `GET /api/auth`
 
-## 8. Airtable Schema
+**Check authentication status**
 
-Table: `RSVPs`
+**Response:**
 
-- Name (text)
-- Email (email)
-- Attending Refreshments Dec 19th (single select: Yes/No)
-- Attending Wedding Dec 20th (single select: Yes/No)
-- Number of Guests (number)
-- Second Guest Name (text, optional)
-- Guest 1 Dietary Restrictions (single select)
-- Guest 2 Dietary Restrictions (single select)
-- RSVP Date (created time – optional in type, automatically present)
-- Edit Token (JWT) (text)
+```json
+{
+  "authenticated": true
+}
+```
 
-## 9. Email Workflows
+### RSVP Endpoints
 
-Located in `src/lib/resend/`:
+#### `POST /api/rsvp`
 
-- `confirmation-email.tsx` – React template rendered & sent to guest.
-- `couple-notification-email.tsx` – Sent to couple email from `wedding-config`.
+**Create new RSVP**
 
-Trigger conditions:
+```json
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "attendingRefreshments": true,
+  "attendingWedding": true,
+  "numberOfGuests": 2,
+  "secondGuestName": "Jane Doe",
+  "guest1DietaryRestrictions": "Vegetarian",
+  "guest2DietaryRestrictions": "No restrictions"
+}
+```
 
-- Emails only send if `SEND_EMAILS_FEATURE_TOGGLE=true`.
-- Edit URL assembled using `RSVP_EDIT_URL` + token.
+**Response:**
 
-## 10. Internationalization (i18n)
+```json
+{
+  "success": true,
+  "code": "RSVP_CREATED"
+}
+```
 
-- Managed entirely client-side via i18next.
-- Resource bundles: `public/locales/{en,ar}/common.json`.
-- `I18nProvider` sets and updates language; middleware ensures URL prefixes.
-- Arabic uses RTL direction; components ask for `locale` to set `dir` when needed.
+#### `GET /api/rsvp/edit?token=<jwt>`
 
-## 11. Security Notes
+**Fetch existing RSVP for editing**
 
-- httpOnly cookie auth + JWT verification via `jose` in middleware.
-- CSP, HSTS, Frame busting, Permissions-Policy, Referrer-Policy headers added in middleware.
-- Tokenized RSVP edit links (purpose + email claim validated; expiration handled by JWT lib).
-- Exponential retry for Airtable to reduce transient failures.
+**Response:**
 
-## 12. Developer Tooling & Scripts
+```json
+{
+  "success": true,
+  "data": {
+    "name": "John Doe",
+    "email": "john@example.com"
+    // ... other RSVP fields
+  }
+}
+```
 
-Package scripts:
+#### `PUT /api/rsvp/edit?token=<jwt>`
 
-- `dev` – Start Next.js dev server
-- `build` – Type check, build, generate sitemap
-- `start` – Run production server
-- `lint` – Run Next.js lint + ESLint
-- `typecheck` – Run `tsc --noEmit`
-- `format` – Prettier format
-- `sitemap` / `postbuild` – Generate sitemap via `next-sitemap`
-- `send-test-email` – Execute `src/test-scripts/send_test_email.ts`
-- `clean` – Remove `.next` + `node_modules`
-- `reset:deps` – Also removes lockfile for a fresh install
+**Update existing RSVP**
 
-Manual test utilities (existing):
+Same request body as `POST /api/rsvp`
 
-- `src/test-scripts/send_test_email.ts` – Sends a test email (requires email env vars)
-- `src/test-scripts/test_full_rsvp_flow.ts` – End-to-end create/edit flow (ensure env + Airtable configured)
+**Response:**
 
-## 13. License & Acknowledgements
+```json
+{
+  "success": true,
+  "code": "RSVP_UPDATED"
+}
+```
 
-Licensed under the terms in `LICENSE`.
+## 📧 Email System
 
----
+The application sends two types of emails when `SEND_EMAILS_FEATURE_TOGGLE=true`:
+
+### 📬 Guest Confirmation Email
+
+- **Sent to:** Guest who submitted RSVP
+- **Contains:** RSVP confirmation details + secure edit link
+- **Template:** `src/lib/resend/emailTemplates/confirmation-email.tsx`
+
+### 📊 Couple Notification Email
+
+- **Sent to:** Wedding couple (configured in email template)
+- **Contains:** Structured RSVP data for wedding planning
+- **Template:** `src/lib/resend/emailTemplates/couple-notification-email.tsx`
+
+## 🌍 Internationalization (i18n)
+
+### Supported Languages
+
+- 🇺🇸 **English** (`/en/...`)
+- 🇸🇦 **Arabic** (`/ar/...`) with full RTL support
+
+### Translation Files
+
+- `public/locales/en/common.json` - English translations
+- `public/locales/ar/common.json` - Arabic translations
+
+## 🔒 Security Features
+
+### 🛡️ Authentication & Authorization
+
+- **Password-protected access** with shared wedding password
+- **JWT-based session management** (24-hour expiration)
+- **httpOnly cookies** prevent XSS attacks
+- **Secure token-based RSVP editing** (30-day expiration)
+
+## 📈 Performance Optimization
+
+- **Server-side rendering** for faster initial page loads
+- **Image optimization** with Next.js Image component
+- **Code splitting** with dynamic imports where beneficial
+- **Lazy loading** for non-critical components
+- **Efficient API calls** with proper error handling and retries
+
+## 📜 License & Acknowledgments
+
+This project is licensed under the terms specified in the `LICENSE` file.
