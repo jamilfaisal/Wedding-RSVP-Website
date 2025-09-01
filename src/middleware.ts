@@ -2,7 +2,6 @@ import { NextResponse, NextRequest } from 'next/server';
 import { match } from '@formatjs/intl-localematcher';
 import Negotiator from 'negotiator';
 import { jwtVerify } from 'jose';
-import jwt from 'jsonwebtoken';
 
 const locales = ['en', 'ar'];
 const defaultLocale = 'en';
@@ -35,9 +34,10 @@ async function isUserAuthenticated(request: NextRequest): Promise<boolean> {
   }
 }
 
-function isValidRsvpToken(tokenString: string): boolean {
+async function isValidRsvpToken(tokenString: string): Promise<boolean> {
   try {
-    const decoded = jwt.verify(tokenString, JWT_SECRET_STRING) as {
+    const { payload } = await jwtVerify(tokenString, JWT_SECRET_ENCODED);
+    const decoded = payload as {
       purpose?: string;
       email?: string;
     };
@@ -105,7 +105,7 @@ export async function middleware(request: NextRequest) {
   if (isRsvpEditPageWithToken(pathname, request)) {
     const rsvpToken = request.nextUrl.searchParams.get('token');
     const authenticated = await isUserAuthenticated(request);
-    const validRsvpToken = rsvpToken ? isValidRsvpToken(rsvpToken) : false;
+    const validRsvpToken = rsvpToken ? await isValidRsvpToken(rsvpToken) : false;
 
     console.log('RSVP Debug:', {
       pathname,
