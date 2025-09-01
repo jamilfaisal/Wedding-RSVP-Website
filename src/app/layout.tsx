@@ -16,6 +16,9 @@ export default function RootLayout({
 }>) {
   return (
     <html>
+      <head>
+        <meta name="faris-and-zina-wedding-website" content="FarisZina" />
+      </head>
       <body className="min-h-screen bg-white flex flex-col">
         <ClientFonts>{children}</ClientFonts>
       </body>
