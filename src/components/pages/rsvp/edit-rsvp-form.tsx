@@ -78,7 +78,7 @@ function EditRSVPForm({ token }: EditRSVPFormProps) {
   }
 
   return (
-    <div className="bg-white/95 backdrop-blur-sm rounded-lg p-15 shadow-xl border border-sage-200 relative">
+    <div className="bg-white/95 backdrop-blur-sm rounded-lg p-15 shadow-xl border border-sage-200 relative z-10">
       {/* Corner Floral Decorations */}
       <FloralDecoration position="top-left" />
       <FloralDecoration position="top-right" />
