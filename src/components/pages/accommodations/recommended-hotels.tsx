@@ -1,5 +1,5 @@
 import AccommodationsHeader from './accommodations-header';
-import { Clock, MapPin, Star } from 'lucide-react';
+import { MapPin, Star } from 'lucide-react';
 
 function RecommendedHotels(t: (key: string) => string) {
   return (
