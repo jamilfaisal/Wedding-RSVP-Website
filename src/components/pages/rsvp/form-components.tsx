@@ -63,6 +63,7 @@ interface TextInputProps {
   required?: boolean;
   error?: string;
   autoComplete?: string;
+  disabled?: boolean;
 }
 
 export function TextInput({
@@ -75,6 +76,7 @@ export function TextInput({
   required = false,
   error,
   autoComplete,
+  disabled = false,
 }: TextInputProps) {
   return (
     <Input
@@ -86,9 +88,10 @@ export function TextInput({
       onBlur={onBlur}
       className={`${inputBaseClasses} ${
         error ? 'border-red-400 focus:border-red-400' : 'border-sage-200 focus:border-sage-400'
-      }`}
+      } ${disabled ? 'bg-gray-100 cursor-not-allowed opacity-60' : ''}`}
       placeholder={placeholder}
       autoComplete={autoComplete}
+      disabled={disabled}
     />
   );
 }

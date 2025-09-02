@@ -118,6 +118,7 @@ function EditRSVPForm({ token }: EditRSVPFormProps) {
             required
             error={errors.email}
             autoComplete="email"
+            disabled
           />
         </FormField>
 
