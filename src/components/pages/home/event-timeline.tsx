@@ -1,4 +1,4 @@
-import { Clock, Users, Music, Utensils, Sparkles, LucideProps } from 'lucide-react';
+import { Clock, Music, Utensils, Sparkles, LucideProps } from 'lucide-react';
 import { ForwardRefExoticComponent, RefAttributes } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -15,16 +15,7 @@ interface timelineEvent {
 
 const timelineEvents: timelineEvent[] = [
   {
-    timeKey: 'timeline.sixPM',
-    titleKey: 'timeline.events.ceremony.title',
-    descriptionKey: 'timeline.events.ceremony.description',
-    icon: Users,
-    bgColor: 'from-sage-100 to-sage-200',
-    borderColor: 'border-sage-200',
-    iconColor: 'text-sage-700',
-  },
-  {
-    timeKey: 'timeline.tba',
+    timeKey: 'timeline.sixThirtyPM',
     titleKey: 'timeline.events.cocktail.title',
     descriptionKey: 'timeline.events.cocktail.description',
     icon: Sparkles,

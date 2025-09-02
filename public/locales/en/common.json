@@ -101,24 +101,20 @@
     "subtitle": "Schedule of events for our wedding day",
     "tba": "TBA",
     "events": {
-      "ceremony": {
-        "title": "Ceremony Begins",
-        "description": "Join us as we exchange vows in a beautiful Roman setting"
-      },
       "cocktail": {
         "title": "Cocktail Reception",
-        "description": "Details to be announced - celebration continues"
+        "description": "Join us for drinks, appetizers, and celebration under the Roman stars"
       },
       "dinner": {
-        "title": "Wedding Dinner",
-        "description": "Details to be announced - feast and celebration"
+        "title": "Zaffa and Dinner",
+        "description": "Traditional wedding procession followed by celebratory feast"
       },
       "dancing": {
         "title": "Dancing & Celebration",
         "description": "Details to be announced - dance the night away"
       }
     },
-    "sixPM": "6:00 PM",
+    "sixThirtyPM": "6:30 PM",
     "bottomMessage": "\"We can't wait to celebrate this magical evening with all our cherished family and friends. Thank you for being such an important part of our journey together!\""
   },
   "rsvp": {
@@ -173,6 +169,13 @@
     "descriptionPart2": ". Below are our recommended places to stay near our venue. We've reserved a special rate at our main hotel, plus curated options in three elegant tiers to suit different styles and budgets.",
     "ourMainHotel": "Our Main Hotel",
     "ourMainHotelDescription": "Note: The venue sits on Monte Mario, about ~3 km from the Vatican and ~5–7 km from the historic center; the hotel also runs a shuttle to Via Veneto on a set timetable. Please check the schedule directly with the hotel.",
+    "recommendedHotels": "Recommended Hotels",
+    "recommendedHotelsDescription": "These hotels will have special block rates for our guests (details coming soon).",
+    "recommendedHotelsComingSoon": "Coming Soon",
+    "recommendedHotelsBlockRates": "Special block rates negotiated",
+    "recommendedHotelsLocations": "Prime locations near the venue",
+    "recommendedHotelsDetailsText": "Full details and booking information will be available soon!",
+    "otherSuggestions": "Other Suggestions",
     "signatureStays": "Signature Stays",
     "signatureStaysDescription": "Refined icons with postcard views and beautiful service.",
     "timelessTownAndCountry": "Timeless Town & Country",
