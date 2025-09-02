@@ -203,7 +203,7 @@ function EditRSVPForm({ token }: EditRSVPFormProps) {
         <div className="flex gap-4">
           <Button
             type="button"
-            onClick={() => window.history.back()}
+            onClick={() => (window.location.href = '/')}
             className="cursor-pointer flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 py-4 px-8 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border-0"
             style={{ fontFamily: 'var(--font-serif)' }}
           >
