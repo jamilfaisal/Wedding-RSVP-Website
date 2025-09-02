@@ -2,6 +2,8 @@
 
 import GettingToVenue from './getting-to-venue';
 import OurMainHotel from './our-main-hotel';
+import RecommendedHotels from './recommended-hotels';
+import OtherSuggestionsHeader from './other-suggestions-header';
 import SignatureStays from './signature-stays';
 import TimelessTownAndCountry from './timeless-town-and-country';
 import ChicCityNests from './chic-city-nests';
@@ -16,6 +18,10 @@ function AccommodationsPage() {
         {renderSectionHeader(t)}
 
         {OurMainHotel(t)}
+
+        {RecommendedHotels(t)}
+
+        <OtherSuggestionsHeader title={t('accommodations.otherSuggestions')} />
         {SignatureStays(t)}
         {TimelessTownAndCountry(t)}
         {ChicCityNests(t)}
