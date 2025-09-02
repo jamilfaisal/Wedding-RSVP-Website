@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslation } from 'react-i18next';
-import { useRouter, usePathname } from 'next/navigation';
+import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 import { Globe } from 'lucide-react';
 
@@ -14,6 +14,7 @@ export default function LanguageSwitcher({ isMobileMenuOpen }: { isMobileMenuOpe
   const { i18n } = useTranslation();
   const router = useRouter();
   const pathname = usePathname();
+  const searchParams = useSearchParams();
   const [isOpen, setIsOpen] = useState(false);
 
   const pathLocale = pathname.split('/')[1] || 'en';
@@ -21,7 +22,9 @@ export default function LanguageSwitcher({ isMobileMenuOpen }: { isMobileMenuOpe
   const currentLanguage = languages.find((lang) => lang.code === currentLocale);
 
   const switchLanguage = (newLocale: string) => {
-    router.push(`/${newLocale}${pathname.replace(/^\/(en|ar)/, '')}`);
+    const searchString = searchParams?.toString() ? `?${searchParams.toString()}` : '';
+    const newPath = `/${newLocale}${pathname.replace(/^\/(en|ar)/, '')}${searchString}`;
+    router.push(newPath);
     if (i18n?.changeLanguage) {
       i18n.changeLanguage(newLocale);
     }
