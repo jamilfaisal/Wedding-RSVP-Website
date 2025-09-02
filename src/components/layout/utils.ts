@@ -1,9 +1,4 @@
-import {
-  rsvpDeadline,
-  weddingEndDate,
-  weddingStartDate,
-  weddingTimezone,
-} from '@/lib/config/wedding-config';
+import { rsvpDeadline, weddingStartDate, weddingTimezone } from '@/lib/config/wedding-config';
 
 export function checkIsHomePage(pathname: string): boolean {
   return (
@@ -16,10 +11,6 @@ export function checkIsHomePage(pathname: string): boolean {
 
 export function formatWeddingStartTime(locale: string): string {
   return formatTime(weddingStartDate, locale);
-}
-
-export function formatWeddingEndTime(locale: string): string {
-  return formatTime(weddingEndDate, locale);
 }
 
 // Output example: 4:00 PM
@@ -38,10 +29,6 @@ export function formatRSVPDeadline(locale: string): string {
 
 export function formatWeddingStartDate(locale: string): string {
   return formatDate(weddingStartDate, locale);
-}
-
-export function formatWeddingEndDate(locale: string): string {
-  return formatDate(weddingEndDate, locale);
 }
 
 // Output example: December 20, 2025
@@ -95,4 +82,30 @@ export function formatYear(year: number, locale: string): string {
     return new Intl.NumberFormat('ar-EG', { useGrouping: false }).format(year);
   }
   return year.toString();
+}
+
+// Output example: 4:35 PM
+export function formatCurrentTimeInTimezone(locale: string, timezone: string): string {
+  return new Intl.DateTimeFormat(locale, {
+    timeZone: timezone,
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true,
+  }).format(new Date());
+}
+
+// Output example: GMT+1
+export function getTimezoneAbbreviation(timezone: string): string {
+  const now = new Date();
+  const formatter = new Intl.DateTimeFormat('en', {
+    timeZone: timezone,
+    timeZoneName: 'short',
+  });
+  const parts = formatter.formatToParts(now);
+  const timeZonePart = parts.find((part) => part.type === 'timeZoneName');
+  return timeZonePart?.value || timezone;
+}
+
+export function getUserTimezone(): string {
+  return Intl.DateTimeFormat().resolvedOptions().timeZone;
 }

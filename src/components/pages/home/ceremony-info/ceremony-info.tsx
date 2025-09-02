@@ -3,7 +3,7 @@ import ceremonyPhoto from '@public/images/ceremony-photo.png';
 import floralIllustration from '@public/images/floral-illustration.png';
 import ImageWithFallback from '../../../ui/image-with-fallback';
 import WeatherWidget from './weather-widget';
-import { formatWeddingStartTime, formatWeddingStartDate } from '@/components/layout/utils';
+import LiveTimeDisplay from './live-time-display';
 import { useI18n } from '@/lib/i18n/i18n-provider';
 import { useTranslation } from 'react-i18next';
 
@@ -22,8 +22,7 @@ function CeremonyInfo() {
 
             <div className="space-y-8 lg:ps-4">
               {renderVenueLocation(t)}
-              {renderAperitifHour(t)}
-              {renderWeddingSchedule(locale, t)}
+              {renderWelcomeReception(t)}
               {renderLocalTime(locale, t)}
               {WeatherWidget(locale, t)}
             </div>
@@ -42,48 +41,15 @@ function renderLocalTime(locale: string, t: (key: string) => string) {
           <Globe className="w-6 h-6 text-brown-700" />
         </div>
         <div className="flex-1">
-          <h4 className="text-xl font-serif text-brown-800 mb-3">{t('ceremony.localTime')}</h4>
-          <div className="space-y-2 text-brown-600">
-            <div className="flex justify-between items-center">
-              <span className="font-serif">
-                {t('weddingInfo.weddingCity')} ({t('ceremony.localTime')}):
-              </span>
-              <span className="font-light">{formatWeddingStartTime(locale)}</span>
-            </div>
-            <p className="text-sm text-brown-500 italic mt-2">{formatWeddingStartDate(locale)}</p>
-          </div>
+          <h4 className="text-xl font-serif text-brown-800 mb-3">{t('ceremony.timeComparison')}</h4>
+          <LiveTimeDisplay locale={locale} t={t} />
         </div>
       </div>
     </div>
   );
 }
 
-function renderWeddingSchedule(locale: string, t: (key: string) => string) {
-  return (
-    <div className="bg-white rounded-lg p-6 shadow-md border-2 border-orange-100">
-      <div className="flex items-start gap-4">
-        <div className="w-12 h-12 bg-gradient-to-br from-orange-100 to-orange-200 rounded-lg flex items-center justify-center flex-shrink-0 border border-orange-200">
-          <Clock className="w-6 h-6 text-orange-700" />
-        </div>
-        <div className="flex-1">
-          <h4 className="text-xl font-serif text-brown-800 mb-3">{t('ceremony.schedule')}</h4>
-          <div className="text-brown-600 leading-relaxed space-y-2">
-            <div className="flex justify-between items-center py-1">
-              <span className="font-serif">{t('ceremony.reception')}:</span>
-              <span className="font-light">{formatWeddingStartTime(locale)}</span>
-            </div>
-            <div className="flex justify-between items-center py-1">
-              <span className="font-serif">{t('ceremony.celebration')}:</span>
-              <span className="font-light italic text-brown-500">{t('ceremony.tba')}</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function renderAperitifHour(t: (key: string) => string) {
+function renderWelcomeReception(t: (key: string) => string) {
   return (
     <div className="bg-white rounded-lg p-6 shadow-md border-2 border-purple-100">
       <div className="flex items-start gap-4">
@@ -91,7 +57,9 @@ function renderAperitifHour(t: (key: string) => string) {
           <Clock className="w-6 h-6 text-purple-700" />
         </div>
         <div className="flex-1">
-          <h4 className="text-xl font-serif text-brown-800 mb-3">{t('ceremony.aperitifHour')}</h4>
+          <h4 className="text-xl font-serif text-brown-800 mb-3">
+            {t('ceremony.welcomeReception')}
+          </h4>
           <div className="text-brown-600 leading-relaxed space-y-2">
             <p className="font-medium">{t('ceremony.joinUsDate')}</p>
             <p className="text-brown-500 italic">{t('ceremony.detailsComingSoon')}</p>
