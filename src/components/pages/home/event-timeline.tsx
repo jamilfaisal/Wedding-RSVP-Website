@@ -1,6 +1,7 @@
 import { Clock, Music, Utensils, Sparkles, LucideProps } from 'lucide-react';
 import { ForwardRefExoticComponent, RefAttributes } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useI18n } from '@/lib/i18n/i18n-provider';
 
 interface timelineEvent {
   timeKey?: string; // For translations
@@ -45,19 +46,21 @@ const timelineEvents: timelineEvent[] = [
 
 function EventTimeline() {
   const { t } = useTranslation();
+  const { locale } = useI18n();
+  const isRTL = locale === 'ar';
+
   return (
     <>
       <div id="timeline" className="relative -top-20"></div>
       <section id="timeline" className="pt-15 pb-20 bg-gradient-to-b from-orange-50/10 to-white">
         <div className="max-w-5xl mx-auto px-8">
           {renderSectionHeader(t)}
-          {/* Timeline */}
           <div className="relative">
-            {renderVerticalLine()}
+            {renderVerticalLine(isRTL)}
 
             <div className="space-y-12">
               {timelineEvents.map((event, index) => {
-                return renderTimelineEvent(event, index, t);
+                return renderTimelineEvent(event, index, t, isRTL);
               })}
             </div>
           </div>
@@ -100,7 +103,12 @@ function renderBottomMessage(t: (key: string) => string) {
   );
 }
 
-function renderTimelineEvent(event: timelineEvent, index: number, t: (key: string) => string) {
+function renderTimelineEvent(
+  event: timelineEvent,
+  index: number,
+  t: (key: string) => string,
+  isRTL: boolean
+) {
   const Icon = event.icon;
   const isEven = index % 2 === 0;
 
@@ -109,8 +117,8 @@ function renderTimelineEvent(event: timelineEvent, index: number, t: (key: strin
       key={index}
       className={`relative flex items-center ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} flex-row`}
     >
-      {renderTimelineIcon(event, Icon)}
-      {renderContent(isEven, event, t)}
+      {renderTimelineIcon(event, Icon, isRTL)}
+      {renderContent(isEven, event, t, isRTL)}
       {renderSpacer()}
     </div>
   );
@@ -120,15 +128,21 @@ function renderSpacer() {
   return <div className="hidden md:block flex-1"></div>;
 }
 
-function renderContent(isEven: boolean, event: timelineEvent, t: (key: string) => string) {
+function renderContent(
+  isEven: boolean,
+  event: timelineEvent,
+  t: (key: string) => string,
+  isRTL: boolean
+) {
   const timeText = event.timeKey ? t(event.timeKey) : event.time || '';
+  const shouldBeOnRight = isRTL ? isEven : !isEven;
 
   return (
-    <div className={`flex-1 ${isEven ? 'md:pe-24 ps-20' : 'md:ps-24 ps-20'} md:ps-0`}>
-      <div className={`${isEven ? 'md:text-end' : 'md:text-start'} text-start`}>
+    <div className={`flex-1 ${shouldBeOnRight ? 'md:ps-24 ps-20' : 'md:pe-24 ps-20'} md:ps-0`}>
+      <div className={`${shouldBeOnRight ? 'md:text-start' : 'md:text-end'} text-start`}>
         <div className="bg-white rounded-lg p-8 shadow-md border-2 border-sage-100 hover:shadow-lg transition-shadow duration-300">
           <div
-            className={`flex items-center gap-3 mb-3 ${isEven ? 'md:justify-end' : 'md:justify-start'} justify-start`}
+            className={`flex items-center gap-3 mb-3 ${shouldBeOnRight ? 'md:justify-start' : 'md:justify-end'} justify-start`}
           >
             <div
               className={`w-3 h-3 bg-gradient-to-br ${event.bgColor} ${event.borderColor} border rounded-full`}
@@ -145,10 +159,13 @@ function renderContent(isEven: boolean, event: timelineEvent, t: (key: string) =
 
 function renderTimelineIcon(
   event: timelineEvent,
-  Icon: ForwardRefExoticComponent<Omit<LucideProps, 'ref'> & RefAttributes<SVGSVGElement>>
+  Icon: ForwardRefExoticComponent<Omit<LucideProps, 'ref'> & RefAttributes<SVGSVGElement>>,
+  isRTL: boolean
 ) {
   return (
-    <div className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 -translate-x-1/2 z-10">
+    <div
+      className={`absolute ${isRTL ? 'right-8 md:right-1/2 transform translate-x-1/2 md:translate-x-1/2' : 'left-8 md:left-1/2 transform -translate-x-1/2 md:-translate-x-1/2'} z-10`}
+    >
       <div
         className={`w-16 h-16 bg-gradient-to-br ${event.bgColor} ${event.borderColor} border-2 rounded-full flex items-center justify-center shadow-md`}
       >
@@ -158,9 +175,11 @@ function renderTimelineIcon(
   );
 }
 
-function renderVerticalLine() {
+function renderVerticalLine(isRTL: boolean) {
   return (
-    <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-sage-200 via-orange-200 to-brown-200 transform md:-translate-x-1/2"></div>
+    <div
+      className={`absolute ${isRTL ? 'right-8 md:right-1/2 transform translate-x-1/2 md:translate-x-1/2' : 'left-8 md:left-1/2 transform -translate-x-1/2 md:-translate-x-1/2'} top-0 bottom-0 w-0.5 bg-gradient-to-b from-sage-200 via-orange-200 to-brown-200`}
+    ></div>
   );
 }
 
