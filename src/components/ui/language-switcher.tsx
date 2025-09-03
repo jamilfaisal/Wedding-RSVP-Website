@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { Globe } from 'lucide-react';
 
 const languages = [
-  { code: 'en', name: 'English', flag: '🇺🇸' },
+  { code: 'en', name: 'English', flag: '🇬🇧' },
   { code: 'ar', name: 'العربية', flag: '🇸🇦' },
 ];
 

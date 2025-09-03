@@ -209,7 +209,7 @@ The application sends two types of emails when `SEND_EMAILS_FEATURE_TOGGLE=true`
 
 ### Supported Languages
 
-- 🇺🇸 **English** (`/en/...`)
+- 🇬🇧 **English** (`/en/...`)
 - 🇸🇦 **Arabic** (`/ar/...`) with full RTL support
 
 ### Translation Files
