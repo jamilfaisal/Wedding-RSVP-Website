@@ -271,7 +271,17 @@
     "temperature": "Temperature",
     "conditions": "Conditions",
     "forecast": "weather forecast for",
-    "liveWidgetComingSoon": "Live weather widget coming soon"
+    "liveWidgetComingSoon": "Live weather widget coming soon",
+    "detailsComingSoon": "Weather details for December 20th coming soon",
+    "feelsLike": "Feels like",
+    "humidity": "Humidity",
+    "windSpeed": "Wind Speed",
+    "loading": "Loading weather...",
+    "error": "Weather unavailable",
+    "on": "on",
+    "celsius": "°C",
+    "kmh": "km/h",
+    "percent": "%"
   },
   "countdown": {
     "days": "Days",

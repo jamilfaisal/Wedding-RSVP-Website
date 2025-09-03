@@ -10,6 +10,7 @@ import { useTranslation } from 'react-i18next';
 function CeremonyInfo() {
   const { locale } = useI18n();
   const { t } = useTranslation();
+  const weatherWidgetEnabled = true;
   return (
     <>
       <div id="ceremony" className="relative -top-20"></div>
@@ -24,7 +25,7 @@ function CeremonyInfo() {
               {renderVenueLocation(t)}
               {renderWelcomeReception(t)}
               {renderLocalTime(locale, t)}
-              {WeatherWidget(locale, t)}
+              {weatherWidgetEnabled && <WeatherWidget locale={locale} t={t} />}
             </div>
           </div>
         </div>

@@ -272,7 +272,17 @@
     "temperature": "درجة الحرارة",
     "conditions": "الظروف",
     "forecast": "توقعات الطقس لـ",
-    "liveWidgetComingSoon": "سيتم إضافة أداة الطقس الحية قريبًا"
+    "liveWidgetComingSoon": "سيتم إضافة أداة الطقس الحية قريبًا",
+    "detailsComingSoon": "تفاصيل الطقس ليوم 20 ديسمبر ستكون متاحة قريبًا",
+    "feelsLike": "تشعر وكأنها",
+    "humidity": "الرطوبة",
+    "windSpeed": "سرعة الرياح",
+    "loading": "جارٍ تحميل الطقس...",
+    "error": "الطقس غير متاح",
+    "on": "في",
+    "celsius": "°م",
+    "kmh": "كم/ساعة",
+    "percent": "%"
   },
   "countdown": {
     "days": "يوم",

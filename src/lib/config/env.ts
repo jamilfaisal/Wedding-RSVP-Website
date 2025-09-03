@@ -10,3 +10,4 @@ export function requireEnv(name: string): string {
 
 export const JWT_SECRET = () => requireEnv('JWT_SECRET');
 export const WEDDING_PASSWORD = () => requireEnv('WEDDING_PASSWORD');
+export const OPENWEATHER_API_KEY = () => requireEnv('OPENWEATHER_API_KEY');
