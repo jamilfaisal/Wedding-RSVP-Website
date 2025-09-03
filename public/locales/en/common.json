@@ -221,15 +221,15 @@
     "faqs": {
       "attire": {
         "question": "What should I wear to the wedding?",
-        "answer": "TBA"
+        "answer": "We're embracing Elegant Evening wear for our special evening — think timeless sophistication! The best part? There are no color restrictions, so wear whatever makes you feel amazing."
       },
       "transportation": {
         "question": "Will there be transportation provided?",
-        "answer": "TBA"
+        "answer": "We will provide shuttle service from major hotels in central Rome to the venue. More details including pickup times and locations will be sent with your invitation."
       },
       "children": {
         "question": "Are children welcome at the wedding?",
-        "answer": "TBA"
+        "answer": "We love children, but we've planned an adults-only celebration to allow all our guests to relax and enjoy the evening. We hope you understand and can arrange childcare for the day."
       },
       "endTime": {
         "question": "What time does the celebration end?",
@@ -253,11 +253,11 @@
       },
       "gifts": {
         "question": "Are there gift registries?",
-        "answer": "TBA"
+        "answer": "Your presence at our wedding is the greatest gift we could ask for! If you'd like to gift something, then please feel free to gift on your own accord."
       },
       "travel": {
         "question": "How do I get to Rome and where should I stay?",
-        "answer": "TBA"
+        "answer": "Rome has two airports: Fiumicino (FCO) and Ciampino (CIA). We recommend staying in central Rome near the Spanish Steps, Pantheon, or Trastevere areas. Check our Touristy Things page for more travel tips!"
       }
     }
   },
