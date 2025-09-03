@@ -121,7 +121,7 @@ function renderForm(
         <button
           type="submit"
           disabled={loading}
-          className="group relative w-full flex justify-center py-3 px-4 border-2 border-sage-200 text-lg font-medium rounded-lg text-white bg-gradient-to-r from-sage-600 to-sage-700 hover:from-sage-700 hover:to-sage-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sage-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 shadow-lg hover:shadow-xl"
+          className="cursor-pointer group relative w-full flex justify-center py-3 px-4 border-2 border-sage-200 text-lg font-medium rounded-lg text-white bg-gradient-to-r from-sage-600 to-sage-700 hover:from-sage-700 hover:to-sage-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sage-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 shadow-lg hover:shadow-xl"
           style={{ fontFamily: 'var(--font-serif)' }}
         >
           {loading ? t('login.verifying') : t('login.enterWebsite')}
@@ -164,7 +164,7 @@ function renderLanguageSwitcher(toggleLanguage: () => void, locale: string) {
     <div className="absolute -top-16 right-0 z-10">
       <button
         onClick={toggleLanguage}
-        className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/90 backdrop-blur-sm border-2 border-sage-100 hover:border-sage-200 transition-all duration-200 text-sm font-medium shadow-lg"
+        className="cursor-pointer flex items-center gap-2 px-4 py-2 rounded-lg bg-white/90 backdrop-blur-sm border-2 border-sage-100 hover:border-sage-200 transition-all duration-200 text-sm font-medium shadow-lg"
         aria-label="Switch language"
       >
         <span className="text-lg">{locale === 'en' ? '🇸🇦' : '🇺🇸'}</span>
