@@ -113,11 +113,12 @@ function displayDateAndLocation(
   t: (key: string) => string,
   locale: string
 ) {
+  const weatherDate = new Date(weatherData.date);
   return (
     <div className="text-center pt-2 border-t border-sage-200">
       <p className="text-brown-500 text-sm">
-        {weatherData.city} {t('weather.on')} {getMonthAsFullWord(weddingStartDate, locale)}{' '}
-        {getDayWithSuffix(weddingStartDate, locale)}
+        {weatherData.city} {t('weather.on')} {getMonthAsFullWord(weatherDate, locale)}{' '}
+        {getDayWithSuffix(weatherDate, locale)}
       </p>
     </div>
   );
