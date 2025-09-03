@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { Clock } from 'lucide-react';
 import {
   formatCurrentTimeInTimezone,
   getUserTimezone,
@@ -75,7 +76,7 @@ export default function LiveTimeDisplay({ locale, t }: LiveTimeDisplayProps) {
       </div>
       {currentTime.userTimezone !== currentTime.romeTimezone && (
         <div className="text-sm text-brown-500 italic pt-2 border-t border-brown-100">
-          <span className="text-xs">🕐</span> {t('ceremony.liveTimeHelper')}
+          <Clock className="inline w-3 h-3 mr-1" /> {t('ceremony.liveTimeHelper')}
         </div>
       )}
     </div>
