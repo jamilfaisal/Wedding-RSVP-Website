@@ -57,7 +57,7 @@ export default function LoginPage() {
       <div className="max-w-md w-full relative">
         {renderLanguageSwitcher(toggleLanguage, locale)}
 
-        <ContentCard padding="p-8">
+        <ContentCard padding="p-8 pb-12 sm:pb-8">
           {renderHeader(textDirection, t)}
           {renderForm(handleSubmit, textDirection, t, password, setPassword, error, loading)}
           {renderHelp(textDirection, t)}
@@ -70,7 +70,7 @@ function renderHelp(textDirection: string, t: (key: string) => string) {
   return (
     <div
       dir={textDirection}
-      className="mt-8 text-center text-sm text-brown-500 font-light"
+      className="mt-8 mb-4 text-center text-sm text-brown-500 font-light"
       style={{ fontFamily: 'var(--font-serif)' }}
     >
       {t('login.helpText')}
