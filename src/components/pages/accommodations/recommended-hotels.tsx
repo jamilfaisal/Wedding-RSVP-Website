@@ -13,7 +13,7 @@ function RecommendedHotels(t: (key: string) => string) {
 
       {/* Placeholder content for upcoming block rates */}
       <div className="max-w-4xl mx-auto bg-gradient-to-r from-sage-50/90 to-pastel-pink-50/90 backdrop-blur-sm rounded-lg p-8 shadow-lg border border-sage-100 relative">
-        <div className="text-center">
+        <div className="text-center space-y-4">
           <div className="flex items-center justify-center gap-4">
             <h3
               className="text-2xl text-brown-800"
