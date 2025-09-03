@@ -81,7 +81,7 @@
     "yourPaletteYourStyle": "Your Palette, Your Style",
     "yourPaletteYourStyleDescription": "No color restrictions — wear what makes you feel the best",
     "winterCharm": "Winter Charm",
-    "winterCharmDescription": "As parts of the ceremony will be outdoors, we invite you to dress warmly or bring a wrap to stay cozy beneath the stars",
+    "winterCharmDescription": "An elegant evening celebration – feel free to wear what makes you comfortable",
     "gettingThere": "Getting There",
     "transportationDetails": "Transportation Details",
     "transportationInfo": "Transportation information will be shared with invited guests closer to the wedding date.",
@@ -221,7 +221,7 @@
     "faqs": {
       "attire": {
         "question": "What should I wear to the wedding?",
-        "answer": "We're embracing Black Tie Elegance for our special evening — think timeless sophistication! The best part? There are no color restrictions, so wear whatever makes you feel amazing. Since parts of our celebration will be under the beautiful Roman winter stars, we recommend bringing a cozy wrap or jacket to stay warm during the outdoor portions."
+        "answer": "We're embracing Elegant Evening wear for our special evening — think timeless sophistication! The best part? There are no color restrictions, so wear whatever makes you feel amazing."
       },
       "transportation": {
         "question": "Will there be transportation provided?",
@@ -229,11 +229,11 @@
       },
       "children": {
         "question": "Are children welcome at the wedding?",
-        "answer": "We love children, but we've planned an adults-only celebration to allow all our guests to relax and enjoy the evening. We hope you understand and can arrange childcare for the day."
+        "answer": "Absolutely!"
       },
       "endTime": {
         "question": "What time does the celebration end?",
-        "answer": "It will never end! The ceremony beings at 6:00 pm, followed by refreshments and dinner. Live music and dancing will follow after that and carry on."
+        "answer": "It will never end! The ceremony beings at 6:30 pm, followed by refreshments and dinner. Live music and dancing will follow after that and carry on as well as some late night bites!"
       },
       "photos": {
         "question": "Can I take photos during the ceremony?",
@@ -249,11 +249,11 @@
       },
       "weather": {
         "question": "What's the weather like in Rome in December?",
-        "answer": "Please make sure to check our weather widget on the main page for the weather. December in Rome is mild but can be cool especially in the evenings. We recommend bringing cozy coats or wrap for outdoor portions of the wedding."
+        "answer": "Please make sure to check our weather widget on the main page for the weather. December in Rome is mild but can be cool especially in the evenings. We recommend bringing cozy coats if you plan to go outside on the balcony."
       },
       "gifts": {
         "question": "Are there gift registries?",
-        "answer": "Your presence at our wedding is the greatest gift we could ask for! If you wish to give a gift, we have a small registry at [Store Name] or would be grateful for contributions to our honeymoon fund."
+        "answer": "Your presence at our wedding is the greatest gift we could ask for! If you'd like to gift something, then please feel free to gift on your own accord."
       },
       "travel": {
         "question": "How do I get to Rome and where should I stay?",
