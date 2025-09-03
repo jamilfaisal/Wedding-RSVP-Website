@@ -38,12 +38,6 @@ function renderWeddingParty(t: (key: string) => string) {
   return (
     <div className="border-t border-sage-100 pt-6">
       <div className="text-center">
-        <h4
-          className="text-lg text-brown-700 mb-3"
-          style={{ fontFamily: 'var(--font-harrington)' }}
-        >
-          {t('contactFAQs.weddingParty')}
-        </h4>
         <p className="text-brown-600 text-sm" style={{ fontFamily: 'var(--font-serif)' }}>
           {t('contactFAQs.weddingPartyDescription')}
         </p>
