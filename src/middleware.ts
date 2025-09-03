@@ -106,11 +106,24 @@ async function requiresAuthentication(pathname: string, request: NextRequest) {
 }
 
 function getLocale(request: NextRequest): string {
-  const acceptedLanguage = request.headers.get('Accept-Language') ?? undefined;
-  const headers = { 'accept-language': acceptedLanguage };
-  const languages = new Negotiator({ headers }).languages();
+  const raw = request.headers.get('Accept-Language') || '';
+  const headers = { 'accept-language': raw };
+  const candidates = new Negotiator({ headers }).languages();
+  const cleaned = candidates.filter((l) => {
+    if (!l || l === '*' || l.length > 35) return false;
+    try {
+      new Intl.Locale(l);
+      return true;
+    } catch {
+      return false;
+    }
+  });
 
-  return match(languages, locales, defaultLocale);
+  try {
+    return match(cleaned, locales, defaultLocale);
+  } catch {
+    return defaultLocale;
+  }
 }
 
 function getReturnToUrl(request: NextRequest): string {
