@@ -50,12 +50,3 @@ Thumbs.db
 
 # Next types (auto-generated)
 next-env.d.ts
-
-# Docker
-docker-compose.override.yml
-
-# Private keys
-*.pem
-
-# Coverage
-/coverage/
