@@ -7,6 +7,7 @@ import { useSearchParams } from 'next/navigation';
 import { Lock } from 'lucide-react';
 import { ContentCard } from '../pages/shared/content-card';
 import { FloralPicture } from '../pages/shared/floral-picture';
+import { renderLanguageSwitcher } from '../layout/language-switcher';
 
 const getTextDirection = (locale: string) => (locale === 'ar' ? 'rtl' : 'ltr');
 
@@ -48,14 +49,12 @@ export default function LoginPage() {
     }
   };
 
-  const toggleLanguage = () => {
-    setLocale(locale === 'en' ? 'ar' : 'en');
-  };
-
   return (
     <div className="min-h-screen bg-gradient-to-b from-ivory-50 via-sage-50/30 to-orange-50/20 flex items-center justify-center px-4 py-20">
       <div className="max-w-md w-full relative">
-        {renderLanguageSwitcher(toggleLanguage, locale)}
+        <div className="absolute -top-16 right-0 z-10">
+          {renderLanguageSwitcher(setLocale, locale)}
+        </div>
 
         <ContentCard padding="p-8 pb-12 sm:pb-8">
           {renderHeader(textDirection, t)}
@@ -122,7 +121,6 @@ function renderForm(
           type="submit"
           disabled={loading}
           className="cursor-pointer group relative w-full flex justify-center py-3 px-4 border-2 border-sage-200 text-lg font-medium rounded-lg text-white bg-gradient-to-r from-sage-600 to-sage-700 hover:from-sage-700 hover:to-sage-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sage-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 shadow-lg hover:shadow-xl"
-          style={{ fontFamily: 'var(--font-serif)' }}
         >
           {loading ? t('login.verifying') : t('login.enterWebsite')}
         </button>
@@ -155,23 +153,6 @@ function renderHeader(textDirection: string, t: (key: string) => string) {
       </p>
 
       <FloralPicture className="mb-6" width={128} height={96} opacity="opacity-90" />
-    </div>
-  );
-}
-
-function renderLanguageSwitcher(toggleLanguage: () => void, locale: string) {
-  return (
-    <div className="absolute -top-16 right-0 z-10">
-      <button
-        onClick={toggleLanguage}
-        className="cursor-pointer flex items-center gap-2 px-4 py-2 rounded-lg bg-white/90 backdrop-blur-sm border-2 border-sage-100 hover:border-sage-200 transition-all duration-200 text-sm font-medium shadow-lg"
-        aria-label="Switch language"
-      >
-        <span className="text-lg">{locale === 'en' ? '🇸🇦' : '🇬🇧'}</span>
-        <span className="text-brown-700" style={{ fontFamily: 'var(--font-serif)' }}>
-          {locale === 'en' ? 'العربية' : 'English'}
-        </span>
-      </button>
     </div>
   );
 }

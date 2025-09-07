@@ -11,12 +11,17 @@ interface LayoutContentProps {
 export default function LayoutContent({ children }: LayoutContentProps) {
   const pathname = usePathname();
   const isLoginPage = pathname?.includes('/login');
+  const isInvalidTokenPage = pathname?.includes('/invalid-token');
+
+  if (isLoginPage || isInvalidTokenPage) {
+    return <div className="flex-grow">{children}</div>;
+  }
 
   return (
     <>
-      {!isLoginPage && <Header />}
+      {<Header />}
       <div className="flex-grow">{children}</div>
-      {!isLoginPage && <Footer />}
+      {<Footer />}
     </>
   );
 }
