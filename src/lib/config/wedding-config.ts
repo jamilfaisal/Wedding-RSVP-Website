@@ -12,8 +12,8 @@ export const weddingInfo: WeddingInfo = {
   weddingCountry: 'Italy',
   email: 'rsvp@farisandzinawedding.com',
   venueName: 'Rome Cavalieri, A Waldorf Astoria Hotel',
-  // September 30, 2025 at 23:59:59 Rome time (UTC+2 due to daylight savings time)
-  rsvpDeadline: new Date('2025-09-30T21:59:59.000Z'),
+  // October 15, 2025 at 21:59:59 Rome time (UTC+2 due to daylight savings time)
+  rsvpDeadline: new Date('2025-10-15T21:59:59.000Z'),
 };
 
 export const spotifyPlaylistUrl = 'https://open.spotify.com/playlist/your-playlist-id';
