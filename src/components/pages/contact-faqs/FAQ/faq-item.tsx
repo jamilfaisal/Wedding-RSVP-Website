@@ -1,11 +1,16 @@
 import { Flower, Leaf } from 'lucide-react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { FAQ } from './faq-data';
 
 function FAQItem({ faq }: { faq: FAQ }) {
+  const currentPage = usePathname();
+  const locale = currentPage.split('/')[1] || 'en';
+
   return (
     <div className="bg-white/95 backdrop-blur-sm rounded-lg p-6 shadow-lg border border-sage-100 relative">
       {renderTopLeftCornerFloral()}
-      {renderFAQQuestionAnswer(faq)}
+      {renderFAQQuestionAnswer(faq, locale)}
       {renderBottomRightCornerFloral()}
     </div>
   );
@@ -21,7 +26,39 @@ function renderTopLeftCornerFloral() {
   );
 }
 
-function renderFAQQuestionAnswer(faq: FAQ) {
+function renderFAQQuestionAnswer(faq: FAQ, locale: string) {
+  const parseAnswer = (text: string) => {
+    const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
+    const parts = [];
+    let lastIndex = 0;
+    let match;
+
+    while ((match = linkRegex.exec(text)) !== null) {
+      if (match.index > lastIndex) {
+        parts.push(text.substring(lastIndex, match.index));
+      }
+      const linkText = match[1];
+      const linkUrl = match[2];
+      parts.push(
+        <Link
+          key={match.index}
+          href={`/${locale}${linkUrl}`}
+          className="text-sage-600 hover:text-sage-700 underline decoration-sage-400 underline-offset-2 hover:decoration-sage-600 transition-colors font-medium"
+        >
+          {linkText}
+        </Link>
+      );
+
+      lastIndex = match.index + match[0].length;
+    }
+
+    if (lastIndex < text.length) {
+      parts.push(text.substring(lastIndex));
+    }
+
+    return parts.length > 0 ? parts : text;
+  };
+
   return (
     <div className="ms-12">
       <h3
@@ -31,7 +68,7 @@ function renderFAQQuestionAnswer(faq: FAQ) {
         {faq.question}
       </h3>
       <p className="text-brown-600 leading-relaxed" style={{ fontFamily: 'var(--font-serif)' }}>
-        {faq.answer}
+        {parseAnswer(faq.answer)}
       </p>
     </div>
   );

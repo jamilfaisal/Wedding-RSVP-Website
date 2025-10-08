@@ -60,7 +60,8 @@
     "rsvp": "RSVP",
     "accommodations": "Accommodations",
     "touristyThings": "Touristy Things",
-    "contactFAQs": "Contact & FAQs"
+    "contactFAQs": "Contact & FAQs",
+    "giftRegistry": "Gift Registry"
   },
   "hero": {
     "invitationMessage": "cordially invite you to celebrate their wedding",
@@ -209,6 +210,15 @@
     "smallPrint": "Small Print",
     "smallPrintDescription": "Distances are approximate road distances from each hotel to the venue to help with planning; traffic can significantly affect travel time. For precise navigation on the day, we'll share exact pins and an arrival note closer to the wedding."
   },
+  "giftRegistry": {
+    "title": "Gift Registry",
+    "subtitle": "Your presence at our wedding is the greatest gift of all",
+    "message": "If you wish to honor us with a gift, we've created a registry to help us start our new life together. Your love and support mean the world to us.",
+    "viewRegistry": "View Our Registry",
+    "note": "This link will open our Etsy registry in a new window",
+    "footerTitle": "Thank You",
+    "footerMessage": "Your presence, love, and support as we begin this new chapter together means more to us than any gift ever could. We are so grateful to have you in our lives."
+  },
   "touristyThings": {
     "title": "Touristy Things in ",
     "subtitlePart1": "Here are some wonderful places to explore while in ",
@@ -268,8 +278,8 @@
         "answer": "Please make sure to check our weather widget on the main page for the weather. December in Rome is mild but can be cool especially in the evenings. We recommend bringing cozy coats if you plan to go outside on the balcony."
       },
       "gifts": {
-        "question": "Are there gift registries?",
-        "answer": "TBA"
+        "question": "Do you have a gift registry?",
+        "answer": "Your presence at our wedding is the greatest gift of all! However, if you wish to honor us with a gift, we've created a registry on Etsy. You can find it in the [Gift Registry](/gift-registry) section of this website."
       },
       "travel": {
         "question": "How do I get to Rome and where should I stay?",

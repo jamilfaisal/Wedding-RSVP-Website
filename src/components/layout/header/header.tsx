@@ -31,6 +31,7 @@ function Header() {
     { name: t('navigation.rsvp'), href: '/rsvp' },
     { name: t('navigation.accommodations'), href: '/accommodations' },
     { name: t('navigation.touristyThings'), href: '/touristy-things' },
+    { name: t('navigation.giftRegistry'), href: '/gift-registry' },
     { name: t('navigation.contactFAQs'), href: '/contact-faqs' },
   ];
 
