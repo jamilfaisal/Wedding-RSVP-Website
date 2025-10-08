@@ -8,11 +8,10 @@ function GiftRegistryPage() {
   const registryUrl = 'https://www.etsy.com/registry/MTYyOTU4MTY4fDI3NTQ1Mjg1Mw';
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-ivory-50 via-sage-50/20 to-pastel-pink-50/10 pt-45 py-20">
+    <div className="bg-gradient-to-b from-ivory-50 via-sage-50/20 to-pastel-pink-50/10 pt-45 mb-16">
       <div className="max-w-4xl mx-auto px-8">
         {renderHeader(t)}
         {renderMainContent(t, registryUrl)}
-        {renderFooter(t)}
       </div>
     </div>
   );
@@ -20,7 +19,7 @@ function GiftRegistryPage() {
 
 function renderHeader(t: (key: string) => string) {
   return (
-    <div className="text-center mb-16 relative">
+    <div className="text-center mb-4 relative">
       <div className="absolute -top-14 left-1/2 transform -translate-x-1/2 w-96">
         <div className="flex items-center justify-center gap-6">
           <div className="flex items-center gap-2">
@@ -45,21 +44,14 @@ function renderHeader(t: (key: string) => string) {
       >
         {t('giftRegistry.title')}
       </h1>
-
-      <p
-        className="text-lg md:text-xl text-brown-600 max-w-2xl mx-auto leading-relaxed"
-        style={{ fontFamily: 'var(--font-serif)' }}
-      >
-        {t('giftRegistry.subtitle')}
-      </p>
     </div>
   );
 }
 
 function renderMainContent(t: (key: string) => string, registryUrl: string) {
   return (
-    <div className="mb-16">
-      <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-10 md:p-12 shadow-xl border border-sage-100 relative overflow-hidden">
+    <div className="mb-4">
+      <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-xl border border-sage-100 relative overflow-hidden">
         {/* Background decorations */}
         <div className="absolute top-0 left-0 w-full h-full opacity-5">
           <div className="absolute top-10 left-10 w-20 h-20 bg-sage-300 rounded-full"></div>
@@ -69,15 +61,6 @@ function renderMainContent(t: (key: string) => string, registryUrl: string) {
         </div>
 
         <div className="relative z-10 text-center">
-          {/* Icon Section */}
-          <div className="flex items-center justify-center gap-4 mb-8">
-            <div className="w-16 h-px bg-gradient-to-r from-transparent via-sage-300 to-transparent"></div>
-            <div className="relative">
-              <Heart className="w-12 h-12 text-sage-600 opacity-80 fill-sage-200" />
-            </div>
-            <div className="w-16 h-px bg-gradient-to-l from-transparent via-sage-300 to-transparent"></div>
-          </div>
-
           {/* Message */}
           <p
             className="text-lg md:text-xl text-brown-700 mb-10 leading-relaxed max-w-2xl mx-auto"
@@ -108,44 +91,16 @@ function renderMainContent(t: (key: string) => string, registryUrl: string) {
             >
               {t('giftRegistry.note')}
             </p>
+
+            {/* Icon Section */}
+            <div className="flex items-center justify-center gap-4">
+              <div className="w-16 h-px bg-gradient-to-r from-transparent via-sage-300 to-transparent"></div>
+              <div className="relative">
+                <Heart className="w-12 h-12 text-sage-600 opacity-80 fill-sage-200" />
+              </div>
+              <div className="w-16 h-px bg-gradient-to-l from-transparent via-sage-300 to-transparent"></div>
+            </div>
           </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function renderFooter(t: (key: string) => string) {
-  return (
-    <div className="text-center">
-      <div className="max-w-3xl mx-auto bg-gradient-to-r from-pastel-pink-50/90 to-pastel-blue-50/90 backdrop-blur-sm rounded-lg p-8 shadow-lg border border-pastel-pink-100 relative">
-        <div className="absolute top-4 start-4">
-          <Flower className="w-5 h-5 text-pastel-pink-400 opacity-50" />
-        </div>
-        <div className="absolute top-4 end-4">
-          <Flower2 className="w-5 h-5 text-pastel-blue-400 opacity-50" />
-        </div>
-        <div className="absolute bottom-4 start-4">
-          <Leaf className="w-5 h-5 text-sage-400 opacity-50" />
-        </div>
-        <div className="absolute bottom-4 end-4">
-          <Flower className="w-4 h-4 text-pastel-purple-400 opacity-50" />
-        </div>
-
-        <h3
-          className="text-2xl text-brown-800 mb-4"
-          style={{ fontFamily: 'var(--font-harrington)' }}
-        >
-          {t('giftRegistry.footerTitle')}
-        </h3>
-        <p className="text-brown-600 leading-relaxed" style={{ fontFamily: 'var(--font-serif)' }}>
-          {t('giftRegistry.footerMessage')}
-        </p>
-
-        <div className="flex items-center justify-center gap-4 mt-6">
-          <div className="w-16 h-px bg-sage-300"></div>
-          <div className="w-6 h-6 bg-orange-300 rounded-full"></div>
-          <div className="w-16 h-px bg-sage-300"></div>
         </div>
       </div>
     </div>
