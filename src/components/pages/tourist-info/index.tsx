@@ -9,7 +9,7 @@ function TouristInfoPage() {
   const { t } = useTranslation();
   const attractions = getAttractions(t);
   return (
-    <div className="min-h-screen bg-gradient-to-b from-ivory-50 via-sage-50/20 to-orange-50/10 pt-40 py-20">
+    <div className="min-h-screen bg-gradient-to-b from-ivory-50 via-sage-50/20 to-orange-50/10 pt-45 py-20">
       <div className="max-w-6xl mx-auto px-8">
         {renderHeader(t)}
         {renderHistoricalSites(t, attractions)}

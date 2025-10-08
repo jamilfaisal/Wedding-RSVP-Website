@@ -13,7 +13,7 @@ import { useTranslation } from 'react-i18next';
 function AccommodationsPage() {
   const { t } = useTranslation();
   return (
-    <div className="min-h-screen bg-gradient-to-b from-ivory-50 via-sage-50/20 to-pastel-pink-50/10 pt-40 py-20">
+    <div className="min-h-screen bg-gradient-to-b from-ivory-50 via-sage-50/20 to-pastel-pink-50/10 pt-45 py-20">
       <div className="max-w-6xl mx-auto px-8">
         {renderSectionHeader(t)}
 

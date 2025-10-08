@@ -8,7 +8,7 @@ function GiftRegistryPage() {
   const registryUrl = 'https://www.etsy.com/registry/MTYyOTU4MTY4fDI3NTQ1Mjg1Mw';
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-ivory-50 via-sage-50/20 to-pastel-pink-50/10 pt-40 py-20">
+    <div className="min-h-screen bg-gradient-to-b from-ivory-50 via-sage-50/20 to-pastel-pink-50/10 pt-45 py-20">
       <div className="max-w-4xl mx-auto px-8">
         {renderHeader(t)}
         {renderMainContent(t, registryUrl)}

@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 function ContactFAQsPage() {
   const { t } = useTranslation();
   return (
-    <div className="min-h-screen bg-gradient-to-b from-ivory-50 via-sage-50/20 to-orange-50/10 pt-40 py-20">
+    <div className="min-h-screen bg-gradient-to-b from-ivory-50 via-sage-50/20 to-orange-50/10 pt-45 py-20">
       <div className="max-w-5xl mx-auto px-8">
         {renderHeader(t)}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-20">
