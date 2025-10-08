@@ -31,9 +31,26 @@
   "playlist": {
     "title": "Wedding Playlist 🎵",
     "subtitle": "Help us create the perfect soundtrack for our special day!",
-    "description": "Add your favorite songs to our collaborative Spotify playlist and make our celebration even more memorable.",
+    "description": "Suggest your favorite songs and make our celebration even more memorable.",
+    "suggestSongButton": "Suggest a Song",
+    "viewPlaylistButton": "View Playlist",
     "addSongsButton": "Add Songs to Playlist",
-    "footerNote": "🎶 Add songs to our playlist"
+    "footerNote": "🎶 Add songs to our playlist",
+    "modal": {
+      "title": "Suggest a Song",
+      "description": "Share your favorite song to help us create the perfect wedding playlist!",
+      "songName": "Song Name",
+      "songNamePlaceholder": "e.g., Perfect",
+      "artistName": "Artist Name",
+      "artistNamePlaceholder": "e.g., Ed Sheeran",
+      "guestName": "Your Name",
+      "guestNamePlaceholder": "e.g., John Doe",
+      "optional": "optional",
+      "submitting": "Submitting...",
+      "submitError": "Failed to submit song suggestion. Please try again.",
+      "successTitle": "Thank You!",
+      "successMessage": "Your song suggestion has been added to our list."
+    }
   },
   "navigation": {
     "home": "Home",

@@ -1,15 +1,13 @@
 'use client';
 
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Music2, ExternalLink, Heart } from 'lucide-react';
-import { spotifyPlaylistUrl } from '@/lib/config/wedding-config';
+import { Music2, Heart, Plus } from 'lucide-react';
+import SongSuggestionModal from './song-suggestion-modal';
 
 function WeddingPlaylist() {
   const { t } = useTranslation();
-
-  const handlePlaylistClick = () => {
-    window.open(spotifyPlaylistUrl, '_blank', 'noopener,noreferrer');
-  };
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <>
@@ -61,13 +59,12 @@ function WeddingPlaylist() {
 
               {/* CTA Button */}
               <button
-                onClick={handlePlaylistClick}
+                onClick={() => setIsModalOpen(true)}
                 className="cursor-pointer group inline-flex items-center gap-3 bg-gradient-to-r from-sage-600 to-sage-700 hover:from-sage-700 hover:to-sage-800 text-white px-8 py-4 rounded-full font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
                 style={{ fontFamily: 'var(--font-serif)' }}
               >
-                <Music2 className="w-5 h-5 group-hover:animate-pulse" />
-                <span>{t('playlist.addSongsButton')}</span>
-                <ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <Plus className="w-5 h-5 group-hover:rotate-90 transition-transform" />
+                <span>{t('playlist.suggestSongButton')}</span>
               </button>
 
               {/* Decorative elements */}
@@ -86,6 +83,8 @@ function WeddingPlaylist() {
           </div>
         </div>
       </section>
+
+      <SongSuggestionModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </>
   );
 }
