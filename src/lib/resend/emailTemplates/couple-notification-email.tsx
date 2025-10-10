@@ -107,7 +107,7 @@ export default function CoupleNotificationEmail({
                     </div>
 
                     <div style={{ marginBottom: 12 }}>
-                      <span style={labelStyle}>Dec 19th Refreshments:</span>
+                      <span style={labelStyle}>Dec 19th Henna Party:</span>
                       <span style={{ ...valueStyle, color: refreshmentsColor, fontWeight: 600 }}>
                         {refreshmentsAttendance === 'Yes' ? '✅ Attending' : '❌ Not Attending'}
                       </span>

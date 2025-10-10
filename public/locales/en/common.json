@@ -143,9 +143,9 @@
     "email": "Email Address",
     "attendance": "Will you be attending?",
     "attendanceTitle": "Will you be attending?",
-    "refreshmentsAttendance": "Dec 19th Refreshments",
+    "refreshmentsAttendance": "Dec 19th Henna Party",
     "weddingAttendance": "Dec 20th Wedding",
-    "refreshmentsToggle": "Toggle attendance for refreshments",
+    "refreshmentsToggle": "Toggle attendance for henna party",
     "weddingToggle": "Toggle attendance for wedding",
     "yes": "Yes, I'll be there! ✨",
     "no": "Sorry, I can't make it 😔",
@@ -257,7 +257,7 @@
       },
       "endTime": {
         "question": "What time does the celebration end?",
-        "answer": "It will never end! The ceremony beings at 6:30 pm, followed by refreshments and dinner. Live music and dancing will follow after that and carry on as well as some late night bites!"
+        "answer": "It will never end! The ceremony beings at 6:30 pm, followed by henna party and dinner. Live music and dancing will follow after that and carry on as well as some late night bites!"
       },
       "photos": {
         "question": "Can I take photos during the ceremony?",
@@ -346,8 +346,8 @@
     "thankYou": "Thank You!",
     "rsvpConfirmed": "Your RSVP has been confirmed",
     "thankYouMessage": "We're so excited to celebrate with you! You should receive a confirmation email shortly with all the details.",
-    "attendingBoth": "We can't wait to see you at both the refreshments on December 19th and the wedding ceremony on December 20th!",
-    "attendingRefreshments": "We're looking forward to having you join us for refreshments on December 19th!",
+    "attendingBoth": "We can't wait to see you at both the henna party on December 19th and the wedding ceremony on December 20th!",
+    "attendingRefreshments": "We're looking forward to having you join us for the henna party on December 19th!",
     "attendingWedding": "We're thrilled you'll be joining us for the wedding ceremony on December 20th!",
     "notAttending": "Thank you for letting us know. While we'll miss celebrating with you in person, we appreciate you taking the time to respond.",
     "emailConfirmation": "You'll receive an email confirmation with an edit link if you need to make any changes.",

@@ -89,7 +89,7 @@ export default function ConfirmationEmail({
                         borderRadius: '4px',
                       }}
                     >
-                      ✅ <strong>Attending Dec 19th Refreshments</strong>
+                      ✅ <strong>Attending Dec 19th Henna Party</strong>
                     </p>
                   )}
 
