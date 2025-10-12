@@ -213,9 +213,9 @@
   "giftRegistry": {
     "title": "Gift Registry",
     "subtitle": "Your presence at our wedding is the greatest gift of all",
-    "message": "Your presence is the greatest gift we could ask for. If you still would like to contribute, then please feel free to check our gift registry link below:",
+    "message": "Your presence is the greatest gift we could ask for. If you still would like to contribute, then please feel free to check our gift registries below:",
     "viewRegistry": "View Our Registry",
-    "note": "This link will open our Etsy registry in a new window"
+    "note": "These links will open our registries in new windows"
   },
   "touristyThings": {
     "title": "Touristy Things in ",
