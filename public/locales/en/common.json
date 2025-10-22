@@ -137,7 +137,6 @@
   "rsvp": {
     "title": "RSVP to Our Wedding",
     "subtitle": "Please let us know if you'll be joining us on our special day",
-    "deadlineMessage": "Last day to RSVP is",
     "fullName": "Guest Full Name",
     "fullNamePlaceholder": "Enter your full name",
     "email": "Email Address",

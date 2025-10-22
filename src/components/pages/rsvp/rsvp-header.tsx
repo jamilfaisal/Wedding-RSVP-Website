@@ -4,14 +4,13 @@ import { Leaf, Flower, Heart, Flower2 } from 'lucide-react';
 import floralIllustration from '@public/images/floral-illustration.png';
 import ImageWithFallback from '../../ui/image-with-fallback';
 import { useTranslation } from 'react-i18next';
-import { formatRSVPDeadline } from '@/components/layout/utils';
 
 interface RSVPHeaderProps {
   editMode?: boolean;
 }
 
 function RSVPHeader({ editMode = false }: RSVPHeaderProps) {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
     <div className="text-center mb-7 relative">
       {renderTopBorder()}
@@ -28,12 +27,6 @@ function RSVPHeader({ editMode = false }: RSVPHeaderProps) {
         style={{ fontFamily: 'var(--font-serif)' }}
       >
         {t('rsvp.subtitle')}
-      </p>
-      <p
-        className="text-xl text-brown-600 font-light mt-4"
-        style={{ fontFamily: 'var(--font-serif)' }}
-      >
-        {t('rsvp.deadlineMessage')} {formatRSVPDeadline(i18n.language)}
       </p>
 
       {renderFloralPicture()}

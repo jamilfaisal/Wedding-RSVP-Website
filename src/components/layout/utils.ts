@@ -1,4 +1,4 @@
-import { rsvpDeadline, weddingStartDate, weddingTimezone } from '@/lib/config/wedding-config';
+import { weddingStartDate, weddingTimezone } from '@/lib/config/wedding-config';
 
 export function checkIsHomePage(pathname: string): boolean {
   return (
@@ -21,10 +21,6 @@ function formatTime(time: Date, locale: string): string {
     minute: '2-digit',
     hour12: true,
   }).format(time);
-}
-
-export function formatRSVPDeadline(locale: string): string {
-  return formatDate(rsvpDeadline, locale);
 }
 
 export function formatWeddingStartDate(locale: string): string {
