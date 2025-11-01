@@ -24,7 +24,7 @@ export const mainHotelStatic = {
   location: 'Monte Mario / Trionfale',
   image:
     'https://images.unsplash.com/photo-1544709447-91e465a1706c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyb21lJTIwY2F2YWxpZXJpJTIwd2FsZG9yZiUyMGFzdG9yaWElMjBob3RlbCUyMGV4dGVyaW9yfGVufDF8fHx8MTc1NTQ2NTIzMXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-  blockRate: '€250 per night (limited rooms)',
+  blockRate: 'Single Use: €308 (incl breakfast and VAT); Double Use: €352 (incl breakfast and VAT)',
   distance: '0 km (on-site)',
   transport: [{ type: 'car' }] as TransportationMode[],
   links: [
