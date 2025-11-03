@@ -61,6 +61,7 @@ function renderWelcomeReception(t: (key: string) => string) {
           <h4 className="text-xl font-serif text-brown-800 mb-3">{t('ceremony.henna')}</h4>
           <div className="text-brown-600 leading-relaxed space-y-2">
             <p className="font-medium">{t('ceremony.joinUsDate')}</p>
+            <p className="text-brown-600">{t('ceremony.hennaTime')}</p>
             <p className="text-brown-600">{t('ceremony.hennaAddress')}</p>
           </div>
         </div>
