@@ -252,11 +252,11 @@
     "faqs": {
       "attire": {
         "question": "What should I wear to the wedding?",
-        "answer": "We're embracing Elegant Evening wear for our special evening — think timeless sophistication! The best part? There are no color restrictions — wear whatever makes you feel amazing (we just kindly ask that guests avoid wearing white)."
+        "answer": "For the 19th Henna event, you may wear any color EXCEPT red — think jewel tones, jalabiyas, and gold; no restrictions on style. For the big day on the 20th, any elegant evening attire is welcome — any color EXCEPT white."
       },
       "transportation": {
         "question": "Will there be transportation provided?",
-        "answer": "TBA"
+        "answer": "On the wedding day (Dec 20), we will provide shuttle service returning from the venue."
       },
       "children": {
         "question": "Are children welcome at the wedding?",
@@ -264,7 +264,7 @@
       },
       "endTime": {
         "question": "What time does the celebration end?",
-        "answer": "It will never end! The ceremony beings at 6:30 pm, followed by henna party and dinner. Live music and dancing will follow after that and carry on as well as some late night bites!"
+        "answer": "The ceremony starts at 6:30 pm exactly — please don't be late. After that will follow the Zaffa, dinner, live music, and endless dancing until the wee hours of the night"
       },
       "photos": {
         "question": "Can I take photos during the ceremony?",
@@ -276,7 +276,7 @@
       },
       "dietary": {
         "question": "What if I have dietary restrictions?",
-        "answer": "Please let us know about any dietary restrictions or allergies when you RSVP. We'll work with our caterers to accommodate vegetarian, vegan, gluten-free, and other dietary needs."
+        "answer": "Please let us know about any dietary restrictions or allergies when you RSVP. We'll work with our caterers to accommodate vegetarian, vegan, gluten-free, and other dietary needs. Note: All meats will be halal."
       },
       "weather": {
         "question": "What's the weather like in Rome in December?",
@@ -284,11 +284,7 @@
       },
       "gifts": {
         "question": "Do you have a gift registry?",
-        "answer": "Your presence at our wedding is the greatest gift of all! However, if you wish to honor us with a gift, we've created a registry on Etsy. You can find it in the [Gift Registry](/gift-registry) section of this website."
-      },
-      "travel": {
-        "question": "How do I get to Rome and where should I stay?",
-        "answer": "TBA"
+        "answer": "Your presence at our wedding is the greatest gift of all! However, if you wish to honor us with a gift, you can find details in the [Gift Registry](/gift-registry) section of this website."
       }
     }
   },

@@ -31,9 +31,6 @@ export const faqsStatic = [
   {
     key: 'gifts',
   },
-  {
-    key: 'travel',
-  },
 ];
 
 export function getFAQs(t: (key: string) => string): FAQ[] {
