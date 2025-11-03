@@ -60,7 +60,7 @@ function renderWelcomeReception(t: (key: string) => string) {
         <div className="flex-1">
           <h4 className="text-xl font-serif text-brown-800 mb-3">
             {t('ceremony.henna')}
-            <span className="align-middle text-sm italic text-brown-500 ml-3">
+            <span className="align-middle text-sm italic text-brown-500 ml-2">
               ({t('ceremony.hennaGirlsOnly')})
             </span>
           </h4>
