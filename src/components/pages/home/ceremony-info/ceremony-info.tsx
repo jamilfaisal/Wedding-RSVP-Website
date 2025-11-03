@@ -58,7 +58,12 @@ function renderWelcomeReception(t: (key: string) => string) {
           <Clock className="w-6 h-6 text-purple-700" />
         </div>
         <div className="flex-1">
-          <h4 className="text-xl font-serif text-brown-800 mb-3">{t('ceremony.henna')}</h4>
+          <h4 className="text-xl font-serif text-brown-800 mb-3">
+            {t('ceremony.henna')}
+            <span className="align-middle text-sm italic text-brown-500 ml-3">
+              ({t('ceremony.hennaGirlsOnly')})
+            </span>
+          </h4>
           <div className="text-brown-600 leading-relaxed space-y-2">
             <p className="font-medium">{t('ceremony.joinUsDate')}</p>
             <p className="text-brown-600">{t('ceremony.hennaTime')}</p>

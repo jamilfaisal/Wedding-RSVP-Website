@@ -89,6 +89,7 @@
     "welcomeReception": "Welcome Reception",
     "joinUsDate": "Join us on December 19, 2025",
     "henna": "Henna Party",
+    "hennaGirlsOnly": "Girls only",
     "hennaTime": "6:00–8:00 PM",
     "hennaAddress": "The Sanctuary Eco Retreat · Via delle Terme di Traiano, 4A, 00184 Roma RM, Italy"
   },
@@ -359,7 +360,7 @@
   },
   "hotels": {
     "mainHotel": {
-      "name": "Rome Cavalieri, A Waldorf Astoria Hotel (Wedding Venue & Primary Stay)",
+      "name": "Rome Cavalieri, A Waldorf Astoria Hotel",
       "notes": "Resort-style oasis above the city, panoramic views, classic Roman grandeur.",
       "transportNotes": "Hotel shuttle to Via Veneto (seasonal/timetabled), taxis readily available.",
       "booking": "To book, email Luigi Aquini at Luigi.Aquini@waldorfastoria.com and quote: Zina & Faris 20/12/2025."

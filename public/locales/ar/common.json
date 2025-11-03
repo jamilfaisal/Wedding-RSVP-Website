@@ -89,6 +89,7 @@
     "welcomeReception": "حفل الترحيب",
     "joinUsDate": "انضموا إلينا في 19 ديسمبر 2025",
     "henna": "حفلة حناء",
+    "hennaGirlsOnly": "للبنات فقط",
     "hennaTime": "6:00–8:00 م",
     "hennaAddress": "The Sanctuary Eco Retreat · Via delle Terme di Traiano, 4A, 00184 Roma RM, Italy"
   },
@@ -362,7 +363,7 @@
   },
   "hotels": {
     "mainHotel": {
-      "name": "روما كافاليري، فندق والدورف أستوريا (مكان الزفاف والإقامة الأساسية)",
+      "name": "روما كافاليري، فندق والدورف أستوريا",
       "notes": "واحة على طراز المنتجع فوق المدينة، مناظر بانورامية، عظمة رومانية كلاسيكية.",
       "transportNotes": "باص الفندق إلى فيا فينيتو (موسمي/وفق جدول زمني)، سيارات الأجرة متوفرة بسهولة.",
       "booking": "للحجز، يرجى مراسلة لويجي أكويني على Luigi.Aquini@waldorfastoria.com وذكر: زينة وفارس 20/12/2025."
