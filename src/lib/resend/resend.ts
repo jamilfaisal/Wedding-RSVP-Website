@@ -5,6 +5,9 @@ import ConfirmationEmail, { ConfirmationEmailProps } from './emailTemplates/conf
 import CoupleNotificationEmail, {
   CoupleNotificationEmailProps,
 } from './emailTemplates/couple-notification-email';
+import BroadcastUpdatesEmail, {
+  BroadcastUpdatesEmailProps,
+} from './emailTemplates/broadcast-updates-email';
 import { isValidEmailFormat } from '../airtable/utils';
 import { email as coupleEmail } from '../config/wedding-config';
 
@@ -153,6 +156,46 @@ export async function sendCoupleNotificationEmail(
       return { success: false, error: errorMessage };
     }
 
+    const responseData = data as { id?: string } | undefined;
+    return { success: true, data: { id: responseData?.id } };
+  } catch (err) {
+    return {
+      success: false,
+      error: err instanceof Error ? err.message : String(err),
+    };
+  }
+}
+
+export async function sendBroadcastUpdateToSingleEmail(
+  record: AirtableRecord,
+  overrides?: { subject?: string }
+): Promise<APIResponse<{ id?: string }>> {
+  const to = record.fields?.Email;
+  if (validateRecipientEmailExists(to)) {
+    return { success: false, error: 'No valid recipient email found on RSVP record' };
+  }
+  const name = record.fields?.Name || '';
+  const from = process.env.RESEND_SENDER_EMAIL || 'Resend Dev <onboarding@resend.dev>';
+  const subject =
+    overrides?.subject?.trim() || 'Updates on Faris & Zina\u2019s Wedding \uD83D\uDC8D';
+
+  try {
+    const props: BroadcastUpdatesEmailProps = { name: name || 'Guest' };
+    const reactElement = React.createElement(BroadcastUpdatesEmail, props);
+    const resend = getResendClient();
+
+    const payload: Parameters<typeof resend.emails.send>[0] = {
+      from,
+      to: [to!],
+      subject,
+      react: reactElement,
+    };
+
+    const { data, error } = await resend.emails.send(payload);
+    if (error) {
+      const errorMessage = typeof error === 'object' ? JSON.stringify(error) : String(error);
+      return { success: false, error: errorMessage };
+    }
     const responseData = data as { id?: string } | undefined;
     return { success: true, data: { id: responseData?.id } };
   } catch (err) {
