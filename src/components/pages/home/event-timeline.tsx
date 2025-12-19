@@ -1,4 +1,4 @@
-import { Clock, Music, Utensils, Sparkles, LucideProps } from 'lucide-react';
+import { Clock, Music, Utensils, Sparkles, LucideProps, User } from 'lucide-react';
 import { ForwardRefExoticComponent, RefAttributes } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useI18n } from '@/lib/i18n/i18n-provider';
@@ -25,19 +25,19 @@ const timelineEvents: timelineEvent[] = [
     iconColor: 'text-orange-700',
   },
   {
-    timeKey: 'timeline.tba',
-    titleKey: 'timeline.events.dinner.title',
-    descriptionKey: 'timeline.events.dinner.description',
-    icon: Utensils,
+    timeKey: 'timeline.sevenFortyFivePM',
+    titleKey: 'timeline.events.groomEntrance.title',
+    descriptionKey: 'timeline.events.groomEntrance.description',
+    icon: User,
     bgColor: 'from-brown-100 to-brown-200',
     borderColor: 'border-brown-200',
     iconColor: 'text-brown-700',
   },
   {
-    timeKey: 'timeline.tba',
-    titleKey: 'timeline.events.dancing.title',
-    descriptionKey: 'timeline.events.dancing.description',
-    icon: Music,
+    timeKey: 'timeline.eightThirtyPM',
+    titleKey: 'timeline.events.dinner.title',
+    descriptionKey: 'timeline.events.dinner.description',
+    icon: Utensils,
     bgColor: 'from-ivory-200 to-ivory-300',
     borderColor: 'border-ivory-300',
     iconColor: 'text-brown-700',

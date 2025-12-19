@@ -127,19 +127,21 @@
     "tba": "TBA",
     "events": {
       "cocktail": {
-        "title": "Cocktail Reception",
-        "description": "Join us for drinks, appetizers, and celebration under the Roman stars"
+        "title": "Aperitif",
+        "description": "Start of the aperitif at the Belle Arti Room for guests"
+      },
+      "groomEntrance": {
+        "title": "Groom's Entrance",
+        "description": "Entrance of the Groom in the Belle Arti Room"
       },
       "dinner": {
-        "title": "Zaffa and Dinner",
-        "description": "Traditional wedding procession followed by celebratory feast"
-      },
-      "dancing": {
-        "title": "Dancing & Celebration",
-        "description": "Details to be announced - dance the night away"
+        "title": "Buffet Opening",
+        "description": "Buffet is open for the starter"
       }
     },
     "sixThirtyPM": "6:30 PM",
+    "sevenFortyFivePM": "7:45 PM",
+    "eightThirtyPM": "8:30 PM",
     "bottomMessage": "\"We can't wait to celebrate this magical evening with all our cherished family and friends. Thank you for being such an important part of our journey together!\""
   },
   "rsvp": {
@@ -192,7 +194,7 @@
     "descriptionPart1": "We're delighted you'll be celebrating with us in ",
     "descriptionPart2": ". Below are our recommended places to stay near our venue. We've reserved a special rate at our main hotel, plus curated options in three elegant tiers to suit different styles and budgets.",
     "ourMainHotel": "Our Main Hotel",
-    "ourMainHotelDescription": "Note: The venue sits on Monte Mario, about ~3 km from the Vatican and ~5–7 km from the historic center; the hotel also runs a shuttle to Via Veneto on a set timetable. Please check the schedule directly with the hotel.",
+    "ourMainHotelDescription": "Note: The venue sits on Monte Mario, about ~3 km from the Vatican and ~5–7 km from the historic center.",
     "recommendedHotels": "Recommended Hotels",
     "recommendedHotelsDescription": "These hotels will have special block rates for our guests (details coming soon).",
     "recommendedHotelsComingSoon": "Coming Soon",
@@ -211,8 +213,6 @@
     "taxiDescription": "Fastest and simplest from anywhere in the center (typically ~10–20 minutes depending on traffic).",
     "metro": "Metro A to Cipro + short taxi/bus",
     "metroDescription": "From many central hotels near Spagna/Barberini/Flaminio you can ride Metro A toward Battistini and connect near Cipro for a short hop.",
-    "hotelShuttle": "Hotel Shuttle (Rome Cavalieri)",
-    "hotelShuttleDescription": "Seasonal timetable with pick-up/drop-off near Via Veneto; confirm times directly with the hotel.",
     "hotel": "Hotel Rome Cavalieri",
     "smallPrint": "Small Print",
     "smallPrintDescription": "Distances are approximate road distances from each hotel to the venue to help with planning; traffic can significantly affect travel time. For precise navigation on the day, we'll share exact pins and an arrival note closer to the wedding."
@@ -256,7 +256,7 @@
       },
       "transportation": {
         "question": "Will there be transportation provided?",
-        "answer": "On the wedding day (Dec 20), we will provide shuttle service returning from the venue."
+        "answer": "We recommend using taxis or ride-sharing apps to get to and from the venue."
       },
       "children": {
         "question": "Are children welcome at the wedding?",
@@ -362,7 +362,7 @@
     "mainHotel": {
       "name": "Rome Cavalieri, A Waldorf Astoria Hotel",
       "notes": "Resort-style oasis above the city, panoramic views, classic Roman grandeur.",
-      "transportNotes": "Hotel shuttle to Via Veneto (seasonal/timetabled), taxis readily available.",
+      "transportNotes": "Taxis readily available.",
       "booking": "To book, email Luigi Aquini at Luigi.Aquini@waldorfastoria.com and quote: Zina & Faris 20/12/2025."
     },
     "signatureStays": {

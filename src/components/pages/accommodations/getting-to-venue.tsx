@@ -1,4 +1,4 @@
-import { Car, Flower, Train, Bus, ExternalLink } from 'lucide-react';
+import { Car, Flower, Train } from 'lucide-react';
 import AccommodationsHeader from './accommodations-header';
 
 function GettingToVenue(t: (key: string) => string) {
@@ -13,7 +13,6 @@ function GettingToVenue(t: (key: string) => string) {
           <div className="space-y-4">
             {renderCarInfo(t)}
             {renderTrainInfo(t)}
-            {renderHotelShuttleInfo(t)}
           </div>
         </div>
       </div>
@@ -21,32 +20,6 @@ function GettingToVenue(t: (key: string) => string) {
   );
 }
 
-function renderHotelShuttleInfo(t: (key: string) => string) {
-  return (
-    <div className="flex items-start gap-3">
-      <Bus className="w-5 h-5 text-orange-600 mt-1" />
-      <div>
-        <h4
-          className="text-lg text-brown-800 mb-2"
-          style={{ fontFamily: 'var(--font-harrington)' }}
-        >
-          {t('accommodations.hotelShuttle')}
-        </h4>
-        <p className="text-brown-600 mb-2" style={{ fontFamily: 'var(--font-serif)' }}>
-          {t('accommodations.hotelShuttleDescription')}
-        </p>
-        <a
-          href="#"
-          className="inline-flex items-center gap-1 text-sm text-sage-700 hover:text-brown-700 border border-sage-300 hover:border-orange-300 rounded-lg px-2 py-1 transition-all duration-200"
-          style={{ fontFamily: 'var(--font-serif)' }}
-        >
-          <ExternalLink className="w-3 h-3" />
-          <span>{t('accommodations.hotel')}</span>
-        </a>
-      </div>
-    </div>
-  );
-}
 
 function renderTrainInfo(t: (key: string) => string) {
   return (
