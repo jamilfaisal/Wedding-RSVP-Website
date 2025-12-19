@@ -20,7 +20,6 @@ function GettingToVenue(t: (key: string) => string) {
   );
 }
 
-
 function renderTrainInfo(t: (key: string) => string) {
   return (
     <div className="flex items-start gap-3">
